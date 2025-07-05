@@ -1,0 +1,51 @@
+exclude: '^docs/conf.py'
+
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  - id: trailing-whitespace
+  - id: check-added-large-files
+  - id: check-ast
+  - id: check-executables-have-shebangs
+  - id: check-json
+  - id: check-merge-conflict
+  - id: check-toml
+  - id: check-xml
+  - id: check-yaml
+  - id: debug-statements
+  - id: end-of-file-fixer
+  - id: requirements-txt-fixer
+  - id: mixed-line-ending
+    args: ['--fix=lf']
+  - id: check-toml
+  - id: fix-encoding-pragma
+    args:
+      - --remove
+
+
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  # Ruff version.
+  rev: v0.12.2
+  hooks:
+    # Run the linter.
+    - id: ruff
+      args: [ --fix ]
+    # Run the formatter.
+    - id: ruff-format
+
+- repo: https://github.com/Riverside-Healthcare/djLint
+  rev: v1.36.4
+  hooks:
+    - id: djlint-django
+      exclude: '.*/tests/.*\.html$'
+
+- repo: https://github.com/pre-commit/mirrors-prettier
+  # the actually used version is the one below in additional dependencies, pre-commit mirror does not support
+  # prettier versions well, the manual pin below is a good way to pin the version
+  rev: "v4.0.0-alpha.8"
+  hooks:
+    - id: prettier
+      files: '\.(jsx?|tsx?|css|scss)$'
+      additional_dependencies:
+        - prettier@2.8.0

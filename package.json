@@ -1,0 +1,6 @@
+{
+  "name": "wjs-themes",
+  "dependencies": {
+    "prettier": "^3.6.2"
+  }
+}

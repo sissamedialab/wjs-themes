@@ -1,0 +1,29 @@
+{% load roles %}
+
+{% url 'submission_start' as submission_start %}
+{% url 'core_manager_index' as core_manager_index %}
+{% url 'core_edit_profile' as core_edit_profile %}
+{% url 'core_logout' as core_logout %}
+
+<ul class="dropdown-menu" aria-labelledby="user-menu">
+  {% if not journal_settings.general.disable_journal_submission and submission_start %}
+    <li class="nav-item wjs-nav-item">
+      <a class="dropdown-item" href="{{ submission_start }}">{% trans "Submit" %}</a>
+    </li>
+  {% endif %}
+  {% if request.user.is_staff %}
+    <li class="nav-item wjs-nav-item">
+      <a class="dropdown-item" href="{% url "admin:index" %}">{% trans "Admin" %}</a>
+    </li>
+  {% endif %}
+  {% if core_edit_profile %}
+    <li class="nav-item wjs-nav-item">
+      <a class="dropdown-item" href="{{ core_edit_profile }}">{% trans "Profile" %}</a>
+    </li>
+  {% endif %}
+  {% if core_logout %}
+    <li class="nav-item wjs-nav-item">
+      <a class="dropdown-item" href="{{ core_logout }}">{% trans "Logout" %}</a>
+    </li>
+  {% endif %}
+</ul>
