@@ -1,0 +1,40 @@
+default:
+  image: python:3.11
+  # Runner must be inside Inasset's farm
+  tags:
+    - inasset
+
+  cache:
+    key: cache-default
+    paths:
+      - .cache
+
+variables:
+  PIP_CACHE_DIR: $CI_PROJECT_DIR/.cache/pip
+
+stages:
+  - test
+  - build
+
+include:
+  - project: 'wjs/wjs-profile-project'
+    ref: wjs-develop
+    file: '.gitlab-ci-pkg-build-and-upload.yml'
+  - project: 'wjs/wjs-profile-project'
+    ref: wjs-develop
+    file: '.gitlab-ci-pre-commit.yml'
+
+
+pre-commit:
+  # Always run linting, except for tags
+  except:
+    - tags
+  extends:
+    - .run-pre-commit
+
+
+upload-package:
+  only:
+    - tags
+  extends:
+    - .upload-package
