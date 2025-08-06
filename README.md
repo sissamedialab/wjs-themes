@@ -9,22 +9,12 @@ It currently provides:
 
 It's available as a standard python package (not as a Janeway plugin) for easier installation and distribution.
 
-## Installation
+## Install
 
-`pip install wjs-themes`
-
-(it requires SISSA gitlab package repository to be available)
-
-## Configuration
-
-- Add `"wjs.themes"` in `INSTALLED_APPS` (this is already included in `wjs.defaults.settings`)
-
+See [Janeway Setup](https://gitlab.sissamedialab.it/wjs/specs/-/wikis/setup-janeway) and
+[migration guide](https://gitlab.sissamedialab.it/wjs/specs/-/wikis/migrate-wjs-submission) for installation instructions.
 
 ## Commands
-
-### Django commands
-
-- `install_themes`: Link themes in proper Janeway directory to make it available system-wide
 
 ### Helper scripts
 
@@ -40,9 +30,15 @@ Available both as a Janeway theme and as plain django template repository (for u
 
 Select as "Journal Theme" in `http://<journal-domain>/manager/settings/journal/`
 
-#### Using as standar django template
+#### Using as standard django template
 
 Extend templates from `wjs/base/base.html`
+
+#### Working with stylesheets
+
+Stylesheets are located in `wjs/themes/wjs-bootstrap/assets/sass`.
+
+When developing, run `build_assets.sh` to watch for changes and rebuild assets.
 
 ### JCOM-Theme
 
