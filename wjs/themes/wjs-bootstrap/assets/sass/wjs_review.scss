@@ -7,6 +7,7 @@ $dark-gray: #606a71;
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/utilities";
 @import "badges_colors";
+@import "submission-keywords";
 
 div.required-field > .form-label {
   font-weight: bold;
@@ -459,7 +460,7 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
     }
 
     &-content {
-      @extend .px-2;
+      @extend .px-3;
     }
 
     margin-bottom: 3rem;
