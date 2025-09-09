@@ -9,14 +9,21 @@
   }
 
   &__keywords-accordion {
-    .accordion-button {
-      &:not(.collapsed) {
-        background-color: $primary;
-        color: $white;
+    .accordion-item {
+      @extend .border, .rounded-2, .mb-4;
 
-        &:after {
-          filter: invert(1) grayscale(100%) brightness(200%);
-        }
+      &:last-child {
+        @extend .mb-5;
+      }
+    }
+
+    .accordion-button {
+      @extend .rounded-2;
+
+      &:not(.collapsed) {
+        @extend .rounded-bottom-0, .border-bottom-0;
+        background-color: $white;
+        box-shadow: none;
       }
 
       &.collapsed {
@@ -29,6 +36,15 @@
     .accordion-button {
       &.collapsed {
         background-color: $gray-200;
+      }
+
+      &:not(.collapsed) {
+        background-color: $primary;
+        color: $white;
+
+        &:after {
+          filter: invert(1) grayscale(100%) brightness(200%);
+        }
       }
     }
   }
@@ -46,5 +62,53 @@
   &__keywords-checkbox,
   &__keywords-checkbox-label {
     cursor: pointer;
+  }
+
+  &__keyword-weight-item {
+    @extend .d-flex, .flex-row, .justify-content-between, .py-3, .border-top;
+
+    &:first-child {
+      @extend .border-0, .pt-2;
+    }
+  }
+
+  &__keyword-weight-item-weights {
+    @extend .d-flex, .flex-row, .gap-5;
+  }
+
+  .wjs-submission-form__keyword-weight-input,
+  .wjs-submission-form__keyword-weight-input-label {
+    cursor: pointer;
+  }
+
+  &__free-keywords-section {
+    @extend .mb-5;
+
+    .select2-container--default .select2-selection--multiple {
+      border-color: $gray-300;
+    }
+
+    .select2-container--default.select2-container--focus .select2-selection--multiple {
+      box-shadow: $focus-ring-box-shadow;
+      border-color: $gray-300;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+      background-color: $primary;
+      color: $white;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+      color: $white;
+    }
+  }
+
+  &__free-keywords-label {
+    @extend .fw-bold, .mb-4;
+    color: $primary;
+  }
+
+  &__free-keywords-intro {
+    @extend .mb-4;
   }
 }
