@@ -444,10 +444,6 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 }
 
 .wjs-submission-form {
-  .form-control {
-    width: fit-content;
-  }
-
   &__intro {
     margin-bottom: 3rem;
   }
@@ -466,7 +462,7 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
     margin-bottom: 3rem;
   }
 
-  &__form-label {
+  &__form-label-title {
     @extend .border-bottom, .fw-bold, .mb-4, .pb-3, .w-100;
     border-bottom-color: $gray-400;
     color: $primary;
