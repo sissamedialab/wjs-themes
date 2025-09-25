@@ -1,0 +1,72 @@
+.wjs-submission-form__search-input-text {
+  @extend .mb-2;
+}
+
+.wjs-submission-form__search-input-autosuggest {
+  @extend .w-100, .position-relative;
+
+  &:before {
+    @extend .position-absolute,
+      .border-start,
+      .end-0,
+      .top-0,
+      .d-flex,
+      .align-items-center,
+      .justify-content-center,
+      .h-100;
+    color: $gray-600;
+    content: "\F52A";
+    font-family: "bootstrap-icons";
+    width: 3rem;
+  }
+}
+
+.wjs-submission-form__search-menu {
+  @extend .overflow-y-scroll, .mt-2, .rounded-2, .shadow-sm, .bg-white, .p-3, .w-100;
+  max-height: 30rem;
+}
+
+.wjs-submission-form__search-selectable {
+  @extend .p-2, .w-100;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $gray-200;
+  }
+}
+
+.wjs-submission-form__alert-message-box {
+  @extend .alert;
+  width: fit-content;
+
+  .errorlist {
+    @extend .ps-0, .mb-0;
+    list-style: none;
+
+    li {
+      @extend .d-flex, .flex-row, .gap-2;
+    }
+  }
+
+  &.wjs-submission-form__alert-message-box--warning {
+    background-color: $yellow-500;
+  }
+
+  &.wjs-submission-form__alert-message-box--error {
+    background-color: $red-500;
+    color: $white;
+  }
+}
+
+.wjs-submission-form__confirm-checkbox {
+  @extend .me-2;
+  cursor: pointer;
+}
+
+.modal-content {
+  .wjs-submission-form {
+    .form-control {
+      @extend .w-100;
+    }
+  }
+}

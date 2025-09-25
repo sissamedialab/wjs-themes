@@ -8,6 +8,7 @@ $dark-gray: #606a71;
 @import "bootstrap/scss/utilities";
 @import "badges_colors";
 @import "submission-keywords";
+@import "submission-authors";
 
 div.required-field > .form-label {
   font-weight: bold;
@@ -524,6 +525,22 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 
     &--success {
       background-color: #007c4c;
+    }
+  }
+}
+
+.btn {
+  &:disabled {
+    background-color: $gray-200;
+    border-color: $gray-200;
+    color: $dark-gray;
+  }
+
+  &-icon--disabled {
+    &:disabled {
+      background: none;
+      border: none;
+      color: $gray-500;
     }
   }
 }
