@@ -557,9 +557,9 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 }
 
 .text-running {
-  color: rgba(#fbfbfb, var(--bs-text-opacity)) !important;
+  color: $primary !important;
 }
 
 .bg-running {
-  background-color: #198754 !important;
+  background-color: $primary !important;
 }
