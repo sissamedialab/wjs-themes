@@ -52,6 +52,14 @@
   &__keywords-list {
     @extend .d-flex, .flex-column, .flex-wrap, .p-0;
     max-height: 33rem; /* This value allows to have 20 items per column */
+
+    &.wjs-submission-form__keywords-list--has-keywords {
+      @extend .flex-row;
+      max-height: none;
+      .form-check {
+        flex: 1 0 33.33%;
+      }
+    }
   }
 
   &__keywords-list-item {
