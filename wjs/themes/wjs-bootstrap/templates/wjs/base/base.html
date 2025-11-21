@@ -14,6 +14,9 @@
   {% endif %}
 {% endblock bootstrap5_extra_head %}
 {% block bootstrap5_content %}
+  <div id="js-loading-spinner" class="wjs-loading-spinner">
+    <span class="spinner-border text-primary"></span>
+  </div>
   <div class="bg-body" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     {% include "wjs/base/elements/modal_htmx.html" %}
     {% block header %}
@@ -39,6 +42,29 @@
     {% endblock footer %}
 
     {% block js %}
+      <script>
+        const spinner = document.getElementById("js-loading-spinner");
+        const body = document.body;
+
+        function showSpinner(event) {
+          const triggeringElement = event.detail.elt;
+          const skipSpinner = triggeringElement.classList && triggeringElement.classList.contains("js-no-spinner");
+          if (!skipSpinner) {
+            body.style.overflow = "hidden";
+            spinner.style.display = "flex";
+          }
+        }
+
+        function hideSpinner() {
+          body.style.overflow = "scroll";
+          spinner.style.display = "none";
+        }
+
+        document.body.addEventListener("htmx:beforeRequest", showSpinner);
+        document.body.addEventListener("htmx:afterRequest", hideSpinner);
+
+      </script>
+
     {% endblock js %}
   </div>
 {% endblock bootstrap5_content %}
