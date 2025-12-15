@@ -1,0 +1,29 @@
+.wjs-submission-form {
+  .list-unstyled p,
+  .form-check-label p {
+    @extend .mb-0;
+  }
+
+  &__form-label-title-container {
+    @extend .d-flex, .justify-content-between, .w-100, .mb-0;
+
+    .wjs-submission-form__form-label-title {
+      @extend .mb-2;
+    }
+  }
+
+  &__text-area {
+    @extend .p-3, .mt-2, .border;
+    border-color: $gray-300;
+    background-color: $gray-200;
+    color: $gray-600;
+  }
+
+  &__form-review-list-item-no-border {
+    @extend .d-flex, .justify-content-between, .align-items-center, .mb-3, .pb-2;
+  }
+
+  &__form-review-list-item {
+    @extend .border-bottom, .d-flex, .justify-content-between, .align-items-center, .mb-3, .pb-2;
+  }
+}
