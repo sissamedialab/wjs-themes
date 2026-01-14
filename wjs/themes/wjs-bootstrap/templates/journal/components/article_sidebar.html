@@ -1,0 +1,130 @@
+{% load i18n %}
+{% load wjs_tags %}
+<aside class="wjs-showcase__article-sidebar">
+
+        {% include "common/elements/altmetric_badges.html" with article=article %}
+        {% include "journal/components/article_downloads.html" with article=article show_spacer=True %}
+        {% include "journal/components/article_socials.html" %}
+        {% if article.non_specialist_summary %}
+        <div class="wjs-showcase__article-sidebar-content">
+            <h3 class="wjs-showcase__sidebar-title">{% trans "Additional resources" %}</h3>
+            {{ article.non_specialist_summary|safe }}
+        </div>
+        {% endif %}
+        {% if article.is_published and not journal_settings.article.suppress_how_to_cite %}
+        <div class="wjs-showcase__article-sidebar-content">
+            <h3 class="wjs-showcase__sidebar-title">{% trans "How to Cite" %}</h3>
+            {{ article|how_to_cite|safe }}
+        </div>
+        {% endif %}
+        {% if article.keywords.count > 0 %}
+        <div class="wjs-showcase__article-sidebar-content">
+            <h3 class="wjs-showcase__sidebar-title">{% trans "Keywords" %}</h3>
+            <ul class="wjs-showcase__article-sidebar-list">
+                {% for keyword in article.keywords.all %}
+                    <li>
+                        {% if journal_settings.general.keyword_list_page %}
+                            <a href="{% url 'articles_by_keyword' keyword.pk %}">
+                            {% endif %}
+                            {{ keyword.word }}
+                            {% if journal_settings.general.keyword_list_page %}</a>{% endif %}
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+        <div class="wjs-showcase__article-sidebar-content">
+            <h3 class="wjs-showcase__sidebar-title">{% trans "Rights" %}</h3>
+            {% if article.rights %}
+                {{ article.rights | safe }}
+            {% else %}
+                © Authors
+            {% endif %}
+        </div>
+        {% if article.publisher_notes.all %}
+        <div class="wjs-showcase__article-sidebar-content">
+            <h3 class="wjs-showcase__sidebar-title">{% trans "Publisher Notes" %}</h3>
+            <ul class="wjs-showcase__article-sidebar-list">
+                {% for note in article.publisher_notes.all %}<li>{{ note.text|safe }}</li>{% endfor %}
+            </ul>
+            </div>
+        {% endif %}
+        {% if article.funders.all %}
+            <div class="wjs-showcase__article-sidebar-content">
+                <h3 class="wjs-showcase__sidebar-title">{% trans "Funding" %}</h3>
+                <ul class="wjs-showcase__article-sidebar-list">
+                    {% for funder in article.funders.all %}
+                        <li>
+                            {% if funder.fundref_id %}
+                                <a href="{% url "funder_articles" funder.fundref_id %}">
+                                {% endif %}
+                                {{ funder.name }}
+                                {% if funder.fundref_id %}</a>{% endif %}
+                            {% if funder.funding_id %}(grant {{ funder.funding_id }}){% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% include "journal/components/article_issue_list.html" %}
+
+        {% if article.date_accepted or article.date_published %}
+        <div class="wjs-showcase__article-sidebar-content">
+            <h4 class="wjs-showcase__sidebar-title">{% trans "Publication date" %}</h4>
+            {{ article.date_published|date:DATE_FORMAT }}
+        </div>
+        {% endif %}
+
+        {% if article.license.url %}
+        <div class="wjs-showcase__article-sidebar-content">
+        <h4 class="wjs-showcase__sidebar-title">{% trans "Licence" %}</h4>
+        <p>
+            {{ article.license.name }}
+
+                <a rel="license" href="{{ article.license.url }}"><i class="fa fa-external-link"></i></a>
+
+        </p>
+        </div>
+        {% endif %}
+        {% with article.get_doi_url as doi_url %}
+            {% if doi_url %}
+            <div class="wjs-showcase__article-sidebar-content">
+                <h4 class="wjs-showcase__sidebar-title">{% trans "Identifiers" %}</h4>
+                <ul class="wjs-showcase__article-sidebar-list">
+                    <li>
+                        DOI: <a href="{{ doi_url }}">{{ doi_url }}</a>
+                    </li>
+                </ul>
+            </div>
+            {% endif %}
+        {% endwith %}
+        {% if article.peer_reviewed %}
+        <div class="wjs-showcase__article-sidebar-content">
+            <h4 class="wjs-showcase__sidebar-title">{% trans "Peer Review" %}</h4>
+            <p>
+                <i class="bi bi-check-circle"></i>
+                {% trans "This article has been peer reviewed." %}
+            </p>
+            {% if journal_settings.general.open_peer_review %}
+                {% if article.public_reviews.count > 0 %}
+                    <p>
+                        {% for review in article.public_reviews %}
+                            <button data-target="reviewmodal-{{ review.pk }}" class="btn modal-trigger">
+                                Review by {{ review.reviewer.full_name }}
+                            </button>
+                        {% endfor %}
+                        <br />
+                    </p>
+                {% endif %}
+            {% endif %}
+        </div>
+        {% endif %}
+        {% if article.custom_fields %}
+        <div class="wjs-showcase__article-sidebar-content">
+            {% for field in article.custom_fields %}
+                <h4 class="wjs-showcase__sidebar-title">{% trans field.field.name %}</h4>
+                <p>{{ field.answer|safe }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+</aside>

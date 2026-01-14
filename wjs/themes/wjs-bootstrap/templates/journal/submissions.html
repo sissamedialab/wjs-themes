@@ -1,0 +1,46 @@
+{% extends "wjs/base/base.html" %}
+{% load i18n hooks static %}
+{% block title %}{% translate "Submissions" %}{% endblock title %}
+{% block content %}
+    <div class="col-sm-12 col-lg-9 ">
+        <div class="wjs-showcase__card">
+            <div class="wjs-showcase__card-content">
+                <div id="js-main-article"
+                    data-bs-spy="scroll"
+                    data-bs-target="#list-example"
+                    data-bs-offset="10"
+                    class="wjs-showcase__main-content"
+                    tabindex="0"
+                >
+                {% for item in submission_items %}
+                    {% if item.title == "licences" %}
+                        <h2>
+                            {{ item.title|capfirst }}
+                        </h2>
+                        <p>{{ request.journal.name }} {% translate "allows the following licences for submission" %}:</p>
+                        {% include "elements/license_block.html" %}
+                    {% elif item.title == "sections" %}
+                        <h2>
+                            {{ item.title|capfirst }}
+                        </h2>
+                        {% include "elements/sections_display.html" %}
+                    {% else %}
+                        {% if item.get_display_text %}
+                            <h2>
+                                {{ item.title|capfirst }}
+                            </h2>
+                            {{ item.get_display_text|safe }}
+                        {% endif %}
+                    {% endif %}
+                {% empty %}
+                    <p>There are no submission page items to display for this journal.</p>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wjs-showcase__submission-aside">
+        {% include "includes/toc.html" %}
+        {% include "includes/submission_sidebar.html" %}
+    </div>
+{% endblock content %}

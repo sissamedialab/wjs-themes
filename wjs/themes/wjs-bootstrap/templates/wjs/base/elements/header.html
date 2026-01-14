@@ -1,6 +1,6 @@
 {% load django_bootstrap5 hooks press_url static %}
 {% url 'core_edit_profile' as core_edit_profile %}
-<header class="header-main bg-header pt-2 mb-3">
+<header class="header-main bg-header pt-2 mb-5">
   <div class="middle-header py-1">
     <div class="container">
       <div class="row">
@@ -13,10 +13,10 @@
                 {% else %}
                   <img src="{% static "common/img/sample/janeway.png" %}" alt="{% trans "Logo Janeway" %}">
                 {% endif %}
+                <span>A journal by scientists for scientists</span>
               </a>
             </div>
             <div class="col-4 col-lg-6 align-items-end flex-column d-none d-lg-flex justify-content-between">
-              {% include "wjs/base/elements/header_socials.html" %}
               <ul class="nav">
                 {% block top_menu %}
                 {% endblock top_menu %}
@@ -26,6 +26,13 @@
                   </li>
                 {% endif %}
               </ul>
+              <form class="wjs-header__search" method="get" action="{% if request.journal %}{% journal_url 'search' %}{% else %}/search{% endif %}">
+                <input id="article_search" type="text" name="article_search" placeholder="Search">
+                <input id="sort" name="sort" type="hidden" value="relevance">
+                <input id="title" name="title" type="hidden" value="on">
+                <input id="abstract" name="abstract" type="hidden" value="on">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
+              </form>
             </div>
 
             {% include "wjs/base/elements/mobile_sidebar.html" %}

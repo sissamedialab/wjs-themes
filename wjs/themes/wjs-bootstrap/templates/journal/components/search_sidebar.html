@@ -1,0 +1,100 @@
+{% load i18n %}
+
+<form method="get" action="{% url 'search' %}" class="wjs-showcase__search">
+    <div class="wjs-showcase__search-field-wrapper">
+        <label for="{{ form.article_search.id_for_label }}" class="wjs-showcase__search-label">{{ form.article_search.label }}</label>
+        <input type="text" name="{{ form.article_search.name }}" class="wjs-showcase__search-input" id="{{ form.article_search.id_for_label }}" value="{{ form.article_search.value|default:'' }}" placeholder="{{ form.article_search.label }}">
+        {% if form.article_search.help_text %}
+            <div class="form-text">{{ form.article_search.help_text }}</div>
+        {% endif %}
+        {% if form.article_search.errors %}
+            <div class="invalid-feedback d-block">{{ form.article_search.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="wjs-showcase__search-field-wrapper">
+        <label for="sections-dropdown" class="wjs-showcase__search-label">{% trans "Filter by section" %}</label>
+        <div class="wjs-showcase__search-dropdown">
+            <button class="wjs-showcase__search-dropdown-toggle" type="button" id="sections-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                {% trans "Filter by section" %}
+            </button>
+            <div class="wjs-showcase__search-dropdown-menu" aria-labelledby="sections-dropdown">
+                {% for section in form.sections %}
+                    <div class="wjs-showcase__search-form-check">
+                        <input type="checkbox" name="{{ form.sections.name }}" value="{{ section.data.value }}" class="wjs-showcase__search-form-check-input" id="{{ section.id_for_label }}" {% if section.data.selected %}checked{% endif %}>
+                        <label class="wjs-showcase__search-form-check-label" for="{{ section.id_for_label }}">
+                            {{ section.data.label }}
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="wjs-showcase__search-field-wrapper">
+        <label for="keywords-dropdown" class="wjs-showcase__search-label">{% trans "Filter by keyword" %}</label>
+        <div class="wjs-showcase__search-dropdown">
+            <button class="wjs-showcase__search-dropdown-toggle" type="button" id="keywords-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                {% trans "Filter by keyword" %}
+            </button>
+            <div class="wjs-showcase__search-dropdown-menu" aria-labelledby="keywords-dropdown">
+                {% for keyword in form.keywords %}
+                    <div class="wjs-showcase__search-form-check">
+                        <input type="checkbox" name="{{ form.keywords.name }}" value="{{ keyword.data.value }}" class="wjs-showcase__search-form-check-input" id="{{ keyword.id_for_label }}" {% if keyword.data.selected %}checked{% endif %}>
+                        <label class="wjs-showcase__search-form-check-label" for="{{ keyword.id_for_label }}">
+                            {{ keyword.data.label }}
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="wjs-showcase__search-field-wrapper">
+            <label for="{{ form.year.id_for_label }}" class="wjs-showcase__search-label">{{ form.year.label }}</label>
+
+        <input type="number" name="{{ form.year.name }}" class="wjs-showcase__search-input" id="{{ form.year.id_for_label }}" value="{{ form.year.value|default:'' }}" placeholder="{{ form.year.label }}" min="1990" max="2100">
+        {% if form.year.help_text %}
+            <div class="form-text">{{ form.year.help_text }}</div>
+        {% endif %}
+        {% if form.year.errors %}
+            <div class="invalid-feedback d-block">{{ form.year.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="wjs-showcase__search-field-wrapper">
+            <label for="{{ form.sort.id_for_label }}" class="wjs-showcase__search-label">{{ form.sort.label }}</label>
+
+        <select name="{{ form.sort.name }}" class="wjs-showcase__search-select" id="{{ form.sort.id_for_label }}">
+            {% for sort_value, sort_label in form.sort.field.choices %}
+                <option value="{{ sort_value }}" {% if form.sort.value == sort_value or form.sort.value|stringformat:"s" == sort_value|stringformat:"s" %}selected{% endif %}>{{ sort_label }}</option>
+            {% endfor %}
+        </select>
+        {% if form.sort.help_text %}
+            <div class="form-text">{{ form.sort.help_text }}</div>
+        {% endif %}
+        {% if form.sort.errors %}
+            <div class="invalid-feedback d-block">{{ form.sort.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="wjs-showcase__search-field-wrapper">
+            <label for="{{ form.show.id_for_label }}" class="wjs-showcase__search-label">{{ form.show.label }}</label>
+        <select name="{{ form.show.name }}" class="wjs-showcase__search-select" id="{{ form.show.id_for_label }}">
+            {% for choice_value, choice_label in form.show.field.choices %}
+                <option value="{{ choice_value }}" {% if form.show.value == choice_value or form.show.value|stringformat:"s" == choice_value|stringformat:"s" %}selected{% endif %}>{{ choice_label }}</option>
+            {% endfor %}
+        </select>
+        {% if form.show.help_text %}
+            <div class="form-text">{{ form.show.help_text }}</div>
+        {% endif %}
+        {% if form.show.errors %}
+            <div class="invalid-feedback d-block">{{ form.show.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="wjs-showcase__search-actions">
+        <button type="button" class="wjs-showcase__search-action-link">More options</button>
+        <button type="submit" class="wjs-showcase__search-action-button">{% trans "Search" %}</button>
+    </div>
+</form>

@@ -1,0 +1,56 @@
+{% extends "wjs/base/base.html" %}
+{% load static %}
+{% load hooks %}
+{% load i18n %}
+{% load files %}
+{% load wjs_tags %}
+
+{% block head %}
+  {% if article.is_published %}
+    {% include "elements/article_meta_tags.html" %}
+  {% endif %}
+{% endblock head %}
+
+{% block page_title_wrapper %}{% endblock page_title_wrapper %}
+
+{% block content %}
+<div class="wjs-showcase__article-detail-container">
+    {% include "journal/components/article_header.html" %}
+    <div class="row">
+      <div class="col-sm-12 col-lg-8">
+        {% if article_content or article|article_has_children %}
+            {% include "journal/components/article_documents.html" %}
+        {% endif %}
+        {% include "journal/components/article_content.html" %}
+        </div>
+        <div class="col-sm-12{% if article_content or article|article_has_children %} col-lg-4{% else %} l12{% endif %}">
+            {% include "journal/components/article_sidebar.html" %}
+            {% if article_content %}
+                {% include "includes/toc.html" %}
+            {% endif %}
+        </div>
+    </div>
+    {% include "elements/summary_modal.html" %}
+    {% include "elements/public_reviews.html" %}
+    {% for table in tables_in_galley %}
+        {% include "elements/journal/table_modal.html" with content=table.content tableid=table.id %}
+    {% endfor %}
+    </div>
+{% endblock content %}
+{% block js %}
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+    <script>
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [["\\(", "\\)"], ["$", "$"]]},
+"HTML-CSS": {
+linebreaks: {automatic: true, width: "container"}
+}
+});
+    </script>
+    <script>
+$('.table-expansion').each(function () {
+var child = $(this).children(":first")
+child.append('<br /><small><a href="#table-' + $(this).attr('id') + '" class="modal-trigger">View Larger Table</a></small>');
+});
+    </script>
+{% endblock js %}

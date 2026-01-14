@@ -5,6 +5,7 @@
   <script src="{% static "common/js/tinymce/tinymce.min.js" %}"></script>
   <script src="{% static "django_tinymce/init_tinymce.js" %}"></script>
   <script src="{% static "js/htmx_tinymce.js" %}"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link rel="stylesheet" href="{% static "admin/css/admin.css" %}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   {% if request.journal.favicon %}
@@ -29,11 +30,21 @@
 
     {% block breadcrumbs_wrapper %}
     {% endblock breadcrumbs_wrapper %}
-
     {% block content_wrapper %}
       <div class="container">
-        {% block content %}
-        {% endblock content %}
+        <div class="row">
+          {% block page_title_wrapper %}
+          <div class="col-sm-12">
+            <h1 class="wjs-showcase__main-title">
+              {% block title %}
+              {% endblock title %}
+            </h1>
+          </div>
+          {% endblock page_title_wrapper %}
+
+          {% block content %}
+          {% endblock content %}
+        </div>
       </div>
     {% endblock content_wrapper %}
 
@@ -42,7 +53,7 @@
     {% endblock footer %}
 
     {% block js %}
-      <script>
+    <script>
         const spinner = document.getElementById("js-loading-spinner");
         const body = document.body;
 
