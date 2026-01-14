@@ -1,0 +1,22 @@
+{% load i18n hooks %}
+{% if article_content %}
+    <div itemprop="articleBody" class="article-body"
+    id="js-main-article"
+          data-bs-spy="scroll"
+          data-bs-target="#list-example"
+          data-bs-offset="10"
+          class="wjs-showcase__main-content"
+          tabindex="0">
+        <div class="wjs-showcase__card">
+            <div class="wjs-showcase__main-content">
+                {{ article_content|safe }}
+                {% hook 'article_footer_block' %}
+            </div>
+        </div>
+        <div class="relative mt-4 mb-4 text-end">
+            <a class="btn btn-primary" href="#article-top" role="button">
+                {% trans "Back to top" %} <i class="bi bi-caret-up-fill"></i>
+            </a>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,49 @@
+{% extends "wjs/base/base.html" %}
+{% load i18n %}
+{% load hooks %}
+{% load wjs_tags %}
+{% hook 'filter_search' %}
+{% block title %}
+    {% if filter_by %}
+        {{ filter_by.title }}: {{ filter_by.filtering_object }}
+    {% elif view.exclude_children %}
+        {% trans "Publications" %}
+    {% else %}
+        {% trans "Search" %}
+    {% endif %}
+{% endblock title %}
+{% block content %}
+    <div class="col-sm-12">
+        <div class="wjs-showcase__search-container">
+            {% if not filter_by %}
+                <div class="wjs-showcase__search-card">
+                    {% include "journal/components/search_sidebar.html" %}
+
+            <p class="text-end mt-2">
+                {% if paginator.count %}
+                    {% blocktrans count counter=paginator.count %}
+                        {{ counter }} publication found
+                    {% plural %}
+                        {{ counter }} publications found
+                    {% endblocktrans %}
+                {% else %}
+                    {% trans "No articles to display." %}
+                {% endif %}
+            </p>
+                </div>
+            {% endif %}
+            {% if filter_by %}
+                <a class="wjs-showcase__go-back-link" href="{% url "journal_articles" %}">
+                    <i class="bi bi-caret-left-fill"></i>
+                    {% trans "Browse all Publications" %}
+                </a>
+            {% endif %}
+            {% if filter_by.paragraph %}<p>{{ filter_by.paragraph }}</p>{% endif %}
+            {% for article in articles %}
+                {% include "journal/components/article_listing.html" with article=article article_class="wjs-showcase__article-card--search-result" %}
+            {% endfor %}
+        </div>
+    </div>
+
+    {% include "wjs/base/elements/pagination.html" with page=page_obj %}
+{% endblock content %}

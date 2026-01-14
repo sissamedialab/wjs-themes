@@ -84,7 +84,7 @@
     {% endif %}
     {% hook 'nav_block' %}
   </ul>
-  <a class="btn btn-primary wjs-search-button" tabindex="0" aria-label="{% trans "Search" %}" title="{% trans "Search" %}">
-    <i class="bi bi-search wjs-search-button__icon" aria-hidden="true"></i>
+  <a href="{% url 'search' %}" title="{% trans "Search" %}">
+    {% trans "Advanced search" %}
   </a>
 </div>

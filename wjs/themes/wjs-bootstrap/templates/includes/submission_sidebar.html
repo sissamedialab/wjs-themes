@@ -1,0 +1,40 @@
+{% load i18n %}
+<div class="wjs-showcase__submission-sidebar">
+  {% if journal_settings.general.disable_journal_submission %}
+    <p class="wjs-showcase__submission-sidebar-message">{{ journal_settings.general.disable_journal_submission_message|safe }}</p>
+  {% endif %}
+  <div class="wjs-showcase__submission-sidebar-intro">{{ journal_settings.general.submission_intro_text|safe }}</div>
+  {% if not journal_settings.general.disable_journal_submission %}
+    <div class="wjs-showcase__submission-sidebar-actions">
+      {% if not request.user.is_authenticated %}
+        <a href="{% url "core_login" %}" class="wjs-showcase__submission-sidebar-button">{% translate "Login" %}</a>
+        <a href="{% url "core_register" %}" class="wjs-showcase__submission-sidebar-button">{% translate "Register" %}</a>
+      {% else %}
+        <div class="wjs-showcase__submission-sidebar-terms">
+          <input class="wjs-showcase__submission-sidebar-terms-check" type="checkbox" id="submission-terms-check">
+          <label class="wjs-showcase__submission-sidebar-terms-label" for="submission-terms-check">
+            {% translate "I have read and agree to the submission guidelines." %}
+          </label>
+        </div>
+        <a href="{% url "submission_start" %}" class="wjs-showcase__submission-sidebar-button disabled" id="start-submission-btn">{% translate "Start Submission" %}</a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const startSubmissionBtn = document.getElementById('start-submission-btn');
+    const termsCheck = document.getElementById('submission-terms-check');
+
+    if (startSubmissionBtn && termsCheck) {
+      termsCheck.addEventListener('change', function() {
+        if (this.checked) {
+          startSubmissionBtn.classList.remove('disabled');
+        } else {
+          startSubmissionBtn.classList.add('disabled');
+        }
+      });
+    }
+  });
+</script>

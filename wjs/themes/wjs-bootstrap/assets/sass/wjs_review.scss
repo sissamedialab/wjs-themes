@@ -10,6 +10,7 @@ $dark-gray: #606a71;
 @import "submission-keywords";
 @import "submission-authors";
 @import "submission-review-submit";
+@import "wjs_showcase";
 
 div.required-field > .form-label {
   font-weight: bold;
@@ -261,12 +262,17 @@ $blue-grey-d-2: #455a64;
 $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 
 .wjs-brand-logo {
-  @extend .d-flex, .align-items-center;
+  @extend .d-flex, .flex-column, .align-items-center, .text-decoration-none;
 
   img {
     height: auto;
     max-height: 100px;
     width: auto;
+  }
+
+  span {
+    @extend .fw-bold;
+    color: $primary;
   }
 }
 
@@ -572,4 +578,25 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
   height: 100%;
   background-color: rgba(255, 255, 255, 0.4);
   z-index: 9999;
+}
+
+.wjs-header__search {
+  @extend .d-flex, .align-items-center;
+
+  input[type="text"] {
+    @extend .form-control;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  button {
+    @extend .bg-white, .border-top, .border-bottom, .border-end, .btn;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    &:hover,
+    &:focus {
+      background-color: $primary !important;
+    }
+  }
 }

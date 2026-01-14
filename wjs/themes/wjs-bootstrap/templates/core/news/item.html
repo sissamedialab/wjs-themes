@@ -1,0 +1,64 @@
+{% extends "wjs/base/base.html" %}
+{% load truncate %}
+{% load i18n %}
+{% load wjs_tags %}
+
+{% block head %}
+  {% include "core/news/news_social_meta.html" %}
+{% endblock head %}
+
+{% block content %}
+<div class="wjs-showcase__news-container">
+  {% if news_item|is_cfp %}
+    <a class="wjs-showcase__go-back-link" href="{% url 'core_news_list_tag' tag="call" %}">
+      <i class="bi bi-caret-left-fill"></i>
+      {% trans "Browse" %} {% trans "Call for papers" %}
+    </a>
+  {% elif news_item|is_archived_cfp %}
+    <a class="wjs-showcase__go-back-link" href="{% url 'core_news_list_tag' tag="archived-calls" %}">
+      <i class="bi bi-caret-left-fill"></i>
+      {% trans "Browse" %} {% trans "Archived call for papers" %}
+    </a>
+  {% else %}
+    <a class="wjs-showcase__go-back-link" href="{% url 'core_news_list' %}">
+      <i class="bi bi-caret-left-fill"></i>
+      {% trans "Browse" %} {{ journal_settings.news.news_title }}
+    </a>
+  {% endif %}
+
+  <div class="wjs-showcase__news-card">
+    <div class="wjs-showcase__news-card-content">
+      {% if news_item.best_image_url %}
+        <div class="wjs-showcase__news-card-image-container">
+          <img class="wjs-showcase__news-card-image" src="{{ news_item.best_image_url }}" alt="{{ news_item.title }}" />
+        </div>
+      {% endif %}
+      <div class="wjs-showcase__news-card-text-container">
+        <span class="wjs-showcase__news-card-date">
+          <i class="bi bi-calendar3"></i>
+          {{ news_item.posted|date:"Y-m-d" }}
+        </span>
+        {% if not news_item.large_image_file or request.journal and not request.journal.default_large_image or not request.press.default_carousel_image %}
+          <h1 class="wjs-showcase__news-card-article-title">{{ news_item.title }}</h1>
+        {% endif %}
+        {{ news_item|news_part:'abstract'|safe }}
+      </div>
+    </div>
+  </div>
+  <div class="wjs-showcase__news-card">
+    <div class="wjs-showcase__news-card-content">{{ news_item|news_part:'body'|safe }}</div>
+    {% if news_item.tags.all %}
+      <div class="wjs-showcase__news-card-tags">
+        <h2 class="wjs-showcase__news-card-tags-title">
+          {% trans "Tags" %} <i class="bi bi-tags"></i>
+        </h2>
+        <p>
+          {% for tag in news_item.tags.all %}
+            <a href="{% url 'core_news_list_tag' tag.text %}" class="badge rounded-pill text-bg-primary">{{ tag.text }}</a>
+          {% endfor %}
+        </p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
