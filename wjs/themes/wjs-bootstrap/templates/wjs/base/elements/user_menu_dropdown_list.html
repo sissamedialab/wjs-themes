@@ -5,7 +5,7 @@
 {% url 'core_edit_profile' as core_edit_profile %}
 {% url 'core_logout' as core_logout %}
 
-<ul class="dropdown-menu" aria-labelledby="user-menu">
+<ul class="dropdown-menu mb-2" aria-labelledby="user-menu">
   {% if not journal_settings.general.disable_journal_submission and submission_start %}
     <li class="nav-item wjs-nav-item">
       <a class="dropdown-item" href="{{ submission_start }}">{% trans "Submit" %}</a>
