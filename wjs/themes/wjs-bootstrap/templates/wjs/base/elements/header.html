@@ -17,14 +17,13 @@
               </a>
             </div>
             <div class="col-4 col-lg-6 align-items-end flex-column d-none d-lg-flex justify-content-between">
+              {% include "wjs/base/elements/header_socials.html" %}
               <ul class="nav">
                 {% block top_menu %}
                 {% endblock top_menu %}
-                {% if request.user.is_authenticated %}
-                  <li class="nav-item wjs-nav-item">
-                    {% include "wjs/base/elements/user_menu.html" with show_name=True %}
-                  </li>
-                {% endif %}
+                <li class="nav-item wjs-nav-item">
+                  {% include "wjs/base/elements/user_menu.html" with show_name=True %}
+                </li>
               </ul>
               <form class="wjs-header__search" method="get" action="{% if request.journal %}{% journal_url 'search' %}{% else %}/search{% endif %}">
                 <input id="article_search" type="text" name="article_search" placeholder="Search">
