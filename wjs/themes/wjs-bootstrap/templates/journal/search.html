@@ -14,6 +14,13 @@
 {% endblock title %}
 {% block content %}
   <div class="col-sm-12">
+    {% if filter_by %}
+      <a class="wjs-showcase__go-back-link" href="{% url "journal_articles" %}">
+        <i class="bi bi-caret-left-fill"></i>
+        {% trans "Browse all Publications" %}
+      </a>
+    {% endif %}
+    {% if filter_by.paragraph %}<p>{{ filter_by.paragraph }}</p>{% endif %}
     <div class="wjs-showcase__search-container">
       {% if not filter_by %}
         <div class="wjs-showcase__search-card">
@@ -32,13 +39,6 @@
           </p>
         </div>
       {% endif %}
-      {% if filter_by %}
-        <a class="wjs-showcase__go-back-link" href="{% url "journal_articles" %}">
-          <i class="bi bi-caret-left-fill"></i>
-          {% trans "Browse all Publications" %}
-        </a>
-      {% endif %}
-      {% if filter_by.paragraph %}<p>{{ filter_by.paragraph }}</p>{% endif %}
       {% for article in articles %}
         {% include "journal/components/article_listing.html" with article=article article_class="wjs-showcase__article-card--search-result" %}
       {% endfor %}

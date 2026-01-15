@@ -18,7 +18,7 @@
       <button class="wjs-showcase__search-dropdown-toggle" type="button" id="sections-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
         {% trans "Filter by section" %}
       </button>
-      <div class="wjs-showcase__search-dropdown-menu" aria-labelledby="sections-dropdown">
+      <div class="wjs-showcase__search-dropdown-menu dropdown-menu" aria-labelledby="sections-dropdown">
         {% for section in form.sections %}
           <div class="wjs-showcase__search-form-check">
             <input type="checkbox" name="{{ form.sections.name }}" value="{{ section.data.value }}" class="wjs-showcase__search-form-check-input" id="{{ section.id_for_label }}" {% if section.data.selected %}checked{% endif %}>
@@ -37,7 +37,7 @@
       <button class="wjs-showcase__search-dropdown-toggle" type="button" id="keywords-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
         {% trans "Filter by keyword" %}
       </button>
-      <div class="wjs-showcase__search-dropdown-menu" aria-labelledby="keywords-dropdown">
+      <div class="wjs-showcase__search-dropdown-menu dropdown-menu" aria-labelledby="keywords-dropdown">
         {% for keyword in form.keywords %}
           <div class="wjs-showcase__search-form-check">
             <input type="checkbox" name="{{ form.keywords.name }}" value="{{ keyword.data.value }}" class="wjs-showcase__search-form-check-input" id="{{ keyword.id_for_label }}" {% if keyword.data.selected %}checked{% endif %}>
