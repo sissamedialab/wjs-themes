@@ -495,14 +495,17 @@
 
   &__search-form-check-input {
     @extend .form-check-input;
+    cursor: pointer;
   }
 
   &__search-form-check-label {
     @extend .form-check-label;
+    cursor: pointer;
   }
 
   &__search-select {
     @extend .form-select;
+    cursor: pointer;
   }
 
   &__search-actions {
