@@ -6,26 +6,26 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="{% if page.display_toc %}col-md-9 col-sm-12{% else %}col-md-12{% endif %}">
-      <div class="wjs-showcase__card">
-        <div class="wjs-showcase__card-content">
+  <div class="{% if page.display_toc %}col-md-9 col-sm-12{% else %}col-md-12{% endif %}">
+    <div class="wjs-showcase__card">
+      <div class="wjs-showcase__card-content">
 
-          <div
+        <div
           {% if page.display_toc %}id="js-main-article"{% endif %}
           data-bs-spy="scroll"
           data-bs-target="#list-example"
           data-bs-offset="10"
           class="wjs-showcase__main-content"
           tabindex="0"
-          >
-            {{ page.content|safe }}
-          </div>
+        >
+          {{ page.content|safe }}
         </div>
       </div>
     </div>
-    {% if page.display_toc %}
+  </div>
+  {% if page.display_toc %}
     <div class="col-md-3 d-none d-md-block">
       {% include "includes/toc.html" %}
     </div>
-    {% endif %}
+  {% endif %}
 {% endblock content %}

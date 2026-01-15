@@ -88,6 +88,23 @@ class Modal extends BaseComponent {
     return NAME;
   }
 
+  // Static
+  static jQueryInterface(config, relatedTarget) {
+    return this.each(function () {
+      const data = Modal.getOrCreateInstance(this, config);
+
+      if (typeof config !== "string") {
+        return;
+      }
+
+      if (typeof data[config] === "undefined") {
+        throw new TypeError(`No method named "${config}"`);
+      }
+
+      data[config](relatedTarget);
+    });
+  }
+
   // Public
   toggle(relatedTarget) {
     return this._isShown ? this.hide() : this.show(relatedTarget);
@@ -310,23 +327,6 @@ class Modal extends BaseComponent {
   _resetAdjustments() {
     this._element.style.paddingLeft = "";
     this._element.style.paddingRight = "";
-  }
-
-  // Static
-  static jQueryInterface(config, relatedTarget) {
-    return this.each(function () {
-      const data = Modal.getOrCreateInstance(this, config);
-
-      if (typeof config !== "string") {
-        return;
-      }
-
-      if (typeof data[config] === "undefined") {
-        throw new TypeError(`No method named "${config}"`);
-      }
-
-      data[config](relatedTarget);
-    });
   }
 }
 

@@ -48,11 +48,11 @@
       {% if item.has_sub_nav %}
         <li class="nav-item wjs-nav-item dropdown">
           <a class="nav-link dropdown-toggle"
-          href="#"
-          id="dropdown-{{ item.link_name|slugify }}"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false">
+             href="#"
+             id="dropdown-{{ item.link_name|slugify }}"
+             role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false">
             {{ item.link_name }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdown-{{ item.link_name|slugify }}">
@@ -78,8 +78,8 @@
     {% if request.journal.nav_review %}
       <li class="nav-item wjs-nav-item">
         <a class="nav-link" href="{% url 'become_reviewer' %}">
-        <i class="bi bi-trophy"></i>&nbsp;{% trans "Become a Reviewer" %}
-      </a>
+          <i class="bi bi-trophy"></i>&nbsp;{% trans "Become a Reviewer" %}
+        </a>
       </li>
     {% endif %}
     {% hook 'nav_block' %}

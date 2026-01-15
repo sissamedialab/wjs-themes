@@ -4,27 +4,27 @@
 {% load roles %}
 {% load wjs_tags %}
 {% block title %}
-    {% trans "Volumes and Issues" %}
+  {% trans "Volumes and Issues" %}
 {% endblock title %}
 {% block content %}
-    {% regroup issues by volume as volumes %}
-    <div class="wjs-showcase__volumes-container">
-        {% for volume in volumes %}
-            <div class="wjs-showcase__volume-card">
-                {% with volume_meta=volume.list|first %}
-                    <h3 class="wjs-showcase__volume-card-title">
-                        {% trans "Volume" %} {{ volume_meta.volume }}, {{ volume_meta.date.year }}
-                    </h3>
-                {% endwith %}
-                <ul class="wjs-showcase__volumes-list">
-                    {% for issue in volume.list %}
-                        <li class="wjs-showcase__volumes-list-item">
-                            <a href="{% url 'journal_issue' issue.id %}">{{ issue|display_title }}</a>
-                            <span class="count">({{ issue.get_sorted_articles.count }} {% trans "items" %})</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endfor %}
-    </div>
+  {% regroup issues by volume as volumes %}
+  <div class="wjs-showcase__volumes-container">
+    {% for volume in volumes %}
+      <div class="wjs-showcase__volume-card">
+        {% with volume_meta=volume.list|first %}
+          <h3 class="wjs-showcase__volume-card-title">
+            {% trans "Volume" %} {{ volume_meta.volume }}, {{ volume_meta.date.year }}
+          </h3>
+        {% endwith %}
+        <ul class="wjs-showcase__volumes-list">
+          {% for issue in volume.list %}
+            <li class="wjs-showcase__volumes-list-item">
+              <a href="{% url 'journal_issue' issue.id %}">{{ issue|display_title }}</a>
+              <span class="count">({{ issue.get_sorted_articles.count }} {% trans "items" %})</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock content %}

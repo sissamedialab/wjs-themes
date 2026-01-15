@@ -37,6 +37,7 @@
 .h-captcha {
   // needed to fix a glitch with the h-captcha field
   max-width: 80vw;
+
   iframe {
     max-width: 100%;
   }

@@ -76,6 +76,23 @@ class Tab extends BaseComponent {
     return NAME;
   }
 
+  // Static
+  static jQueryInterface(config) {
+    return this.each(function () {
+      const data = Tab.getOrCreateInstance(this);
+
+      if (typeof config !== "string") {
+        return;
+      }
+
+      if (data[config] === undefined || config.startsWith("_") || config === "constructor") {
+        throw new TypeError(`No method named "${config}"`);
+      }
+
+      data[config]();
+    });
+  }
+
   // Public
   show() {
     // Shows this elem and deactivate the active sibling if exists
@@ -262,23 +279,6 @@ class Tab extends BaseComponent {
   // Try to get the outer element (usually the .nav-item)
   _getOuterElement(elem) {
     return elem.closest(SELECTOR_OUTER) || elem;
-  }
-
-  // Static
-  static jQueryInterface(config) {
-    return this.each(function () {
-      const data = Tab.getOrCreateInstance(this);
-
-      if (typeof config !== "string") {
-        return;
-      }
-
-      if (data[config] === undefined || config.startsWith("_") || config === "constructor") {
-        throw new TypeError(`No method named "${config}"`);
-      }
-
-      data[config]();
-    });
   }
 }
 

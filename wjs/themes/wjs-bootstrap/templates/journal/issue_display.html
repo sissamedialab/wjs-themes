@@ -1,13 +1,13 @@
 {% load i18n %}
 <div class="wjs-showcase__volume-detail-container">
-    {% include "journal/issue_top.html" %}
-    <div class="row">
-        <div class="col-sm-12 {% if not show_sidebar %}col-md-12{% else %}col-md-9{% endif %}">
-            {% include "journal/issue_block.html" %}
-            {% include "wjs/base/elements/pagination.html" with page=articles %}
-        </div>
-        {% if show_sidebar %}
-            {% include "journal/issue_sidebar.html" %}
-        {% endif %}
+  {% include "journal/issue_top.html" %}
+  <div class="row">
+    <div class="col-sm-12 {% if not show_sidebar %}col-md-12{% else %}col-md-9{% endif %}">
+      {% include "journal/issue_block.html" %}
+      {% include "wjs/base/elements/pagination.html" with page=articles %}
     </div>
+    {% if show_sidebar %}
+      {% include "journal/issue_sidebar.html" %}
+    {% endif %}
+  </div>
 </div>

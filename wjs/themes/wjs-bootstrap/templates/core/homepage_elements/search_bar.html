@@ -1,13 +1,13 @@
 {% load i18n %}
 
 <div class="homepage-element" id="homepage-element-search-bar">
-    <div class="wjs-showcase__hp-card">
-      <h2>Search</h2>
-        <form method="get" action="{% if request.journal %}{% journal_url 'search' %}{% else %}/search{% endif %}">
-          <input id="article_search" type="text" class="form-control" name="article_search">
-          <input id="sort" name="sort" type="hidden" value="relevance">
-          <input id="title" name="title" type="hidden" value="on">
-          <input id="abstract" name="abstract" type="hidden" value="on">
-        </form>
-    </div>
+  <div class="wjs-showcase__hp-card">
+    <h2>Search</h2>
+    <form method="get" action="{% if request.journal %}{% journal_url 'search' %}{% else %}/search{% endif %}">
+      <input id="article_search" type="text" class="form-control" name="article_search">
+      <input id="sort" name="sort" type="hidden" value="relevance">
+      <input id="title" name="title" type="hidden" value="on">
+      <input id="abstract" name="abstract" type="hidden" value="on">
+    </form>
+  </div>
 </div>

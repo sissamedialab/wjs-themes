@@ -71,6 +71,21 @@ class Toast extends BaseComponent {
     return NAME;
   }
 
+  // Static
+  static jQueryInterface(config) {
+    return this.each(function () {
+      const data = Toast.getOrCreateInstance(this, config);
+
+      if (typeof config === "string") {
+        if (typeof data[config] === "undefined") {
+          throw new TypeError(`No method named "${config}"`);
+        }
+
+        data[config](this);
+      }
+    });
+  }
+
   // Public
   show() {
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW);
@@ -130,11 +145,11 @@ class Toast extends BaseComponent {
     super.dispose();
   }
 
+  // Private
+
   isShown() {
     return this._element.classList.contains(CLASS_NAME_SHOW);
   }
-
-  // Private
 
   _maybeScheduleHide() {
     if (!this._config.autohide) {
@@ -192,21 +207,6 @@ class Toast extends BaseComponent {
   _clearTimeout() {
     clearTimeout(this._timeout);
     this._timeout = null;
-  }
-
-  // Static
-  static jQueryInterface(config) {
-    return this.each(function () {
-      const data = Toast.getOrCreateInstance(this, config);
-
-      if (typeof config === "string") {
-        if (typeof data[config] === "undefined") {
-          throw new TypeError(`No method named "${config}"`);
-        }
-
-        data[config](this);
-      }
-    });
   }
 }
 

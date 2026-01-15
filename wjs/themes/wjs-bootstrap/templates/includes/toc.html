@@ -9,27 +9,27 @@
 </div>
 
 {% block js %}
-<script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function() {
-    const content = document.getElementById('js-main-article');
-    if (!content) {
-      return;
-    }
-    const toc = document.getElementById('js-toc-list');
-    const headings = content.querySelectorAll('h1, h2');
-
-    headings.forEach((heading, index) => {
-      const id = heading.id || `toc-heading-${index}`;
-      if (!heading.id) {
-        heading.id = id;
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      const content = document.getElementById("js-main-article");
+      if (!content) {
+        return;
       }
+      const toc = document.getElementById("js-toc-list");
+      const headings = content.querySelectorAll("h1, h2");
 
-      const link = document.createElement('a');
-      link.className = 'wjs-showcase__toc-link';
-      link.href = `#${id}`;
-      link.textContent = heading.textContent;
-      toc.appendChild(link);
+      headings.forEach((heading, index) => {
+        const id = heading.id || `toc-heading-${index}`;
+        if (!heading.id) {
+          heading.id = id;
+        }
+
+        const link = document.createElement("a");
+        link.className = "wjs-showcase__toc-link";
+        link.href = `#${id}`;
+        link.textContent = heading.textContent;
+        toc.appendChild(link);
+      });
     });
-  });
-</script>
+  </script>
 {% endblock js %}

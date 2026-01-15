@@ -1,45 +1,45 @@
 {% load i18n %}
 {% load wjs_tags %}
 <div class="wjs-showcase__article-detail-card">
-    <div class="wjs-showcase__article-detail-card-header">
-        <a href="{% url 'articles_by_section' article.section.pk %}">
-            <span class="wjs-showcase__article-detail-badge color-section-{{ article.section.id }}">{{ article.section.name }}</span>
-        </a>
-        </div>
-        <div>
-        <h1 class="wjs-showcase__article-title" id="article-top">{{ article.title|safe }}</h1>
-        {% if article|has_attr:"ancestors" and article.ancestors.exists %}
-            {% with parent=article.ancestors.first.parent %}
-                <p>
-                    <span>{% trans "part of" %}</span>
-                    <a href="{{ parent.url }}">{{ parent.title }}</a>
-                </p>
-            {% endwith %}
-        {% endif %}
-        {% if article.frozen_authors.count > 0 %}
-            <div class="wjs-showcase__article-detail-authors">
-                {% for author in article.frozen_authors.all %}
-                    <span class="article-author">
+  <div class="wjs-showcase__article-detail-card-header">
+    <a href="{% url 'articles_by_section' article.section.pk %}">
+      <span class="wjs-showcase__article-detail-badge color-section-{{ article.section.id }}">{{ article.section.name }}</span>
+    </a>
+  </div>
+  <div>
+    <h1 class="wjs-showcase__article-title" id="article-top">{{ article.title|safe }}</h1>
+    {% if article|has_attr:"ancestors" and article.ancestors.exists %}
+      {% with parent=article.ancestors.first.parent %}
+        <p>
+          <span>{% trans "part of" %}</span>
+          <a href="{{ parent.url }}">{{ parent.title }}</a>
+        </p>
+      {% endwith %}
+    {% endif %}
+    {% if article.frozen_authors.count > 0 %}
+      <div class="wjs-showcase__article-detail-authors">
+        {% for author in article.frozen_authors.all %}
+          <span class="article-author">
                         <a href="{% url 'articles_by_author' author.author.pk %}">{{ author.full_name }}</a>
-                        {% if author.orcid %}
-                            <a class="text-decoration-none" href="https://orcid.org/{{ author.orcid }}">
+            {% if author.orcid %}
+              <a class="text-decoration-none" href="https://orcid.org/{{ author.orcid }}">
                                 <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
                                      alt="orcid logo" />
                             </a>
-                        {% endif %}
-                        {% if author.display_email and not journal_settings.article.hide_author_email_links %}
-                            <a class="text-decoration-none" itemprop="email" href="mailto:{{ author.email }}">
+            {% endif %}
+            {% if author.display_email and not journal_settings.article.hide_author_email_links %}
+              <a class="text-decoration-none" itemprop="email" href="mailto:{{ author.email }}">
                                 <i class="bi bi-envelope-fill"></i>
                             </a>
-                        {% endif %}
-                        {% if not forloop.last %},{% endif %}
+            {% endif %}
+            {% if not forloop.last %},{% endif %}
                     </span>
-                {% endfor %}
-            </div>
-        {% endif %}
-        {% if not article.is_published %}
-          <p><b>This is an accepted article with a DOI pre-assigned that is not yet published.</b></p>
-        {% endif %}
-        {% if article.abstract and article.abstract != '' %}<p>{{ article.abstract | safe }}</p>{% endif %}
-    </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if not article.is_published %}
+      <p><b>This is an accepted article with a DOI pre-assigned that is not yet published.</b></p>
+    {% endif %}
+    {% if article.abstract and article.abstract != '' %}<p>{{ article.abstract | safe }}</p>{% endif %}
+  </div>
 </div>

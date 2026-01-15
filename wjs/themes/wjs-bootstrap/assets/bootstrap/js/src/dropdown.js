@@ -117,6 +117,107 @@ class Dropdown extends BaseComponent {
     return NAME;
   }
 
+  // Static
+  static jQueryInterface(config) {
+    return this.each(function () {
+      const data = Dropdown.getOrCreateInstance(this, config);
+
+      if (typeof config !== "string") {
+        return;
+      }
+
+      if (typeof data[config] === "undefined") {
+        throw new TypeError(`No method named "${config}"`);
+      }
+
+      data[config]();
+    });
+  }
+
+  static clearMenus(event) {
+    if (event.button === RIGHT_MOUSE_BUTTON || (event.type === "keyup" && event.key !== TAB_KEY)) {
+      return;
+    }
+
+    const openToggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE_SHOWN);
+
+    for (const toggle of openToggles) {
+      const context = Dropdown.getInstance(toggle);
+      if (!context || context._config.autoClose === false) {
+        continue;
+      }
+
+      const composedPath = event.composedPath();
+      const isMenuTarget = composedPath.includes(context._menu);
+      if (
+        composedPath.includes(context._element) ||
+        (context._config.autoClose === "inside" && !isMenuTarget) ||
+        (context._config.autoClose === "outside" && isMenuTarget)
+      ) {
+        continue;
+      }
+
+      // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
+      if (
+        context._menu.contains(event.target) &&
+        ((event.type === "keyup" && event.key === TAB_KEY) ||
+          /input|select|option|textarea|form/i.test(event.target.tagName))
+      ) {
+        continue;
+      }
+
+      const relatedTarget = { relatedTarget: context._element };
+
+      if (event.type === "click") {
+        relatedTarget.clickEvent = event;
+      }
+
+      context._completeHide(relatedTarget);
+    }
+  }
+
+  static dataApiKeydownHandler(event) {
+    // If not an UP | DOWN | ESCAPE key => not a dropdown command
+    // If input/textarea && if key is other than ESCAPE => not a dropdown command
+
+    const isInput = /input|textarea/i.test(event.target.tagName);
+    const isEscapeEvent = event.key === ESCAPE_KEY;
+    const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key);
+
+    if (!isUpOrDownEvent && !isEscapeEvent) {
+      return;
+    }
+
+    if (isInput && !isEscapeEvent) {
+      return;
+    }
+
+    event.preventDefault();
+
+    // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
+    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE)
+      ? this
+      : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] ||
+        SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0] ||
+        SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode);
+
+    const instance = Dropdown.getOrCreateInstance(getToggleButton);
+
+    if (isUpOrDownEvent) {
+      event.stopPropagation();
+      instance.show();
+      instance._selectMenuItem(event);
+      return;
+    }
+
+    if (instance._isShown()) {
+      // else is escape and we check if it is shown
+      event.stopPropagation();
+      instance.hide();
+      getToggleButton.focus();
+    }
+  }
+
   // Public
   toggle() {
     return this._isShown() ? this.hide() : this.show();
@@ -343,107 +444,6 @@ class Dropdown extends BaseComponent {
     // if target isn't included in items (e.g. when expanding the dropdown)
     // allow cycling to get the last item in case key equals ARROW_UP_KEY
     getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus();
-  }
-
-  // Static
-  static jQueryInterface(config) {
-    return this.each(function () {
-      const data = Dropdown.getOrCreateInstance(this, config);
-
-      if (typeof config !== "string") {
-        return;
-      }
-
-      if (typeof data[config] === "undefined") {
-        throw new TypeError(`No method named "${config}"`);
-      }
-
-      data[config]();
-    });
-  }
-
-  static clearMenus(event) {
-    if (event.button === RIGHT_MOUSE_BUTTON || (event.type === "keyup" && event.key !== TAB_KEY)) {
-      return;
-    }
-
-    const openToggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE_SHOWN);
-
-    for (const toggle of openToggles) {
-      const context = Dropdown.getInstance(toggle);
-      if (!context || context._config.autoClose === false) {
-        continue;
-      }
-
-      const composedPath = event.composedPath();
-      const isMenuTarget = composedPath.includes(context._menu);
-      if (
-        composedPath.includes(context._element) ||
-        (context._config.autoClose === "inside" && !isMenuTarget) ||
-        (context._config.autoClose === "outside" && isMenuTarget)
-      ) {
-        continue;
-      }
-
-      // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
-      if (
-        context._menu.contains(event.target) &&
-        ((event.type === "keyup" && event.key === TAB_KEY) ||
-          /input|select|option|textarea|form/i.test(event.target.tagName))
-      ) {
-        continue;
-      }
-
-      const relatedTarget = { relatedTarget: context._element };
-
-      if (event.type === "click") {
-        relatedTarget.clickEvent = event;
-      }
-
-      context._completeHide(relatedTarget);
-    }
-  }
-
-  static dataApiKeydownHandler(event) {
-    // If not an UP | DOWN | ESCAPE key => not a dropdown command
-    // If input/textarea && if key is other than ESCAPE => not a dropdown command
-
-    const isInput = /input|textarea/i.test(event.target.tagName);
-    const isEscapeEvent = event.key === ESCAPE_KEY;
-    const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key);
-
-    if (!isUpOrDownEvent && !isEscapeEvent) {
-      return;
-    }
-
-    if (isInput && !isEscapeEvent) {
-      return;
-    }
-
-    event.preventDefault();
-
-    // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
-    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE)
-      ? this
-      : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] ||
-        SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0] ||
-        SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode);
-
-    const instance = Dropdown.getOrCreateInstance(getToggleButton);
-
-    if (isUpOrDownEvent) {
-      event.stopPropagation();
-      instance.show();
-      instance._selectMenuItem(event);
-      return;
-    }
-
-    if (instance._isShown()) {
-      // else is escape and we check if it is shown
-      event.stopPropagation();
-      instance.hide();
-      getToggleButton.focus();
-    }
   }
 }
 

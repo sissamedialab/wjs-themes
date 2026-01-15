@@ -35,6 +35,31 @@ class BaseComponent extends Config {
     Data.set(this._element, this.constructor.DATA_KEY, this);
   }
 
+  static get VERSION() {
+    return VERSION;
+  }
+
+  static get DATA_KEY() {
+    return `bs.${this.NAME}`;
+  }
+
+  static get EVENT_KEY() {
+    return `.${this.DATA_KEY}`;
+  }
+
+  // Static
+  static getInstance(element) {
+    return Data.get(getElement(element), this.DATA_KEY);
+  }
+
+  static getOrCreateInstance(element, config = {}) {
+    return this.getInstance(element) || new this(element, typeof config === "object" ? config : null);
+  }
+
+  static eventName(name) {
+    return `${name}${this.EVENT_KEY}`;
+  }
+
   // Public
   dispose() {
     Data.remove(this._element, this.constructor.DATA_KEY);
@@ -54,31 +79,6 @@ class BaseComponent extends Config {
     config = this._configAfterMerge(config);
     this._typeCheckConfig(config);
     return config;
-  }
-
-  // Static
-  static getInstance(element) {
-    return Data.get(getElement(element), this.DATA_KEY);
-  }
-
-  static getOrCreateInstance(element, config = {}) {
-    return this.getInstance(element) || new this(element, typeof config === "object" ? config : null);
-  }
-
-  static get VERSION() {
-    return VERSION;
-  }
-
-  static get DATA_KEY() {
-    return `bs.${this.NAME}`;
-  }
-
-  static get EVENT_KEY() {
-    return `.${this.DATA_KEY}`;
-  }
-
-  static eventName(name) {
-    return `${name}${this.EVENT_KEY}`;
   }
 }
 

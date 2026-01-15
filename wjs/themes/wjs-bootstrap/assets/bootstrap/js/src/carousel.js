@@ -113,6 +113,26 @@ class Carousel extends BaseComponent {
     return NAME;
   }
 
+  // Static
+  static jQueryInterface(config) {
+    return this.each(function () {
+      const data = Carousel.getOrCreateInstance(this, config);
+
+      if (typeof config === "number") {
+        data.to(config);
+        return;
+      }
+
+      if (typeof config === "string") {
+        if (data[config] === undefined || config.startsWith("_") || config === "constructor") {
+          throw new TypeError(`No method named "${config}"`);
+        }
+
+        data[config]();
+      }
+    });
+  }
+
   // Public
   next() {
     this._slide(ORDER_NEXT);
@@ -395,26 +415,6 @@ class Carousel extends BaseComponent {
     }
 
     return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT;
-  }
-
-  // Static
-  static jQueryInterface(config) {
-    return this.each(function () {
-      const data = Carousel.getOrCreateInstance(this, config);
-
-      if (typeof config === "number") {
-        data.to(config);
-        return;
-      }
-
-      if (typeof config === "string") {
-        if (data[config] === undefined || config.startsWith("_") || config === "constructor") {
-          throw new TypeError(`No method named "${config}"`);
-        }
-
-        data[config]();
-      }
-    });
   }
 }
 

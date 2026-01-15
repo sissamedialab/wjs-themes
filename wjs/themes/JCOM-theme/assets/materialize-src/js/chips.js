@@ -88,77 +88,6 @@
     }
 
     /**
-     * Get Chips Data
-     */
-    getData() {
-      return this.chipsData;
-    }
-
-    /**
-     * Teardown component
-     */
-    destroy() {
-      this._removeEventHandlers();
-      this.$chips.remove();
-      this.el.M_Chips = undefined;
-    }
-
-    /**
-     * Setup Event Handlers
-     */
-    _setupEventHandlers() {
-      this._handleChipClickBound = this._handleChipClick.bind(this);
-      this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
-      this._handleInputFocusBound = this._handleInputFocus.bind(this);
-      this._handleInputBlurBound = this._handleInputBlur.bind(this);
-
-      this.el.addEventListener('click', this._handleChipClickBound);
-      document.addEventListener('keydown', Chips._handleChipsKeydown);
-      document.addEventListener('keyup', Chips._handleChipsKeyup);
-      this.el.addEventListener('blur', Chips._handleChipsBlur, true);
-      this.$input[0].addEventListener('focus', this._handleInputFocusBound);
-      this.$input[0].addEventListener('blur', this._handleInputBlurBound);
-      this.$input[0].addEventListener('keydown', this._handleInputKeydownBound);
-    }
-
-    /**
-     * Remove Event Handlers
-     */
-    _removeEventHandlers() {
-      this.el.removeEventListener('click', this._handleChipClickBound);
-      document.removeEventListener('keydown', Chips._handleChipsKeydown);
-      document.removeEventListener('keyup', Chips._handleChipsKeyup);
-      this.el.removeEventListener('blur', Chips._handleChipsBlur, true);
-      this.$input[0].removeEventListener('focus', this._handleInputFocusBound);
-      this.$input[0].removeEventListener('blur', this._handleInputBlurBound);
-      this.$input[0].removeEventListener('keydown', this._handleInputKeydownBound);
-    }
-
-    /**
-     * Handle Chip Click
-     * @param {Event} e
-     */
-    _handleChipClick(e) {
-      let $chip = $(e.target).closest('.chip');
-      let clickedClose = $(e.target).is('.close');
-      if ($chip.length) {
-        let index = $chip.index();
-        if (clickedClose) {
-          // delete chip
-          this.deleteChip(index);
-          this.$input[0].focus();
-        } else {
-          // select chip
-          this.selectChip(index);
-        }
-
-        // Default handle click to focus on input
-      } else {
-        this.$input[0].focus();
-      }
-    }
-
-    /**
      * Handle Chips Keydown
      * @param {Event} e
      */
@@ -235,6 +164,77 @@
         let currChips = $chips[0].M_Chips;
 
         currChips._selectedChip = null;
+      }
+    }
+
+    /**
+     * Get Chips Data
+     */
+    getData() {
+      return this.chipsData;
+    }
+
+    /**
+     * Teardown component
+     */
+    destroy() {
+      this._removeEventHandlers();
+      this.$chips.remove();
+      this.el.M_Chips = undefined;
+    }
+
+    /**
+     * Setup Event Handlers
+     */
+    _setupEventHandlers() {
+      this._handleChipClickBound = this._handleChipClick.bind(this);
+      this._handleInputKeydownBound = this._handleInputKeydown.bind(this);
+      this._handleInputFocusBound = this._handleInputFocus.bind(this);
+      this._handleInputBlurBound = this._handleInputBlur.bind(this);
+
+      this.el.addEventListener('click', this._handleChipClickBound);
+      document.addEventListener('keydown', Chips._handleChipsKeydown);
+      document.addEventListener('keyup', Chips._handleChipsKeyup);
+      this.el.addEventListener('blur', Chips._handleChipsBlur, true);
+      this.$input[0].addEventListener('focus', this._handleInputFocusBound);
+      this.$input[0].addEventListener('blur', this._handleInputBlurBound);
+      this.$input[0].addEventListener('keydown', this._handleInputKeydownBound);
+    }
+
+    /**
+     * Remove Event Handlers
+     */
+    _removeEventHandlers() {
+      this.el.removeEventListener('click', this._handleChipClickBound);
+      document.removeEventListener('keydown', Chips._handleChipsKeydown);
+      document.removeEventListener('keyup', Chips._handleChipsKeyup);
+      this.el.removeEventListener('blur', Chips._handleChipsBlur, true);
+      this.$input[0].removeEventListener('focus', this._handleInputFocusBound);
+      this.$input[0].removeEventListener('blur', this._handleInputBlurBound);
+      this.$input[0].removeEventListener('keydown', this._handleInputKeydownBound);
+    }
+
+    /**
+     * Handle Chip Click
+     * @param {Event} e
+     */
+    _handleChipClick(e) {
+      let $chip = $(e.target).closest('.chip');
+      let clickedClose = $(e.target).is('.close');
+      if ($chip.length) {
+        let index = $chip.index();
+        if (clickedClose) {
+          // delete chip
+          this.deleteChip(index);
+          this.$input[0].focus();
+        } else {
+          // select chip
+          this.selectChip(index);
+        }
+
+        // Default handle click to focus on input
+      } else {
+        this.$input[0].focus();
       }
     }
 

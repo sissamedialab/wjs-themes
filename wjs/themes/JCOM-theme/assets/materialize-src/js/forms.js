@@ -236,7 +236,7 @@
         $this.one('blur', function(e) {
           $(this).removeClass('tabbed');
         });
-        return;
+
       }
     });
 

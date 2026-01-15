@@ -1,8 +1,8 @@
 {% if wjs_latest_articles_list %}
 
-    <div class="card">
+  <div class="card">
     {% for article in wjs_latest_articles_list %}
-        {% include "journal/components/article_listing.html" with article=article %}
+      {% include "journal/components/article_listing.html" with article=article %}
     {% endfor %}
-    </div>
+  </div>
 {% endif %}

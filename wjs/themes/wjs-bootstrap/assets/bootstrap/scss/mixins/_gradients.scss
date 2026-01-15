@@ -8,6 +8,7 @@
     background-image: var(--#{$prefix}gradient);
   }
 }
+
 // scss-docs-end gradient-bg-mixin
 
 // scss-docs-start gradient-mixins
@@ -53,4 +54,5 @@
     transparent
   );
 }
+
 // scss-docs-end gradient-mixins

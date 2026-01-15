@@ -63,6 +63,41 @@
     }
 
     /**
+     * Find elements that are within the boundary
+     * @param {number} top
+     * @param {number} right
+     * @param {number} bottom
+     * @param {number} left
+     * @return {Array.<ScrollSpy>}   A collection of elements
+     */
+    static _findElements(top, right, bottom, left) {
+      let hits = [];
+      for (let i = 0; i < ScrollSpy._elements.length; i++) {
+        let scrollspy = ScrollSpy._elements[i];
+        let currTop = top + scrollspy.options.scrollOffset || 200;
+
+        if (scrollspy.$el.height() > 0) {
+          let elTop = scrollspy.$el.offset().top,
+            elLeft = scrollspy.$el.offset().left,
+            elRight = elLeft + scrollspy.$el.width(),
+            elBottom = elTop + scrollspy.$el.height();
+
+          let isIntersect = !(
+            elLeft > right ||
+            elRight < left ||
+            elTop > bottom ||
+            elBottom < currTop
+          );
+
+          if (isIntersect) {
+            hits.push(scrollspy);
+          }
+        }
+      }
+      return hits;
+    }
+
+    /**
      * Teardown component
      */
     destroy() {
@@ -162,41 +197,6 @@
 
       // remember elements in view for next tick
       ScrollSpy._elementsInView = intersections;
-    }
-
-    /**
-     * Find elements that are within the boundary
-     * @param {number} top
-     * @param {number} right
-     * @param {number} bottom
-     * @param {number} left
-     * @return {Array.<ScrollSpy>}   A collection of elements
-     */
-    static _findElements(top, right, bottom, left) {
-      let hits = [];
-      for (let i = 0; i < ScrollSpy._elements.length; i++) {
-        let scrollspy = ScrollSpy._elements[i];
-        let currTop = top + scrollspy.options.scrollOffset || 200;
-
-        if (scrollspy.$el.height() > 0) {
-          let elTop = scrollspy.$el.offset().top,
-            elLeft = scrollspy.$el.offset().left,
-            elRight = elLeft + scrollspy.$el.width(),
-            elBottom = elTop + scrollspy.$el.height();
-
-          let isIntersect = !(
-            elLeft > right ||
-            elRight < left ||
-            elTop > bottom ||
-            elBottom < currTop
-          );
-
-          if (isIntersect) {
-            hits.push(scrollspy);
-          }
-        }
-      }
-      return hits;
     }
 
     _enter() {

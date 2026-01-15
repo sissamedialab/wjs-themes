@@ -69,6 +69,11 @@ class Swipe extends Config {
     return NAME;
   }
 
+  // Static
+  static isSupported() {
+    return "ontouchstart" in document.documentElement || navigator.maxTouchPoints > 0;
+  }
+
   // Public
   dispose() {
     EventHandler.off(this._element, EVENT_KEY);
@@ -135,11 +140,6 @@ class Swipe extends Config {
     return (
       this._supportPointerEvents && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)
     );
-  }
-
-  // Static
-  static isSupported() {
-    return "ontouchstart" in document.documentElement || navigator.maxTouchPoints > 0;
   }
 }
 

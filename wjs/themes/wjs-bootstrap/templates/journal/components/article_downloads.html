@@ -1,35 +1,35 @@
 {% load i18n %}
 {% load wjs_tags %}
 {% if article.is_published and galleys %}
-<div class="wjs-showcase__article-sidebar-content">
+  <div class="wjs-showcase__article-sidebar-content">
     <h3 class="wjs-showcase__sidebar-title">{% trans "Download" %}</h3>
     <ul class="wjs-showcase__article-sidebar-list">
-        {% for galley in galleys %}
-            <li>
-                <a class="wjs-showcase__article-sidebar-download wjs-showcase__article-sidebar-download--{% if galley.file.mime_type == 'application/pdf' %}pdf{% elif galley.file.mime_type == 'application/epub+zip' %}epub{% endif %}"
-                   href="{% url 'article_download_galley' article.id galley.id %}">
-                   <i class="bi bi-filetype-{% if galley.file.mime_type == 'application/pdf' %}pdf{% elif galley.file.mime_type == 'application/epub+zip' %}xml{% endif %}"></i>
-                   {% trans "Download" %} {{ galley.label }}
-                </a>
-                <!-- {% if galley.file.mime_type == 'application/pdf' and journal.view_pdf_button %} -->
-                </li>
-                <li>
-                    <a target="_blank"
-                       href="{% url 'article_view_galley' article.id galley.id %}">
-                       <i class="bi bi-filetype-xml"></i>
-                       {% trans "View" %} {{ galley.label }}</a>
-                <!-- {% endif %} -->
+      {% for galley in galleys %}
+        <li>
+          <a class="wjs-showcase__article-sidebar-download wjs-showcase__article-sidebar-download--{% if galley.file.mime_type == 'application/pdf' %}pdf{% elif galley.file.mime_type == 'application/epub+zip' %}epub{% endif %}"
+             href="{% url 'article_download_galley' article.id galley.id %}">
+            <i class="bi bi-filetype-{% if galley.file.mime_type == 'application/pdf' %}pdf{% elif galley.file.mime_type == 'application/epub+zip' %}xml{% endif %}"></i>
+            {% trans "Download" %} {{ galley.label }}
+          </a>
+          <!-- {% if galley.file.mime_type == 'application/pdf' and journal.view_pdf_button %} -->
             </li>
-        {% endfor %}
+            <li>
+            <a target="_blank"
+               href="{% url 'article_view_galley' article.id galley.id %}">
+              <i class="bi bi-filetype-xml"></i>
+              {% trans "View" %} {{ galley.label }}</a>
+            <!-- {% endif %} -->
+          </li>
+      {% endfor %}
     </ul>
     {% if article.supplementary_files.all %}
-        <ul>
-            {% for file in article.supplementary_files.all %}
-                <li>
-                    <a href="{{ file.url }}">{{ file.label }}</a>
-                </li>
-            {% endfor %}
-        </ul>
+      <ul>
+        {% for file in article.supplementary_files.all %}
+          <li>
+            <a href="{{ file.url }}">{{ file.label }}</a>
+          </li>
+        {% endfor %}
+      </ul>
     {% endif %}
-    </div>
+  </div>
 {% endif %}

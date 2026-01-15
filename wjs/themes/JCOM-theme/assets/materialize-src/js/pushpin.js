@@ -52,6 +52,13 @@
       return domElem.M_Pushpin;
     }
 
+    static _updateElements() {
+      for (let elIndex in Pushpin._pushpins) {
+        let pInstance = Pushpin._pushpins[elIndex];
+        pInstance._updatePosition();
+      }
+    }
+
     /**
      * Teardown component
      */
@@ -63,13 +70,6 @@
       // Remove pushpin Inst
       let index = Pushpin._pushpins.indexOf(this);
       Pushpin._pushpins.splice(index, 1);
-    }
-
-    static _updateElements() {
-      for (let elIndex in Pushpin._pushpins) {
-        let pInstance = Pushpin._pushpins[elIndex];
-        pInstance._updatePosition();
-      }
     }
 
     _setupEventHandlers() {

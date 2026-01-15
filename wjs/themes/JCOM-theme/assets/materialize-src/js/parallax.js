@@ -48,17 +48,6 @@
       return domElem.M_Parallax;
     }
 
-    /**
-     * Teardown component
-     */
-    destroy() {
-      Parallax._parallaxes.splice(Parallax._parallaxes.indexOf(this), 1);
-      this.$img[0].style.transform = '';
-      this._removeEventHandlers();
-
-      this.$el[0].M_Parallax = undefined;
-    }
-
     static _handleScroll() {
       for (let i = 0; i < Parallax._parallaxes.length; i++) {
         let parallaxInstance = Parallax._parallaxes[i];
@@ -72,6 +61,17 @@
         parallaxInstance._enabled =
           window.innerWidth > parallaxInstance.options.responsiveThreshold;
       }
+    }
+
+    /**
+     * Teardown component
+     */
+    destroy() {
+      Parallax._parallaxes.splice(Parallax._parallaxes.indexOf(this), 1);
+      this.$img[0].style.transform = '';
+      this._removeEventHandlers();
+
+      this.$el[0].M_Parallax = undefined;
     }
 
     _setupEventHandlers() {

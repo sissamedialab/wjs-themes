@@ -54,23 +54,6 @@ class Popover extends Tooltip {
     return NAME;
   }
 
-  // Overrides
-  _isWithContent() {
-    return this._getTitle() || this._getContent();
-  }
-
-  // Private
-  _getContentForTemplate() {
-    return {
-      [SELECTOR_TITLE]: this._getTitle(),
-      [SELECTOR_CONTENT]: this._getContent(),
-    };
-  }
-
-  _getContent() {
-    return this._resolvePossibleFunction(this._config.content);
-  }
-
   // Static
   static jQueryInterface(config) {
     return this.each(function () {
@@ -86,6 +69,23 @@ class Popover extends Tooltip {
 
       data[config]();
     });
+  }
+
+  // Overrides
+  _isWithContent() {
+    return this._getTitle() || this._getContent();
+  }
+
+  // Private
+  _getContentForTemplate() {
+    return {
+      [SELECTOR_TITLE]: this._getTitle(),
+      [SELECTOR_CONTENT]: this._getContent(),
+    };
+  }
+
+  _getContent() {
+    return this._resolvePossibleFunction(this._config.content);
   }
 }
 

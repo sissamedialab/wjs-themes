@@ -1,27 +1,27 @@
 {% load wjs_tags %}
 {% if wjs_latest_news_second_box %}
-    <div class="wjs-showcase__hp-card">
-        <h2>{{ wjs_latest_news_second_title }}</h2>
-        {% for item in wjs_latest_news_second_box %}
-            <div class="wjs-showcase__hp-card-content">
-                <h3 class="wjs-showcase__hp-card-content-title">
-                    <a href="{% url 'core_news_item' item.pk %}">{{ item.title }}</a>
-                </h3>
-                {{ item|news_part:'abstract'|safe }}
-            </div>
-        {% endfor %}
-    </div>
+  <div class="wjs-showcase__hp-card">
+    <h2>{{ wjs_latest_news_second_title }}</h2>
+    {% for item in wjs_latest_news_second_box %}
+      <div class="wjs-showcase__hp-card-content">
+        <h3 class="wjs-showcase__hp-card-content-title">
+          <a href="{% url 'core_news_item' item.pk %}">{{ item.title }}</a>
+        </h3>
+        {{ item|news_part:'abstract'|safe }}
+      </div>
+    {% endfor %}
+  </div>
 {% endif %}
 {% if wjs_latest_news_list %}
-    <div class="wjs-showcase__hp-card">
-            <h2>{{ wjs_latest_news_title }}</h2>
-            {% for item in wjs_latest_news_list %}
-                <div class="wjs-showcase__hp-card-content">
-                    <h3 class="wjs-showcase__hp-card-content-title">
-                        <a href="{% url 'core_news_item' item.pk %}">{{ item.title }}</a>
-                    </h3>
-                    {{ item|news_part:'abstract'|safe }}
-                </div>
-            {% endfor %}
-    </div>
+  <div class="wjs-showcase__hp-card">
+    <h2>{{ wjs_latest_news_title }}</h2>
+    {% for item in wjs_latest_news_list %}
+      <div class="wjs-showcase__hp-card-content">
+        <h3 class="wjs-showcase__hp-card-content-title">
+          <a href="{% url 'core_news_item' item.pk %}">{{ item.title }}</a>
+        </h3>
+        {{ item|news_part:'abstract'|safe }}
+      </div>
+    {% endfor %}
+  </div>
 {% endif %}

@@ -1,30 +1,30 @@
 {% load wjs_tags %}
 <div id="issue_top">
-    {% if issue.large_image and issue.issue_description %}
+  {% if issue.large_image and issue.issue_description %}
     <div class="wjs-showcase__volume-detail-card">
-        <div class="wjs-showcase__volume-detail-card-content">
-            {% if issue.large_image %}
-                <div class="wjs-showcase__volume-detail-card-image-container">
-                    <img class="issue_image img-fluid" src="{{ issue.large_image.url }}" alt="{{ issue|display_title }}">
-                </div>
-            {% endif %}
-            <div class="wjs-showcase__volume-detail-card-text-container">
-                {% if issue.issue_type.code != "issue" %}
-                    <span class="wjs-showcase__volume-card-date">
+      <div class="wjs-showcase__volume-detail-card-content">
+        {% if issue.large_image %}
+          <div class="wjs-showcase__volume-detail-card-image-container">
+            <img class="issue_image img-fluid" src="{{ issue.large_image.url }}" alt="{{ issue|display_title }}">
+          </div>
+        {% endif %}
+        <div class="wjs-showcase__volume-detail-card-text-container">
+          {% if issue.issue_type.code != "issue" %}
+            <span class="wjs-showcase__volume-card-date">
                         <i class="bi bi-calendar3"></i>
                         {{ issue.date|date:DATE_FORMAT }}
                     </span>
-                {% endif %}
-                {% if issue.issue_description %}<p>{{ issue.issue_description|safe }}</p>{% endif %}
+          {% endif %}
+          {% if issue.issue_description %}<p>{{ issue.issue_description|safe }}</p>{% endif %}
 
-                {% if issue.journal.display_issue_doi and issue.doi_url %}
-                    <p>
-                        <b>DOI: </b><a href="{{ issue.doi_url }}">{{ issue.doi_url }}</a>
-                    </p>
-                {% endif %}
-                {% include "common/elements/guest_editors.html" %}
-            </div>
+          {% if issue.journal.display_issue_doi and issue.doi_url %}
+            <p>
+              <b>DOI: </b><a href="{{ issue.doi_url }}">{{ issue.doi_url }}</a>
+            </p>
+          {% endif %}
+          {% include "common/elements/guest_editors.html" %}
         </div>
+      </div>
     </div>
-    {% endif %}
+  {% endif %}
 </div>

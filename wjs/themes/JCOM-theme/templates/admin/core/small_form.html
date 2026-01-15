@@ -14,14 +14,14 @@
     <div class="col m8 offset-m2">
       <form method="post">
         {% csrf_token %}
-      <div class="card">
+        <div class="card">
           <div class="card-content">
             <div class="card-title">
               {% block title-section %}{{ block.super }}{% endblock title-section %}
             </div>
             {% block form_content %}
             {% endblock form_content %}
-         </div>
+          </div>
         </div>
       </form>
     </div>

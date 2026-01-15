@@ -4,45 +4,45 @@
 {% load wjs_tags %}
 
 {% block title %}
-    {% if tag.text == "call" %}
-        {% trans "Call for papers" %}
-    {% elif tag.text == "archived-calls" %}
-        {% trans "Call for papers" %}
-    {% else %}
-        {{ journal_settings.news.news_title }}
-    {% endif %}
+  {% if tag.text == "call" %}
+    {% trans "Call for papers" %}
+  {% elif tag.text == "archived-calls" %}
+    {% trans "Call for papers" %}
+  {% else %}
+    {{ journal_settings.news.news_title }}
+  {% endif %}
 {% endblock title %}
 
 {% block content %}
-        <div class="wjs-showcase__news-container">
+  <div class="wjs-showcase__news-container">
 
-        {% for item in news_items %}
-                <div class="wjs-showcase__news-card">
-                    {% if item.large_image_file or request.journal and request.journal.default_large_image or request.press.default_carousel_image %}
-                        <div class="wjs-showcase__news-card-content">
-                            <div class="wjs-showcase__news-card-image-container">
-                            <img class="wjs-showcase__news-card-image" src="{{ item.best_image_url }}" alt="{{ item.title }}" />
-                            </div>
-                    {% endif %}
-                    <div class="wjs-showcase__news-card-text-container">
-                        {% if not item.large_image_file or request.journal and not request.journal.default_large_image or not request.press.default_carousel_image %}
-                            <span class="wjs-showcase__news-card-date">
+    {% for item in news_items %}
+      <div class="wjs-showcase__news-card">
+        {% if item.large_image_file or request.journal and request.journal.default_large_image or request.press.default_carousel_image %}
+          <div class="wjs-showcase__news-card-content">
+          <div class="wjs-showcase__news-card-image-container">
+            <img class="wjs-showcase__news-card-image" src="{{ item.best_image_url }}" alt="{{ item.title }}" />
+          </div>
+        {% endif %}
+        <div class="wjs-showcase__news-card-text-container">
+          {% if not item.large_image_file or request.journal and not request.journal.default_large_image or not request.press.default_carousel_image %}
+            <span class="wjs-showcase__news-card-date">
                               <i class="bi bi-calendar3"></i>
                               {{ item.posted|date:DATE_FORMAT }}
                             </span>
-                            <h2 class="wjs-showcase__news-card-article-title">
-                                <a class="wjs-showcase__news-card-article-link" href="{% url 'core_news_item' item.pk %}">{{ item.title }}</a>
-                            </h2>
-                        {% endif %}
-                        {{ item|news_part:'abstract'|safe }}
-                    </div>
-
-                        </div>
-                </div>
-        {% empty %}
-            <h4>{% trans "We receive submissions of manuscripts during the whole year. There is no call currently for a special issue." %}</h4>
-        {% endfor %}
-    {% include "wjs/base/elements/pagination.html" with page=news_items %}
+            <h2 class="wjs-showcase__news-card-article-title">
+              <a class="wjs-showcase__news-card-article-link" href="{% url 'core_news_item' item.pk %}">{{ item.title }}</a>
+            </h2>
+          {% endif %}
+          {{ item|news_part:'abstract'|safe }}
+        </div>
 
         </div>
+      </div>
+    {% empty %}
+      <h4>{% trans "We receive submissions of manuscripts during the whole year. There is no call currently for a special issue." %}</h4>
+    {% endfor %}
+    {% include "wjs/base/elements/pagination.html" with page=news_items %}
+
+  </div>
 {% endblock content %}
