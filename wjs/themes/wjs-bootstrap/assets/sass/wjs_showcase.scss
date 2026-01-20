@@ -33,6 +33,12 @@
       color: $primary;
     }
 
+    span {
+      strong {
+        color: inherit;
+      }
+    }
+
     h4 {
       @extend .fs-6, .fw-bold, .mb-2;
       color: $gray-900;
@@ -77,6 +83,11 @@
           background-color: $primary;
         }
       }
+    }
+
+    &-aside {
+      @extend .mt-4, .mt-lg-0, .position-sticky, .align-self-start;
+      top: $spacer * 2;
     }
   }
 
@@ -306,7 +317,7 @@
   /// SIDEBAR ACCORDION
 
   &__sidebar-accordion-container {
-    @extend .col-sm-12, .col-md-3;
+    @extend .col-sm-12, .col-lg-3;
   }
 
   &__sidebar-accordion-card {
@@ -364,7 +375,7 @@
     }
 
     &-image-container {
-      @extend .col-sm-12, .col-md-4, .d-flex, .justify-content-center, .align-items-center;
+      @extend .col-sm-12, .col-lg-4, .d-flex, .justify-content-center, .align-items-center, .mb-3;
     }
 
     &-image {
@@ -372,7 +383,7 @@
     }
 
     &-text-container {
-      @extend .col-sm-12, .col-md-8, .d-flex, .flex-column;
+      @extend .col-sm-12, .col-lg-8, .d-flex, .flex-column;
     }
 
     &-date {

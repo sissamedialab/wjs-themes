@@ -13,7 +13,7 @@
                 {% else %}
                   <img src="{% static "common/img/sample/janeway.png" %}" alt="{% trans "Logo Janeway" %}">
                 {% endif %}
-                <span>A journal by scientists for scientists</span>
+                <span>{{ journal_settings.general.journal_motto }}</span>
               </a>
             </div>
             <div class="col-4 col-lg-6 align-items-end flex-column d-none d-lg-flex justify-content-between">
