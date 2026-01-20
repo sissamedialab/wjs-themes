@@ -20,7 +20,16 @@
         {% trans "Browse all Publications" %}
       </a>
     {% endif %}
+    {% if paginator.count %}<div class="d-flex justify-content-between flex-row">{% endif %}
     {% if filter_by.paragraph %}<p>{{ filter_by.paragraph }}</p>{% endif %}
+    {% if paginator.count %}
+        {% blocktrans count counter=paginator.count %}
+          {{ counter }} publication found
+        {% plural %}
+          {{ counter }} publications found
+        {% endblocktrans %}
+    {% endif %}
+    {% if paginator.count %}</div>{% endif %}
     <div class="wjs-showcase__search-container">
       {% if not filter_by %}
         <div class="wjs-showcase__search-card">

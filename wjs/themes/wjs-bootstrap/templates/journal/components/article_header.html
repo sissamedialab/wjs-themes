@@ -23,9 +23,8 @@
                         <a href="{% url 'articles_by_author' author.author.pk %}">{{ author.full_name }}</a>
             {% if author.orcid %}
               <a class="text-decoration-none" href="https://orcid.org/{{ author.orcid }}">
-                                <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
-                                     alt="orcid logo" />
-                            </a>
+                <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="orcid logo" />
+              </a>
             {% endif %}
             {% if author.display_email and not journal_settings.article.hide_author_email_links %}
               <a class="text-decoration-none" itemprop="email" href="mailto:{{ author.email }}">
