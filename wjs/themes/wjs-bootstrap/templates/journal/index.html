@@ -10,50 +10,8 @@
     {% for element in homepage_elements %}
       <div class="wjs-showcase__homepage-element wjs-showcase__homepage-element-{{ forloop.counter }}">
         {% include element.template_path %}
-        {% if False %}
-          <div class="wjs-showcase__homepage-funders">
-            <div class="wjs-showcase__homepage-funders-title">
-              Funding
-            </div>
-            <ul class="wjs-showcase__homepage-funders-list">
-              <li class="wjs-showcase__homepage-funders-list-item">
-                <a class="wjs-showcase__homepage-funder-link" href="#" target="_blank">
-                  <img src="{% static "common/img/sample/article-small.jpg" %}" alt="Funder 1" class="wjs-showcase__homepage-funder-logo">
-                  <span class="wjs-showcase__homepage-funder-name">Funder's name</span>
-                </a>
-              </li>
-
-              <li class="wjs-showcase__homepage-funders-list-item">
-                <a class="wjs-showcase__homepage-funder-link" href="#" target="_blank">
-                  <img src="{% static "common/img/sample/article-small.jpg" %}" alt="Funder 2" class="wjs-showcase__homepage-funder-logo">
-                  <span class="wjs-showcase__homepage-funder-name">Funder's name</span>
-                </a>
-              </li>
-
-              <li class="wjs-showcase__homepage-funders-list-item">
-                <a class="wjs-showcase__homepage-funder-link" href="#" target="_blank">
-                  <img src="{% static "common/img/sample/article-small.jpg" %}" alt="Funder 3" class="wjs-showcase__homepage-funder-logo">
-                  <span class="wjs-showcase__homepage-funder-name">Funder's name</span>
-                </a>
-              </li>
-
-              <li class="wjs-showcase__homepage-funders-list-item">
-                <a class="wjs-showcase__homepage-funder-link" href="#" target="_blank">
-                  <img src="{% static "common/img/sample/article-small.jpg" %}" alt="Funder 4" class="wjs-showcase__homepage-funder-logo">
-                  <span class="wjs-showcase__homepage-funder-name">Funder's name</span>
-                </a>
-              </li>
-
-              <li class="wjs-showcase__homepage-funders-list-item">
-                <a class="wjs-showcase__homepage-funder-link" href="#" target="_blank">
-                  <img src="{% static "common/img/sample/article-small.jpg" %}" alt="Funder 4" class="wjs-showcase__homepage-funder-logo">
-                  <span class="wjs-showcase__homepage-funder-name">Funder's name</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        {% endif %}
       </div>
     {% endfor %}
   </div>
+  {% include "wjs/base/elements/funders.html" %}
 {% endblock content %}
