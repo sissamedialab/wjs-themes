@@ -10,8 +10,9 @@
         {% translate "Profile" %}
       {% endif %}
     </button>
-
-    {% include "wjs/base/elements/user_menu_dropdown_list.html" %}
+    {% if PermissionType %}
+      {% include "wjs/base/elements/user_menu_dropdown_list.html" %}
+    {% endif %}
   </div>
 {% else %}
   <a class="wjs-header__user-btn text-decoration-none" href="{% url "core_login" %}" >
