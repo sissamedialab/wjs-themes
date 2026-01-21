@@ -1,0 +1,19 @@
+{% load settings %}
+{% setting_var request.journal 'journal_funders' as journal_funders %}
+{% if journal_funders %}
+  <div class="wjs-showcase__homepage-funders">
+    <div class="wjs-showcase__homepage-funders-title">
+      Funders
+    </div>
+    <ul class="wjs-showcase__homepage-funders-list">
+      {% for funder in journal_funders %}
+      <li class="wjs-showcase__homepage-funders-list-item">
+        <a class="wjs-showcase__homepage-funder-link" {% if funder.url %} href="{{ funder.url }}" target="_blank" {% endif %}>
+          <img src="{{ funder.image }}" alt="{{ funder.name }}" class="wjs-showcase__homepage-funder-logo" width="200">
+          {% if funder.name %}<span class="wjs-showcase__homepage-funder-name">{{ funder.name }}</span>{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

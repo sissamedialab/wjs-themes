@@ -572,6 +572,7 @@
       "main main main main sidebar-element-6"
       "main main main main sidebar-element-7";
     column-gap: 2rem;
+    grid-template-columns: 1fr 300px;
 
     @include media-breakpoint-down(lg) {
       grid-template-areas:
@@ -583,6 +584,7 @@
         "sidebar-element-6"
         "sidebar-element-7";
       margin: 0;
+      grid-template-columns: 100% 100%;
     }
   }
 
@@ -669,7 +671,6 @@
 
   &__homepage-funders {
     @extend .card, .p-4, .my-4, .shadow-sm;
-    grid-area: main;
 
     &-title {
       @extend .fs-4, .fw-bold, .mb-3;
@@ -683,8 +684,8 @@
         .flex-row,
         .flex-wrap,
         .gap-3,
-        .justify-content-center,
-        .justify-content-center;
+        .justify-content-between,
+        .align-items-center;
     }
 
     &-link {
