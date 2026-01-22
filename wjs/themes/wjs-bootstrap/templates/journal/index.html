@@ -1,6 +1,9 @@
 {% extends "wjs/base/base.html" %}
 {% load truncate static %}
 
+{% block title_sidekick %}
+  <a href="{% url "submission_start" %}" class="wjs-showcase__submission-sidebar-button" id="start-submission-btn">SUBMIT A PAPER</a>
+{% endblock title_sidekick %}
 {% block title %}
   {{ wjs_latest_articles_title }}
 {% endblock title %}
