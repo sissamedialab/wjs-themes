@@ -643,6 +643,10 @@
   &__hp-card {
     @extend .card, .mb-4, .p-4;
 
+    form {
+      overflow: clip;
+    }
+
     h2 {
       @extend .fs-4, .fw-bold, .mb-3;
       color: $primary;

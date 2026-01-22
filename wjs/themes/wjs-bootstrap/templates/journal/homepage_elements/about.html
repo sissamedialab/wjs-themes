@@ -1,5 +1,8 @@
-{% load i18n %}
+{% load i18n wjs_tags %}
 <div class="wjs-showcase__hp-card" id="about_journal">
-  <h2>{{ title_value|safe }}</h2>
-  <p>{{ journal_settings.general.journal_description|safe }}</p>
+  <h2>Issues</h2>
+  <p>
+    <a href="{% url "journal_issue" journal.current_issue.id %}">{{ journal.current_issue|display_title }}</a><br><br>
+    <a href="{% url "journal_issues" %}">Volumes and Issues</a>
+  </p>
 </div>
