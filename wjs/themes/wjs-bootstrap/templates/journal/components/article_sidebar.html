@@ -67,7 +67,10 @@
       </ul>
     </div>
   {% endif %}
-  {% include "journal/components/article_issue_list.html" %}
+
+  {% if article.primary_issue.is_published %}
+    {% include "journal/components/article_issue_list.html" %}
+  {% endif %}
 
   {% if article.date_accepted or article.date_published %}
     <div class="wjs-showcase__article-sidebar-content">
