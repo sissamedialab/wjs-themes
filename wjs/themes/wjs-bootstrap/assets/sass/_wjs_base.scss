@@ -580,7 +580,7 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 .wjs-header__search {
   @extend .d-flex, .align-items-center;
 
-  input[type="text"] {
+  input[type="search"] {
     @extend .form-control;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
