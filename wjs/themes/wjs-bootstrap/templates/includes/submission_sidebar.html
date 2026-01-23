@@ -1,4 +1,6 @@
 {% load i18n %}
+{% url "wjs_submission_1" as wjs_submission %}
+{% url "submission_start" as legacy_submission %}
 <div class="wjs-showcase__submission-sidebar">
   {% if journal_settings.general.disable_journal_submission %}
     <p class="wjs-showcase__submission-sidebar-message">{{ journal_settings.general.disable_journal_submission_message|safe }}</p>
@@ -16,7 +18,11 @@
             {% translate "I have read and agree to the submission guidelines." %}
           </label>
         </div>
-        <a href="{% url "submission_start" %}" class="wjs-showcase__submission-sidebar-button disabled" id="start-submission-btn">{% translate "Start Submission" %}</a>
+        {% if wjs_submission %}
+          <a href="{{ wjs_submission }}" class="wjs-showcase__submission-sidebar-button disabled" id="start-submission-btn">{% translate "Start Submission" %}</a>
+        {% else %}
+          <a href="{{ legacy_submission }}" class="wjs-showcase__submission-sidebar-button disabled" id="start-submission-btn">{% translate "Start Submission" %}</a>
+        {% endif %}
       {% endif %}
     </div>
   {% endif %}
