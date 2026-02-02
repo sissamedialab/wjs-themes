@@ -1,6 +1,6 @@
 {% load django_bootstrap5 hooks press_url static %}
 
-<div class="flex-row justify-content-between d-none d-lg-flex align-items-center">
+<nav class="flex-row justify-content-between d-none d-lg-flex align-items-center" aria-label="principle">
   <ul class="nav">
     {% if request.journal.nav_home %}
       <li class="nav-item wjs-nav-item">
@@ -47,14 +47,14 @@
     {% for item in navigation_items %}
       {% if item.has_sub_nav %}
         <li class="nav-item wjs-nav-item dropdown">
-          <a class="nav-link dropdown-toggle"
-             href="#"
+          <button class="nav-link dropdown-toggle"
              id="dropdown-{{ item.link_name|slugify }}"
-             role="button"
              data-bs-toggle="dropdown"
-             aria-expanded="false">
+             aria-expanded="false"
+             type="button"
+             >
             {{ item.link_name }}
-          </a>
+          </button>
           <ul class="dropdown-menu" aria-labelledby="dropdown-{{ item.link_name|slugify }}">
             {% if item.link %}
               <li>
@@ -84,7 +84,7 @@
     {% endif %}
     {% hook 'nav_block' %}
   </ul>
-  <a href="{% url 'search' %}" title="{% trans "Search" %}">
+  <a href="{% url 'search' %}">
     {% trans "Advanced search" %}
   </a>
-</div>
+</nav>
