@@ -1,0 +1,123 @@
+.wjs-profile-nav {
+  &__list {
+    @extend .d-flex, .flex-column, .list-unstyled, .mb-0;
+    border-right: 1px solid #979797;
+  }
+    
+  &__item {
+    &--active {
+      .wjs-profile-nav__link {
+        @extend .bg-primary, .text-white;
+      }
+    }
+
+    &:hover {
+      .wjs-profile-nav__link {
+        @extend .bg-primary, .text-white;
+      }
+    }
+  }
+
+  &__link {
+    @extend .d-block, .p-4, .fw-bold, .text-decoration-none;
+  }
+}
+
+.wjs-profile-form {
+  @extend .d-flex, .flex-column, .justify-content-between;
+
+  &__title {
+    @extend .fs-3, .fw-bold, .border-bottom, .mb-4, .pb-2;
+    color: $primary;
+  }
+
+  label {
+    @extend .form-label, .mb-2;
+  }
+
+  input {
+    &[type="text"],
+    &[type="email"],
+    &[type="password"] {
+      @extend .w-75;
+    }
+
+    + .form-text {
+      @extend .fw-bold, .text-primary;
+    }
+  }
+
+  &__orcid {
+    @extend .align-items-end, .d-flex, .flex-row, .gap-3, .w-75;
+
+    input {
+      &[type="text"] {
+        @extend .w-100;
+      }
+    }
+  }
+
+  &__orcid-button {
+    @extend .btn, .border, .d-flex, .flex-row, .align-items-center, .gap-2, .mb-3;
+
+    img {
+      @extend .rounded-circle;
+      width: 24px;
+    }
+
+    &:hover {
+      @extend .btn-primary;
+    }
+  }
+
+  &__orcid-info {
+    img {
+      @extend .rounded-circle;
+      width: 24px;
+    }
+
+    &-text {
+      color: #B59515;
+      text-decoration: none;
+    }
+  }
+
+  &__affiliations {
+    &-actions {
+      @extend .d-flex, .flex-row, .gap-3, .mb-4, .border-top, .border-end, .border-bottom, .border-primary, .p-4;
+      border-left: 8px solid $primary;
+    }
+
+    &-button {
+      @extend .btn, .btn-outline-primary;
+    }
+  }
+
+  &__affiliation {
+    @extend .d-flex, .flex-row, .align-items-center, .justify-content-between, .gap-3, .mb-3;
+    
+    &-info {
+      @extend .w-50;
+    }
+
+    &-actions {
+      @extend .d-flex, .flex-row, .gap-2;
+    }
+
+    &-button {
+      @extend .btn, .btn-outline-primary;
+    }
+  }
+
+  &__update-button {
+    @extend .btn, .btn-primary;
+  }
+
+  &__footer {
+    @extend .d-flex, .flex-row, .align-items-center;
+
+    .wjs-profile-form__update-button {
+      @extend .ms-auto;
+    }
+  }
+}
