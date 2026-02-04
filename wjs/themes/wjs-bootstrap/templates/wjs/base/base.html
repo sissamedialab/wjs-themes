@@ -21,7 +21,7 @@
   <div id="js-loading-spinner" class="wjs-loading-spinner">
     <span class="spinner-border text-primary"></span>
   </div>
-  <div class="bg-body" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+  <div class="bg-body d-flex flex-column" style="min-height: 100vh;" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     {% include "wjs/base/elements/modal_htmx.html" %}
     {% block header %}
       {% include "wjs/base/elements/header.html" %}
@@ -29,18 +29,18 @@
 
     {% block breadcrumbs_wrapper %}
     {% endblock breadcrumbs_wrapper %}
-    {% block messages_wrapper %}
-      <aside class="container">
+    {% block content_wrapper %}
+      <aside class="container flex-grow-1">
         <div class="row">
-        <div id="messages-container" aria-live="polite" role="status" class="col-12"></div>
+          <div id="messages-container" aria-live="polite" role="status" class="col-12"></div>
           <div id="message" class="d-none">
             {% bootstrap_messages %}
           </div>
-          </div>
+        </div>
       </aside>
     {% endblock messages_wrapper %}
     {% block content_wrapper %}
-      <main class="container">
+      <main class="container flex-grow-1">
         <div class="row">
           {% block page_title_wrapper %}
             <div class="col-sm-12">
