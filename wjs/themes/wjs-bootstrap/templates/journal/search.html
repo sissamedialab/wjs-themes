@@ -1,8 +1,8 @@
 {% extends "wjs/base/base.html" %}
-{% load i18n %}
-{% load hooks %}
-{% load wjs_tags %}
+{% load django_bootstrap5 hooks i18n wjs_tags %}
+
 {% hook 'filter_search' %}
+
 {% block title %}
   {% if filter_by %}
     {{ filter_by.title }}: {{ filter_by.filtering_object }}
@@ -12,7 +12,9 @@
     {% trans "Search" %}
   {% endif %}
 {% endblock title %}
+
 {% block content %}
+  {% translate "Advanced Search" as advanced_search_label %}
   <div class="col-sm-12">
     {% if filter_by %}
       <a class="wjs-showcase__go-back-link" href="{% url "journal_articles" %}">
@@ -20,21 +22,11 @@
         {% trans "Browse all Publications" %}
       </a>
     {% endif %}
-    {% if paginator.count %}<div class="d-flex justify-content-between flex-row">{% endif %}
-    {% if filter_by.paragraph %}<p>{{ filter_by.paragraph }}</p>{% endif %}
-    {% if paginator.count %}
-        {% blocktrans count counter=paginator.count %}
-          {{ counter }} publication found
-        {% plural %}
-          {{ counter }} publications found
-        {% endblocktrans %}
-    {% endif %}
-    {% if paginator.count %}</div>{% endif %}
     <div class="wjs-showcase__search-container">
       {% if not filter_by %}
         <div class="wjs-showcase__search-card">
           {% include "journal/components/search_sidebar.html" %}
-
+          {% include "wjs/base/elements/modal.html" with include_path="journal/components/search_modal.html" modal_id="advanced_search" modal_title=advanced_search_label modal_size="modal-lg" %}
           <p class="text-end mt-2">
             {% if paginator.count %}
               {% blocktrans count counter=paginator.count %}
@@ -56,3 +48,31 @@
 
   {% include "wjs/base/elements/pagination.html" with page=page_obj %}
 {% endblock content %}
+
+{% block js %}
+  {{ block.super }}
+  <script>
+    function syncKeywords(field, matchingForm) {
+      const matchingField = matchingForm.querySelector(`#${field.id}`);
+      matchingField.checked = field.checked;
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("modal") === "1") {
+        const modal = new bootstrap.Modal(document.getElementById("advanced_search"));
+        modal.show();
+      }
+
+      // Whenever a keyword is selected, pick the matching element in the other form and
+      // sync the checked value
+      const modalSearch = document.getElementById("modal_search");
+      const keywords = document.querySelectorAll("[name=keywords]");
+      keywords.forEach(field => {
+        field.addEventListener("input", function() {
+          syncKeywords(this, modalSearch);
+        });
+      });
+    });
+  </script>
+{% endblock js %}
