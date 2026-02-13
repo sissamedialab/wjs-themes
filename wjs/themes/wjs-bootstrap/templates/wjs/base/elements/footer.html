@@ -53,10 +53,15 @@
           <li>
             <a class="wjs-footer__nav-link" href="{% url 'cms_page' 'contact' %}">{% trans "Contact" %}</a>
           </li>
-
+          {% if request.user.is_authenticated %}
+            <li>
+              <a class="wjs-footer__nav-link" href="{% url 'core_logout' %}">{% translate "Logout" %}</a>
+            </li>
+          {% else %}
           <li>
             <a class="wjs-footer__nav-link" href="{% url 'core_login' %}">{% trans "Login" %}</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </div>
