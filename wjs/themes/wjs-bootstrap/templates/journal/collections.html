@@ -24,7 +24,7 @@
                 </span>
             <h2 class="wjs-showcase__collections-card-article-title">
               <a class="wjs-showcase__collections-card-article-link"
-                 href="{% url 'journal_collection' collection.id %}">{{ collection.issue_title }}</a>
+                 href="{% url 'journal_collection' collection.id %}">{{ collection.display_title }}</a>
             </h2>
             {% if collection.short_description %}
               <p>{{ collection.short_description|safe }}</p>
