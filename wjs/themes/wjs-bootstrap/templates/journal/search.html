@@ -3,6 +3,16 @@
 
 {% hook 'filter_search' %}
 
+{% block page_title %}
+  {% if filter_by %}
+    {{ filter_by.title }}: {{ filter_by.filtering_object }}
+  {% elif view.exclude_children %}
+    {% trans "Publications" %}
+  {% else %}
+    {% trans "Search" %}
+  {% endif %}
+{% endblock page_title %}
+
 {% block title %}
   {% if filter_by %}
     {{ filter_by.title }}: {{ filter_by.filtering_object }}

@@ -1,6 +1,9 @@
 {% extends "wjs/base/base.html" %}
 {% load i18n hooks static %}
-{% block title %}{% translate "Submissions" %}{% endblock title %}
+
+{% block page_title %}{% translate "Submission guidelines" %}{% endblock page_title %}
+{% block title %}{% translate "Submission guidelines" %}{% endblock title %}
+
 {% block content %}
   <div class="col-sm-12 col-lg-9 ">
     <div class="wjs-showcase__card">
@@ -40,7 +43,7 @@
     </div>
   </div>
   <div class="wjs-showcase__submission-aside">
-    {% include "includes/toc.html" %}
     {% include "includes/submission_sidebar.html" %}
+    {% include "includes/toc.html" %}
   </div>
 {% endblock content %}

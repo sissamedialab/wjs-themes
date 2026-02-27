@@ -1,9 +1,8 @@
 {% extends "wjs/base/base.html" %}
 {% load static %}
 
-{% block title %}
-  {{ page.display_name }}
-{% endblock title %}
+{% block page_title %}{{ page.display_name }}{% endblock page_title %}
+{% block title %}{{ page.display_name }}{% endblock title %}
 
 {% block content %}
   <div class="{% if page.display_toc %}col-lg-9 col-sm-12{% else %}col-md-12{% endif %}">

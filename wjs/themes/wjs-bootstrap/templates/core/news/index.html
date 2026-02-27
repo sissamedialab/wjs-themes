@@ -1,7 +1,15 @@
 {% extends "wjs/base/base.html" %}
-{% load truncate %}
-{% load i18n %}
-{% load wjs_tags %}
+{% load i18n truncate wjs_tags %}
+
+{% block page_title %}
+  {% if tag.text == "call" %}
+    {% trans "Call for papers" %}
+  {% elif tag.text == "archived-calls" %}
+    {% trans "Call for papers" %}
+  {% else %}
+    {{ journal_settings.news.news_title }}
+  {% endif %}
+{% endblock page_title %}
 
 {% block title %}
   {% if tag.text == "call" %}
