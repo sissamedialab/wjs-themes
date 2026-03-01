@@ -236,6 +236,20 @@ span.badge {
     }
   }
 
+  &.color-revision-type {
+    &-full {
+      background: yellow;
+      color: black;
+    }
+    &-confirm {
+      background: green;
+    }
+    &-metadata {
+      background: orange;
+      color: black;
+    }
+  }
+
   &.color-state {
     &-requested_minor_revisions {
       background-color: $color-state-requested_minor_revisions;
