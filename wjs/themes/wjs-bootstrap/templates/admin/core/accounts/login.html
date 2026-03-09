@@ -1,0 +1,73 @@
+{% extends "wjs/base/base.html" %}
+{% load static django_bootstrap5 i18n orcid %}
+
+{% block title %}
+  {% translate "Log in with your account" %}
+{% endblock title %}
+
+{% block content %}
+<div class="col-sm-12">
+  <div class="card shadow-sm">
+    <div class="card-body p-4">
+      <div class="text-center mb-4">
+        {% if settings.ENABLE_ORCID %}
+          <a href="{{ settings.ORCID_URL }}?client_id={{ settings.ORCID_CLIENT_ID }}&response_type=code&scope=/authenticate&redirect_uri={% orcid_redirect_uri 'login' %}"
+            class="btn btn-success d-inline-flex align-items-center justify-content-center gap-2 mb-2">
+            <img alt="" src="{% static 'common/img/icons/orcid.gif' %}">
+            {% translate "Log in with ORCiD" %}
+          </a>
+        {% endif %}
+
+        {% if settings.ENABLE_OIDC %}
+          <a href="{% url "oidc_authentication_init" %}{% if request.GET.next %}?next={{ request.GET.next }}{% elif request.journal %}?next={{ request.journal.site_url }}{% elif request.repository %}?next={{ request.repository.site_url }}{% else %}?next={{ request.press.site_url }}{% endif %}"
+            class="btn btn-outline-primary mb-2">
+            {% translate "Log in with" %} {{ settings.OIDC_SERVICE_NAME }}
+          </a>
+        {% endif %}
+      </div>
+
+      {% if journal_settings.general.display_login_page_notice %}
+        <div class="alert alert-info border-0 shadow-none small" role="note">
+          {{ journal_settings.general.login_page_notice|safe }}
+        </div>
+      {% endif %}
+
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <form method="post" action="">
+            {% csrf_token %}
+
+            {% bootstrap_field form.user_name %}
+            {% bootstrap_field form.user_pass %}
+
+            {% if form.captcha %}
+              {% bootstrap_field form.captcha %}
+            {% endif %}
+
+            <div class="text-center mt-4">
+              {% translate "Login" as btn_login %}
+              {% bootstrap_button button_type="submit" button_class="btn-primary" content=btn_login %}
+            </div>
+          </form>
+
+          <hr class="my-4">
+
+          <div class="text-center">
+            <div class="mb-2">
+              {% url 'core_get_reset_token' as reset_url %}
+              {% translate "Forgotten your password?" as text_reset %}
+              {% bootstrap_button button_type="link" href=reset_url button_class="btn-link text-decoration-none" content=text_reset %}
+            </div>
+
+            <div class="mb-2">
+              {% url 'core_register' as register_url %}
+              {% translate "Register a new account" as text_reg %}
+              {% bootstrap_button button_type="link" href=register_url button_class="btn-link text-decoration-none" content=text_reg %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
