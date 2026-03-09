@@ -1,11 +1,9 @@
 {% extends "wjs/base/base.html" %}
-{% load static %}
-{% load i18n %}
-{% load roles %}
-{% load wjs_tags %}
-{% block title %}
-  {% trans "Volumes and Issues" %}
-{% endblock title %}
+{% load i18n roles static wjs_tags %}
+
+{% block page_title %}{% trans "Volumes and Issues" %}{% endblock page_title %}
+{% block title %}{% trans "Volumes and Issues" %}{% endblock title %}
+
 {% block content %}
   {% regroup issues by volume as volumes %}
   <div class="wjs-showcase__volumes-container">

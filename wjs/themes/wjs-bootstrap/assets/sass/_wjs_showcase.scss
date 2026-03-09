@@ -534,7 +534,7 @@
   // SUBMISSION SIDEBAR
 
   &__submission-sidebar {
-    @extend .card, .mt-4, .p-4;
+    @extend .card, .mb-4, .p-4;
 
     // Safety on tiny viewports
     min-height: 200px;
