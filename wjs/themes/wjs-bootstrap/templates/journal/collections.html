@@ -1,11 +1,8 @@
 {% extends "wjs/base/base.html" %}
-{% load static %}
-{% load hooks %}
-{% load i18n %}
+{% load i18n hooks static %}
 
-{% block title %}
-  {% trans issue_type.plural_name %}
-{% endblock title %}
+{% block page_title %}{% trans issue_type.plural_name %}{% endblock page_title %}
+{% block title %}{% trans issue_type.plural_name %}{% endblock title %}
 
 {% block content %}
   <div class="wjs-showcase__collections-container">

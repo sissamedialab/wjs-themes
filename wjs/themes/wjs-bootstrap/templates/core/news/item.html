@@ -1,11 +1,11 @@
 {% extends "wjs/base/base.html" %}
-{% load truncate %}
-{% load i18n %}
-{% load wjs_tags %}
+{% load i18n truncate wjs_tags %}
 
 {% block head %}
   {% include "core/news/news_social_meta.html" %}
 {% endblock head %}
+
+{% block page_title %}{{ news_item.title }}{% endblock page_title %}
 
 {% block content %}
   <div class="wjs-showcase__news-container">
