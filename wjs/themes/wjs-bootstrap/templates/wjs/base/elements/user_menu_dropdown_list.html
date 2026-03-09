@@ -140,6 +140,11 @@ Bonus:
       <a class="dropdown-item" href="{% url "admin:index" %}">{% trans "Admin" %}</a>
     </li>
   {% endif %}
+  {% if request.user.is_staff or request.user|is_user_eo %}
+     <li class="nav-item wjs-nav-item">
+      <a class="dropdown-item" href="{% url "advanced_admin:index" %}">{% trans "Advanced admin" %}</a>
+    </li>
+  {% endif %}
   {% if core_edit_profile %}
      <li class="nav-item wjs-nav-item">
       <a class="dropdown-item" href="{{ core_edit_profile }}">{% trans "Profile" %}</a>
