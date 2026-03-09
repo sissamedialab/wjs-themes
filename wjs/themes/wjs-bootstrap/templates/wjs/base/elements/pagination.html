@@ -6,13 +6,13 @@
       <ul class="wjs-showcase__pagination mb-0 mx-1">
         {% if page.has_previous %}
           <li class="page-item">
-            <a class="page-link" href="?page={{ page.previous_page_number }}&{{ querystring.urlencode }}" tabindex="-1" aria-label="Previous">
+            <a class="page-link" href="?page={{ page.previous_page_number }}&{{ querystring.urlencode }}" tabindex="-1" aria-label="Previous page">
               <i class="bi bi-chevron-left"></i>
             </a>
           </li>
         {% else %}
           <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-label="Previous">
+            <a class="page-link" tabindex="-1" aria-label="Previous page">
               <i class="bi bi-chevron-left"></i>
             </a>
           </li>
@@ -38,13 +38,13 @@
 
         {% if page.has_next %}
           <li class="page-item">
-            <a class="page-link" href="?page={{ page.next_page_number }}&{{ querystring.urlencode }}" aria-label="Next">
+            <a class="page-link" href="?page={{ page.next_page_number }}&{{ querystring.urlencode }}" aria-label="Next page">
               <i class="bi bi-chevron-right"></i>
             </a>
           </li>
         {% else %}
           <li class="page-item disabled">
-            <a class="page-link" aria-label="Previous">
+            <a class="page-link" aria-label="Next page">
               <i class="bi bi-chevron-right"></i>
             </a>
           </li>
