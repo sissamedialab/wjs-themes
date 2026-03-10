@@ -25,9 +25,9 @@
       <div class="col-sm-12{% if article_content or article|article_has_children %} col-lg-4{% else %} l12{% endif %}">
         {% include "journal/components/article_sidebar.html" %}
         {% if article_content %}
-         <div class="wjs-showcase__toc-aside">
+         <aside class="wjs-showcase__toc-aside">
           {% include "includes/toc.html" %}
-          </div>
+          </aside>
         {% endif %}
       </div>
     </div>
