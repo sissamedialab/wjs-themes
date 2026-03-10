@@ -5,13 +5,13 @@
 {% block title %}{% trans issue_type.plural_name %}{% endblock title %}
 
 {% block content %}
-  <div class="wjs-showcase__collections-container">
+  <ul class="wjs-showcase__collections-container">
     {% for collection in collections %}
-      <div class="wjs-showcase__collections-card">
-        <div class="wjs-showcase__collections-card-content">
+      <li class="wjs-showcase__collections-card">
+        <article class="wjs-showcase__collections-card-content">
           <div class="wjs-showcase__collections-card-image-container">
             <img class="wjs-showcase__collections-card-image" src="{{ collection.hero_image_url }}"
-                 alt="{{ collection.issue_title }}"
+                 alt=""
                  onerror="if (this.src !='{% static 'common/img/sample/article-small.jpg' %}') this.src='{% static 'common/img/sample/article-small.jpg' %}'">
           </div>
           <div class="wjs-showcase__collections-card-text-container">
@@ -30,11 +30,11 @@
             {% endif %}
           </div>
 
-        </div>
-      </div>
+        </article>
+      </li>
     {% empty %}
       <h4>{% trans "There are no collections to display" %}</h4>
     {% endfor %}
-  </div>
+    </ul>
 
 {% endblock content %}

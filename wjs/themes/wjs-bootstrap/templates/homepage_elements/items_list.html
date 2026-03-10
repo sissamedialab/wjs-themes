@@ -1,8 +1,8 @@
 {% if wjs_latest_articles_list %}
 
-  <div class="card">
+  <ul class="list-group gap-3">
     {% for article in wjs_latest_articles_list %}
       {% include "journal/components/article_listing.html" with article=article %}
     {% endfor %}
-  </div>
+  </ul>
 {% endif %}

@@ -11,9 +11,15 @@
 {% block content %}
   <div class="wjs-showcase__homepage-grid">
     {% for element in homepage_elements %}
-      <div class="wjs-showcase__homepage-element wjs-showcase__homepage-element-{{ forloop.counter }}">
-        {% include element.template_path %}
-      </div>
+      {% if forloop.counter >= 2 %}
+        <aside class="wjs-showcase__homepage-element wjs-showcase__homepage-element-{{ forloop.counter }}">
+          {% include element.template_path %}
+        </aside>
+      {% else %}
+        <div class="wjs-showcase__homepage-element wjs-showcase__homepage-element-{{ forloop.counter }}">
+          {% include element.template_path %}
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
   {% include "wjs/base/elements/funders.html" %}

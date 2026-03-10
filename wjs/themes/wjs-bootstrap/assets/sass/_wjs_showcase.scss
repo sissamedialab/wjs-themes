@@ -154,18 +154,14 @@
   /// ARTICLE
 
   &__article-card {
-    @extend .p-4, .border-bottom;
-
-    &:last-child {
-      @extend .border-0;
-    }
+    @extend .card, .p-4, .border-top, .shadow-sm;
 
     &--search-result {
       @extend .mb-4;
+    }
 
-      &:last-child {
-        @extend .border-bottom-0;
-      }
+    &:hover {
+      @extend .bg-white;
     }
   }
 

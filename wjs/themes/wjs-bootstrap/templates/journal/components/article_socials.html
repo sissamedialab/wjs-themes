@@ -1,5 +1,5 @@
 <div class="wjs-showcase__article-sidebar-content">
-  <h3 class="wjs-showcase__sidebar-title">{% trans "Share" %}</h3>
+  <h2 class="wjs-showcase__sidebar-title">{% trans "Share" %}</h2>
   {% with article.get_doi_url as doi_url %}
     <a class="btn btn-small btn-primary shadow-sm"
        href="https://www.facebook.com/share.php?p[url]= {% if doi_url %}{{ doi_url }}{% else %}{{ article.url }}{% endif %}"

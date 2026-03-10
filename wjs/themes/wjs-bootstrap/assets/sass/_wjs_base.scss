@@ -360,7 +360,7 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 // SUBMISSION NAVIGATION STEPS
 
 .wjs-submission-container {
-  @extend .bg-white, .border, .rounded, .mt-5, .py-5, .px-3, .w-100;
+  @extend .bg-white, .border, .rounded, .mt-3, .py-5, .px-3, .w-100;
   border-color: $gray-400;
 }
 
