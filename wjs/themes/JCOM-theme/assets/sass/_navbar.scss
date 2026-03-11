@@ -2,6 +2,9 @@ nav {
   color: color("blue-grey", "darken-4");
   background-color: color("blue-grey", "lighten-5");
   height: auto;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 
   li {
     line-height: 56px;
