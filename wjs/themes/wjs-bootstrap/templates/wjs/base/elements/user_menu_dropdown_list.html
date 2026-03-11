@@ -17,7 +17,7 @@ Bonus:
  - have a reference of all the urls used in the template
 
 {% endcomment %}
-
+{% url "wjs_submission_1" as wjs_submission %}
 {% url 'submission_start' as submission_start %}
 {% url 'core_manager_index' as core_manager_index %}
 {% url 'manage_archive_article' article.pk as manage_archive_article %}
@@ -42,7 +42,11 @@ Bonus:
 {% url 'wjs_article_details' article.articleworkflow.pk as wjs_article_details %}
 
 <ul class="dropdown-menu mb-2" aria-labelledby="user-menu">
-  {% if not journal_settings.general.disable_journal_submission and submission_start %}
+  {% if not journal_settings.general.disable_journal_submission and wjs_submission %}
+     <li class="nav-item wjs-nav-item">
+      <a class="dropdown-item" href="{{ wjs_submission }}">{% trans "Submit" %}</a>
+    </li>
+  {% elif not journal_settings.general.disable_journal_submission and submission_start %}
      <li class="nav-item wjs-nav-item">
       <a class="dropdown-item" href="{{ submission_start }}">{% trans "Submit" %}</a>
     </li>
