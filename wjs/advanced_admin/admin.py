@@ -87,11 +87,20 @@ class GalleyInline(admin.StackedInline):
 @admin.register(Article, site=advanced_admin_site)
 class ArticleAdmin(admin.ModelAdmin):
     readonly_fields = ("title",)
-    fields = ("title", "source_files", "manuscript_files", "data_figure_files", "supplementary_files")
+    fields = (
+        "title",
+        "source_files",
+        "manuscript_files",
+        "data_figure_files",
+        "supplementary_files",
+        "date_published",
+        "comments_editor",
+    )
     autocomplete_fields = ("source_files", "manuscript_files", "data_figure_files", "supplementary_files")
-    list_display = ["pubid", "title", "journal", "state"]
+    list_display = ["title", "pubid", "journal", "state", "identifier"]
     list_filter = ["journal", "articleworkflow__state"]
-    search_fields = ("article__identifier__identifier",)
+    ordering = ("-pk",)
+    search_fields = ("identifier__identifier", "pk")
     inlines = (GalleyInline,)
 
     def has_add_permission(self, request: HttpRequest) -> bool:  # noqa: PLR6301
@@ -116,7 +125,7 @@ class ArticleAdmin(admin.ModelAdmin):
         :return: The display name of the current state of the object's workflow
         :rtype: str
         """
-        return obj.articleworkflow.get_state_display()
+        return obj.articleworkflow.get_state_display() if hasattr(obj, "articleworkflow") else None
 
     def pubid(self, obj: Article) -> str:  # noqa: PLR6301
         """
