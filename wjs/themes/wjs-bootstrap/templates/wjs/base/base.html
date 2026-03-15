@@ -12,9 +12,9 @@
   {% endblock journal_css %}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   {% if request.journal.favicon %}
-    <link rel="icon" href="{{ journal.favicon.url }}" type="image/vnd.microsoft.icon" />
+    <link rel="icon" href="{{ journal.favicon.url }}" type="image/vnd.microsoft.icon"/>
   {% elif request.repository.favicon %}
-    <link rel="icon" href="{{ request.repository.favicon.url }}" type="image/vnd.microsoft.icon" />
+    <link rel="icon" href="{{ request.repository.favicon.url }}" type="image/vnd.microsoft.icon"/>
   {% endif %}
 {% endblock bootstrap5_extra_head %}
 {% block bootstrap5_content %}
@@ -29,16 +29,18 @@
 
     {% block breadcrumbs_wrapper %}
     {% endblock breadcrumbs_wrapper %}
+
     {% block content_wrapper %}
+      {% if messages %}
       <aside class="container flex-grow-1">
         <div class="row">
-          <div id="messages-container" aria-live="polite" role="status" class="col-12"></div>
-          <div id="message" class="d-none">
-            {% bootstrap_messages %}
-          </div>
+          <div id="js-messages-display" aria-live="polite" role="status" class="col-12"></div>
+          <div id="js-message-storage" class="d-none">{% bootstrap_messages %}</div>
         </div>
       </aside>
+      {% endif %}
     {% endblock messages_wrapper %}
+
     {% block content_wrapper %}
       <main class="container flex-grow-1">
         <div class="row">
@@ -83,17 +85,17 @@
         document.body.addEventListener("htmx:beforeRequest", showSpinner);
         document.body.addEventListener("htmx:afterRequest", hideSpinner);
 
-        document.addEventListener("DOMContentLoaded", function() {
-          const message = document.getElementById('message');
-          const container = document.getElementById('messages-container');
+        document.addEventListener("DOMContentLoaded", function () {
+          const messageList = document.getElementById('js-message-storage');
+          const messageDisplay = document.getElementById('js-messages-display');
 
-          if (message && message.querySelector('.alert')) {
-              setTimeout(() => {
-                  container.innerHTML = message.innerHTML;
-                  message.innerHTML = '';
-              }, 800);
+          if (messageList && messageList.querySelector('.alert')) {
+            setTimeout(() => {
+              messageDisplay.innerHTML = messageList.innerHTML;
+              messageList.innerHTML = '';
+            }, 800);
           }
-      });
+        });
       </script>
 
     {% endblock js %}
