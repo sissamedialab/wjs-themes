@@ -98,10 +98,20 @@ class ArticleAdmin(admin.ModelAdmin):
     )
     autocomplete_fields = ("source_files", "manuscript_files", "data_figure_files", "supplementary_files")
     list_display = ["title", "pubid", "journal", "state", "identifier"]
-    list_filter = ["journal", "articleworkflow__state"]
     ordering = ("-pk",)
     search_fields = ("identifier__identifier", "pk")
     inlines = (GalleyInline,)
+
+    def get_list_filter(self, request: HttpRequest) -> list[str]:  # noqa: PLR6301
+        """
+        Retrieve the list of filters to be applied in the list view.
+
+        :param request: The current HTTP request object
+        :type request: HttpRequest
+        :return: A list of filter fields
+        :rtype: list
+        """
+        return ["journal", "articleworkflow__state"]
 
     def has_add_permission(self, request: HttpRequest) -> bool:  # noqa: PLR6301
         """
