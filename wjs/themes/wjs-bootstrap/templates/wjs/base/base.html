@@ -29,16 +29,19 @@
 
     {% block breadcrumbs_wrapper %}
     {% endblock breadcrumbs_wrapper %}
-    {% block content_wrapper %}
-      <main class="container">
+    {% block messages_wrapper %}
+      <aside class="container">
         <div class="row">
-          <div id="messages-container" aria-live="polite" role="status" class="col-12">
-          </div>
-
+        <div id="messages-container" aria-live="polite" role="status" class="col-12"></div>
           <div id="message" class="d-none">
             {% bootstrap_messages %}
           </div>
-
+          </div>
+      </aside>
+    {% endblock messages_wrapper %}
+    {% block content_wrapper %}
+      <main class="container">
+        <div class="row">
           {% block page_title_wrapper %}
             <div class="col-sm-12">
               <h1 class="wjs-showcase__main-title">
