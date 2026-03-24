@@ -11,7 +11,11 @@
     {% if article|has_attr:"ancestors" and article.ancestors.exists %}
       {% with parent=article.ancestors.first.parent %}
         <p>
-          <span>{% trans "part of" %}</span>
+          {% if article.section.name == "Erratum" or article.section.name == "Addendum" %}
+            <span>{% trans "This is a correction for" %}</span>
+          {% else %}
+            <span>{% trans "part of" %}</span>
+          {% endif %}
           <a href="{{ parent.url }}">{{ parent.title }}</a>
         </p>
       {% endwith %}

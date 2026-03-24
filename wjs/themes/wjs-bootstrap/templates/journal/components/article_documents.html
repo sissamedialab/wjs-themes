@@ -1,49 +1,56 @@
 {% load i18n %}
 {% load wjs_tags %}
 {% if article|article_has_children %}
-  <div class="wjs-showcase__article-accordion accordion shadow-sm" id="articleDocumentsAccordion">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="articleDocumentsHeader">
-        <button
-          class="wjs-showcase__article-accordion-button accordion-button"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#articleDocumentsCollapse"
-          aria-expanded="false"
-          aria-controls="articleDocumentsCollapse"
+  {% regroup article.genealogy.children.all by section as children_by_section %}
+  {% for group in children_by_section %}
+    <div class="wjs-showcase__article-accordion accordion shadow-sm" id="articleDocumentsAccordion{{ forloop.counter }}">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="articleDocumentsHeader{{ forloop.counter }}">
+          <button
+            class="wjs-showcase__article-accordion-button accordion-button{% if group.list|length >= 3 %} collapsed{% endif %}"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#articleDocumentsCollapse{{ forloop.counter }}"
+            aria-expanded="{% if group.list|length >= 3 %}false{% else %}true{% endif %}"
+            aria-controls="articleDocumentsCollapse{{ forloop.counter }}"
+          >
+            {% if group.grouper.name == "Erratum" %}
+              {% trans "This article is corrected by" %}
+            {% else %}
+              {% blocktrans with plural=group.grouper.plural|lower %}Invited {{ plural }}{% endblocktrans %}
+            {% endif %}
+          </button>
+        </h2>
+        <div
+          id="articleDocumentsCollapse{{ forloop.counter }}"
+          class="accordion-collapse collapse{% if group.list|length < 3 %} show{% endif %}"
+          aria-labelledby="articleDocumentsHeader{{ forloop.counter }}"
+          data-bs-parent="#articleDocumentsAccordion{{ forloop.counter }}"
         >
-          {% trans "Invited commentaries" %}
-        </button>
-      </h2>
-      <div
-        id="articleDocumentsCollapse"
-        class="accordion-collapse collapse show"
-        aria-labelledby="articleDocumentsHeader"
-        data-bs-parent="#articleDocumentsAccordion"
-      >
-        <div class="accordion-body">
-          {% for kid in article.genealogy.children.all %}
-            <div class="wjs-showcase__article-card">
-              <div class="wjs-showcase__article-card-header">
-                <h3 class="wjs-showcase__article-card-title">
-                  <a class="wjs-showcase__article-title-link" href="{{ kid.url }}">{{ kid.title }}</a>
-                </h3>
-                <div class="wjs-showcase__article-date">
-                  <i class="bi bi-calendar3"></i>
-                  {{ kid.date_published|date:DATE_FORMAT }}
+          <div class="accordion-body">
+            {% for kid in group.list %}
+              <div class="wjs-showcase__article-card">
+                <div class="wjs-showcase__article-card-header">
+                  <h3 class="wjs-showcase__article-card-title">
+                    <a class="wjs-showcase__article-title-link" href="{{ kid.url }}">{{ kid.title }}</a>
+                  </h3>
+                  <div class="wjs-showcase__article-date">
+                    <i class="bi bi-calendar3"></i>
+                    {{ kid.date_published|date:DATE_FORMAT }}
+                  </div>
                 </div>
+                <div class="wjs-showcase__article-authors">
+                  by
+                  {% for au in kid.frozen_authors.all %}
+                    <a href="{% url 'articles_by_author' au.pk %}">{{ au.full_name }}</a>{# djlint:off #}{% if forloop.revcounter0 >= 2 %},{% endif %}{% if forloop.revcounter0 == 1 %} and{% endif %}{# djlint:on #}
+                  {% endfor %}
+                </div>
+                <div class="wjs-showcase__article-card-text">{{ kid.abstract|default:""|safe|truncatewords_html:23 }}</div>
               </div>
-              <div class="wjs-showcase__article-authors">
-                by
-                {% for au in kid.frozen_authors.all %}
-                  <a href="{% url 'articles_by_author' au.pk %}">{{ au.full_name }}</a>{# djlint:off #}{% if forloop.revcounter0 >= 2 %},{% endif %}{% if forloop.revcounter0 == 1 %} and{% endif %}{# djlint:on #}
-                {% endfor %}
-              </div>
-              <div class="wjs-showcase__article-card-text">{{ kid.abstract|safe|truncatewords_html:23 }}</div>
-            </div>
-          {% endfor %}
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  {% endfor %}
 {% endif %}
