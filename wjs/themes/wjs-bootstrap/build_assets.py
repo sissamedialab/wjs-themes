@@ -18,6 +18,7 @@ from django.core.management import call_command
 BASE_THEME_DIR = Path(settings.BASE_DIR) / "static" / "wjs-bootstrap"
 SRC_THEME_DIR = Path(__file__).parent
 THEME_CSS_FILES = [
+    BASE_THEME_DIR / "css" / "base.css",
     BASE_THEME_DIR / "css" / "wjs_review.css",
     BASE_THEME_DIR / "css" / "wjs_jcom.css",
     BASE_THEME_DIR / "css" / "wjs_jcomal.css",

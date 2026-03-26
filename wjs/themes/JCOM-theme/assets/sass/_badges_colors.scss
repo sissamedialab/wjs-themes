@@ -167,6 +167,10 @@ $color-section-book-review: #bebada;
 $hover-section-book-review: darken($color-section-book-review, 10%);
 $color-section-conference-review: #fb8072;
 $hover-section-conference-review: darken($color-section-conference-review, 10%);
+$color-section-erratum: #8407b2;
+$hover-section-erratum: darken($color-section-erratum, 10%);
+$color-section-addendum: #cba308;
+$hover-section-addendum: darken($color-section-addendum, 10%);
 
 $badge-radius: 1em;
 
@@ -175,6 +179,24 @@ span.badge {
   &.color-section {
     &-article {
       background-color: #88ccee; // article
+      border-radius: $badge-radius;
+      color: #000;
+    }
+
+    &-paper {
+      background-color: $color-section-article; // article
+      border-radius: $badge-radius;
+      color: #000;
+    }
+
+    &-erratum {
+      background-color: $color-section-erratum; // article
+      border-radius: $badge-radius;
+      color: #000;
+    }
+
+    &-addendum {
+      background-color: $color-section-addendum; // addendum
       border-radius: $badge-radius;
       color: #000;
     }
@@ -462,6 +484,21 @@ span.badge {
   .color-section {
     &-article {
       background-color: $color-section-article;
+      border-radius: $badge-radius;
+    }
+
+    &-paper {
+      background-color: $color-section-article;
+      border-radius: $badge-radius;
+    }
+
+    &-erratum {
+      background-color: $color-section-erratum;
+      border-radius: $badge-radius;
+    }
+
+    &-addendum {
+      background-color: $color-section-addendum;
       border-radius: $badge-radius;
     }
 
