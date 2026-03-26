@@ -172,6 +172,10 @@ $color-section-4: #bebada;
 $hover-section-4: darken($color-section-4, 10%);
 $color-section-7: #fb8072;
 $hover-section-7: darken($color-section-7, 10%);
+$color-section-25: #8407b2;
+$hover-section-25: darken($color-section-25, 10%);
+$color-section-26: #cba308;
+$hover-section-26: darken($color-section-26, 10%);
 
 $badge-radius: 1em;
 
@@ -232,6 +236,17 @@ span.badge {
     &-10,
     &-18 {
       background-color: #e48100; // review article
+      border-radius: $badge-radius;
+    }
+
+    // these styles are replaced in wjs-develop, when resolving conflicts drop these changes
+    &-25 {
+      background-color: $color-section-25; // erratum
+      border-radius: $badge-radius;
+    }
+
+    &-26 {
+      background-color: $color-section-26; // addendum
       border-radius: $badge-radius;
     }
   }
@@ -559,6 +574,16 @@ span.badge {
 
     &-7 {
       background-color: $color-section-7;
+      border-radius: $badge-radius;
+    }
+
+    &-25 {
+      background-color: $color-section-25;
+      border-radius: $badge-radius;
+    }
+
+    &-26 {
+      background-color: $color-section-26; // addendum
       border-radius: $badge-radius;
     }
   }
