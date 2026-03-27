@@ -1,12 +1,12 @@
-{% if page.paginator.num_pages > 1 %}
+{% if page_obj.paginator.num_pages > 1 %}
 
   <div class="d-flex align-items-center justify-content-center">
-    <div class="mx-1">{% translate "Total" %}: {{ page.paginator.count }} {% translate "records" %}</div>
+    <div class="mx-1">{% translate "Total" %}: {{ page_obj.paginator.count }} {% translate "records" %}</div>
     <nav aria-label="Page navigation">
       <ul class="wjs-showcase__pagination mb-0 mx-1">
-        {% if page.has_previous %}
+        {% if page_obj.has_previous %}
           <li class="page-item">
-            <a class="page-link" href="?page={{ page.previous_page_number }}&{{ querystring.urlencode }}" tabindex="-1" aria-label="Previous page">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}&{{ querystring.urlencode }}" tabindex="-1" aria-label="Previous page">
               <i class="bi bi-chevron-left"></i>
             </a>
           </li>
@@ -18,16 +18,16 @@
           </li>
         {% endif %}
 
-        {% for num in page.paginator.page_range %}
-          {% if page.number == num %}
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
             <li class="page-item active">
               <a class="page-link">{{ num }}</a>
             </li>
-          {% elif num > page.number|add:"-3" and num < page.number|add:"3" %}
+          {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
             <li class="page-item">
               <a class="page-link" href="?page={{ num }}&{{ querystring.urlencode }}">{{ num }}</a>
             </li>
-          {% elif num > page.number|add:"-4" and num < page.number|add:"4" %}
+          {% elif num > page_obj.number|add:"-4" and num < page_obj.number|add:"4" %}
             <li class="page-item">
               <a class="page-link" href="?page={{ num }}&{{ querystring.urlencode }}">
                 <i class="bi bi-three-dots"></i>
@@ -36,9 +36,9 @@
           {% endif %}
         {% endfor %}
 
-        {% if page.has_next %}
+        {% if page_obj.has_next %}
           <li class="page-item">
-            <a class="page-link" href="?page={{ page.next_page_number }}&{{ querystring.urlencode }}" aria-label="Next page">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}&{{ querystring.urlencode }}" aria-label="Next page">
               <i class="bi bi-chevron-right"></i>
             </a>
           </li>
