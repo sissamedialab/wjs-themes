@@ -41,7 +41,7 @@
                         {{ news_item.posted|date:"Y-m-d" }}
                     </span>
           {% if not news_item.large_image_file or request.journal and not request.journal.default_large_image or not request.press.default_carousel_image %}
-            <h2 class="article-title">{{ news_item.title }}</h2>
+            <h2 class="article-title">{{ news_item.title|safe }}</h2>
           {% endif %}
           {{ news_item|news_part:'abstract'|safe }}
         </div>
