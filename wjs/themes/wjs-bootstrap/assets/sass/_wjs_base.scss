@@ -687,3 +687,17 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 .header-main .wjs-logo-container {
   transition: all 0.3s ease;
 }
+
+.wjs-top-help-text {
+  @extend .d-flex, .flex-column;
+
+  .form-label {
+    order: 1;
+  }
+  .tox {
+    order: 3;
+  }
+  .form-text {
+    order: 2;
+  }
+}
