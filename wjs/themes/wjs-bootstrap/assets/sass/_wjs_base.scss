@@ -688,16 +688,30 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
   transition: all 0.3s ease;
 }
 
-.wjs-top-help-text {
+.form-field-help-text-order {
   @extend .d-flex, .flex-column;
 
   .form-label {
     order: 1;
   }
-  .tox {
+  .tox,
+  .form-control {
     order: 3;
   }
   .form-text {
     order: 2;
+  }
+  .form-field-error {
+    order: 4;
+  }
+}
+
+.form-field-error-alert {
+  .invalid-feedback {
+    @extend .alert, .alert-danger, .text-danger;
+
+    a {
+      @extend .text-black;
+    }
   }
 }
