@@ -7,9 +7,9 @@
   {% if filter_by %}
     {{ filter_by.title }}: {{ filter_by.filtering_object }}
   {% elif view.exclude_children %}
-    {% trans "Publications" %}
+    {% translate "Publications" %}
   {% else %}
-    {% trans "Search" %}
+    {% translate "Search" %}
   {% endif %}
 {% endblock page_title %}
 
@@ -17,27 +17,55 @@
   {% if filter_by %}
     {{ filter_by.title }}: {{ filter_by.filtering_object }}
   {% elif view.exclude_children %}
-    {% trans "Publications" %}
+    {% translate "Publications" %}
   {% else %}
-    {% trans "Search" %}
+    {% translate "Search" %}
   {% endif %}
 {% endblock title %}
 
 {% block content %}
+  <div class="wjs-showcase__top-of-page" tabindex="-1"></div>
+
   {% translate "Advanced Search" as advanced_search_label %}
+  {# djlint:off #}
+  {% translate "Selected filters <i class=\"bi bi-chevron-expand\"></i>" as selected_filters_label %}
+  {# djlint:on #}
   <div class="col-sm-12">
     {% if filter_by %}
       <a class="wjs-showcase__go-back-link" href="{% url "journal_articles" %}">
         <i class="bi bi-caret-left-fill"></i>
-        {% trans "Browse all Publications" %}
+        {% translate "Browse all Publications" %}
       </a>
     {% endif %}
+
     <div class="wjs-showcase__search-container">
       {% if not filter_by %}
         <div class="wjs-showcase__search-card">
           {% include "journal/components/search_sidebar.html" %}
           {% include "wjs/base/elements/modal.html" with include_path="journal/components/search_modal.html" modal_id="advanced_search" modal_title=advanced_search_label modal_size="modal-lg" %}
-          <p class="text-end mt-2">
+          {% if form.selected_filters.items %}
+            <section id="active-filters-container" class="wjs-showcase__active-filters-container" aria-labelledby="filters-header" aria-live="polite">
+              {% bootstrap_button button_type="link" button_class="wjs-showcase__filter-header" data_bs_toggle="collapse" data_bs_target="#selected_filters" aria_expanded="false" aria_controls="selected_filters" content=selected_filters_label %}
+              <div class="collapse mt-3" id="selected_filters">
+                <div class="d-flex flex-wrap gap-3">
+                  {% for field, value in form.selected_filters.items %}
+                    {% if value %}
+                      <div class="d-flex align-items-center me-2">
+                        <strong class="wjs-showcase__filter-title">{{ field|title }}:</strong>
+                        <ul class="list-unstyled d-flex flex-wrap gap-1 m-0 p-0">
+                          {% for item in value %}
+                            <li><span class="wjs-showcase__filter-badge">{{ item }}</span></li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </section>
+          {% endif %}
+
+          <p class="text-end mt-2 fw-bolder">
             {% if paginator.count %}
               {% blocktrans count counter=paginator.count %}
                 {{ counter }} publication found
@@ -45,18 +73,26 @@
                 {{ counter }} publications found
               {% endblocktrans %}
             {% else %}
-              {% trans "No articles to display." %}
+              <span class="text-danger">
+              {% translate "No manuscripts match your search criteria." %}
+              </span>
             {% endif %}
           </p>
         </div>
       {% endif %}
-      {% for article in articles %}
-        {% include "journal/components/article_listing.html" with article=article article_class="wjs-showcase__article-card--search-result" %}
-      {% endfor %}
+
+      <ul class="list-group">
+        {% for article in articles %}
+          {% include "journal/components/article_listing.html" with article=article article_class="wjs-showcase__article-card--search-result" %}
+        {% endfor %}
+      </ul>
     </div>
   </div>
 
   {% include "wjs/base/elements/pagination.html" with page=page_obj %}
+
+  {% bootstrap_button content='<i class="bi bi-arrow-up" aria-hidden="true"></i>' button_type="button" button_class="btn-primary wjs-showcase__back-to-top d-none" id="btn-back-to-top" %}
+
 {% endblock content %}
 
 {% block js %}
@@ -64,25 +100,54 @@
   <script>
     function syncKeywords(field, matchingForm) {
       const matchingField = matchingForm.querySelector(`#${field.id}`);
-      matchingField.checked = field.checked;
+      if (matchingField) matchingField.checked = field.checked;
     }
 
     document.addEventListener("DOMContentLoaded", function() {
       const urlParams = new URLSearchParams(window.location.search);
+
       if (urlParams.get("modal") === "1") {
-        const modal = new bootstrap.Modal(document.getElementById("advanced_search"));
-        modal.show();
+        const modalElement = document.getElementById("advanced_search");
+        if (modalElement) {
+          const modal = new bootstrap.Modal(modalElement);
+          modal.show();
+        }
       }
 
-      // Whenever a keyword is selected, pick the matching element in the other form and
-      // sync the checked value
       const modalSearch = document.getElementById("modal_search");
       const keywords = document.querySelectorAll("[name=keywords]");
       keywords.forEach(field => {
         field.addEventListener("input", function() {
-          syncKeywords(this, modalSearch);
+          if (modalSearch) syncKeywords(this, modalSearch);
         });
       });
+
+      const backToTopBtn = document.getElementById("btn-back-to-top");
+      const topOfPageAnchor = document.querySelector(".wjs-showcase__top-of-page");
+
+      if (backToTopBtn) {
+        backToTopBtn.setAttribute("aria-label", "{% translate 'Back to top' %}");
+        backToTopBtn.setAttribute("aria-hidden", "true");
+
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 400) {
+            backToTopBtn.classList.remove("d-none");
+            backToTopBtn.classList.add("d-flex");
+            backToTopBtn.setAttribute("aria-hidden", "false");
+          } else {
+            backToTopBtn.classList.add("d-none");
+            backToTopBtn.classList.remove("d-flex");
+            backToTopBtn.setAttribute("aria-hidden", "true");
+          }
+        });
+
+        backToTopBtn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          if (topOfPageAnchor) {
+            topOfPageAnchor.focus({ preventScroll: true });
+          }
+        });
+      }
     });
   </script>
 {% endblock js %}

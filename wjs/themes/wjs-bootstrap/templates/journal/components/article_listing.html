@@ -1,8 +1,8 @@
 {% load static %}
 {% load i18n %}
-{% load wjs_tags %}
+{% load wjs_tags wjs_articles %}
 {% url 'articles_by_section' article.section.pk as by_url %}
-
+{% article_css_classes article.articleworkflow as article_classes %}
 <li class="wjs-showcase__article-card {{ article_class }} list-group-item">
   <article>
     <div class="wjs-showcase__article-card-header justify-content-between">
@@ -14,7 +14,7 @@
           {% endif %}
         </span>
       <a href="{{ by_url }}">
-        <span class="wjs-showcase__article-badge color-section-{{ article.section.id }}">{{ article.section.name }}</span>
+        <span class="wjs-showcase__article-badge {{ article_classes.section_css }}">{{ article.section.name }}</span>
       </a>
     </div>
 
