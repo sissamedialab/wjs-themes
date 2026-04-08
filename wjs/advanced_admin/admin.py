@@ -5,6 +5,7 @@ from core.models import File, Galley, SupplementaryFile, XSLFile
 from django import forms
 from django.contrib import admin
 from django.http import HttpRequest
+from plugins.typesetting.models import GalleyProofing
 from submission.models import Article
 
 from .admin_site import AdvancedAdminSite
@@ -147,3 +148,53 @@ class ArticleAdmin(admin.ModelAdmin):
         :rtype: str
         """
         return obj.get_pubid()
+
+
+@admin.register(GalleyProofing, site=advanced_admin_site)
+class GalleyProofingAdmin(admin.ModelAdmin):
+    """
+    Admin interface for managing GalleyProofing notes.
+    """
+
+    fields = ("notes",)
+    list_display = ("article_pubid", "article_title", "article_journal", "manager", "proofreader", "round")
+
+    list_filter = ("round__article__journal",)
+    search_fields = (
+        "round__article__identifier__identifier",
+        "manager__email",
+        "proofreader__email",
+    )
+
+    def article_pubid(self, obj: GalleyProofing) -> str:  # noqa: PLR6301
+        """
+        Retrieve the Article.pubid.
+
+        :param obj: The object whose workflow state display name is retrieved
+        :type obj: GalleyProofing
+        :return: The pubid of the round article
+        :rtype: str
+        """
+        return obj.round.article.get_pubid()
+
+    def article_title(self, obj: GalleyProofing) -> str:  # noqa: PLR6301
+        """
+        Retrieve the Article.title.
+
+        :param obj: The object whose workflow state display name is retrieved
+        :type obj: GalleyProofing
+        :return: The title of the round article
+        :rtype: str
+        """
+        return obj.round.article.title
+
+    def article_journal(self, obj: GalleyProofing) -> str:  # noqa: PLR6301
+        """
+        Retrieve the Article.journal.
+
+        :param obj: The object whose workflow state display name is retrieved
+        :type obj: GalleyProofing
+        :return: The journal of the round article
+        :rtype: str
+        """
+        return obj.round.article.journal.name if obj.round.article.journal else None
