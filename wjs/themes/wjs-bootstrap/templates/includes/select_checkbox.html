@@ -1,18 +1,57 @@
-  <div class="{{ wrapper_class|default:"flex-fill" }}">
-  <label for="{{ field.auto_id }}-dropdown" class="wjs-showcase__search-label">{% firstof custom_field_label field.label %}</label>
-  <div class="wjs-showcase__search-dropdown">
-      <button class="wjs-showcase__search-dropdown-toggle {% if field.errors %}is-invalid{% elif server_side_validation %}is-valid{% endif %}" type="button" id="{{ field.auto_id }}-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-        {{ field.label }}
-      </button>
-      <div class="wjs-showcase__search-dropdown-menu dropdown-menu" aria-labelledby="{{ field.auto_id }}-dropdown">
-        {% for field_value in field %}
-          <div class="wjs-showcase__search-form-check">
-            <input type="checkbox" name="{{ field.name }}" value="{{ field_value.data.value }}" class="wjs-showcase__search-form-check-input" id="{{ field_value.id_for_label }}" {% if field_value.data.selected %}checked{% endif %}>
-            <label class="wjs-showcase__search-form-check-label" for="{{ field_value.id_for_label }}">
-              {{ field_value.data.label }}
-            </label>
-          </div>
-        {% endfor %}
-      </div>
+<div class="{{ wrapper_class|default:"flex-fill" }}">
+  <label for="{{ field.auto_id }}-dropdown" class="wjs-showcase__search-label">
+    {% firstof custom_field_label field.label %}
+  </label>
+
+  <div class="wjs-showcase__search-dropdown js-filter-dropdown">
+    <button class="wjs-showcase__search-dropdown-toggle {% if field.errors %}is-invalid{% elif server_side_validation %}is-valid{% endif %}"
+            type="button"
+            id="{{ field.auto_id }}-dropdown"
+            data-bs-toggle="dropdown"
+            data-bs-auto-close="outside"
+            aria-expanded="false"
+            data-default-label="{{ field.label }}">
+      <span class="js-dropdown-label">{{ field.label }}</span>
+    </button>
+
+    <div class="wjs-showcase__search-dropdown-menu dropdown-menu" aria-labelledby="{{ field.auto_id }}-dropdown">
+      {% for field_value in field %}
+        <div class="wjs-showcase__search-form-check">
+          <input type="checkbox"
+                 name="{{ field.name }}"
+                 value="{{ field_value.data.value }}"
+                 class="wjs-showcase__search-form-check-input js-checkbox"
+                 id="{{ field_value.id_for_label }}"
+                 {% if field_value.data.selected %}checked{% endif %}>
+          <label class="wjs-showcase__search-form-check-label" for="{{ field_value.id_for_label }}">
+            {{ field_value.data.label }}
+          </label>
+        </div>
+      {% endfor %}
     </div>
   </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.js-filter-dropdown').forEach(dropdown => {
+        const labelSpan = dropdown.querySelector('.js-dropdown-label');
+        const checkboxes = dropdown.querySelectorAll('.js-checkbox');
+        const toggleButton = dropdown.querySelector('button');
+        const defaultText = toggleButton.dataset.defaultLabel;
+
+        const updateText = () => {
+            const count = Array.from(checkboxes).filter(cb => cb.checked).length;
+
+            if (count === 0) {
+                labelSpan.textContent = defaultText;
+            } else {
+                labelSpan.textContent = `${count} {% trans "selected" %}`;
+            }
+        };
+
+        dropdown.addEventListener('change', updateText);
+        updateText(); // Esecuzione al caricamento della pagina
+    });
+});
+</script>

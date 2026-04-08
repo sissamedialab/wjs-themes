@@ -1,5 +1,5 @@
 {% load django_bootstrap5 i18n %}
-{% translate "More options" as more_options_label %}
+{% translate "Advanced search" as more_options_label %}
 {% translate "Search" as search_label %}
 {% translate "Reset" as reset_label %}
 
@@ -18,7 +18,7 @@
   <div class="d-flex justify-content-end gap-3">
     {% bootstrap_button button_type="link" href="#" button_class="btn-link" data_bs_toggle="modal" data_bs_target="#advanced_search" content=more_options_label %}
     {% bootstrap_button button_type="button" onclick="window.location.href='.'" button_class="btn-secondary " content=reset_label %}
-    {% bootstrap_button button_type="submit" button_class="btn-primary " content=search_label %}
+    {% bootstrap_button button_type="submit" button_class="btn-primary" content=search_label %}
   </div>
 
 </form>
