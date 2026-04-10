@@ -1,6 +1,7 @@
 {% load roles wjs_tags %}
 {% user_has_role request 'section-editor' False as user_is_editor %}
 {% user_has_role request 'author' False as user_is_author %}
+{% user_has_role request 'coauthor' False as user_is_coauthor %}
 {% user_has_role request 'reviewer' False as user_is_reviewer %}
 {% user_has_role request 'director' False as user_is_director %}
 {% user_has_role request 'typesetter' False as user_is_typesetter %}
@@ -52,6 +53,11 @@ Bonus:
     </li>
   {% endif %}
   {% if user_is_author and wjs_review_author_pending %}
+     <li class="nav-item wjs-nav-item">
+      <a class="dropdown-item" href="{{ wjs_review_author_pending }}">{% trans "My Author Pages" %}</a>
+    </li>
+  {% endif %}
+  {% if user_is_coauthor and wjs_review_author_pending %}
      <li class="nav-item wjs-nav-item">
       <a class="dropdown-item" href="{{ wjs_review_author_pending }}">{% trans "My Author Pages" %}</a>
     </li>
