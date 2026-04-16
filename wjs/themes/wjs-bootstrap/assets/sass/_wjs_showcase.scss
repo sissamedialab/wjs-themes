@@ -47,6 +47,10 @@
     ul {
       @extend .ps-3;
     }
+
+    img {
+      @extend .img-fluid;
+    }
   }
 
   &__submission-aside {
