@@ -95,10 +95,14 @@
   }
 
   &__affiliation {
-    @extend .d-flex, .flex-row, .align-items-center, .justify-content-between, .gap-3, .mb-3;
+    @extend .card, .d-flex, .flex-row, .align-items-center, .justify-content-between, .gap-3, .p-3;
 
     &-info {
-      @extend .w-50;
+      @extend .flex-grow-1;
+
+      &-title {
+        @extend .fw-bold, .text-primary;
+      }
     }
 
     &-actions {
@@ -107,6 +111,25 @@
 
     &-button {
       @extend .btn, .btn-outline-primary;
+    }
+
+    &-is-primary,
+    &-custom-name,
+    &-date {
+      .form-label {
+        &:first-child {
+          @extend .fw-bold, .text-primary;
+        }
+      }
+
+      .form-check {
+        @extend .d-flex, .align-items-center, .gap-2;
+
+        &-label {
+          @extend .mb-0;
+          cursor: pointer;
+        }
+      }
     }
   }
 
@@ -119,6 +142,28 @@
 
     .wjs-profile-form__update-button {
       @extend .ms-auto;
+    }
+  }
+}
+
+.wjs-profile-pagination {
+  @extend .pagination;
+
+  .page-item {
+    .page-link {
+      @extend .rounded-0;
+    }
+
+    &:first-of-type {
+      .page-link {
+        @extend .rounded-start;
+      }
+    }
+
+    &:last-of-type {
+      .page-link {
+        @extend .rounded-end;
+      }
     }
   }
 }
