@@ -198,4 +198,14 @@
       display: block;
     }
   }
+
+  table {
+    margin-bottom: 16px;
+  }
+
+  tr {
+    &.hline {
+      display: none;
+    }
+  }
 }
