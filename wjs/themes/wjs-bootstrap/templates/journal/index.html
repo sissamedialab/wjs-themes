@@ -2,7 +2,11 @@
 {% load static truncate %}
 
 {% block title_sidekick %}
-  <a href="{% url "journal_submissions" %}" class="wjs-showcase__submission-sidebar-button" id="start-submission-btn">SUBMIT A PAPER</a>
+  {% url "wjs_submission_1" as submission_start %}
+  {% if not submission_start %}
+    {% url "journal_submissions" as submission_start %}
+  {% endif %}
+  <a href="{{ submission_start }}" class="wjs-showcase__submission-sidebar-button" id="start-submission-btn">SUBMIT A PAPER</a>
 {% endblock title_sidekick %}
 
 {% block page_title %}{{ wjs_latest_articles_title }}{% endblock page_title %}
