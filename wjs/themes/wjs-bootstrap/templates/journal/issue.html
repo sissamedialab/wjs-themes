@@ -7,3 +7,13 @@
 {% block content %}
   {% include "./issue_display.html" %}
 {% endblock content %}
+{% block js %}
+  {{ block.super }}
+  <script>
+    MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] },
+      output: { displayOverflow: 'linebreak' },
+    };
+  </script>
+  <script src='https://cdn.jsdelivr.net/npm/mathjax@4.1.1/tex-mml-chtml.js' async></script>
+{% endblock js %}
