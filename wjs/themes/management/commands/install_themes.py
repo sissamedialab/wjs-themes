@@ -5,6 +5,7 @@ from pathlib import Path
 from django.apps import apps
 from django.conf import settings
 from django.core.management.base import BaseCommand
+from utils.install import update_settings
 
 
 class Command(BaseCommand):
@@ -15,6 +16,9 @@ class Command(BaseCommand):
         destination_folder = (Path(settings.BASE_DIR) / "themes").resolve()
         config = apps.get_app_config("themes")
         themes_folder = config.path
+        settings_path = Path(__file__).parents[3] / "install" / "settings.json"
+        update_settings(file_path=str(settings_path))
+
         for theme in config.themes:
             destination = destination_folder / theme
             self.stdout.write(

@@ -1,5 +1,4 @@
-{% load i18n %}
-{% load wjs_tags %}
+{% load i18n wjs_tags django_bootstrap5 %}
 {% if article|article_has_children %}
   {% regroup article.genealogy.children.all by section as children_by_section %}
   {% for group in children_by_section %}
@@ -15,7 +14,7 @@
             aria-controls="articleDocumentsCollapse{{ forloop.counter }}"
           >
             {% if group.grouper.name == "Erratum" %}
-              {% trans "This article is corrected by" %}
+              {% translate "This article is corrected by" %}
             {% else %}
               {% blocktrans with plural=group.grouper.plural|lower %}Invited {{ plural }}{% endblocktrans %}
             {% endif %}

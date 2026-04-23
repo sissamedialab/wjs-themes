@@ -5,8 +5,8 @@ from core.models import File, Galley, SupplementaryFile, XSLFile
 from django import forms
 from django.contrib import admin
 from django.http import HttpRequest
-from plugins.typesetting.models import GalleyProofing
 from submission.models import Article
+from typesetting.models import GalleyProofing
 
 from .admin_site import AdvancedAdminSite
 

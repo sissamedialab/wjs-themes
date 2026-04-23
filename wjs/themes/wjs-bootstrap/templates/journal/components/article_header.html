@@ -12,9 +12,9 @@
       {% with parent=article.ancestors.first.parent %}
         <p>
           {% if article.section.name == "Erratum" or article.section.name == "Addendum" %}
-            <span>{% trans "This is a correction for" %}</span>
+            <span>{% translate "This is a correction for" %}</span>
           {% else %}
-            <span>{% trans "part of" %}</span>
+            <span>{% translate "part of" %}</span>
           {% endif %}
           <a href="{{ parent.url }}">{{ parent.title }}</a>
         </p>
@@ -38,7 +38,7 @@
       </div>
     {% endif %}
     {% if not article.is_published %}
-      <p><b>This is an accepted article with a DOI pre-assigned that is not yet published.</b></p>
+      <p><b>{% translate "This is an accepted article with a DOI pre-assigned that is not yet published." %}</b></p>
     {% endif %}
     {% if article.abstract and article.abstract != '' %}<p>{{ article.abstract | safe }}</p>{% endif %}
   </div>

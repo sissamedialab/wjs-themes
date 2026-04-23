@@ -71,18 +71,6 @@
     }
   }
 
-  &__orcid-info {
-    img {
-      @extend .rounded-circle;
-      width: 24px;
-    }
-
-    &-text {
-      color: #b59515;
-      text-decoration: none;
-    }
-  }
-
   &__affiliations {
     &-actions {
       @extend .d-flex, .flex-row, .gap-3, .mb-4, .border-top, .border-end, .border-bottom, .border-primary, .p-4;
@@ -142,28 +130,6 @@
 
     .wjs-profile-form__update-button {
       @extend .ms-auto;
-    }
-  }
-}
-
-.wjs-profile-pagination {
-  @extend .pagination;
-
-  .page-item {
-    .page-link {
-      @extend .rounded-0;
-    }
-
-    &:first-of-type {
-      .page-link {
-        @extend .rounded-start;
-      }
-    }
-
-    &:last-of-type {
-      .page-link {
-        @extend .rounded-end;
-      }
     }
   }
 }

@@ -19,7 +19,7 @@
 
           {% if issue.journal.display_issue_doi and issue.doi_url %}
             <p>
-              <b>DOI: </b><a href="{{ issue.doi_url }}">{{ issue.doi_url }}</a>
+              <b>{% translate "DOI:" %}</b> <a href="{{ issue.doi_url }}">{{ issue.doi_url }}</a>
             </p>
           {% endif %}
           {% include "common/elements/guest_editors.html" %}

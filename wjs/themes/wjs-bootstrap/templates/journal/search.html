@@ -67,11 +67,11 @@
 
           <p class="text-end mt-2 fw-bolder">
             {% if paginator.count %}
-              {% blocktrans count counter=paginator.count %}
+              {% blocktranslate count counter=paginator.count %}
                 {{ counter }} publication found
               {% plural %}
                 {{ counter }} publications found
-              {% endblocktrans %}
+              {% endblocktranslate %}
             {% else %}
               <span class="text-danger">
               {% translate "No manuscripts match your search criteria." %}
