@@ -459,7 +459,7 @@
   // SEARCH
 
   &__search-card {
-    @extend .card, .border-bottom, .p-3, .mb-2;
+    @extend .card, .border-bottom, .p-3, .pt-0, .mb-2;
   }
 
   &__search-container {
@@ -527,10 +527,6 @@
 
   &__search-action-link {
     @extend .btn, .btn-link, .me-2;
-  }
-
-  &__search-action-button {
-    @extend .btn, .btn-primary;
   }
 
   // SUBMISSION SIDEBAR

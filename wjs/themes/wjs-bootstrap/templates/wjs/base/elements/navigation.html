@@ -4,7 +4,7 @@
   <ul class="nav">
     {% if request.journal.nav_home %}
       <li class="nav-item wjs-nav-item">
-        <a class="nav-link" href="{% url 'website_index' %}">{% trans "Home" %}</a>
+        <a class="nav-link" href="{% url 'website_index' %}">{% translate "Home" %}</a>
       </li>
     {% endif %}
 
@@ -16,31 +16,31 @@
 
     {% if request.journal.nav_articles %}
       <li class="nav-item wjs-nav-item">
-        <a class="nav-link" href="{% url 'journal_articles' %}">{% trans "Articles" %}</a>
+        <a class="nav-link" href="{% url 'journal_articles' %}">{% translate "Articles" %}</a>
       </li>
     {% endif %}
 
     {% if request.journal.nav_issues %}
       <li class="nav-item wjs-nav-item">
-        <a class="nav-link" href="{% url 'journal_issues' %}">{% trans "Issues" %}</a>
+        <a class="nav-link" href="{% url 'journal_issues' %}">{% translate "Issues" %}</a>
       </li>
     {% endif %}
 
     {% if journal_settings.general.enable_editorial_display %}
       <li class="nav-item wjs-nav-item">
-        <a class="nav-link" href="{% url 'editorial_team' %}">{% trans "Editorial Team" %}</a>
+        <a class="nav-link" href="{% url 'editorial_team' %}">{% translate "Editorial Team" %}</a>
       </li>
     {% endif %}
 
     {% if request.journal.nav_sub %}
       <li class="nav-item wjs-nav-item">
-        <a class="nav-link" href="{% url 'journal_submissions' %}">{% trans "Submission" %}</a>
+        <a class="nav-link" href="{% url 'journal_submissions' %}">{% translate "Submission" %}</a>
       </li>
     {% endif %}
 
     {% if request.journal.nav_contact %}
       <li class="nav-item wjs-nav-item">
-        <a class="nav-link" href="{% url 'contact' %}">{% trans "Contact" %}</a>
+        <a class="nav-link" href="{% url 'contact' %}">{% translate "Contact" %}</a>
       </li>
     {% endif %}
 
@@ -48,11 +48,11 @@
       {% if item.has_sub_nav %}
         <li class="nav-item wjs-nav-item dropdown">
           <button class="nav-link dropdown-toggle"
-             id="dropdown-{{ item.link_name|slugify }}"
-             data-bs-toggle="dropdown"
-             aria-expanded="false"
-             type="button"
-             >
+            id="dropdown-{{ item.link_name|slugify }}"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            type="button"
+          >
             {{ item.link_name }}
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdown-{{ item.link_name|slugify }}">
@@ -78,13 +78,13 @@
     {% if request.journal.nav_review %}
       <li class="nav-item wjs-nav-item">
         <a class="nav-link" href="{% url 'become_reviewer' %}">
-          <i class="bi bi-trophy"></i>&nbsp;{% trans "Become a Reviewer" %}
+          <i class="bi bi-trophy"></i>&nbsp;{% translate "Become a Reviewer" %}
         </a>
       </li>
     {% endif %}
     {% hook 'nav_block' %}
   </ul>
   <a href="{% url 'search' %}?modal=1">
-    {% trans "Advanced search" %}
+    {% translate "Advanced search" %}
   </a>
 </nav>

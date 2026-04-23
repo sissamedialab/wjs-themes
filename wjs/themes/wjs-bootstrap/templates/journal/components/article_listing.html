@@ -1,6 +1,4 @@
-{% load static %}
-{% load i18n %}
-{% load wjs_tags wjs_articles %}
+{% load static i18n wjs_tags wjs_articles %}
 {% url 'articles_by_section' article.section.pk as by_url %}
 {% article_css_classes article.articleworkflow as article_classes %}
 <li class="wjs-showcase__article-card {{ article_class }} list-group-item">
@@ -26,12 +24,12 @@
     </h3>
 
     <p class="wjs-showcase__article-authors">
-      {% trans "by" %}
+      {% translate "by" %}
       {% for author in article.frozen_authors.all %}
         {% url 'articles_by_author' author.author.pk as by_author %}
         {% if forloop.last %}
           {% if article.frozen_authors.all|length > 1 %}
-            {% trans "and" %}
+            {% translate "and" %}
           {% endif %}
         {% endif %}
         <a href="{{ by_author }}">{{ author.full_name }}</a>{# djlint:off #}{% if not forloop.last %}{% if not forloop.counter == article.frozen_authors.all|length|add:-1 %}, {% endif %}{% endif %}{# djlint:on #}
@@ -65,7 +63,7 @@
         {% endif %}
         {% if article.issues.count > 1 %}
           <p>
-            <strong><i class="fa fa-info-circle"></i> {% trans "Also a part of:" %}</strong>
+            <strong><i class="fa fa-info-circle"></i> {% translate "Also a part of:" %}</strong>
           </p>
           {% for other in article.issues.all %}
             {% if other != article.issue %}

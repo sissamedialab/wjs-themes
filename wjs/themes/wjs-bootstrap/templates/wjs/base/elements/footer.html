@@ -4,9 +4,9 @@
       <div class="col-12 col-md-10">
         <div class="wjs-footer__content text-left">
           <p class="wjs-footer__text">
-            {% blocktrans %}
+            {% blocktranslate %}
               Except where otherwise noted, content on this site is licensed under a Creative Commons 4.0 license
-            {% endblocktrans %}
+            {% endblocktranslate %}
           </p>
 
           {% if request.journal.issn %}
@@ -14,12 +14,12 @@
           {% endif %}
 
           {% if request.journal.print_issn %}
-            <p class="wjs-footer__text">{% trans "Print ISSN:" %} {{ request.journal.print_issn }}</p>
+            <p class="wjs-footer__text">{% translate "Print ISSN:" %} {{ request.journal.print_issn }}</p>
           {% endif %}
 
           {% if journal_settings.general.publisher_name %}
             <p class="wjs-footer__text mb-3">
-              {% trans "Published by" %}
+              {% translate "Published by" %}
               {% if journal_settings.general.publisher_url %}
                 <a class="wjs-footer__text-link" href="{{ journal_settings.general.publisher_url }}">
               {% endif %}
@@ -30,7 +30,7 @@
             </p>
           {% endif %}
 
-          <p class="wjs-footer__text">{% trans "VAT number: IT01097780322" %}</p>
+          <p class="wjs-footer__text">{% translate "VAT number: IT01097780322" %}</p>
         </div>
       </div>
 
@@ -38,20 +38,20 @@
         <ul class="wjs-footer__nav">
           {% if journal_settings.general.privacy_policy_url %}
             <li>
-              <a class="wjs-footer__nav-link" href="{{ journal_settings.general.privacy_policy_url }}">{% trans "Privacy" %}</a>
+              <a class="wjs-footer__nav-link" href="{{ journal_settings.general.privacy_policy_url }}">{% translate "Privacy" %}</a>
             </li>
           {% else %}
             <li>
-              <a class="wjs-footer__nav-link" href="{% url 'cms_page' 'privacy' %}">{% trans "Privacy" %}</a>
+              <a class="wjs-footer__nav-link" href="{% url 'cms_page' 'privacy' %}">{% translate "Privacy" %}</a>
             </li>
           {% endif %}
 
           <li>
-            <a class="wjs-footer__nav-link" href="{% url 'cms_page' 'cookie_policy' %}">{% trans "Cookie Policy" %}</a>
+            <a class="wjs-footer__nav-link" href="{% url 'cms_page' 'cookie_policy' %}">{% translate "Cookie Policy" %}</a>
           </li>
 
           <li>
-            <a class="wjs-footer__nav-link" href="{% url 'cms_page' 'contact' %}">{% trans "Contact" %}</a>
+            <a class="wjs-footer__nav-link" href="{% url 'cms_page' 'contact' %}">{% translate "Contact" %}</a>
           </li>
           {% if request.user.is_authenticated %}
             <li>
@@ -59,7 +59,7 @@
             </li>
           {% else %}
           <li>
-            <a class="wjs-footer__nav-link" href="{% url 'core_login' %}">{% trans "Login" %}</a>
+            <a class="wjs-footer__nav-link" href="{% url 'core_login' %}">{% translate "Login" %}</a>
           </li>
           {% endif %}
         </ul>
