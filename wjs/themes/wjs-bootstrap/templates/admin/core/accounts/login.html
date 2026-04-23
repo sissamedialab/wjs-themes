@@ -1,5 +1,5 @@
 {% extends "wjs/base/base.html" %}
-{% load static django_bootstrap5 i18n orcid %}
+{% load static django_bootstrap5 i18n orcid next_url %}
 
 {% block title %}
   {% translate "Log in with your account" %}
@@ -11,15 +11,17 @@
     <div class="card-body p-4">
       <div class="text-center mb-4">
         {% if settings.ENABLE_ORCID %}
-          <a href="{{ settings.ORCID_URL }}?client_id={{ settings.ORCID_CLIENT_ID }}&response_type=code&scope=/authenticate&redirect_uri={% orcid_redirect_uri 'login' %}"
-            class="btn btn-success d-inline-flex align-items-center justify-content-center gap-2 mb-2">
-            <img alt="" src="{% static 'common/img/icons/orcid.gif' %}">
+          {# djlint:off #}
+          <a href="{% url_with_next_and_orcid_action 'core_login_orcid' action='login' %}"
+          {# djlint:on #}
+            class="btn btn-outline-secondary d-inline-flex align-items-center justify-content-center gap-2 mb-2">
+            <img alt="ORCID logo" src="{% static 'common/img/icons/orcid.png' %}">
             {% translate "Log in with ORCiD" %}
           </a>
         {% endif %}
 
         {% if settings.ENABLE_OIDC %}
-          <a href="{% url "oidc_authentication_init" %}{% if request.GET.next %}?next={{ request.GET.next }}{% elif request.journal %}?next={{ request.journal.site_url }}{% elif request.repository %}?next={{ request.repository.site_url }}{% else %}?next={{ request.press.site_url }}{% endif %}"
+          <a href="{% url_with_next 'oidc_authentication_init' %}"
             class="btn btn-outline-primary mb-2">
             {% translate "Log in with" %} {{ settings.OIDC_SERVICE_NAME }}
           </a>
