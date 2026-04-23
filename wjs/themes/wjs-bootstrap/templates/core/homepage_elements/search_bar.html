@@ -2,7 +2,7 @@
 
 <div class="homepage-element" id="homepage-element-search-bar">
   <div class="wjs-showcase__hp-card">
-    <h2>Search</h2>
+    <h2>{% translate "Search" %}</h2>
     <form method="get" action="{% if request.journal %}{% journal_url 'search' %}{% else %}/search{% endif %}">
       <input id="article_search" type="text" class="form-control" name="article_search">
       <input id="sort" name="sort" type="hidden" value="relevance">

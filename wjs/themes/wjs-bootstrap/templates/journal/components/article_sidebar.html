@@ -1,5 +1,4 @@
-{% load i18n %}
-{% load wjs_tags %}
+{% load i18n wjs_tags %}
 <aside class="wjs-showcase__article-sidebar">
 
   {% include "common/elements/altmetric_badges.html" with article=article %}
@@ -7,13 +6,13 @@
   {% include "journal/components/article_socials.html" %}
   {% if article.non_specialist_summary %}
     <div class="wjs-showcase__article-sidebar-content">
-      <h2 class="wjs-showcase__sidebar-title">{% trans "Additional resources" %}</h2>
+      <h2 class="wjs-showcase__sidebar-title">{% translate "Additional resources" %}</h2>
       {{ article.non_specialist_summary|safe }}
     </div>
   {% endif %}
   {% if article.is_published and not journal_settings.article.suppress_how_to_cite %}
     <div class="wjs-showcase__article-sidebar-content">
-      <h2 class="wjs-showcase__sidebar-title">{% trans "How to Cite" %}</h2>
+      <h2 class="wjs-showcase__sidebar-title">{% translate "How to Cite" %}</h2>
       {{ article|how_to_cite|safe }}
     </div>
   {% endif %}
@@ -22,7 +21,7 @@
   {% endif %}
   {% if article.keywords.count > 0 %}
     <div class="wjs-showcase__article-sidebar-content">
-      <h2 class="wjs-showcase__sidebar-title">{% trans "Keywords" %}</h2>
+      <h2 class="wjs-showcase__sidebar-title">{% translate "Keywords" %}</h2>
       <ul class="wjs-showcase__article-sidebar-list">
         {% for keyword in article.keywords.all %}
           <li>
@@ -37,7 +36,7 @@
     </div>
   {% endif %}
   <div class="wjs-showcase__article-sidebar-content">
-    <h2 class="wjs-showcase__sidebar-title">{% trans "Rights" %}</h2>
+    <h2 class="wjs-showcase__sidebar-title">{% translate "Rights" %}</h2>
     {% if article.rights %}
       {{ article.rights | safe }}
     {% else %}
@@ -46,7 +45,7 @@
   </div>
   {% if article.publisher_notes.all %}
     <div class="wjs-showcase__article-sidebar-content">
-      <h2 class="wjs-showcase__sidebar-title">{% trans "Publisher Notes" %}</h2>
+      <h2 class="wjs-showcase__sidebar-title">{% translate "Publisher Notes" %}</h2>
       <ul class="wjs-showcase__article-sidebar-list">
         {% for note in article.publisher_notes.all %}
           <li>{{ note.text|safe }}</li>{% endfor %}
@@ -55,7 +54,7 @@
   {% endif %}
   {% if article.funders.all %}
     <div class="wjs-showcase__article-sidebar-content">
-      <h2 class="wjs-showcase__sidebar-title">{% trans "Funding" %}</h2>
+      <h2 class="wjs-showcase__sidebar-title">{% translate "Funding" %}</h2>
       <ul class="wjs-showcase__article-sidebar-list">
         {% for funder in article.funders.all %}
           <li>
@@ -73,14 +72,14 @@
 
   {% if article.date_accepted or article.date_published %}
     <div class="wjs-showcase__article-sidebar-content">
-      <h2 class="wjs-showcase__sidebar-title">{% trans "Publication date" %}</h2>
+      <h2 class="wjs-showcase__sidebar-title">{% translate "Publication date" %}</h2>
       {{ article.date_published|date:DATE_FORMAT }}
     </div>
   {% endif %}
 
   {% if article.license.url %}
     <div class="wjs-showcase__article-sidebar-content">
-      <h2 class="wjs-showcase__sidebar-title">{% trans "Licence" %}</h2>
+      <h2 class="wjs-showcase__sidebar-title">{% translate "Licence" %}</h2>
       <p>
         {{ article.license.name }}
 
@@ -92,7 +91,7 @@
   {% with article.get_doi_url as doi_url %}
     {% if doi_url %}
       <div class="wjs-showcase__article-sidebar-content">
-        <h2 class="wjs-showcase__sidebar-title">{% trans "Identifiers" %}</h2>
+        <h2 class="wjs-showcase__sidebar-title">{% translate "Identifiers" %}</h2>
         <ul class="wjs-showcase__article-sidebar-list">
           <li>
             DOI: <a href="{{ doi_url }}">{{ doi_url }}</a>
@@ -103,10 +102,10 @@
   {% endwith %}
   {% if article.peer_reviewed %}
     <div class="wjs-showcase__article-sidebar-content">
-      <h2 class="wjs-showcase__sidebar-title">{% trans "Peer Review" %}</h2>
+      <h2 class="wjs-showcase__sidebar-title">{% translate "Peer Review" %}</h2>
       <p>
         <i class="bi bi-check-circle"></i>
-        {% trans "This article has been peer reviewed." %}
+        {% translate "This article has been peer reviewed." %}
       </p>
       {% if journal_settings.general.open_peer_review %}
         {% if article.public_reviews.count > 0 %}

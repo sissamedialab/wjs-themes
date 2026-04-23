@@ -1,15 +1,14 @@
-{% load i18n %}
-{% load wjs_tags %}
+{% load i18n wjs_tags %}
 {% if article.is_published and galleys %}
   <div class="wjs-showcase__article-sidebar-content">
-    <h2 class="wjs-showcase__sidebar-title">{% trans "Download" %}</h2>
+    <h2 class="wjs-showcase__sidebar-title">{% translate "Download" %}</h2>
     <ul class="wjs-showcase__article-sidebar-list">
       {% for galley in galleys %}
         <li>
           <a class="wjs-showcase__article-sidebar-download wjs-showcase__article-sidebar-download--{% if galley.file.mime_type == 'application/pdf' %}pdf{% elif galley.file.mime_type == 'application/epub+zip' %}epub{% endif %}"
              href="{% url 'article_download_galley' article.id galley.id %}">
             <i class="bi bi-filetype-{% if galley.file.mime_type == 'application/pdf' %}pdf{% elif galley.file.mime_type == 'application/epub+zip' %}xml{% elif galley.file.mime_type == 'application/html' %}html{% endif %}"></i>
-            {% trans "Download" %} {{ galley.label }}
+            {% translate "Download" %} {{ galley.label }}
           </a>
           <!-- {% if galley.file.mime_type == 'application/pdf' and journal.view_pdf_button %} -->
             </li>
@@ -17,7 +16,7 @@
             <a target="_blank"
                href="{% url 'article_view_galley' article.id galley.id %}">
               <i class="bi bi-filetype-xml"></i>
-              {% trans "View" %} {{ galley.label }}</a>
+              {% translate "View" %} {{ galley.label }}</a>
             <!-- {% endif %} -->
           </li>
       {% endfor %}

@@ -1,10 +1,10 @@
 {% load i18n wjs_tags %}
 <div class="wjs-showcase__hp-card" id="about_journal">
-  <h2>Issues</h2>
+  <h2>{% translate "Issues" %}</h2>
   <p>
     {% if journal.current_issue %}
       <a href="{% url "journal_issue" journal.current_issue.pk %}">{{ journal.current_issue|display_title }}</a><br><br>
     {% endif %}
-    <a href="{% url "journal_issues" %}">Volumes and Issues</a>
+    <a href="{% url "journal_issues" %}">{% translate "Volumes and Issues" %}</a>
   </p>
 </div>
