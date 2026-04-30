@@ -29,10 +29,6 @@
       color: $gray-900;
     }
 
-    strong {
-      color: $primary;
-    }
-
     span {
       strong {
         color: inherit;
@@ -249,6 +245,12 @@
       &--epub {
         i {
           color: #018a67;
+        }
+      }
+
+      &--html {
+        i {
+          color: #e34f26;
         }
       }
     }
@@ -714,6 +716,10 @@
         .gap-3,
         .justify-content-between,
         .align-items-center;
+
+      &-item {
+        @extend .h-100;
+      }
     }
 
     &-link {
@@ -724,11 +730,13 @@
 
   &__homepage-funder {
     &-logo {
-      width: 150px;
+      @extend .w-100, .h-100, .object-fit-contain, .p-3;
     }
 
     &-link {
       @extend .mb-3, .d-flex, .flex-column, .align-items-center, .text-decoration-none, .text-center;
+      aspect-ratio: 1;
+      width: 100px;
 
       &:last-child {
         @extend .mb-0;
@@ -809,6 +817,23 @@
       outline: 3px solid var(--bs-primary);
       outline-offset: 3px;
       box-shadow: none;
+    }
+  }
+
+  &__membership-grid {
+    @extend .d-grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__membership-item {
+    a {
+      @extend .d-flex, .flex-column, .align-items-center, .justify-content-center, .w-100;
+      aspect-ratio: 1;
+    }
+
+    img {
+      @extend .h-75, .object-fit-contain, .p-3;
+      width: 100px;
     }
   }
 }

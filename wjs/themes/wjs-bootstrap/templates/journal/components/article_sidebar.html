@@ -17,6 +17,9 @@
       {{ article|how_to_cite|safe }}
     </div>
   {% endif %}
+  {% if article.primary_issue.is_published %}
+    {% include "journal/components/article_issue_list.html" %}
+  {% endif %}
   {% if article.keywords.count > 0 %}
     <div class="wjs-showcase__article-sidebar-content">
       <h2 class="wjs-showcase__sidebar-title">{% trans "Keywords" %}</h2>
@@ -68,10 +71,6 @@
     </div>
   {% endif %}
 
-  {% if article.primary_issue.is_published %}
-    {% include "journal/components/article_issue_list.html" %}
-  {% endif %}
-
   {% if article.date_accepted or article.date_published %}
     <div class="wjs-showcase__article-sidebar-content">
       <h2 class="wjs-showcase__sidebar-title">{% trans "Publication date" %}</h2>
@@ -121,14 +120,6 @@
           </p>
         {% endif %}
       {% endif %}
-    </div>
-  {% endif %}
-  {% if article.custom_fields %}
-    <div class="wjs-showcase__article-sidebar-content">
-      {% for field in article.custom_fields %}
-        <h2 class="wjs-showcase__sidebar-title">{% trans field.field.name %}</h2>
-        <p>{{ field.answer|safe }}</p>
-      {% endfor %}
     </div>
   {% endif %}
 </aside>

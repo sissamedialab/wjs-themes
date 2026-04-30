@@ -640,11 +640,11 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 }
 
 .wjs-header__user-btn {
-  @extend .btn, .btn-outline-primary, .btn-sm, .d-flex, .gap-2, .mb-3, .mt-1, .align-items-center;
+  @extend .btn, .btn-sm, .d-flex, .gap-2, .mb-3, .mt-1, .align-items-center;
 }
 
 .wjs-header__role-label {
-  @extend .btn, .btn-outline-primary, .btn-sm, .d-flex, .gap-2, .align-items-center, .border-0;
+  @extend .text-primary, .d-flex, .gap-2, .align-items-center, .small;
 }
 
 .form-control[readonly] {
