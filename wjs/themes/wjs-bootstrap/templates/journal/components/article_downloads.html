@@ -8,7 +8,7 @@
         <li>
           <a class="wjs-showcase__article-sidebar-download wjs-showcase__article-sidebar-download--{% if galley.file.mime_type == 'application/pdf' %}pdf{% elif galley.file.mime_type == 'application/epub+zip' %}epub{% endif %}"
              href="{% url 'article_download_galley' article.id galley.id %}">
-            <i class="bi bi-filetype-{% if galley.file.mime_type == 'application/pdf' %}pdf{% elif galley.file.mime_type == 'application/epub+zip' %}xml{% endif %}"></i>
+            <i class="bi bi-filetype-{% if galley.file.mime_type == 'application/pdf' %}pdf{% elif galley.file.mime_type == 'application/epub+zip' %}xml{% elif galley.file.mime_type == 'application/html' %}html{% endif %}"></i>
             {% trans "Download" %} {{ galley.label }}
           </a>
           <!-- {% if galley.file.mime_type == 'application/pdf' and journal.view_pdf_button %} -->
@@ -23,6 +23,7 @@
       {% endfor %}
     </ul>
     {% if article.supplementary_files.all %}
+    <h5>{% translate "Electronic Supplementary Materials" %}</h5>
       <ul>
         {% for file in article.supplementary_files.all %}
           <li>

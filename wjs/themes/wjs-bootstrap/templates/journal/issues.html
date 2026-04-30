@@ -23,6 +23,8 @@
           {% endfor %}
         </ul>
       </li>
+    {% empty %}
+      <li class="wjs-showcase__volume-card text-center">{% trans "No volumes/issues have been published yet." %}</li>
     {% endfor %}
   </ul>
 {% endblock content %}
