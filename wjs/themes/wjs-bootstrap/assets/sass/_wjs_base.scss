@@ -51,6 +51,30 @@ div.required-field > .form-label {
   }
 }
 
+.list-group-item {
+  @extend .border-bottom, .mb-0;
+}
+
+.file-link {
+  @extend .fw-medium, .d-flex, .align-items-center;
+
+  &__label {
+    @extend .w-33, .me-2;
+  }
+
+  &__link {
+    @extend .w-66;
+  }
+
+  &--button {
+    @extend .btn, .btn-outline-primary;
+
+    .file-link__link {
+      @extend .text-decoration-none;
+    }
+  }
+}
+
 $utilities: map-merge(
   $utilities,
   (
@@ -62,6 +86,7 @@ $utilities: map-merge(
         30: 30%,
         33: 33%,
         50: 50%,
+        66: 66%,
         75: 75%,
         100: 100%,
         auto: auto,
@@ -656,6 +681,7 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 .wjs-header__top-header {
   @extend .d-flex, .justify-content-between, .py-2;
 }
+
 .wjs-header__sub-header {
   @extend .d-block, .opacity-100, .w-100, .visible;
   transition: max-height 0.2s ease-in-out, visibility 0.2s ease-in-out;
