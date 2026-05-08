@@ -73,6 +73,11 @@ def build():
     print("THEMES PATHS DONE")
     process_scss()
     print("THEMES SCSS DONE")
+    copy_file(
+        source="themes/wjs-bootstrap/assets/images",
+        destination="static/wjs-bootstrap/img",
+        is_file=False,
+    )
     call_command("collectstatic", "--noinput")
     print("THEMES collectstatic DONE")
 
