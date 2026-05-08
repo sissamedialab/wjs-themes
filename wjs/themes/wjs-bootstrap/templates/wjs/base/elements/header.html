@@ -17,7 +17,23 @@
               </a>
             </div>
             <div class="col-4 col-lg-6 align-items-end flex-column d-none d-lg-flex justify-content-between">
-              {% include "wjs/base/elements/header_socials.html" %}
+
+              <div class="d-flex align-items-start">
+                {% if request.available_languages|length > 1 %}
+                  <form class="d-flex align-items-start gap-3 me-3" action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.PATH }}"/>
+                    {% for language in LANGUAGES %}
+                      {% if language.0 in request.available_languages %}
+                          <button class="btn btn-link text-uppercase pb-0 pt-0 ps-0 text-decoration-none{% if language.0 != LANGUAGE_CODE %} text-black{% endif %}"
+                                  name="language"
+                                  value="{{ language.0 }}">{{ language.0 }}</button>
+                      {% endif %}
+                    {% endfor %}
+                  </form>
+                {% endif %}
+                {% include "wjs/base/elements/header_socials.html" %}
+              </div>
               {% block top_menu %}
               {% endblock top_menu %}
               {% include "wjs/base/elements/user_menu.html" with show_name=True %}
