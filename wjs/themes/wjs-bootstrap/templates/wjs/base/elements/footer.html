@@ -1,36 +1,40 @@
+{% load static %}
 <footer class="wjs-footer">
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-10">
-        <div class="wjs-footer__content text-left">
-          <p class="wjs-footer__text">
-            {% blocktranslate %}
-              Except where otherwise noted, content on this site is licensed under a Creative Commons 4.0 license
-            {% endblocktranslate %}
-          </p>
-
-          {% if request.journal.issn %}
-            <p class="wjs-footer__text">ISSN: {{ request.journal.issn }}</p>
-          {% endif %}
-
-          {% if request.journal.print_issn %}
-            <p class="wjs-footer__text">{% translate "Print ISSN:" %} {{ request.journal.print_issn }}</p>
-          {% endif %}
-
-          {% if journal_settings.general.publisher_name %}
-            <p class="wjs-footer__text mb-3">
-              {% translate "Published by" %}
-              {% if journal_settings.general.publisher_url %}
-                <a class="wjs-footer__text-link" href="{{ journal_settings.general.publisher_url }}">
-              {% endif %}
-              {{ journal_settings.general.publisher_name }}
-              {% if journal_settings.general.publisher_url %}
-                </a>
-              {% endif %}
+        <div class="d-flex">
+          <img class="me-4" src="{% static 'wjs-bootstrap/img/sissa.svg' %}" alt="" width="100">
+          <div class="wjs-footer__content text-left">
+            <p class="wjs-footer__text">
+              {% blocktranslate %}
+                Except where otherwise noted, content on this site is licensed under a Creative Commons 4.0 license
+              {% endblocktranslate %}
             </p>
-          {% endif %}
 
-          <p class="wjs-footer__text">{% translate "VAT number: IT01097780322" %}</p>
+            {% if request.journal.issn %}
+              <p class="wjs-footer__text">ISSN: {{ request.journal.issn }}</p>
+            {% endif %}
+
+            {% if request.journal.print_issn %}
+              <p class="wjs-footer__text">{% translate "Print ISSN:" %} {{ request.journal.print_issn }}</p>
+            {% endif %}
+
+            {% if journal_settings.general.publisher_name %}
+              <p class="wjs-footer__text mb-3">
+                {% translate "Published by" %}
+                {% if journal_settings.general.publisher_url %}
+                  <a class="wjs-footer__text-link" href="{{ journal_settings.general.publisher_url }}">
+                {% endif %}
+                {{ journal_settings.general.publisher_name }}
+                {% if journal_settings.general.publisher_url %}
+                  </a>
+                {% endif %}
+              </p>
+            {% endif %}
+
+            <p class="wjs-footer__text">{% translate "VAT number: IT01097780322" %}</p>
+          </div>
         </div>
       </div>
 
@@ -58,9 +62,9 @@
               <a class="wjs-footer__nav-link" href="{% url 'core_logout' %}">{% translate "Logout" %}</a>
             </li>
           {% else %}
-          <li>
-            <a class="wjs-footer__nav-link" href="{% url 'core_login' %}">{% translate "Login" %}</a>
-          </li>
+            <li>
+              <a class="wjs-footer__nav-link" href="{% url 'core_login' %}">{% translate "Login" %}</a>
+            </li>
           {% endif %}
         </ul>
       </div>
