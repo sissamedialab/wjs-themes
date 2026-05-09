@@ -22,7 +22,7 @@
       {% endfor %}
     </ul>
     {% if article.supplementary_files.all %}
-    <h5>{% translate "Electronic Supplementary Materials" %}</h5>
+    <h6 class="mt-3">{% translate "Electronic Supplementary Materials" %}</h6>
       <ul>
         {% for file in article.supplementary_files.all %}
           <li>
