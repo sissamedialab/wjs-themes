@@ -274,11 +274,11 @@ $blue-grey-d-2: #455a64;
 $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 
 .wjs-brand-logo {
-  @extend .d-flex, .flex-column, .align-items-center, .text-decoration-none;
+  @extend .d-flex, .flex-column, .align-items-start, .text-decoration-none;
 
   img {
-    height: auto;
-    width: 100%;
+    height: 100px;
+    width: auto;
   }
 
   span {

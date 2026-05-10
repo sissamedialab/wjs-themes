@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-s-12">
           <div class="d-flex justify-content-between py-2">
-            <div class="col-8 col-lg-6">
+            <div class="flex-fill">
               <a href="{{ request.journal.site_url }}" class="wjs-brand-logo" aria-label="{{ request.journal.name }} homepage" aria-current="page">
                 {% if request.journal.header_image %}
                   {% svg_or_image request.journal.header_image css_class="header-override-image" %}
@@ -16,8 +16,7 @@
                 <span class="fst-italic">{{ journal_settings.general.journal_motto }}</span>
               </a>
             </div>
-            <div class="col-4 col-lg-6 align-items-end flex-column d-none d-lg-flex justify-content-between">
-
+            <div class="align-items-end flex-column d-none d-lg-flex justify-content-between">
               <div class="d-flex align-items-start">
                 {% if request.available_languages|length > 1 %}
                   <form class="d-flex align-items-start gap-3 me-3" action="{% url 'set_language' %}" method="post">
