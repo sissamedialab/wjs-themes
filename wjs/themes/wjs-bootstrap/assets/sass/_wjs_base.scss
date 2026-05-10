@@ -502,9 +502,7 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 
   &__label {
     &--filled {
-      &:after {
-        content: ": 🗹";
-      }
+      text-decoration: line-through;
     }
   }
 
