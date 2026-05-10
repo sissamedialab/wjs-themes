@@ -1,5 +1,6 @@
 """Install all custom themes into Janeway."""
 
+import os.path
 from pathlib import Path
 
 from django.apps import apps
@@ -21,7 +22,7 @@ class Command(BaseCommand):
             self.stdout.write(
                 self.style.SUCCESS(f"Linking {theme} to {destination}..."),
             )
-            theme_folder = themes_folder / theme
+            theme_folder = os.path.join(themes_folder, theme)  # noqa: PTH118
             try:
                 destination.symlink_to(theme_folder)
             except FileExistsError:
