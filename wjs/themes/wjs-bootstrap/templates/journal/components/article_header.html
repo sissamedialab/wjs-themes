@@ -20,7 +20,7 @@
         </p>
       {% endwith %}
     {% endif %}
-    {% if article.frozen_authors.count > 0 %}
+    {% if article.frozen_authors.exists %}
       <div class="wjs-showcase__article-detail-authors">
         {% for author in article.frozen_authors.all %}
         {% url 'articles_by_author' author.author.pk as author_url %}
