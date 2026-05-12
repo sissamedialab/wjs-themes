@@ -12,14 +12,16 @@
     {% bootstrap_field form.article_abstract wrapper_class="w-30" server_side_validation=False %}
     {% bootstrap_field form.article_authors wrapper_class="w-30" server_side_validation=False %}
   </div>
+{% if not form.keywords.is_hidden or not form.sections.is_hidden %}
   <div class="d-flex gap-3 mt-2 mb-2">
-    {% if form.keywords.is_visible %}
+    {% if not form.keywords.is_hidden %}
       {% include "includes/select_checkbox.html" with field=form.keywords wrapper_class="w-30" server_side_validation=False %}
     {% endif %}
-    {% if form.sections.is_visible %}
+    {% if not form.sections.is_hidden %}
       {% include "includes/select_checkbox.html" with field=form.sections wrapper_class="w-30" server_side_validation=False custom_field_label="Article type" %}
     {% endif %}
   </div>
+    {% endif %}
   <div class="d-flex gap-3 mt-2 mb-4">
     {% bootstrap_field form.date_from wrapper_class="w-30" server_side_validation=False %}
     {% bootstrap_field form.date_to wrapper_class="w-30" server_side_validation=False %}
