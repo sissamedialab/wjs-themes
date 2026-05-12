@@ -63,7 +63,7 @@
             {% endif %}
             {{ funder.name }}
             {% if funder.fundref_id %}</a>{% endif %}
-            {% if funder.funding_id %}(grant {{ funder.funding_id }}){% endif %}
+            {% if funder.funding_id %}{% blocktranslate with funding_id=funder.funding_id %}(grant {{ funding_id }}){% endblocktranslate %}{% endif %}
           </li>
         {% endfor %}
       </ul>

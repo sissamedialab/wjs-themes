@@ -43,7 +43,7 @@
   <script>
     $(".table-expansion").each(function() {
       var child = $(this).children(":first");
-      child.append("<br /><small><a href=\"#table-" + $(this).attr("id") + "\" class=\"modal-trigger\">View Larger Table</a></small>");
+      child.append("<br /><small><a href=\"#table-" + $(this).attr("id") + "\" class=\"modal-trigger\">{% translate "View Larger Table" %}</a></small>");
     });
   </script>
 {% endblock js %}

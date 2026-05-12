@@ -1,4 +1,4 @@
-{% load django_bootstrap5 hooks press_url static %}
+{% load django_bootstrap5 hooks i18n press_url static %}
 {% url 'core_edit_profile' as core_edit_profile %}
 <header class="header-main bg-header pt-2 mb-5">
   <div class="middle-header py-1">
@@ -38,7 +38,7 @@
               {% include "wjs/base/elements/user_menu.html" with show_name=True %}
               <form role="search" class="wjs-header__search" method="get" action="{% if request.journal %}{% journal_url 'search' %}{% else %}/search{% endif %}">
                 <label class="visually-hidden" for="article_search">{% trans "Search an article" %}</label>
-                <input id="article_search" type="search" name="article_search" placeholder="Search">
+                <input id="article_search" type="search" name="article_search" placeholder="{% translate "Search" %}">
                 <input id="sort" name="sort" type="hidden" value="relevance">
                 <input id="title" name="title" type="hidden" value="on">
                 <input id="abstract" name="abstract" type="hidden" value="on">

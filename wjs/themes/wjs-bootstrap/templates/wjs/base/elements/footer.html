@@ -1,4 +1,4 @@
-{% load static %}
+{% load i18n static %}
 <footer class="wjs-footer">
   <div class="container">
     <div class="row">
@@ -13,7 +13,7 @@
             </p>
 
             {% if request.journal.issn %}
-              <p class="wjs-footer__text">ISSN: {{ request.journal.issn }}</p>
+              <p class="wjs-footer__text">{% blocktranslate with issn=request.journal.issn %}ISSN: {{ issn }}{% endblocktranslate %}</p>
             {% endif %}
 
             {% if request.journal.print_issn %}
