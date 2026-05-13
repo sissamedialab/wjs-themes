@@ -1,26 +1,19 @@
-{% extends "core/base.html" %}
-{% load static %}
-
-{% block title %}{{ view.title }}{% endblock title %}
+{% extends "wjs/base/base.html" %}
+{% load hooks i18n static %}
 
 {% block page_title %}{{ view.title }}{% endblock page_title %}
+{% block title %}{{ view.title }}{% endblock title %}
 
-{% block body %}
-  <div class="row">
-    <div class="content-row col m12">
-      <div class="cms-page card">
-        <div id="cms-title" class="card-content">
-          <h1 class="main-title">{{ view.title }}</h1>
-          <div class="divider spacer"></div>
-          <div id="main_article" class="cms-page-content-description">
-            <ul>
-              {% for keyword in keywords %}
-                <li class="badge bg-primary">{{ keyword }}</li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
+{% block content %}
+  <div class="col-md-12">
+    <div class="wjs-showcase__card">
+      <div class="wjs-showcase__card-content">
+        <ul class="list-group list-group-flush">
+          {% for keyword in keywords %}
+            <li class="list-group-item">{{ keyword }}</li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
   </div>
-{% endblock body %}
+{% endblock content %}
