@@ -37,24 +37,19 @@ color-state-ReadyForPublication
 color-state-SendToEditorForCheck
 color-state-PublicationInProgress
 color-state-UnderAppeal
-color-section-1
-color-section-11
-color-section-12
-color-section-13
-color-section-17
-color-section-2
-color-section-18
-color-section-10
-color-section-16
-color-section-9
-color-section-8
-color-section-14
-color-section-5
-color-section-3
-color-section-6
-color-section-15
-color-section-4
-color-section-7
+color-section-article
+color-section-commentary
+color-section-letter
+color-section-editorial
+color-section-review-article
+color-section-practice-insight
+color-section-essay
+color-section-focus
+color-section-commentary
+color-section-letter
+color-section-review
+color-section-book-review
+color-section-conference-review
 */
 
 $color-state-requested_minor_revisions: #e85b5b;
@@ -136,117 +131,118 @@ $hover-state-PublicationInProgress: darken($color-state-PublicationInProgress, 1
 $color-state-Published: #666666;
 $hover-state-Published: darken($color-state-Published, 10%);
 
-$color-section-1: #a6cee3;
-$hover-section-1: darken($color-section-1, 10%);
+$color-section-article: #a6cee3;
+$hover-section-article: darken($color-section-article, 10%);
 $color-section-11: #1f78b4;
 $hover-section-11: darken($color-section-11, 10%);
-$color-section-12: #b2df8a;
-$hover-section-12: darken($color-section-12, 10%);
-$color-section-13: #33a02c;
-$hover-section-13: darken($color-section-13, 10%);
-$color-section-17: #fb9a99;
-$hover-section-17: darken($color-section-17, 10%);
+$color-section-commentary: #b2df8a;
+$hover-section-commentary: darken($color-section-commentary, 10%);
+$color-section-letter: #33a02c;
+$hover-section-letter: darken($color-section-letter, 10%);
+$color-section-editorial: #fb9a99;
+$hover-section-editorial: darken($color-section-editorial, 10%);
 $color-section-2: #e31a1c;
 $hover-section-2: darken($color-section-2, 10%);
-$color-section-18: #fdbf6f;
-$hover-section-18: darken($color-section-18, 10%);
+$color-section-review-article: #fdbf6f;
+$hover-section-review-article: darken($color-section-review-article, 10%);
 $color-section-10: #ff7f00;
 $hover-section-10: darken($color-section-10, 10%);
-$color-section-16: #cab2d6;
-$hover-section-16: darken($color-section-16, 10%);
+$color-section-practice-insight: #cab2d6;
+$hover-section-practice-insight: darken($color-section-practice-insight, 10%);
 $color-section-9: #6a3d9a;
 $hover-section-9: darken($color-section-9, 10%);
-$color-section-8: #ffff99;
-$hover-section-8: darken($color-section-8, 10%);
+$color-section-essay: #ffff99;
+$hover-section-essay: darken($color-section-essay, 10%);
 $color-section-14: #b15928;
 $hover-section-14: darken($color-section-14, 10%);
-$color-section-5: #fdbf6f;
-$hover-section-5: darken($color-section-5, 10%);
-$color-section-3: #cab2d6;
-$hover-section-3: darken($color-section-3, 10%);
-$color-section-6: #8dd3c7;
-$hover-section-6: darken($color-section-6, 10%);
-$color-section-15: #ffffb3;
-$hover-section-15: darken($color-section-15, 10%);
-$color-section-4: #bebada;
-$hover-section-4: darken($color-section-4, 10%);
-$color-section-7: #fb8072;
-$hover-section-7: darken($color-section-7, 10%);
-$color-section-25: #8407b2;
-$hover-section-25: darken($color-section-25, 10%);
-$color-section-26: #cba308;
-$hover-section-26: darken($color-section-26, 10%);
+$color-section-focus: #fdbf6f;
+$hover-section-focus: darken($color-section-focus, 10%);
+$color-section-commentary: #cab2d6;
+$hover-section-commentary: darken($color-section-commentary, 10%);
+$color-section-letter: #8dd3c7;
+$hover-section-letter: darken($color-section-letter, 10%);
+$color-section-review: #ffffb3;
+$hover-section-review: darken($color-section-review, 10%);
+$color-section-book-review: #bebada;
+$hover-section-book-review: darken($color-section-book-review, 10%);
+$color-section-conference-review: #fb8072;
+$hover-section-conference-review: darken($color-section-conference-review, 10%);
+$color-section-erratum: #8407b2;
+$hover-section-erratum: darken($color-section-erratum, 10%);
+$color-section-addendum: #cba308;
+$hover-section-addendum: darken($color-section-addendum, 10%);
 
 $badge-radius: 1em;
 
 span.badge {
   // The first section id (&-1) is for JCOM, the second (&-11) for JCOMAL, the third (&-24) for JCAP
   &.color-section {
-    &-1,
-    &-11,
-    &-24 {
+    &-article {
       background-color: #88ccee; // article
       border-radius: $badge-radius;
       color: #000;
     }
 
-    &-2,
-    &-17 {
+    &-paper {
+      background-color: $color-section-article; // article
+      border-radius: $badge-radius;
+      color: #000;
+    }
+
+    &-erratum {
+      background-color: $color-section-erratum; // article
+      border-radius: $badge-radius;
+      color: #000;
+    }
+
+    &-addendum {
+      background-color: $color-section-addendum; // addendum
+      border-radius: $badge-radius;
+      color: #000;
+    }
+
+    &-editorial {
       background-color: #882255; // editorial
       border-radius: $badge-radius;
     }
 
-    &-3,
-    &-16 {
+    &-commentary,
+    &-practice-insight {
       background-color: #ddcc77; // practice insight
       border-radius: $badge-radius;
       color: #000;
     }
 
-    &-4,
-    &-15 {
+    &-book-review,
+    &-review {
       background-color: #aa4499; // book review
       border-radius: $badge-radius;
     }
 
-    &-5,
-    &-14 {
+    &-focus,
+    &-essay {
       background-color: #44aa99; // essay
       border-radius: $badge-radius;
     }
 
-    &-6 {
+    &-letter {
       background-color: #332288; // conference review
       border-radius: $badge-radius;
     }
 
-    &-7,
-    &-12 {
+    &-conference-review,
+    &-commentary {
       background-color: #117733; // commentary
       border-radius: $badge-radius;
     }
 
-    &-8,
-    &-13 {
+    &-letter {
       background-color: #cc6677; // letter
       border-radius: $badge-radius;
     }
 
-    &-9,
-    &-10,
-    &-18 {
+    &-review-article {
       background-color: #e48100; // review article
-      border-radius: $badge-radius;
-    }
-
-    // these styles are replaced in wjs-develop, when resolving conflicts drop these changes
-    &-25 {
-      background-color: $color-section-25; // erratum
-      border-radius: $badge-radius;
-    }
-
-    &-26 {
-      background-color: $color-section-26; // addendum
       border-radius: $badge-radius;
     }
   }
@@ -486,104 +482,83 @@ span.badge {
   }
 
   .color-section {
-    &-1,
-    &-24 {
-      background-color: $color-section-1;
+    &-article {
+      background-color: $color-section-article;
       border-radius: $badge-radius;
     }
 
-    &-11 {
-      background-color: $color-section-11;
+    &-paper {
+      background-color: $color-section-article;
       border-radius: $badge-radius;
     }
 
-    &-12 {
-      background-color: $color-section-12;
+    &-erratum {
+      background-color: $color-section-erratum;
       border-radius: $badge-radius;
     }
 
-    &-13 {
-      background-color: $color-section-13;
+    &-addendum {
+      background-color: $color-section-addendum;
       border-radius: $badge-radius;
     }
 
-    &-17 {
-      background-color: $color-section-17;
+    &-commentary {
+      background-color: $color-section-commentary;
       border-radius: $badge-radius;
     }
 
-    &-2 {
-      background-color: $color-section-2;
+    &-letter {
+      background-color: $color-section-letter;
       border-radius: $badge-radius;
     }
 
-    &-18 {
-      background-color: $color-section-18;
+    &-editorial {
+      background-color: $color-section-editorial;
       border-radius: $badge-radius;
     }
 
-    &-10 {
-      background-color: $color-section-10;
+    &-review-article {
+      background-color: $color-section-review-article;
       border-radius: $badge-radius;
     }
 
-    &-16 {
-      background-color: $color-section-16;
+    &-practice-insight {
+      background-color: $color-section-practice-insight;
       border-radius: $badge-radius;
     }
 
-    &-9 {
-      background-color: $color-section-9;
+    &-essay {
+      background-color: $color-section-essay;
       border-radius: $badge-radius;
     }
 
-    &-8 {
-      background-color: $color-section-8;
+    &-focus {
+      background-color: $color-section-focus;
       border-radius: $badge-radius;
     }
 
-    &-14 {
-      background-color: $color-section-14;
+    &-commentary {
+      background-color: $color-section-commentary;
       border-radius: $badge-radius;
     }
 
-    &-5 {
-      background-color: $color-section-5;
+    &-letter {
+      background-color: $color-section-letter;
       border-radius: $badge-radius;
     }
 
-    &-3 {
-      background-color: $color-section-3;
+    &-review {
+      background-color: $color-section-review;
       border-radius: $badge-radius;
     }
 
-    &-6 {
-      background-color: $color-section-6;
+    &-book-review {
+      background-color: $color-section-book-review;
       border-radius: $badge-radius;
     }
 
-    &-15 {
-      background-color: $color-section-15;
-      border-radius: $badge-radius;
-    }
-
-    &-4 {
-      background-color: $color-section-4;
-      border-radius: $badge-radius;
-    }
-
-    &-7 {
-      background-color: $color-section-7;
-      border-radius: $badge-radius;
-    }
-
-    &-25 {
-      background-color: $color-section-25;
-      border-radius: $badge-radius;
-    }
-
-    &-26 {
-      background-color: $color-section-26; // addendum
+    &-conference-review {
+      background-color: $color-section-conference-review;
       border-radius: $badge-radius;
     }
   }

@@ -1,77 +1,80 @@
-{% load static %}
-{% load i18n %}
-{% load wjs_tags %}
+{% load i18n static wjs_articles wjs_tags %}
 {% url 'articles_by_section' article.section.pk as by_url %}
-
-<div class="wjs-showcase__article-card {{ article_class }}">
-  <div class="wjs-showcase__article-card-header justify-content-between">
-      <span class="wjs-showcase__article-date">
-        <i class="bi bi-calendar3"></i>
-        {{ article.date_published|date:DATE_FORMAT }}
-        {% if not request.available_languages|length_is:"1" %}
-          <span class="badge language">{{ article.language|language_alpha2 }}</span>
-        {% endif %}
-      </span>
-    <a href="{{ by_url }}">
-      <span class="wjs-showcase__article-badge color-section-{{ article.section.id }}">{{ article.section.name }}</span>
-    </a>
-  </div>
-
-  <h3>
-    <a class="wjs-showcase__article-title-link" href="{% if article.is_remote %}{{ article.remote_url }}{% else %}{{ article.url }}{% endif %}">{{ article.title|safe }}</a>
-  </h3>
-
-  <p class="wjs-showcase__article-authors">
-    {% trans "by" %}
-    {% for author in article.frozen_authors.all %}
-      {% url 'articles_by_author' author.author.pk as by_author %}
-      {% if forloop.last %}
-        {% if article.frozen_authors.all|length > 1 %}
-          {% trans "and" %}
-        {% endif %}
-      {% endif %}
-      <a href="{{ by_author }}">{{ author.full_name }}</a>{# djlint:off #}{% if not forloop.last %}{% if not forloop.counter == article.frozen_authors.all|length|add:-1 %}, {% endif %}{% endif %}{# djlint:on #}
-    {% endfor %}
-  </p>
-  <div class="wjs-showcase__article-text">
-    {% autoescape off %}
-      {{ article.abstract }}
-    {% endautoescape %}
-  </div>
-  {% if article|has_attr:"genealogy" and article.genealogy.children.exists %}
-    <div class="wjs-showcase__article-genealogy">
-      {% for kid in article.genealogy.children.all %}
-        <div class="wjs-showcase__article-genealogy-item">
-          <h4>
-            <a href="{{ kid.url }}">{{ kid.title }}</a>
-          </h4>
-          by
-          {% for au in kid.frozen_authors.all %}
-            <a href="{% url 'articles_by_author' au.author.pk %}">{{ au.full_name }}</a>{# djlint:off #}{% if forloop.revcounter0 >= 2 %},{% endif %}{% if forloop.revcounter0 == 1 %} and{% endif %}{# djlint:on #}
-          {% endfor %}
-        </div>
-      {% endfor %}
-    </div>
-  {% endif %}
-  {% if article.primary_issue.is_published %}
-    <p class="wjs-showcase__article-card-volume">
-      {% if article.issue %}
-        <i class="bi bi-book"></i>
-        <a class="issue-link" href="{{ article.issue.url }}">{{ article.issue|display_title }}</a>
-      {% endif %}
-      {% if article.issues.count > 1 %}
-        <p>
-          <strong><i class="fa fa-info-circle"></i> {% trans "Also a part of:" %}</strong>
-        </p>
-        {% for other in article.issues.all %}
-          {% if other != article.issue %}
-            <p>
-              <i class="bi bi-book"></i>
-              <a class="issue-link" href="{{ other.url }}">{% trans other.issue_type.pretty_name %}: {{ other|display_title }}</a>
-            </p>
+{% article_css_classes article.articleworkflow as article_classes %}
+<li class="wjs-showcase__article-card {{ article_class }} list-group-item">
+  <article>
+    <div class="wjs-showcase__article-card-header justify-content-between">
+        <span class="wjs-showcase__article-date">
+          <i class="bi bi-calendar3"></i>
+          {{ article.date_published|date:DATE_FORMAT }}
+          {% if not request.available_languages|length_is:"1" %}
+            <span class="badge language">{{ article.language|language_alpha2 }}</span>
           {% endif %}
-        {% endfor %}
+        </span>
+
+      {% if request.journal.code != "JQuant" %}
+        <a href="{{ by_url }}">
+          <span class="wjs-showcase__article-badge {{ article_classes.section_css }}">{{ article.section.name }}</span>
+        </a>
       {% endif %}
+    </div>
+
+    <h3>
+      <a class="wjs-showcase__article-title-link" href="{% if article.is_remote %}{{ article.remote_url }}{% else %}{{ article.url }}{% endif %}">{{ article.title|safe }}</a>
+    </h3>
+
+    <p class="wjs-showcase__article-authors">
+      {% translate "by" %}
+      {% for author in article.frozen_authors.all %}
+        {% url 'articles_by_author' author.author.pk as by_author %}
+        {% if forloop.last %}
+          {% if article.frozen_authors.all|length > 1 %}
+            {% translate "and" %}
+          {% endif %}
+        {% endif %}
+        <a href="{{ by_author }}">{{ author.full_name }}</a>{# djlint:off #}{% if not forloop.last %}{% if not forloop.counter == article.frozen_authors.all|length|add:-1 %}, {% endif %}{% endif %}{# djlint:on #}
+      {% endfor %}
     </p>
+    <div class="wjs-showcase__article-text">
+      {% autoescape off %}
+        {{ article.abstract }}
+      {% endautoescape %}
+    </div>
+    {% if article|has_attr:"genealogy" and article.genealogy.children.exists %}
+      <div class="wjs-showcase__article-genealogy">
+        {% for kid in article.genealogy.children.all %}
+          <div class="wjs-showcase__article-genealogy-item">
+            <h4>
+              <a href="{{ kid.url }}">{{ kid.title }}</a>
+            </h4>
+            {% translate "by" %}
+            {% for au in kid.frozen_authors.all %}
+              <a href="{% url 'articles_by_author' au.author.pk %}">{{ au.full_name }}</a>{# djlint:off #}{% if forloop.revcounter0 >= 2 %},{% endif %}{% if forloop.revcounter0 == 1 %} and{% endif %}{# djlint:on #}
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
     {% endif %}
-</div>
+    {% if article.primary_issue.is_published %}
+      <p class="wjs-showcase__article-card-volume">
+        {% if article.issue %}
+          <i class="bi bi-book"></i>
+          <a class="issue-link" href="{{ article.issue.url }}">{{ article.issue|display_title }}</a>
+        {% endif %}
+        {% if article.issues.count > 1 %}
+          <p>
+            <strong><i class="fa fa-info-circle"></i> {% translate "Also a part of:" %}</strong>
+          </p>
+          {% for other in article.issues.all %}
+            {% if other != article.issue %}
+              <p>
+                <i class="bi bi-book"></i>
+                <a class="issue-link" href="{{ other.url }}">{% trans other.issue_type.pretty_name %}: {{ other|display_title }}</a>
+              </p>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </p>
+      {% endif %}
+    </article>
+</li>

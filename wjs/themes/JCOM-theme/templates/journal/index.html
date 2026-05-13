@@ -7,3 +7,7 @@
     {% endfor %}
   </div>
 {% endblock body %}
+{% block js %}
+  {{ block.super }}
+  {% include "wjs/base/fragments/mathjax.html" %}
+{% endblock js %}

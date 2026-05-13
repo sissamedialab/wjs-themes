@@ -1,9 +1,8 @@
 {% extends "wjs/base/base.html" %}
 {% load static %}
 
-{% block title %}
-  {{ page.display_name }}
-{% endblock title %}
+{% block page_title %}{{ page.display_name }}{% endblock page_title %}
+{% block title %}{{ page.display_name }}{% endblock title %}
 
 {% block content %}
   <div class="{% if page.display_toc %}col-lg-9 col-sm-12{% else %}col-md-12{% endif %}">
@@ -12,9 +11,6 @@
 
         <div
           {% if page.display_toc %}id="js-main-article"{% endif %}
-          data-bs-spy="scroll"
-          data-bs-target="#list-example"
-          data-bs-offset="10"
           class="wjs-showcase__main-content"
           tabindex="0"
         >
@@ -24,8 +20,8 @@
     </div>
   </div>
   {% if page.display_toc %}
-    <div class="wjs-showcase__toc-aside col-sm-12 col-lg-3">
+    <aside class="wjs-showcase__toc-aside col-sm-12 col-lg-3">
       {% include "includes/toc.html" %}
-    </div>
+    </aside>
   {% endif %}
 {% endblock content %}

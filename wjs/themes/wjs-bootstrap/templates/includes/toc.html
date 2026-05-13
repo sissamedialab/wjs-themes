@@ -1,7 +1,7 @@
 <div class="wjs-showcase__toc">
   <div class="card-content" id="list-example">
     <h4 class="wjs-showcase__toc-title">
-      {% trans "Table of Contents" %}
+      {% translate "Table of Contents" %}
     </h4>
     <div id="js-toc-list" class="wjs-showcase__toc-nav list-group">
     </div>
@@ -10,26 +10,79 @@
 
 {% block js %}
   <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function() {
-      const content = document.getElementById("js-main-article");
-      if (!content) {
-        return;
+  document.addEventListener("DOMContentLoaded", function() {
+    const content = document.getElementById("js-main-article");
+    if (!content) {
+      return;
+    }
+    const toc = document.getElementById("js-toc-list");
+    const headings = content.querySelectorAll("h1, h2");
+    const items = [];
+    const usedIds = new Set();
+
+    function slugify(text) {
+      const base = text.trim().toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/[\s_]+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+      if (!usedIds.has(base)) {
+        usedIds.add(base);
+        return base;
       }
-      const toc = document.getElementById("js-toc-list");
-      const headings = content.querySelectorAll("h1, h2");
+      let n = 2;
+      while (usedIds.has(`${base}-${n}`)) n++;
+      usedIds.add(`${base}-${n}`);
+      return `${base}-${n}`;
+    }
 
-      headings.forEach((heading, index) => {
-        const id = heading.id || `toc-heading-${index}`;
-        if (!heading.id) {
-          heading.id = id;
-        }
+    headings.forEach((heading) => {
+      const id = heading.id || slugify(heading.textContent);
+      if (!heading.id) {
+        heading.id = id;
+      }
 
-        const link = document.createElement("a");
-        link.className = "wjs-showcase__toc-link";
-        link.href = `#${id}`;
-        link.textContent = heading.textContent;
-        toc.appendChild(link);
-      });
+      heading.setAttribute('tabindex', '-1');
+
+      const link = document.createElement("a");
+      link.className = "wjs-showcase__toc-link";
+      link.href = `#${id}`;
+      link.textContent = heading.textContent;
+
+      link.addEventListener('click', () => heading.focus({ preventScroll: true }));
+
+      toc.appendChild(link);
+      items.push({ heading, link });
     });
-  </script>
+
+    if (items.length === 0) {
+      return;
+    }
+
+    function updateActive() {
+      const viewportHeight = window.innerHeight;
+      let firstVisible = null;
+      let lastPassed = null;
+
+      for (const { heading, link } of items) {
+        const top = heading.getBoundingClientRect().top;
+        if (top < 0) {
+          lastPassed = link;
+        } else if (top < viewportHeight) {
+          firstVisible = link;
+          break; // headings are in document order, no need to continue
+        }
+      }
+
+      const active = firstVisible || lastPassed || items[0].link;
+
+      for (const { link } of items) {
+        link.classList.toggle("active", link === active);
+      }
+    }
+
+    window.addEventListener("scroll", updateActive, { passive: true });
+    updateActive();
+  });
+</script>
 {% endblock js %}

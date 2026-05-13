@@ -1,4 +1,4 @@
-{% load django_bootstrap5 hijack %}
+{% load django_bootstrap5 hijack i18n %}
 {% if target_user and request.user|can_hijack:target_user %}
   <!-- djlint:off -->
   {% translate "<i class=\"bi bi-person-badge\"></i>" as impersonate_label %}

@@ -1,13 +1,17 @@
 {% load django_bootstrap5 i18n %}
-{% translate "More options" as more_options_label %}
+{% translate "Advanced search" as more_options_label %}
 {% translate "Search" as search_label %}
 {% translate "Reset" as reset_label %}
 
 <form id="page_search" method="get" action="{% url 'search' %}" class="wjs-showcase__search">
   <div class="d-flex gap-4 mt-4 mb-2">
     {% bootstrap_field form.article_search wrapper_class="w-33" server_side_validation=Fals %}
-    {% include "includes/select_checkbox.html" with field=form.sections wrapper_class="w-33" server_side_validation=False %}
-    {% include "includes/select_checkbox.html" with field=form.keywords wrapper_class="w-33" server_side_validation=False %}
+    {% if form.sections.is_visible %}
+      {% include "includes/select_checkbox.html" with field=form.sections wrapper_class="w-33" server_side_validation=False %}
+    {% endif %}
+    {% if form.keywords.is_visible %}
+      {% include "includes/select_checkbox.html" with field=form.keywords wrapper_class="w-33" server_side_validation=False %}
+    {% endif %}
   </div>
   <div class="d-flex gap-4 mt-2 mb-4">
     {% bootstrap_field form.year wrapper_class="w-33" server_side_validation=False %}
@@ -17,8 +21,8 @@
 
   <div class="d-flex justify-content-end gap-3">
     {% bootstrap_button button_type="link" href="#" button_class="btn-link" data_bs_toggle="modal" data_bs_target="#advanced_search" content=more_options_label %}
-    {% bootstrap_button button_type="link" href="." button_class="btn-secondary " content=reset_label %}
-    {% bootstrap_button button_type="submit" button_class="btn-primary " content=search_label %}
+    {% bootstrap_button button_type="button" onclick="window.location.href='.'" button_class="btn-secondary " content=reset_label %}
+    {% bootstrap_button button_type="submit" button_class="btn-primary" content=search_label %}
   </div>
 
 </form>

@@ -1,8 +1,13 @@
 {% extends "wjs/base/base.html" %}
 {% load i18n wjs_tags %}
-{% block title %}
-  {{ issue|display_title }}
-{% endblock title %}
+
+{% block page_title %}{{ issue|display_title }}{% endblock page_title %}
+{% block title %}{{ issue|display_title }}{% endblock title %}
+
 {% block content %}
   {% include "./issue_display.html" %}
 {% endblock content %}
+{% block js %}
+  {{ block.super }}
+  {% include "wjs/base/fragments/mathjax.html" %}
+{% endblock js %}

@@ -1,9 +1,9 @@
-{% load i18n %}
-{% load wjs_tags %}
+{% load django_bootstrap5 i18n wjs_articles wjs_tags %}
+{% article_css_classes article.articleworkflow as article_classes %}
 <div class="wjs-showcase__article-detail-card">
   <div class="wjs-showcase__article-detail-card-header">
     <a href="{% url 'articles_by_section' article.section.pk %}">
-      <span class="wjs-showcase__article-detail-badge color-section-{{ article.section.id }}">{{ article.section.name }}</span>
+      <span class="wjs-showcase__article-badge {{ article_classes.section_css }}">{{ article.section.name }}</span>
     </a>
   </div>
   <div>
@@ -12,36 +12,33 @@
       {% with parent=article.ancestors.first.parent %}
         <p>
           {% if article.section.name == "Erratum" or article.section.name == "Addendum" %}
-            <span>{% trans "This is a correction for" %}</span>
+            <span>{% translate "This is a correction for" %}</span>
           {% else %}
-            <span>{% trans "part of" %}</span>
+            <span>{% translate "part of" %}</span>
           {% endif %}
           <a href="{{ parent.url }}">{{ parent.title }}</a>
         </p>
       {% endwith %}
     {% endif %}
-    {% if article.frozen_authors.count > 0 %}
+    {% if article.frozen_authors.exists %}
       <div class="wjs-showcase__article-detail-authors">
         {% for author in article.frozen_authors.all %}
-          <span class="article-author">
-                        <a href="{% url 'articles_by_author' author.author.pk %}">{{ author.full_name }}</a>
+        {% url 'articles_by_author' author.author.pk as author_url %}
+        {% bootstrap_button author.full_name href=author_url button_type="link" button_class="btn-link p-0" %}
             {% if author.orcid %}
               <a class="text-decoration-none" href="https://orcid.org/{{ author.orcid }}">
                 <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="orcid logo" />
               </a>
             {% endif %}
             {% if author.display_email and not journal_settings.article.hide_author_email_links %}
-              <a class="text-decoration-none" itemprop="email" href="mailto:{{ author.email }}">
-                                <i class="bi bi-envelope-fill"></i>
-                            </a>
+              {% bootstrap_button content='<i class="bi bi-envelope-fill"></i>' button_type="link" href="mailto:"|add:author.email button_class="btn-link p-0 text-decoration-none" %}
             {% endif %}
             {% if not forloop.last %},{% endif %}
-                    </span>
         {% endfor %}
       </div>
     {% endif %}
     {% if not article.is_published %}
-      <p><b>This is an accepted article with a DOI pre-assigned that is not yet published.</b></p>
+      <p><b>{% translate "This is an accepted article with a DOI pre-assigned that is not yet published." %}</b></p>
     {% endif %}
     {% if article.abstract and article.abstract != '' %}<p>{{ article.abstract | safe }}</p>{% endif %}
   </div>

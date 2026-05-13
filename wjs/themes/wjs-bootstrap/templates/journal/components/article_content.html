@@ -1,12 +1,18 @@
-{% load i18n hooks %}
+{% load django_bootstrap5 hooks i18n %}
+
+  <!-- djlint:off -->
+  {% translate "Back to top <i class=\"bi bi-caret-up-fill\"></i>" as back_to_top_label %}
+  <!-- djlint:on -->
+
 {% if article_content %}
   <div itemprop="articleBody" class="article-body"
-       id="js-main-article"
-       data-bs-spy="scroll"
-       data-bs-target="#list-example"
-       data-bs-offset="10"
-       class="wjs-showcase__main-content"
-       tabindex="0">
+    id="js-main-article"
+    data-bs-spy="scroll"
+    data-bs-target="#list-example"
+    data-bs-offset="10"
+    class="wjs-showcase__main-content"
+    tabindex="0"
+  >
     <div class="wjs-showcase__card">
       <div class="wjs-showcase__main-content">
         {{ article_content|safe }}
@@ -14,9 +20,7 @@
       </div>
     </div>
     <div class="relative mt-4 mb-4 text-end">
-      <a class="btn btn-primary" href="#article-top" role="button">
-        {% trans "Back to top" %} <i class="bi bi-caret-up-fill"></i>
-      </a>
+      {% bootstrap_button button_type="link" content=back_to_top_label href="#article-top" %}
     </div>
   </div>
 {% endif %}

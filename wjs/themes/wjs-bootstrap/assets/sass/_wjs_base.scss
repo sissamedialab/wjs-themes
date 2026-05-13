@@ -9,6 +9,7 @@
 @import "submission-authors";
 @import "submission-review-submit";
 @import "wjs_showcase";
+@import "wjs_profile";
 
 div.required-field > .form-label {
   font-weight: bold;
@@ -273,11 +274,11 @@ $blue-grey-d-2: #455a64;
 $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 
 .wjs-brand-logo {
-  @extend .d-flex, .flex-column, .align-items-center, .text-decoration-none;
+  @extend .d-flex, .flex-column, .align-items-start, .text-decoration-none;
 
   img {
-    height: auto;
-    width: 100%;
+    height: 100px;
+    width: auto;
   }
 
   span {
@@ -360,7 +361,7 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 // SUBMISSION NAVIGATION STEPS
 
 .wjs-submission-container {
-  @extend .bg-white, .border, .rounded, .mt-5, .py-5, .px-3, .w-100;
+  @extend .bg-white, .border, .rounded, .mt-3, .py-5, .px-3, .w-100;
   border-color: $gray-400;
 }
 
@@ -640,11 +641,57 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 }
 
 .wjs-header__user-btn {
-  @extend .btn, .btn-outline-primary, .btn-sm, .d-flex, .gap-2, .mb-3, .align-items-center;
+  @extend .btn, .btn-sm, .d-flex, .gap-2, .mb-3, .mt-1, .align-items-center;
+}
+
+.wjs-header__role-label {
+  @extend .text-primary, .d-flex, .gap-2, .align-items-center, .small;
 }
 
 .form-control[readonly] {
   border-color: $gray-300;
   background-color: $gray-200;
   color: $gray-600;
+}
+
+.wjs-header__top-header {
+  @extend .d-flex, .justify-content-between, .py-2;
+}
+
+.wjs-header__sub-header {
+  @extend .d-block, .opacity-100, .w-100, .visible;
+  transition: max-height 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.header-main {
+  &.is-scrolled {
+    @extend .pb-3, .pt-4;
+
+    .wjs-header__top-header {
+      @extend .py-0;
+    }
+
+    .wjs-header__user-btn {
+      @extend .m-0;
+    }
+
+    .wjs-header__sub-header {
+      @extend .opacity-0, .p-0, .border-0, .invisible;
+      height: 0;
+    }
+
+    .wjs-logo-container {
+      width: 20%;
+    }
+  }
+}
+
+.header-main .wjs-logo-container {
+  transition: all 0.3s ease;
+}
+
+.modal-body {
+  .file-link {
+    @extend .w-75, .text-break;
+  }
 }

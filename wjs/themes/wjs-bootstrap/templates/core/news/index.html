@@ -1,7 +1,15 @@
 {% extends "wjs/base/base.html" %}
-{% load truncate %}
-{% load i18n %}
-{% load wjs_tags %}
+{% load i18n truncate wjs_tags %}
+
+{% block page_title %}
+  {% if tag.text == "call" %}
+    {% trans "Call for papers" %}
+  {% elif tag.text == "archived-calls" %}
+    {% trans "Call for papers" %}
+  {% else %}
+    {{ journal_settings.news.news_title }}
+  {% endif %}
+{% endblock page_title %}
 
 {% block title %}
   {% if tag.text == "call" %}
@@ -40,7 +48,7 @@
         </div>
       </div>
     {% empty %}
-      <h4>{% trans "We receive submissions of manuscripts during the whole year. There is no call currently for a special issue." %}</h4>
+      <h4>{% translate "We receive submissions of manuscripts during the whole year. There is no call currently for a special issue." %}</h4>
     {% endfor %}
     {% include "wjs/base/elements/pagination.html" with page=news_items %}
 

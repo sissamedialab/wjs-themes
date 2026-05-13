@@ -14,3 +14,7 @@
 {% block body %}
   {% include "journal/issue_display.html" %}
 {% endblock body %}
+{% block js %}
+  {{ block.super }}
+  {% include "wjs/base/fragments/mathjax.html" %}
+{% endblock js %}

@@ -1,8 +1,11 @@
 {% load django_bootstrap5 %}
-<li class="nav-item">
+
+{% if is_in_list %}<li class="nav-item">{% endif %}
   {% if current %}
-    {% bootstrap_button button_type="link" button_class="btn-link ps-0 pe-1 text-decoration-none" disabled=current content=title size="sm" %}
+    <span class="d-inline-block ps-0 pe-1 py-1 small text-decoration-none text-muted">
+      {{ title }}
+    </span>
   {% else %}
-    {% bootstrap_button button_type="link" button_class="btn-link ps-0 pe-1" content=title href=url size="sm" %}
+    {% bootstrap_button button_type="link" button_class="btn-link ps-0 pe-1" content=title href=url size="sm" role="link" %}
   {% endif %}
-</li>
+{% if is_in_list %}</li>{% endif %}

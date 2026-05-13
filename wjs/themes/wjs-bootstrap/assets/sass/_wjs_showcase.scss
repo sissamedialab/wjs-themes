@@ -29,10 +29,6 @@
       color: $gray-900;
     }
 
-    strong {
-      color: $primary;
-    }
-
     span {
       strong {
         color: inherit;
@@ -46,6 +42,10 @@
 
     ul {
       @extend .ps-3;
+    }
+
+    img {
+      @extend .img-fluid;
     }
   }
 
@@ -154,18 +154,14 @@
   /// ARTICLE
 
   &__article-card {
-    @extend .p-4, .border-bottom;
-
-    &:last-child {
-      @extend .border-0;
-    }
+    @extend .card, .p-4, .border-top, .shadow-sm;
 
     &--search-result {
-      @extend .mb-4;
+      @extend .card, .mb-4;
+    }
 
-      &:last-child {
-        @extend .border-bottom-0;
-      }
+    &:hover {
+      @extend .bg-white;
     }
   }
 
@@ -249,6 +245,12 @@
       &--epub {
         i {
           color: #018a67;
+        }
+      }
+
+      &--html {
+        i {
+          color: #e34f26;
         }
       }
     }
@@ -457,11 +459,11 @@
   // SEARCH
 
   &__search-card {
-    @extend .border-bottom, .p-3, .mb-2;
+    @extend .card, .border-bottom, .p-3, .pt-0, .mb-2;
   }
 
   &__search-container {
-    @extend .card, .mb-4, .pt-4;
+    @extend .mb-4, .pt-4;
   }
 
   &__search {
@@ -527,14 +529,10 @@
     @extend .btn, .btn-link, .me-2;
   }
 
-  &__search-action-button {
-    @extend .btn, .btn-primary;
-  }
-
   // SUBMISSION SIDEBAR
 
   &__submission-sidebar {
-    @extend .card, .mt-4, .p-4;
+    @extend .card, .mb-4, .p-4;
 
     // Safety on tiny viewports
     min-height: 200px;
@@ -706,33 +704,125 @@
     }
 
     &-list {
-      @extend .list-unstyled,
-        .mb-0,
-        .d-flex,
-        .flex-row,
-        .flex-wrap,
-        .gap-3,
-        .justify-content-between,
-        .align-items-center;
+      @extend .list-unstyled, .mb-0, .d-flex, .flex-row, .flex-wrap, .gap-3, .align-items-stretch;
+
+      &-item {
+        @extend .d-flex;
+      }
     }
 
     &-link {
-      @extend .mt-3, .text-end;
+      @extend .mt-3, .text-end, .flex-grow-1;
       cursor: pointer;
     }
   }
 
   &__homepage-funder {
     &-logo {
-      width: 150px;
+      @extend .w-100, .h-100, .object-fit-contain, .p-3;
     }
 
     &-link {
       @extend .mb-3, .d-flex, .flex-column, .align-items-center, .text-decoration-none, .text-center;
+      aspect-ratio: 1;
+      width: 120px;
 
       &:last-child {
         @extend .mb-0;
       }
+    }
+  }
+
+  &__filter-group {
+    &--full {
+      @extend .mb-3;
+    }
+  }
+
+  &__filter-wrapper {
+    @extend .d-flex, .flex-wrap, .gap-2;
+  }
+
+  &__filter-badge {
+    @extend .badge, .rounded-pill, .bg-primary, .px-3, .py-2;
+  }
+
+  &__active-filters-container {
+    @extend .mt-4, .mb-4, .py-3, .border-top, .border-bottom;
+  }
+
+  &__filter-header {
+    @extend .small, .text-muted, .mb-0, .fw-bold, .p-0;
+
+    &[aria-expanded="true"] i::before {
+      content: "\f273";
+    }
+
+    &[aria-expanded="false"] i::before {
+      content: "\f283";
+    }
+  }
+
+  &__filter-group {
+    &--full {
+      @extend .mb-3;
+    }
+  }
+
+  &__filter-title {
+    @extend .d-block, .small, .text-muted, .text-uppercase, .me-2, .mb-0;
+    font-size: 0.7rem;
+  }
+
+  &__filter-wrapper {
+    @extend .d-flex, .flex-wrap, .gap-2;
+  }
+
+  &__filter-badge {
+    @extend .badge, .rounded-pill, .bg-primary, .px-3, .py-2;
+  }
+
+  &__top-of-page {
+    @extend .position-absolute, .top-0;
+  }
+
+  &__back-to-top {
+    @extend .btn,
+      .btn-primary,
+      .rounded-circle,
+      .shadow,
+      .position-fixed,
+      .d-flex,
+      .align-items-center,
+      .justify-content-center,
+      .p-0;
+    bottom: 3rem !important;
+    right: 3rem !important;
+    z-index: 9999 !important;
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+
+    &:focus-visible {
+      outline: 3px solid var(--bs-primary);
+      outline-offset: 3px;
+      box-shadow: none;
+    }
+  }
+
+  &__membership-grid {
+    @extend .d-grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__membership-item {
+    a {
+      @extend .d-flex, .flex-column, .align-items-center, .justify-content-center, .w-100;
+      aspect-ratio: 1;
+    }
+
+    img {
+      @extend .h-75, .object-fit-contain, .p-3;
+      width: 120px;
     }
   }
 }

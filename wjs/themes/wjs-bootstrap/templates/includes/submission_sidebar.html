@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load django_bootstrap5 i18n %}
 {% url "wjs_submission_1" as wjs_submission %}
 {% url "submission_start" as legacy_submission %}
 <div class="wjs-showcase__submission-sidebar">
@@ -18,10 +18,11 @@
             {% translate "I have read and agree to the submission guidelines." %}
           </label>
         </div>
+        {% translate "Start Submission" as start_submission_label %}
         {% if wjs_submission %}
-          <a href="{{ wjs_submission }}" class="wjs-showcase__submission-sidebar-button disabled" id="start-submission-btn">{% translate "Start Submission" %}</a>
+          {% bootstrap_button content=start_submission_label href=wjs_submission button_class="wjs-showcase__submission-sidebar-button disabled" id="start-submission-btn" %}
         {% else %}
-          <a href="{{ legacy_submission }}" class="wjs-showcase__submission-sidebar-button disabled" id="start-submission-btn">{% translate "Start Submission" %}</a>
+          {% bootstrap_button content=start_submission_label href=legacy_submission button_class="wjs-showcase__submission-sidebar-button disabled" id="start-submission-btn" %}
         {% endif %}
       {% endif %}
     </div>
