@@ -1,5 +1,6 @@
 """Configure this application."""
 
+import os
 from pathlib import Path
 
 from django.apps import AppConfig
@@ -11,7 +12,7 @@ class WJSThemesConfig(AppConfig):
 
     name = "wjs.themes"
     verbose_name = "WJS Themes"
-    path = Path(__file__).parent.absolute()
+    path = str(Path(__file__).parent.absolute())
     themes = (
         "wjs-bootstrap",
         "JCOM-theme",
@@ -23,4 +24,4 @@ class WJSThemesConfig(AppConfig):
 
         wjs-review use wjs-bootstrap as a base and we must make it available globally
         """
-        settings.TEMPLATES[0]["DIRS"].append(self.path / "wjs-bootstrap" / "templates")
+        settings.TEMPLATES[0]["DIRS"].append(os.path.join(self.path, "wjs-bootstrap", "templates"))  # noqa: PTH118

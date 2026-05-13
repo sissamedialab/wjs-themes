@@ -1,0 +1,12 @@
+@charset "UTF-8";
+$primary: #e20919;
+$primary-lighter: #a5676c;
+$dark-gray: #606a71;
+
+@import "wjs_base";
+
+.btn-primary {
+  background-color: $primary-lighter;
+  border-color: $primary-lighter;
+  color: $black;
+}

@@ -1,5 +1,4 @@
-{% load wjs_tags %}
-{% load i18n %}
+{% load i18n wjs_tags %}
 {% if wjs_subscribe_newsletter_element %}
   <div class="wjs-showcase__hp-card">
     <h2>{{ wjs_subscribe_newsletter_element.title }}</h2>
@@ -9,7 +8,7 @@
       {% include "forms/field.html" with field=wjs_subscribe_newsletter_form.email hide_label=True skip_validate=True %}
       {% include "forms/field.html" with field=wjs_subscribe_newsletter_form.captcha hide_label=True skip_validate=True %}
       <div class="d-flex justify-content-center mt-4">
-        <button name="submit" class="btn btn-primary">{% trans "Subscribe" %}</button>
+        <button name="submit" class="btn btn-primary">{% translate "Subscribe" %}</button>
       </div>
     </form>
   </div>

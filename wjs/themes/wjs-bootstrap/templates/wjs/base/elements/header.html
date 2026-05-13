@@ -1,4 +1,4 @@
-{% load django_bootstrap5 hooks press_url static %}
+{% load django_bootstrap5 hooks i18n press_url static %}
 {% url 'core_edit_profile' as core_edit_profile %}
 <header class="header-main bg-header pt-2 mb-5">
   <div class="middle-header py-1">
@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-s-12">
           <div class="d-flex justify-content-between py-2">
-            <div class="col-8 col-lg-6">
+            <div class="flex-fill">
               <a href="{{ request.journal.site_url }}" class="wjs-brand-logo" aria-label="{{ request.journal.name }} homepage" aria-current="page">
                 {% if request.journal.header_image %}
                   {% svg_or_image request.journal.header_image css_class="header-override-image" %}
@@ -16,14 +16,29 @@
                 <span class="fst-italic">{{ journal_settings.general.journal_motto }}</span>
               </a>
             </div>
-            <div class="col-4 col-lg-6 align-items-end flex-column d-none d-lg-flex justify-content-between">
-              {% include "wjs/base/elements/header_socials.html" %}
+            <div class="align-items-end flex-column d-none d-lg-flex justify-content-between">
+              <div class="d-flex align-items-start">
+                {% if request.available_languages|length > 1 %}
+                  <form class="d-flex align-items-start gap-3 me-3" action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.PATH }}"/>
+                    {% for language in LANGUAGES %}
+                      {% if language.0 in request.available_languages %}
+                          <button class="btn btn-link text-uppercase pb-0 pt-0 ps-0 text-decoration-none{% if language.0 != LANGUAGE_CODE %} text-black{% endif %}"
+                                  name="language"
+                                  value="{{ language.0 }}">{{ language.0 }}</button>
+                      {% endif %}
+                    {% endfor %}
+                  </form>
+                {% endif %}
+                {% include "wjs/base/elements/header_socials.html" %}
+              </div>
               {% block top_menu %}
               {% endblock top_menu %}
               {% include "wjs/base/elements/user_menu.html" with show_name=True %}
               <form role="search" class="wjs-header__search" method="get" action="{% if request.journal %}{% journal_url 'search' %}{% else %}/search{% endif %}">
                 <label class="visually-hidden" for="article_search">{% trans "Search an article" %}</label>
-                <input id="article_search" type="search" name="article_search" placeholder="Search">
+                <input id="article_search" type="search" name="article_search" placeholder="{% translate "Search" %}">
                 <input id="sort" name="sort" type="hidden" value="relevance">
                 <input id="title" name="title" type="hidden" value="on">
                 <input id="abstract" name="abstract" type="hidden" value="on">

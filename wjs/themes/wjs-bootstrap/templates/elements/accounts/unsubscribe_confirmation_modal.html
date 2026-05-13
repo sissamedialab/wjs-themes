@@ -1,0 +1,29 @@
+{% load django_bootstrap5 i18n %}
+{% url "unsubscribe_newsletter" object_pk=object.pk as unsubscribe_url %}
+{% url "unsubscribe_newsletter" object_newsletter_token=object.newsletter_token as unsubscribe_newsletter_token_url %}
+{% translate "Yes" as yes_label %}
+{% translate "No" as no_label %}
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal1Label">{% translate "Publication alert subscription" %}</h5>
+        {% bootstrap_button button_type="button" button_class="btn-close" data_bs_dismiss="modal" aria_label="Close" content="" %}
+      </div>
+      <div class="modal-body">
+        <p>{% translate "Please confirm that you do not wish to receive any JCOM publication alert" %}</p>
+      </div>
+      <div class="modal-footer">
+        <form method="post" class="d-inline">
+          {% csrf_token %}
+          {% if object.newsletter_token %}
+            {% bootstrap_button content=yes_label href=unsubscribe_newsletter_token_url %}
+          {% else %}
+            {% bootstrap_button content=yes_label href=unsubscribe_url %}
+          {% endif %}
+        </form>
+        {% bootstrap_button button_class="btn btn-outline-primary" data_bs_dismiss="modal" content=no_label %}
+      </div>
+    </div>
+  </div>
+</div>

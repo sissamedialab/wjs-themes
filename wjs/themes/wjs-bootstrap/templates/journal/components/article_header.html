@@ -1,4 +1,4 @@
-{% load django_bootstrap5 wjs_articles wjs_tags i18n %}
+{% load django_bootstrap5 i18n wjs_articles wjs_tags %}
 {% article_css_classes article.articleworkflow as article_classes %}
 <div class="wjs-showcase__article-detail-card">
   <div class="wjs-showcase__article-detail-card-header">
@@ -12,15 +12,15 @@
       {% with parent=article.ancestors.first.parent %}
         <p>
           {% if article.section.name == "Erratum" or article.section.name == "Addendum" %}
-            <span>{% trans "This is a correction for" %}</span>
+            <span>{% translate "This is a correction for" %}</span>
           {% else %}
-            <span>{% trans "part of" %}</span>
+            <span>{% translate "part of" %}</span>
           {% endif %}
           <a href="{{ parent.url }}">{{ parent.title }}</a>
         </p>
       {% endwith %}
     {% endif %}
-    {% if article.frozen_authors.count > 0 %}
+    {% if article.frozen_authors.exists %}
       <div class="wjs-showcase__article-detail-authors">
         {% for author in article.frozen_authors.all %}
         {% url 'articles_by_author' author.author.pk as author_url %}
@@ -38,7 +38,7 @@
       </div>
     {% endif %}
     {% if not article.is_published %}
-      <p><b>This is an accepted article with a DOI pre-assigned that is not yet published.</b></p>
+      <p><b>{% translate "This is an accepted article with a DOI pre-assigned that is not yet published." %}</b></p>
     {% endif %}
     {% if article.abstract and article.abstract != '' %}<p>{{ article.abstract | safe }}</p>{% endif %}
   </div>

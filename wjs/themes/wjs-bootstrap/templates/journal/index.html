@@ -1,12 +1,12 @@
 {% extends "wjs/base/base.html" %}
-{% load static truncate %}
+{% load django_bootstrap5 i18n static truncate %}
 
 {% block title_sidekick %}
   {% url "wjs_submission_1" as submission_start %}
   {% if not submission_start %}
     {% url "journal_submissions" as submission_start %}
   {% endif %}
-  <a href="{{ submission_start }}" class="wjs-showcase__submission-sidebar-button" id="start-submission-btn">SUBMIT A PAPER</a>
+  <a href="{{ submission_start }}" class="wjs-showcase__submission-sidebar-button" id="start-submission-btn">{% translate "SUBMIT A PAPER" %}</a>
 {% endblock title_sidekick %}
 
 {% block page_title %}{{ wjs_latest_articles_title }}{% endblock page_title %}

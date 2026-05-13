@@ -1,4 +1,4 @@
-{% load django_bootstrap5 hooks press_url static %}
+{% load django_bootstrap5 hooks i18n press_url static %}
 
 <button class="btn d-lg-none mb-2 fs-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-label="Open navigation menu">
   <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
@@ -12,37 +12,37 @@
     <ul class="nav flex-column mb-5">
       {% if request.journal.nav_home %}
         <li class="nav-item wjs-nav-item">
-          <a class="nav-link" href="{% url 'website_index' %}">{% trans "Home" %}</a>
+          <a class="nav-link" href="{% url 'website_index' %}">{% translate "Home" %}</a>
         </li>
       {% endif %}
       {% if request.journal.nav_news %}
         <li class="nav-item wjs-nav-item">
-          <a class="nav-link" href="{% url 'core_news_list' %}">{% trans "News" %}</a>
+          <a class="nav-link" href="{% url 'core_news_list' %}">{% translate "News" %}</a>
         </li>
       {% endif %}
       {% if request.journal.nav_articles %}
         <li class="nav-item wjs-nav-item">
-          <a class="nav-link" href="{% url 'journal_articles' %}">{% trans "Articles" %}</a>
+          <a class="nav-link" href="{% url 'journal_articles' %}">{% translate "Articles" %}</a>
         </li>
       {% endif %}
       {% if request.journal.nav_issues %}
         <li class="nav-item wjs-nav-item">
-          <a class="nav-link" href="{% url 'journal_issues' %}">{% trans "Issues" %}</a>
+          <a class="nav-link" href="{% url 'journal_issues' %}">{% translate "Issues" %}</a>
         </li>
       {% endif %}
       {% if journal_settings.general.enable_editorial_display == 'on' %}
         <li class="nav-item wjs-nav-item">
-          <a class="nav-link" href="{% url 'editorial_team' %}">{% trans "Editorial Team" %}</a>
+          <a class="nav-link" href="{% url 'editorial_team' %}">{% translate "Editorial Team" %}</a>
         </li>
       {% endif %}
       {% if request.journal.nav_sub %}
         <li class="nav-item wjs-nav-item">
-          <a class="nav-link" href="{% url 'journal_submissions' %}">{% trans "Submission" %}</a>
+          <a class="nav-link" href="{% url 'journal_submissions' %}">{% translate "Submission" %}</a>
         </li>
       {% endif %}
       {% if request.journal.nav_contact %}
         <li class="nav-item wjs-nav-item">
-          <a class="nav-link" href="{% url 'contact' %}">{% trans "Contact" %}</a>
+          <a class="nav-link" href="{% url 'contact' %}">{% translate "Contact" %}</a>
         </li>
       {% endif %}
 
@@ -75,7 +75,7 @@
       {% if request.user.is_authenticated %}
         <li class="nav-item wjs-nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="sidebarAccountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {% trans "Account" %}
+            {% translate "Account" %}
           </a>
           {% if PermissionType %}
             {% include "wjs/base/elements/user_menu_dropdown_list.html" %}
@@ -83,7 +83,7 @@
         </li>
       {% else %}
         <li class="nav-item wjs-nav-item">
-          <a class="nav-link" href="{% url 'core_login' %}">{% trans "Login" %}</a>
+          <a class="nav-link" href="{% url 'core_login' %}">{% translate "Login" %}</a>
         </li>
       {% endif %}
 
@@ -110,7 +110,7 @@
     </ul>
 
     <div class="px-4 d-flex flex-column gap-5">
-      <a class="btn btn-primary wjs-search-button text-center" tabindex="0" href="#" aria-label="{% trans "Search" %}" title="{% trans "Search" %}">
+      <a class="btn btn-primary wjs-search-button text-center" tabindex="0" href="#" aria-label="{% translate "Search" %}" title="{% translate "Search" %}">
         <i class="bi bi-search wjs-search-button__icon" aria-hidden="true"></i>
       </a>
 
