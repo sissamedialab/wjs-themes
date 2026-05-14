@@ -6,10 +6,10 @@
 <form id="page_search" method="get" action="{% url 'search' %}" class="wjs-showcase__search">
   <div class="d-flex gap-4 mt-4 mb-2">
     {% bootstrap_field form.article_search wrapper_class="w-33" server_side_validation=Fals %}
-    {% if form.sections.is_visible %}
+    {% if not form.sections.is_hidden %}
       {% include "includes/select_checkbox.html" with field=form.sections wrapper_class="w-33" server_side_validation=False %}
     {% endif %}
-    {% if form.keywords.is_visible %}
+    {% if not form.keywords.is_hidden %}
       {% include "includes/select_checkbox.html" with field=form.keywords wrapper_class="w-33" server_side_validation=False %}
     {% endif %}
   </div>
