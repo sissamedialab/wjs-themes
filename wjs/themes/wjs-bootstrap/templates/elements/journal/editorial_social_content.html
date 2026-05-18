@@ -1,0 +1,55 @@
+{% if user.website or user.twitter or user.facebook or user.github or user.linkedin %}
+  <div class="mb-3">
+    <small class="d-flex flex-wrap gap-3">
+      {% if user.website %}
+        <a href="{{ user.website }}"
+           class="btn btn-sm btn-outline-secondary"
+           aria-label="{{ member.user.full_name }}'s website"
+        >
+          <i aria-hidden="true" class="fa fa-globe me-1"></i>
+          {% translate "Website" %}
+        </a>
+      {% endif %}
+
+      {% if user.twitter %}
+        <a href="https://www.twitter.com/{{ user.twitter }}"
+           class="btn btn-sm btn-outline-primary"
+           aria-label="{{ member.user.full_name }}'s twitter profile"
+        >
+          <i aria-hidden="true" class="fa fa-twitter-square me-1"></i>
+          {% translate "Twitter" %}
+        </a>
+      {% endif %}
+
+      {% if user.facebook %}
+        <a href="https://www.facebook.com/{{ user.facebook }}"
+           class="btn btn-sm btn-outline-primary"
+           aria-label="{{ member.user.full_name }}'s facebook profile"
+        >
+          <i aria-hidden="true" class="fa fa-facebook-square me-1"></i>
+          {% translate "Facebook" %}
+        </a>
+      {% endif %}
+
+      {% if user.github %}
+        <a href="https://www.github.com/{{ user.github }}"
+           class="btn btn-sm btn-outline-dark"
+           aria-label="{{ member.user.full_name }}'s github profile"
+        >
+          <i aria-hidden="true" class="fa fa-github-square me-1"></i>
+          {% translate "Github" %}
+        </a>
+      {% endif %}
+
+      {% if user.linkedin %}
+        <a href="https://www.linkedin.com/in/{{ user.linkedin }}"
+           class="btn btn-sm btn-outline-primary"
+           aria-label="{{ member.user.full_name }}'s linkedin profile"
+        >
+          <i aria-hidden="true" class="fa fa-linkedin-square me-1"></i>
+          {% translate "Linkedin" %}
+        </a>
+      {% endif %}
+    </small>
+  </div>
+{% endif %}
