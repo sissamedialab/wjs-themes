@@ -686,14 +686,28 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
       height: 0;
     }
 
-    .wjs-logo-container {
-      width: 20%;
+    .wjs-brand-logo {
+      height: 46px;
+      transition: all 0.3s ease;
+
+      img {
+        height: 100%;
+      }
     }
   }
 }
 
-.header-main .wjs-logo-container {
+.header-main .wjs-brand-logo {
+  @include media-breakpoint-down(lg) {
+    height: auto;
+  }
+  height: 100px;
+  position: relative;
   transition: all 0.3s ease;
+
+  img {
+    height: 100%;
+  }
 }
 
 .modal-body {
