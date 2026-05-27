@@ -1,11 +1,11 @@
 """Install all custom themes into Janeway."""
 
-import os.path
 from pathlib import Path
 
 from django.apps import apps
 from django.conf import settings
 from django.core.management.base import BaseCommand
+from utils.install import update_settings
 
 
 class Command(BaseCommand):
@@ -17,12 +17,15 @@ class Command(BaseCommand):
         config = apps.get_app_config("themes")
         themes_folder = config.path
 
+        settings_path = Path(__file__).parents[3] / "install" / "settings.json"
+        update_settings(file_path=str(settings_path))
+
         for theme in config.themes:
             destination = destination_folder / theme
             self.stdout.write(
                 self.style.SUCCESS(f"Linking {theme} to {destination}..."),
             )
-            theme_folder = os.path.join(themes_folder, theme)  # noqa: PTH118
+            theme_folder = Path(themes_folder) / theme
             try:
                 destination.symlink_to(theme_folder)
             except FileExistsError:

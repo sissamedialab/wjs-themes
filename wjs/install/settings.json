@@ -1,0 +1,21 @@
+[
+    {
+        "group": {
+            "name": "general"
+        },
+        "setting": {
+            "description": "Journal's Linkedin page.",
+            "is_translatable": false,
+            "name": "linkedin_page",
+            "pretty_name": "Linkedin page",
+            "type": "char"
+        },
+        "value": {
+            "default": ""
+        },
+        "editable_by": [
+            "director",
+            "journal-manager"
+        ]
+    }
+]
