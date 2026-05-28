@@ -30,8 +30,13 @@
   @extend .p-2, .w-100;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &.wjs-submission-form__search-cursor {
     background-color: $gray-200;
+  }
+
+  &.wjs-submission-form__search-cursor {
+    box-shadow: 0 0 0 $focus-ring-width $focus-ring-color;
   }
 }
 

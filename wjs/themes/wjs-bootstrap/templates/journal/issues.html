@@ -10,9 +10,9 @@
     {% for volume in volumes %}
       <li class="wjs-showcase__volume-card">
         {% with volume_meta=volume.list|first %}
-          <h3 class="wjs-showcase__volume-card-title">
+          <h2 class="wjs-showcase__volume-card-title">
             {% translate "Volume" %} {{ volume_meta.volume }}, {{ volume_meta.date.year }}
-          </h3>
+          </h2>
         {% endwith %}
         <ul class="wjs-showcase__volumes-list">
           {% for issue in volume.list %}

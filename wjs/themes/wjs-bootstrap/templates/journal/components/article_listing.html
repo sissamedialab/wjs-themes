@@ -5,7 +5,8 @@
   <article>
     <div class="wjs-showcase__article-card-header justify-content-between">
         <span class="wjs-showcase__article-date">
-          <i class="bi bi-calendar3"></i>
+          <span class="visually-hidden">{% translate "Date of publication" %}</span>
+          <i class="bi bi-calendar3" aria-hidden="true"></i>
           {{ article.date_published|date:DATE_FORMAT }}
           {% if not request.available_languages|length_is:"1" %}
             <span class="badge language">{{ article.language|language_alpha2 }}</span>
@@ -14,6 +15,7 @@
 
       {% if request.journal.code != "JQuant" %}
         <a href="{{ by_url }}">
+          <span class="visually-hidden">{% translate "Category" %}:</span>
           <span class="wjs-showcase__article-badge {{ article_classes.section_css }}">{{ article.section.name }}</span>
         </a>
       {% endif %}

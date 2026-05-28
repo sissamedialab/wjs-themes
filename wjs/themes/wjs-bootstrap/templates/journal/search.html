@@ -65,7 +65,7 @@
             </section>
           {% endif %}
 
-          <p class="text-end mt-2 fw-bolder">
+          <p class="text-end mt-2 fw-bolder" id="search-results-count">
             {% if paginator.count %}
               {% blocktranslate count counter=paginator.count %}
                 {{ counter }} publication found
@@ -81,11 +81,14 @@
         </div>
       {% endif %}
 
-      <ul class="list-group">
-        {% for article in articles %}
-          {% include "journal/components/article_listing.html" with article=article article_class="wjs-showcase__article-card--search-result" %}
-        {% endfor %}
-      </ul>
+      <section aria-labelledby="search-results-heading">
+        <h2 id="search-results-heading" class="visually-hidden">{% translate "Search results" %}</h2>
+        <ul class="list-group">
+          {% for article in articles %}
+            {% include "journal/components/article_listing.html" with article=article article_class="wjs-showcase__article-card--search-result" %}
+          {% endfor %}
+        </ul>
+      </section>
     </div>
   </div>
 
@@ -105,6 +108,11 @@
 
     document.addEventListener("DOMContentLoaded", function() {
       const urlParams = new URLSearchParams(window.location.search);
+
+      if ([urlParams.keys()].some(k => k !== "modal") && !window.location.hash) {
+        window.location.hash = "search-results-count";
+        requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "instant" }));
+      }
 
       if (urlParams.get("modal") === "1") {
         const modalElement = document.getElementById("advanced_search");
