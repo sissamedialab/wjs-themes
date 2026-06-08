@@ -1,0 +1,1886 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.0.8\n"
+"Report-Msgid-Bugs-To: wjs-support@sissamedialab.it\n"
+"POT-Creation-Date: 2026-05-28 08:06+0200\n"
+"PO-Revision-Date: 2026-05-30 15:24+0200\n"
+"Last-Translator: Maria Teresa Leo <mariateresa.leo@sissamedialab.it>\n"
+"Language-Team: \n"
+"Language: ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: JCOM-theme/templates/admin/core/accounts/gdpr_acceptance.html:5
+msgid "The account does not exist."
+msgstr "La cuenta no existe."
+
+#: JCOM-theme/templates/admin/core/accounts/gdpr_acceptance.html:7
+msgid "Hello"
+msgstr "Hola"
+
+#: JCOM-theme/templates/admin/core/accounts/gdpr_acceptance.html:12
+msgid "Accept GDPR"
+msgstr "Aceptar el RGPD"
+
+#: JCOM-theme/templates/admin/core/accounts/gdpr_acceptance.html:14
+msgid "Accept invitation"
+msgstr "Aceptar invitación"
+
+#: JCOM-theme/templates/admin/core/accounts/get_reset_token.html:8
+msgid "Reset Password"
+msgstr "Restablecer contraseña"
+
+#: JCOM-theme/templates/admin/core/accounts/get_reset_token.html:15
+msgid "Reset password"
+msgstr "Restablecer contraseña"
+
+#: JCOM-theme/templates/admin/core/accounts/get_reset_token.html:21
+msgid "Enter your email address to begin the reset process"
+msgstr ""
+"Introduzca su dirección de correo electrónico para iniciar el proceso de "
+"restablecimiento"
+
+#: JCOM-theme/templates/admin/core/accounts/get_reset_token.html:26
+msgid "Request Token"
+msgstr "Solicitar token"
+
+#: JCOM-theme/templates/admin/core/accounts/invite.html:6
+msgid "Invite"
+msgstr "Invitación"
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:6
+#: JCOM-theme/templates/admin/core/accounts/login.html:69
+#: JCOM-theme/templates/core/nav.html:78
+#: JCOM-theme/templates/core/nav.html:213
+#: JCOM-theme/templates/elements/journal_footer.html:46
+#: JCOM-theme/templates/journal/submissions.html:20
+#: wjs-bootstrap/templates/includes/submission_sidebar.html:12
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:67
+#: wjs-bootstrap/templates/wjs/base/elements/mobile_sidebar.html:86
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu.html:19
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:26
+msgid "Login with your account"
+msgstr "Inicie sesión con su cuenta"
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:29
+msgid "Log in with ORCiD"
+msgstr "Iniciar sesión con ORCiD"
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:34
+msgid "Login with"
+msgstr "Iniciar sesión con"
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:44
+msgid ""
+"\n"
+"                  <b>Please login to access the requested page.</b>\n"
+"                "
+msgstr ""
+"\n"
+"                  <b>Inicie sesión para acceder a la página solicitada.</b>\n"
+"                "
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:48
+msgid ""
+"Make sure you enter the <b>email address</b> associated with your account "
+"(i.e., the one where you have received JCOM emails)."
+msgstr ""
+"Asegúrese de introducir la <b>dirección de correo electrónico</b> asociada a"
+" su cuenta (es decir, aquella en la que ha recibido los correos de JCOM)."
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:49
+msgid ""
+"If you need to reset your <b>password</b>, click the link below and enter "
+"the email address associated with your account."
+msgstr ""
+"Si necesita restablecer su <b>contraseña</b>, haga clic en el siguiente "
+"enlace e introduzca la dirección de correo electrónico asociada a su cuenta."
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:51
+msgid "Please <b>avoid multiple registrations</b>"
+msgstr "Por favor, <b>evite registros múltiples</b>"
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:52
+msgid ""
+"as you would not be able to access your previous records, if any. Do not "
+"hesitate to contact the Editorial Office at"
+msgstr ""
+"ya que no podría acceder a sus registros anteriores, si los hubiera. No dude"
+" en ponerse en contacto con la Oficina Editorial en"
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:54
+msgid "for assistance."
+msgstr "para obtener ayuda."
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:72
+msgid "Register an Account"
+msgstr "Registrar una cuenta"
+
+#: JCOM-theme/templates/admin/core/accounts/login.html:75
+msgid "Reset Your Password"
+msgstr "Restablecer contraseña"
+
+#: JCOM-theme/templates/admin/core/accounts/password_guide.html:5
+#: JCOM-theme/templates/admin/core/accounts/register.html:106
+msgid "Password Guide"
+msgstr "Guía de contraseñas"
+
+#: JCOM-theme/templates/admin/core/accounts/password_guide.html:6
+#: JCOM-theme/templates/admin/core/accounts/register.html:107
+msgid "When it comes to passwords, length is better than complexity."
+msgstr ""
+"En lo que respecta a las contraseñas, es mejor que sean largas que "
+"complejas."
+
+#: JCOM-theme/templates/admin/core/accounts/password_guide.html:7
+#: JCOM-theme/templates/admin/core/accounts/register.html:108
+msgid ""
+"Its a common myth that a short and complex password (Jfjfy&65^87) is more "
+"secure than a long and uncomplicated password (our awesome moon base rocks)."
+msgstr ""
+"Es un mito común que una contraseña corta y compleja (Jfjfy&65^87) sea más "
+"segura que una contraseña larga y sencilla (nuestra increíble base lunar es "
+"genial)."
+
+#: JCOM-theme/templates/admin/core/accounts/password_guide.html:8
+msgid ""
+"We recommend selecting a long, but easy to remember password such as <i>our awesome moon base\n"
+"      rocks</i> which would take an estimated septillion years to crack as opposed to a complex one\n"
+"      like <i>Jfjfy&65^87</i> which would take just over 600 years on a standard computer."
+msgstr ""
+"Le recomendamos elegir una contraseña larga, pero fácil de recordar, como "
+"<i>nuestra increíble base lunar es genial</i>, que tardaría un septillón de "
+"años estimado en descifrarse, frente a una compleja como <i>Jfjfy&65^87</i>,"
+" que tardaría poco más de 600 años en un ordenador estándar."
+
+#: JCOM-theme/templates/admin/core/accounts/password_guide.html:13
+#: JCOM-theme/templates/admin/core/accounts/register.html:114
+#: JCOM-theme/templates/admin/elements/confirm_modal.html:1
+#: wjs-bootstrap/templates/journal/components/search_modal.html:2
+#: wjs-bootstrap/templates/wjs/base/elements/modal.html:2
+#: wjs-bootstrap/templates/wjs/base/elements/modal_htmx.html:2
+msgid "Close"
+msgstr "Cerrar"
+
+#: JCOM-theme/templates/admin/core/accounts/register.html:7
+#: JCOM-theme/templates/admin/core/accounts/register.html:97
+#: JCOM-theme/templates/journal/submissions.html:19
+#: wjs-bootstrap/templates/includes/submission_sidebar.html:13
+msgid "Register"
+msgstr "Registrarse"
+
+#: JCOM-theme/templates/admin/core/accounts/register.html:16
+msgid "Register for an account with"
+msgstr "Regístrese para obtener una cuenta con"
+
+#: JCOM-theme/templates/admin/core/accounts/register.html:21
+#: JCOM-theme/templates/admin/core/accounts/reset_password.html:21
+msgid "Password Rules"
+msgstr "Reglas de contraseña"
+
+#: JCOM-theme/templates/admin/core/accounts/register.html:24
+#, python-format
+msgid ""
+"\n"
+"                Your password should be at least %(password_length)s characters long.\n"
+"              "
+msgstr ""
+"\n"
+"                Su contraseña debe tener al menos %(password_length)s caracteres.\n"
+"              "
+
+#: JCOM-theme/templates/admin/core/accounts/register.html:30
+msgid ""
+"\n"
+"                  Your password should contain at least one upper case letter.\n"
+"                "
+msgstr ""
+"\n"
+"                  Su contraseña debe contener al menos una letra mayúscula.\n"
+"                "
+
+#: JCOM-theme/templates/admin/core/accounts/register.html:37
+msgid ""
+"\n"
+"                  Your password should contain at least one number.\n"
+"                "
+msgstr ""
+"\n"
+"                  Su contraseña debe contener al menos un número.\n"
+"                "
+
+#: JCOM-theme/templates/admin/core/accounts/register.html:44
+msgid ""
+"\n"
+"              For more information read our <a href=\"#passwordmodal\" class=\"modal-trigger\">password guide</a>.\n"
+"            "
+msgstr ""
+"\n"
+"              Para más información, lea nuestra <a href=\"#passwordmodal\" class=\"modal-trigger\">guía de contraseñas</a>.\n"
+"            "
+
+#: JCOM-theme/templates/admin/core/accounts/register.html:109
+msgid ""
+"We recommend selecting a long, but easy to remember password such as <i>our awesome moon base\n"
+"        rocks</i> which would take an estimated septillion years to crack as opposed to a complex one\n"
+"        like <i>Jfjfy&65^87</i> which would take just over 600 years on a standard computer."
+msgstr ""
+"Le recomendamos elegir una contraseña larga, pero fácil de recordar, como "
+"<i>nuestra increíble base lunar es genial</i>, que tardaría un septillón de "
+"años estimado en descifrarse, frente a una compleja como <i>Jfjfy&65^87</i>,"
+" que tardaría poco más de 600 años en un ordenador estándar."
+
+#: JCOM-theme/templates/admin/core/accounts/registration_success.html:8
+msgid "Thank you for registering!"
+msgstr "¡Gracias por registrarse!"
+
+#: JCOM-theme/templates/admin/core/accounts/registration_success.html:10
+#, python-format
+msgid ""
+"\n"
+"          To complete your registration, please check your email inbox for a message from <b>%(no_reply_email)s</b>.\n"
+"          Inside the email, you'll find a link to confirm your account.\n"
+"          <p><b>Important:</b></p>\n"
+"        "
+msgstr ""
+"\n"
+"          Para completar su registro, revise su bandeja de entrada en busca de un mensaje de <b>%(no_reply_email)s</b>.\n"
+"          Dentro del correo encontrará un enlace para confirmar su cuenta.\n"
+"          <p><b>Importante:</b></p>\n"
+"        "
+
+#: JCOM-theme/templates/admin/core/accounts/registration_success.html:17
+msgid ""
+"You must click the confirmation link in the email to activate your account."
+msgstr ""
+"Debe hacer clic en el enlace de confirmación del correo para activar su "
+"cuenta."
+
+#: JCOM-theme/templates/admin/core/accounts/registration_success.html:20
+msgid "Once your account is confirmed, you’ll be able to log in."
+msgstr "Una vez confirmada su cuenta, podrá iniciar sesión."
+
+#: JCOM-theme/templates/admin/core/accounts/registration_success.html:23
+msgid "If you didn’t receive the email, please check your spam folder."
+msgstr "Si no ha recibido el correo, revise su carpeta de spam."
+
+#: JCOM-theme/templates/admin/core/accounts/reset_password.html:5
+#: JCOM-theme/templates/admin/core/accounts/reset_password.html:10
+#: JCOM-theme/templates/admin/core/accounts/reset_password.html:15
+msgid "Enter your new password"
+msgstr "Introduzca su nueva contraseña"
+
+#: JCOM-theme/templates/admin/core/accounts/reset_password.html:25
+msgid ""
+"\n"
+"    For more information read our <a href=\"#passwordmodal\" class=\"modal-trigger\">password guide</a>.\n"
+"  "
+msgstr ""
+"\n"
+"    Para más información, lea nuestra <a href=\"#passwordmodal\" class=\"modal-trigger\">guía de contraseñas</a>.\n"
+"  "
+
+#: JCOM-theme/templates/admin/core/accounts/reset_password.html:32
+msgid "Save"
+msgstr "Guardar"
+
+#: JCOM-theme/templates/admin/core/accounts/thankyou.html:6
+msgid "Thank for your acceptance"
+msgstr "Gracias por su aceptación"
+
+#: JCOM-theme/templates/admin/core/accounts/thankyou.html:7
+msgid "We will send an email to you to set your password"
+msgstr "Le enviaremos un correo electrónico para que establezca su contraseña"
+
+#: JCOM-theme/templates/admin/core/accounts/thankyou.html:9
+msgid "Your account is already active."
+msgstr "Su cuenta ya está activa."
+
+#: JCOM-theme/templates/admin/core/accounts/thankyou.html:10
+msgid "Please, go to"
+msgstr "Por favor, vaya a"
+
+#: JCOM-theme/templates/admin/core/accounts/thankyou.html:11
+msgid "login page."
+msgstr "la página de inicio de sesión."
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:5
+#: JCOM-theme/templates/admin/core/si_imu_imported.html:6
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:5
+msgid "Insert Users"
+msgstr "Insertar usuarios"
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:5
+msgid "Step 2/3"
+msgstr "Paso 2/3"
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:58
+msgid "first"
+msgstr "primero"
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:59
+msgid "middle"
+msgstr "segundo nombre"
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:60
+msgid "last"
+msgstr "apellido"
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:61
+msgid "email"
+msgstr "correo electrónico"
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:62
+msgid "institution"
+msgstr "institución"
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:63
+msgid "title"
+msgstr "título"
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:116
+msgid "new"
+msgstr "nuevo"
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:118
+msgid "skip"
+msgstr "omitir"
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:154
+msgid "Import..."
+msgstr "Importar..."
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:162
+msgid "Legend"
+msgstr "Leyenda"
+
+#: JCOM-theme/templates/admin/core/si_imu_check.html:163
+msgid ""
+"\n"
+"            For each row in the uploaded spreadsheet, please mind the following meanings\n"
+"            <dl>\n"
+"              <dt>new</dt>\n"
+"              <dd>\n"
+"                create a new account in the DB. Naturally this is not possible if the email is the same as that of an already existing account.\n"
+"              </dd>\n"
+"              <dt>skip</dt>\n"
+"              <dd>\n"
+"                just ignore this line and do nothing, as if it was not present in the uploaded spreadsheed.\n"
+"              </dd>\n"
+"              <dt>DB</dt>\n"
+"              <dd>\n"
+"                use this existing account without any modification. If articles should be created, this account will be the owner and main author of the new article with the given title.\n"
+"              </dd>\n"
+"              <dt>edit...</dt>\n"
+"              <dd>\n"
+"                use this existing account, but let me change something. In the next step, a form will be available where you will be able to edit the account. You will be presented with the current data present in the DB and with the \"new\"\n"
+"                ones uploaded with the spreasheet.\n"
+"              </dd>\n"
+"            </dl>\n"
+"          "
+msgstr ""
+"\n"
+"            Para cada fila de la hoja de cálculo cargada, tenga en cuenta los siguientes significados\n"
+"            <dl>\n"
+"              <dt>nuevo</dt>\n"
+"              <dd>\n"
+"                crea una nueva cuenta en la base de datos. Naturalmente, esto no es posible si el correo electrónico es el mismo que el de una cuenta ya existente.\n"
+"              </dd>\n"
+"              <dt>omitir</dt>\n"
+"              <dd>\n"
+"                simplemente ignora esta línea y no hace nada, como si no estuviera presente en la hoja de cálculo subida.\n"
+"              </dd>\n"
+"              <dt>DB</dt>\n"
+"              <dd>\n"
+"                usa esta cuenta existente sin ninguna modificación. Si se deben crear artículos, esta cuenta será la propietaria y autora principal del nuevo artículo con el título indicado.\n"
+"              </dd>\n"
+"              <dt>editar...</dt>\n"
+"              <dd>\n"
+"                usa esta cuenta existente, pero permíteme cambiar algo. En el siguiente paso, habrá disponible un formulario donde podrá editar la cuenta. Se le mostrarán los datos actuales presentes en la base de datos y los «nuevos»\n"
+"                subidos con la hoja de cálculo.\n"
+"              </dd>\n"
+"            </dl>\n"
+"          "
+
+#: JCOM-theme/templates/admin/core/si_imu_imported.html:6
+msgid "Step 3/3"
+msgstr "Paso 3/3"
+
+#: JCOM-theme/templates/admin/core/si_imu_imported.html:77
+msgid "Update selected users"
+msgstr "Actualizar usuarios seleccionados"
+
+#: JCOM-theme/templates/admin/core/si_imu_imported.html:80
+msgid "Continue"
+msgstr "Continuar"
+
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:5
+msgid "Step 1/3"
+msgstr "Paso 1/3"
+
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:13
+msgid "Intro"
+msgstr "Introducción"
+
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:31
+msgid ""
+"\n"
+"              <p>\n"
+"                The data file must be an <b>OASIS <a href=\"https://en.wikipedia.org/wiki/OpenDocument\">OpenDocument</a> Spreadsheet</b>\n"
+"                (that means \"an OpenOffice 2 version of excel file\") with data on the\n"
+"                first sheet and with the following structure:\n"
+"              </p>\n"
+"            "
+msgstr ""
+"\n"
+"              <p>\n"
+"                El archivo de datos debe ser una <b>hoja de cálculo OASIS <a href=\"https://en.wikipedia.org/wiki/OpenDocument\">OpenDocument</a></b>\n"
+"                (es decir, «una versión OpenOffice 2 de un archivo de Excel») con los datos en la\n"
+"                primera hoja y con la siguiente estructura:\n"
+"              </p>\n"
+"            "
+
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:42
+msgid "session (optional)"
+msgstr "sesión (opcional)"
+
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:50
+msgid "first name"
+msgstr "nombre"
+
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:51
+msgid "middle name"
+msgstr "segundo nombre"
+
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:52
+msgid "last name"
+msgstr "apellido"
+
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:53
+msgid "e-mail"
+msgstr "correo electrónico"
+
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:54
+msgid "institution / affiliation"
+msgstr "institución / afiliación"
+
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:55
+msgid "contribution title"
+msgstr "título de la contribución"
+
+#: JCOM-theme/templates/admin/core/si_imu_upload.html:68
+msgid ""
+"\n"
+"              <p>\n"
+"                Warning: if you check \"create articles on import\" the title is mandatory.\n"
+"                <br />\n"
+"                Warning: only middle name and affiliation are optional. All other fields are mandatory (for the title, see above).\n"
+"                <br />\n"
+"                Warning: order is important.\n"
+"              </p>\n"
+"            "
+msgstr ""
+"\n"
+"              <p>\n"
+"                Advertencia: si marca «crear artículos al importar», el título es obligatorio.\n"
+"                <br />\n"
+"                Advertencia: solo el segundo nombre y la afiliación son opcionales. Todos los demás campos son obligatorios (para el título, véase más arriba).\n"
+"                <br />\n"
+"                Advertencia: el orden es importante.\n"
+"              </p>\n"
+"            "
+
+#: JCOM-theme/templates/admin/elements/confirm_modal.html:6
+msgid "Error"
+msgstr "Error"
+
+#: JCOM-theme/templates/admin/elements/confirm_modal.html:6
+msgid "Confirmation"
+msgstr "Confirmación"
+
+#: JCOM-theme/templates/admin/elements/confirm_modal.html:23
+#: JCOM-theme/templates/elements/accounts/unsubscribe_confirmation_modal.html:13
+#: JCOM-theme/templates/elements/accounts/unsubscribe_confirmation_modal.html:17
+#: wjs-bootstrap/templates/elements/accounts/unsubscribe_confirmation_modal.html:4
+msgid "Yes"
+msgstr "Sí"
+
+#: JCOM-theme/templates/admin/elements/submit/file.html:7
+msgid "Add New File"
+msgstr "Añadir nuevo archivo"
+
+#: JCOM-theme/templates/admin/elements/submit/file.html:24
+#: JCOM-theme/templates/admin/elements/submit/file.html:57
+#: JCOM-theme/templates/admin/submission/source/submit_files.html:37
+#: JCOM-theme/templates/admin/submission/source/submit_files.html:73
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:153
+msgid "Label"
+msgstr "Etiqueta"
+
+#: JCOM-theme/templates/admin/elements/submit/file.html:33
+msgid "Description"
+msgstr "Descripción"
+
+#: JCOM-theme/templates/admin/elements/submit/file.html:38
+#: JCOM-theme/templates/admin/elements/submit/file.html:62
+msgid "Add File"
+msgstr "Añadir archivo"
+
+#: JCOM-theme/templates/admin/submission/elements/author_search_results.html:4
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:68
+msgid "Name"
+msgstr "Nombre"
+
+#: JCOM-theme/templates/admin/submission/elements/author_search_results.html:5
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:69
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: JCOM-theme/templates/admin/submission/elements/author_search_results.html:6
+msgid "Institution"
+msgstr "Institución"
+
+#: JCOM-theme/templates/admin/submission/elements/author_search_results.html:7
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:131
+msgid "Country"
+msgstr "País"
+
+#: JCOM-theme/templates/admin/submission/elements/author_search_results.html:26
+msgid "No authors found, update search query"
+msgstr "No se encontraron autores, actualice la búsqueda"
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:6
+msgid "Author Information"
+msgstr "Información del autor"
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:22
+msgid "Search for Existing Authors"
+msgstr "Buscar autores existentes"
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:28
+msgid ""
+"Search for a user using email address, name or ORCiD. The list of matching "
+"authors is returned and you can add the desired person."
+msgstr ""
+"Busque un usuario por dirección de correo electrónico, nombre u ORCiD. Se "
+"devuelve la lista de autores coincidentes y puede añadir a la persona "
+"deseada."
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:34
+msgid "Search by email address or ORCiD"
+msgstr "Buscar por dirección de correo electrónico u ORCiD"
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:39
+#: JCOM-theme/templates/journal/components/search_sidebar.html:32
+#: JCOM-theme/templates/journal/search.html:12
+#: JCOM-theme/templates/journal/search.html:32
+#: JCOM-theme/templates/journal/search.html:54
+#: wjs-bootstrap/templates/core/homepage_elements/search_bar.html:5
+#: wjs-bootstrap/templates/journal/components/search_modal.html:3
+#: wjs-bootstrap/templates/journal/components/search_sidebar.html:3
+#: wjs-bootstrap/templates/journal/search.html:12
+#: wjs-bootstrap/templates/journal/search.html:22
+#: wjs-bootstrap/templates/wjs/base/elements/header.html:41
+#: wjs-bootstrap/templates/wjs/base/elements/mobile_sidebar.html:113
+msgid "Search"
+msgstr "Buscar"
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:44
+msgid "Add Authors"
+msgstr "Añadir autores"
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:48
+msgid ""
+"By default, your account is the owner of this submission, but is not an "
+"Author on record. You can add yourself using the button below."
+msgstr ""
+"De forma predeterminada, su cuenta es la propietaria de este envío, pero no "
+"figura como autor. Puede añadirse usted mismo con el botón de abajo."
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:50
+msgid "Add Self as Author"
+msgstr "Añadirme como autor"
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:52
+msgid ""
+"If you cannot find the author record by searching, and you are not the only "
+"author, you can add one by clicking the button below. This will open a popup"
+" modal for you to complete their details."
+msgstr ""
+"Si no encuentra el autor mediante la búsqueda y no es el único autor, puede "
+"añadir uno haciendo clic en el botón de abajo. Se abrirá una ventana "
+"emergente para que complete sus datos."
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:53
+msgid "Add New Author"
+msgstr "Añadir nuevo autor"
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:59
+msgid "Current Authors"
+msgstr "Autores actuales"
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:61
+msgid "Drag and drop an author to re-order them."
+msgstr "Arrastre y suelte un autor para reordenarlos."
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:87
+msgid "No authors yet, add one!"
+msgstr "Aún no hay autores, ¡añada uno!"
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:94
+msgid ""
+"You are required to select a main author, this author will receive the "
+"communications regarding your articles process through our systems. This "
+"does not have to be you."
+msgstr ""
+"Debe seleccionar un autor principal; este autor recibirá las comunicaciones "
+"sobre el proceso de sus artículos a través de nuestros sistemas. No tiene "
+"por qué ser usted."
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:95
+msgid "Corresponding author"
+msgstr "Autor de contacto"
+
+#: JCOM-theme/templates/admin/submission/source/submit_authors.html:105
+#: JCOM-theme/templates/admin/submission/source/submit_files.html:105
+#: JCOM-theme/templates/admin/submission/source/submit_info.html:107
+msgid "Save and Continue"
+msgstr "Guardar y continuar"
+
+#: JCOM-theme/templates/admin/submission/source/submit_files.html:5
+msgid "Upload files"
+msgstr "Cargar archivos"
+
+#: JCOM-theme/templates/admin/submission/source/submit_files.html:29
+#: JCOM-theme/templates/admin/submission/source/submit_files.html:67
+msgid "Upload"
+msgstr "Cargar"
+
+#: JCOM-theme/templates/admin/submission/source/submit_files.html:38
+#: JCOM-theme/templates/admin/submission/source/submit_files.html:74
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:154
+msgid "File Name"
+msgstr "Nombre del archivo"
+
+#: JCOM-theme/templates/admin/submission/source/submit_files.html:55
+#: JCOM-theme/templates/admin/submission/source/submit_files.html:91
+msgid "No files uploaded"
+msgstr "No se ha cargado ningún archivo"
+
+#: JCOM-theme/templates/admin/submission/source/submit_info.html:8
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:52
+msgid "Article Info"
+msgstr "Información sobre el manuscrito"
+
+#: JCOM-theme/templates/admin/submission/source/submit_info.html:28
+#: JCOM-theme/templates/admin/submission/submit_si_chooser.html:18
+msgid "This article is a preprint"
+msgstr "Este manuscrito es un preprint"
+
+#: JCOM-theme/templates/admin/submission/source/submit_info.html:33
+msgid "Basic Information"
+msgstr "Información básica"
+
+#: JCOM-theme/templates/admin/submission/source/submit_info.html:70
+msgid "View license information"
+msgstr "Ver información sobre la licencia"
+
+#: JCOM-theme/templates/admin/submission/source/submit_info.html:80
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:97
+#: JCOM-theme/templates/journal/components/article_sidebar.html:42
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:24
+msgid "Keywords"
+msgstr "Palabras clave"
+
+#: JCOM-theme/templates/admin/submission/source/submit_info.html:120
+msgid "License Information"
+msgstr "Información sobre la licencia"
+
+#: JCOM-theme/templates/admin/submission/source/submit_info.html:123
+msgid "allows the following licenses for submission"
+msgstr "permite las siguientes licencias para el manuscrito"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:8
+msgid "Review your submission"
+msgstr "Revise su envío"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:25
+msgid ""
+"Please review your submission use the details below. If you need to make changes use the links above to move back along the submission steps. You must click the <strong>Complete Submission</strong> button at the\n"
+"            foot of this page to complete the submission process, you will then receive a receipt email. "
+msgstr ""
+"Revise su envío con los detalles que aparecen a continuación. Si necesita realizar cambios, utilice los enlaces de arriba para retroceder por los pasos del envío. Debe hacer clic en el botón <strong>Completar envío</strong> al\n"
+"            pie de esta página para completar el proceso de envío; después recibirá un correo de confirmación. "
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:30
+msgid "Agreements"
+msgstr "Acuerdos"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:34
+msgid "Agreed to Publication Fees statement"
+msgstr "Acepto la declaración de tasas de publicación"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:38
+msgid "Agreed to Submission Checklist"
+msgstr "Lista de comprobación aceptada"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:42
+msgid "Agreed to Copyright statement"
+msgstr "Declaración de derechos aceptada"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:46
+msgid "Competing interests"
+msgstr "Conflictos de intereses"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:46
+msgid "No competing interests"
+msgstr "Sin conflictos de intereses"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:53
+msgid "Edit information"
+msgstr "Editar información"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:56
+msgid "Title"
+msgstr "Título"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:58
+msgid "Subtitle"
+msgstr "Subtítulo"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:68
+msgid "Issue Type"
+msgstr "Tipo de número"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:82
+msgid "Abstract"
+msgstr "Resumen"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:91
+msgid "Language"
+msgstr "Idioma"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:93
+msgid "Article Type"
+msgstr "Tipo de artículo"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:95
+#: JCOM-theme/templates/journal/components/article_sidebar.html:107
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:82
+msgid "Licence"
+msgstr "Licencia"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:121
+msgid "Author Info"
+msgstr "Información sobre el autor"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:122
+msgid "Edit authors"
+msgstr "Editar autores"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:125
+msgid "First Name"
+msgstr "Nombre"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:126
+msgid "Middle Name"
+msgstr "Segundo nombre"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:127
+msgid "Last Name"
+msgstr "Apellido"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:128
+msgid "Email Address"
+msgstr "Dirección de correo electrónico"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:129
+msgid "ORCID"
+msgstr "ORCID"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:130
+msgid "Affiliation"
+msgstr "Afiliación"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:132
+msgid "Biography"
+msgstr "Biografía"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:133
+#: JCOM-theme/templates/core/user_menu/user_menu.html:139
+#: JCOM-theme/templates/core/user_menu/user_menu.html:249
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu.html:10
+msgid "Profile"
+msgstr "Perfil"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:141
+msgid "No ORCID supplied"
+msgstr "No se proporcionó el ORCID"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:145
+msgid "Edit profile"
+msgstr "Editar perfil"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:149
+msgid "Article Files"
+msgstr "Archivos del manuscrito"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:150
+msgid "Edit files"
+msgstr "Editar archivos"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:155
+msgid "File Type"
+msgstr "Tipo de archivo"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:156
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:163
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:172
+#: JCOM-theme/templates/elements/journal/issue_sidebar.html:8
+#: JCOM-theme/templates/journal/components/article_downloads.html:4
+#: JCOM-theme/templates/journal/components/article_downloads.html:9
+#: wjs-bootstrap/templates/journal/components/article_downloads.html:4
+#: wjs-bootstrap/templates/journal/components/article_downloads.html:11
+#: wjs-bootstrap/templates/journal/issue_sidebar.html:8
+msgid "Download"
+msgstr "Descargar"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:162
+msgid "Manuscript"
+msgstr "Manuscrito"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:171
+msgid "Figure/Data"
+msgstr "Figura/Datos"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:182
+msgid "Comments to the Editor"
+msgstr "Comentarios para el editor"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:185
+msgid ""
+"Before submitting you have the option to add additional comments for the "
+"Editor in charge using the field below. The Editor in charge may decide to "
+"share them with selected reviewers, if any."
+msgstr ""
+"Antes de enviar, tiene la opción de añadir comentarios adicionales para el "
+"editor responsable usando el campo de abajo. El editor responsable podrá "
+"decidir compartirlos con revisores seleccionados, si los hubiera."
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:191
+msgid "Complete"
+msgstr "Completar"
+
+#: JCOM-theme/templates/admin/submission/source/submit_review.html:191
+#: JCOM-theme/templates/core/nav.html:119
+#: JCOM-theme/templates/core/nav.html:186
+#: wjs-bootstrap/templates/wjs/base/elements/mobile_sidebar.html:40
+#: wjs-bootstrap/templates/wjs/base/elements/navigation.html:37
+msgid "Submission"
+msgstr "Envío"
+
+#: JCOM-theme/templates/admin/submission/submit_si_chooser.html:6
+msgid "Submission Destination"
+msgstr "Destino del envío"
+
+#: JCOM-theme/templates/admin/submission/submit_si_chooser.html:26
+msgid "Proceed with Normal Issue"
+msgstr "Continuar con número normal"
+
+#: JCOM-theme/templates/admin/submission/submit_si_chooser.html:30
+msgid "Choose Special Issue"
+msgstr "Elegir número especial"
+
+#: JCOM-theme/templates/admin/submission/submit_si_chooser.html:40
+msgid "Clear selection"
+msgstr "Borrar selección"
+
+#: JCOM-theme/templates/admin/submission/submit_si_chooser.html:43
+msgid "Proceed with Special Issue"
+msgstr "Continuar con número especial"
+
+#: JCOM-theme/templates/cms/page.html:26
+#: JCOM-theme/templates/journal/components/article_sidebar.html:166
+#: JCOM-theme/templates/journal/submissions.html:58
+#: wjs-bootstrap/templates/includes/toc.html:4
+msgid "Table of Contents"
+msgstr "Índice"
+
+#: JCOM-theme/templates/core/nav.html:20
+msgid "Logo Janeway"
+msgstr "Logo de Janeway"
+
+#: JCOM-theme/templates/core/nav.html:74
+#: JCOM-theme/templates/core/nav.html:209
+#: wjs-bootstrap/templates/wjs/base/elements/mobile_sidebar.html:78
+msgid "Account"
+msgstr "Cuenta"
+
+#: JCOM-theme/templates/core/nav.html:86
+msgid "menu"
+msgstr "menú"
+
+#: JCOM-theme/templates/core/nav.html:94
+#: JCOM-theme/templates/core/nav.html:161
+#: wjs-bootstrap/templates/wjs/base/elements/mobile_sidebar.html:15
+#: wjs-bootstrap/templates/wjs/base/elements/navigation.html:7
+msgid "Home"
+msgstr "Inicio"
+
+#: JCOM-theme/templates/core/nav.html:104
+#: JCOM-theme/templates/core/nav.html:171
+#: wjs-bootstrap/templates/wjs/base/elements/mobile_sidebar.html:25
+#: wjs-bootstrap/templates/wjs/base/elements/navigation.html:19
+msgid "Articles"
+msgstr "Artículos"
+
+#: JCOM-theme/templates/core/nav.html:109
+#: JCOM-theme/templates/core/nav.html:176
+#: wjs-bootstrap/templates/journal/homepage_elements/about.html:3
+#: wjs-bootstrap/templates/wjs/base/elements/mobile_sidebar.html:30
+#: wjs-bootstrap/templates/wjs/base/elements/navigation.html:25
+msgid "Issues"
+msgstr "Números"
+
+#: JCOM-theme/templates/core/nav.html:114
+#: JCOM-theme/templates/core/nav.html:181
+#: wjs-bootstrap/templates/wjs/base/elements/mobile_sidebar.html:35
+#: wjs-bootstrap/templates/wjs/base/elements/navigation.html:31
+msgid "Editorial Team"
+msgstr "Equipo editorial"
+
+#: JCOM-theme/templates/core/nav.html:124
+#: JCOM-theme/templates/core/nav.html:191
+#: JCOM-theme/templates/elements/journal_footer.html:43
+#: JCOM-theme/templates/press/journal/contact.html:8
+#: JCOM-theme/templates/press/journal/contact.html:40
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:59
+#: wjs-bootstrap/templates/wjs/base/elements/mobile_sidebar.html:45
+#: wjs-bootstrap/templates/wjs/base/elements/navigation.html:43
+msgid "Contact"
+msgstr "Contacto"
+
+#: JCOM-theme/templates/core/nav.html:142
+#: wjs-bootstrap/templates/wjs/base/elements/navigation.html:81
+msgid "Become a Reviewer"
+msgstr "Hazte revisor"
+
+#: JCOM-theme/templates/core/nav.html:166
+#: JCOM-theme/templates/newsletters/newsletter_issue.html:11
+#: wjs-bootstrap/templates/wjs/base/elements/mobile_sidebar.html:20
+msgid "News"
+msgstr "Noticias"
+
+#: JCOM-theme/templates/core/news/index.html:14
+#: JCOM-theme/templates/core/news/index.html:16
+#: JCOM-theme/templates/core/news/item.html:18
+#: wjs-bootstrap/templates/core/news/index.html:6
+#: wjs-bootstrap/templates/core/news/index.html:8
+#: wjs-bootstrap/templates/core/news/index.html:16
+#: wjs-bootstrap/templates/core/news/index.html:18
+#: wjs-bootstrap/templates/core/news/item.html:15
+msgid "Call for papers"
+msgstr "Convocatoria de artículos"
+
+#: JCOM-theme/templates/core/news/index.html:20
+msgid "Filtering tag"
+msgstr "Etiqueta de filtrado"
+
+#: JCOM-theme/templates/core/news/index.html:46
+#: wjs-bootstrap/templates/core/news/index.html:51
+msgid ""
+"We receive submissions of manuscripts during the whole year. There is no "
+"call currently for a special issue."
+msgstr ""
+"Recibimos envíos de manuscritos durante todo el año. Actualmente no hay "
+"convocatoria para un número especial."
+
+#: JCOM-theme/templates/core/news/item.html:18
+#: JCOM-theme/templates/core/news/item.html:23
+#: JCOM-theme/templates/core/news/item.html:28
+#: wjs-bootstrap/templates/core/news/item.html:15
+#: wjs-bootstrap/templates/core/news/item.html:20
+#: wjs-bootstrap/templates/core/news/item.html:25
+msgid "Browse"
+msgstr "Explorar"
+
+#: JCOM-theme/templates/core/news/item.html:23
+#: wjs-bootstrap/templates/core/news/item.html:20
+msgid "Archived call for papers"
+msgstr "Convocatorias de artículos archivadas"
+
+#: JCOM-theme/templates/core/news/item.html:55
+#: wjs-bootstrap/templates/core/news/item.html:53
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:47
+#: JCOM-theme/templates/core/user_menu/user_menu.html:151
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:48
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:52
+msgid "Submit"
+msgstr "Enviar"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:52
+#: JCOM-theme/templates/core/user_menu/user_menu.html:156
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:57
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:62
+msgid "My Author Pages"
+msgstr "Mis páginas de autor"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:57
+#: JCOM-theme/templates/core/user_menu/user_menu.html:161
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:67
+msgid "My reviewer Pages"
+msgstr "Mis páginas de revisor"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:62
+#: JCOM-theme/templates/core/user_menu/user_menu.html:166
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:72
+msgid "My Editor Pages"
+msgstr "Mis páginas de editor"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:67
+#: JCOM-theme/templates/core/user_menu/user_menu.html:171
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:77
+msgid "My Director Pages"
+msgstr "Mis páginas de director"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:73
+#: JCOM-theme/templates/core/user_menu/user_menu.html:177
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:83
+msgid "Typesetter Pending"
+msgstr "Typesetter Pending"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:78
+#: JCOM-theme/templates/core/user_menu/user_menu.html:182
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:88
+msgid "Typesetter Working on"
+msgstr "Typesetter en trabajo"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:84
+#: JCOM-theme/templates/core/user_menu/user_menu.html:188
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:94
+msgid "My EO Pages"
+msgstr "Mis páginas de EO"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:89
+msgid "Editors"
+msgstr "Editores"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:94
+#: JCOM-theme/templates/core/user_menu/user_menu.html:198
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:104
+msgid "Manager"
+msgstr "Gerente"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:98
+#: JCOM-theme/templates/core/user_menu/user_menu.html:202
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:108
+msgid "Edit Submissions Page"
+msgstr "Editar páginas de envío"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:101
+#: JCOM-theme/templates/core/user_menu/user_menu.html:205
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:111
+msgid "Edit Journal Info"
+msgstr "Editar información de la revista"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:106
+#: JCOM-theme/templates/core/user_menu/user_menu.html:210
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:116
+msgid "Edit Page"
+msgstr "Editar página"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:111
+#: JCOM-theme/templates/core/user_menu/user_menu.html:215
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:121
+msgid "Manage Editorial Team"
+msgstr "Gestionar equipo editorial"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:117
+#: JCOM-theme/templates/core/user_menu/user_menu.html:221
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:127
+msgid "Edit Article"
+msgstr "Editar manuscrito"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:122
+#: JCOM-theme/templates/core/user_menu/user_menu.html:232
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:138
+msgid "Edit Issue"
+msgstr "Editar número"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:128
+#: JCOM-theme/templates/core/user_menu/user_menu.html:238
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:144
+msgid "Edit News Item"
+msgstr "Editar noticia"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:134
+#: JCOM-theme/templates/core/user_menu/user_menu.html:244
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:150
+msgid "Admin"
+msgstr "Admin"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:144
+#: JCOM-theme/templates/core/user_menu/user_menu.html:254
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:63
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:165
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:193
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:99
+msgid "Journal Editors' parameters management"
+msgstr "Gestión de parámetros de los editores de la revista"
+
+#: JCOM-theme/templates/core/user_menu/user_menu.html:227
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:133
+msgid "Go to status page"
+msgstr "Ir a la página de estado"
+
+#: JCOM-theme/templates/elements/accounts/anonymous_subscription_email_sent.html:6
+msgid "Subscription to be confirmed"
+msgstr "Suscripción por confirmar"
+
+#: JCOM-theme/templates/elements/accounts/anonymous_subscription_email_sent.html:9
+msgid ""
+"\n"
+"              An email with a confirmation link has been sent to your email address.\n"
+"              <br>\n"
+"              Please open the link to activate your publication alert.\n"
+"            "
+msgstr ""
+"\n"
+"              Se ha enviado un correo electrónico con un enlace de confirmación a su dirección de correo electrónico.\n"
+"              <br>\n"
+"              Abra el enlace para activar su alerta de publicación.\n"
+"            "
+
+#: JCOM-theme/templates/elements/accounts/anonymous_user_register_newsletter.html:12
+#: JCOM-theme/templates/elements/accounts/delete_subscription.html:8
+#: JCOM-theme/templates/elements/accounts/edit_newsletters_subscription.html:8
+msgid "Publication alert"
+msgstr "Alerta de publicación"
+
+#: JCOM-theme/templates/elements/accounts/anonymous_user_register_newsletter.html:25
+#: wjs-bootstrap/templates/homepage_elements/wjs_publication_form.html:11
+msgid "Subscribe"
+msgstr "Suscribirse"
+
+#: JCOM-theme/templates/elements/accounts/delete_subscription.html:11
+msgid ""
+"\n"
+"            Thank you for unsubscribing from JCOM publication alert.<br>\n"
+"            You can subscribe again at any time form the <a href=\"/\">JCOM home page</a>.\n"
+"          "
+msgstr ""
+"\n"
+"            Gracias por cancelar su suscripción a la alerta de publicación de JCOM.<br>\n"
+"            Puede volver a suscribirse en cualquier momento desde la <a href=\"/\">página de inicio de JCOM</a>.\n"
+"          "
+
+#: JCOM-theme/templates/elements/accounts/edit_newsletters_subscription.html:18
+#: wjs-bootstrap/templates/elements/accounts/edit_newsletters_subscription.html:18
+msgid "Thank you for setting your preferences"
+msgstr "Gracias por configurar sus preferencias"
+
+#: JCOM-theme/templates/elements/accounts/edit_newsletters_subscription.html:23
+#: wjs-bootstrap/templates/elements/accounts/edit_newsletters_subscription.html:23
+msgid ""
+"Your subscription is active. Please use the checkboxes if you wish to change"
+" your topics of interest and limit incoming alerts to new publications "
+"matching those topics only."
+msgstr ""
+"Su suscripción está activa. Use las casillas si desea cambiar sus temas de "
+"interés y limitar las alertas entrantes únicamente a las nuevas "
+"publicaciones que coincidan con esos temas."
+
+#: JCOM-theme/templates/elements/accounts/edit_newsletters_subscription.html:25
+#: wjs-bootstrap/templates/elements/accounts/edit_newsletters_subscription.html:25
+msgid ""
+"If new topics are added to the list in the future, you will be automatically"
+" subscribed to them and will be able to uncheck them from this page."
+msgstr ""
+"Si en el futuro se añaden nuevos temas a la lista, se le suscribirá "
+"automáticamente a ellos y podrá desmarcarlos desde esta página."
+
+#: JCOM-theme/templates/elements/accounts/edit_newsletters_subscription.html:34
+msgid "Save preferences"
+msgstr "Guardar preferencias"
+
+#: JCOM-theme/templates/elements/accounts/edit_newsletters_subscription.html:36
+msgid "Unsubscribe"
+msgstr "Cancelar suscripción"
+
+#: JCOM-theme/templates/elements/accounts/edit_newsletters_subscription.html:40
+msgid "Activate"
+msgstr "Activar"
+
+#: JCOM-theme/templates/elements/accounts/edit_profile_body_block.html:13
+#: JCOM-theme/templates/submission/update_editor_parameters.html:12
+msgid "Update"
+msgstr "Actualizar"
+
+#: JCOM-theme/templates/elements/accounts/edit_profile_body_block.html:25
+msgid "Change Your Email Address"
+msgstr "Cambie su dirección de correo electrónico"
+
+#: JCOM-theme/templates/elements/accounts/edit_profile_body_block.html:27
+msgid ""
+"If you want to change your email address you may do so below, however, you "
+"will be logged out and your account will be marked as inactive until you "
+"follow the instructions in the verification email."
+msgstr ""
+"Si desea cambiar su dirección de correo electrónico, puede hacerlo a "
+"continuación; Note que se cerrará su sesión y su cuenta se marcará como "
+"inactiva hasta que siga las instrucciones del correo de verificación."
+
+#: JCOM-theme/templates/elements/accounts/edit_profile_body_block.html:28
+msgid "Note:"
+msgstr "Nota:"
+
+#: JCOM-theme/templates/elements/accounts/edit_profile_body_block.html:29
+msgid ""
+"Changing your email address will also change your username as these are one "
+"and the same."
+msgstr ""
+"Cambiar su dirección de correo electrónico también cambiará su nombre de "
+"usuario, ya que son lo mismo."
+
+#: JCOM-theme/templates/elements/accounts/edit_profile_body_block.html:34
+msgid "Current Email Address"
+msgstr "Dirección de correo electrónico actual"
+
+#: JCOM-theme/templates/elements/accounts/edit_profile_body_block.html:38
+msgid "Update Email Address"
+msgstr "Actualizar dirección de correo electrónico"
+
+#: JCOM-theme/templates/elements/accounts/edit_profile_body_block.html:48
+#: JCOM-theme/templates/elements/accounts/edit_profile_body_block.html:60
+msgid "Update Password"
+msgstr "Actualizar contraseña"
+
+#: JCOM-theme/templates/elements/accounts/edit_profile_body_block.html:50
+msgid ""
+"You can update your password by entering your existing password plus your "
+"new password."
+msgstr ""
+"Puede cambiar su contraseña introduciendo tu contraseña actual y la nueva."
+
+#: JCOM-theme/templates/elements/accounts/unsubscribe_confirmation_modal.html:4
+#: wjs-bootstrap/templates/elements/accounts/unsubscribe_confirmation_modal.html:10
+msgid "Publication alert subscription"
+msgstr "Suscripción a la alerta de publicación"
+
+#: JCOM-theme/templates/elements/accounts/unsubscribe_confirmation_modal.html:5
+#: wjs-bootstrap/templates/elements/accounts/unsubscribe_confirmation_modal.html:14
+msgid ""
+"Please confirm that you do not wish to receive any JCOM publication alert"
+msgstr "Confirme que no desea recibir ninguna alerta de publicación de JCOM"
+
+#: JCOM-theme/templates/elements/accounts/unsubscribe_confirmation_modal.html:19
+#: wjs-bootstrap/templates/elements/accounts/unsubscribe_confirmation_modal.html:5
+msgid "No"
+msgstr "No"
+
+#: JCOM-theme/templates/elements/accounts/user_form.html:3
+msgid "Core Data"
+msgstr "Datos principales"
+
+#: JCOM-theme/templates/elements/accounts/user_form.html:15
+msgid "Biography and Interests"
+msgstr "Biografía e intereses"
+
+#: JCOM-theme/templates/elements/accounts/user_form.html:21
+msgid "Social Media and Accounts"
+msgstr "Redes sociales y cuentas"
+
+#: JCOM-theme/templates/elements/article_listing.html:23
+#: wjs-bootstrap/templates/journal/components/article_documents.html:42
+#: wjs-bootstrap/templates/journal/components/article_listing.html:27
+#: wjs-bootstrap/templates/journal/components/article_listing.html:50
+msgid "by"
+msgstr "por"
+
+#: JCOM-theme/templates/elements/article_listing.html:28
+#: wjs-bootstrap/templates/journal/components/article_listing.html:32
+msgid "and"
+msgstr "y"
+
+#: JCOM-theme/templates/elements/article_listing.html:62
+#: wjs-bootstrap/templates/journal/components/article_listing.html:66
+msgid "Also a part of:"
+msgstr "También forma parte de:"
+
+#: JCOM-theme/templates/elements/journal/issue_sidebar.html:5
+#: wjs-bootstrap/templates/journal/issue_sidebar.html:5
+msgid "Downloads"
+msgstr "Descargas"
+
+#: JCOM-theme/templates/elements/journal/issue_sidebar.html:10
+#: JCOM-theme/templates/journal/issue.html:8
+#: wjs-bootstrap/templates/journal/issue_sidebar.html:10
+msgid "Issue"
+msgstr "Número"
+
+#: JCOM-theme/templates/elements/journal/issue_sidebar.html:20
+#: JCOM-theme/templates/journal/issue.html:6
+#: wjs-bootstrap/templates/journal/issue_sidebar.html:20
+msgid "Collection"
+msgstr "Colección"
+
+#: JCOM-theme/templates/elements/journal/issue_sidebar.html:32
+#: wjs-bootstrap/templates/journal/issue_sidebar.html:32
+msgid "Archive"
+msgstr "Archivo"
+
+#: JCOM-theme/templates/elements/journal/issue_sidebar.html:43
+#: JCOM-theme/templates/journal/issues.html:17
+#: wjs-bootstrap/templates/journal/issue_sidebar.html:46
+#: wjs-bootstrap/templates/journal/issues.html:14
+msgid "Volume"
+msgstr "Volumen"
+
+#: JCOM-theme/templates/elements/journal/keywords_block.html:3
+msgid ""
+"Keywords used by articles in this journal are listed below. Select a keyword"
+" to view which articles use it."
+msgstr ""
+"A continuación se enumeran las palabras clave usadas por los artículos de "
+"esta revista. Seleccione una palabra clave para ver qué artículos la "
+"utilizan."
+
+#: JCOM-theme/templates/elements/journal/keywords_block.html:11
+msgid "This journal has no keywords to display."
+msgstr "Esta revista no tiene palabras clave para mostrar."
+
+#: JCOM-theme/templates/elements/journal_footer.html:7
+msgid ""
+"\n"
+"            Except where otherwise noted, content on this site is licensed under a Creative Commons 4.0 license\n"
+"          "
+msgstr ""
+"\n"
+"            Salvo que se indique lo contrario, el contenido de este sitio está bajo una licencia Creative Commons 4.0\n"
+"          "
+
+#: JCOM-theme/templates/elements/journal_footer.html:14
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:20
+msgid "Print ISSN:"
+msgstr "ISSN:"
+
+#: JCOM-theme/templates/elements/journal_footer.html:18
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:25
+msgid "Published by"
+msgstr "Publicado por"
+
+#: JCOM-theme/templates/elements/journal_footer.html:25
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:37
+msgid "VAT number: IT01097780322"
+msgstr "Número de IVA: IT01097780322"
+
+#: JCOM-theme/templates/elements/journal_footer.html:32
+#: JCOM-theme/templates/elements/journal_footer.html:36
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:46
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:50
+msgid "Privacy"
+msgstr "Privacidad"
+
+#: JCOM-theme/templates/elements/journal_footer.html:40
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:55
+msgid "Cookie Policy"
+msgstr "Política de cookies"
+
+#: JCOM-theme/templates/experimental/journal/issues.html:6
+#: JCOM-theme/templates/experimental/journal/issues.html:25
+#: JCOM-theme/templates/journal/issues.html:7
+#: JCOM-theme/templates/journal/issues.html:12
+#: wjs-bootstrap/templates/journal/homepage_elements/about.html:8
+#: wjs-bootstrap/templates/journal/issues.html:4
+#: wjs-bootstrap/templates/journal/issues.html:5
+msgid "Volumes and Issues"
+msgstr "Volúmenes y números"
+
+#: JCOM-theme/templates/hijack/notification.html:8
+#: wjs-bootstrap/templates/hijack/notification.html:7
+#, python-format
+msgid "You are working on behalf of %(user)s"
+msgstr "Está trabajando en nombre de %(user)s"
+
+#: JCOM-theme/templates/hijack/notification.html:11
+#: wjs-bootstrap/templates/hijack/notification.html:10
+msgid "Release"
+msgstr "Dejar"
+
+#: JCOM-theme/templates/hijack/notification.html:16
+#: wjs-bootstrap/templates/hijack/notification.html:15
+msgid "Notifications to"
+msgstr "Notificaciones a"
+
+#: JCOM-theme/templates/hijack/notification.html:16
+#: wjs-bootstrap/templates/hijack/notification.html:15
+msgid "are enabled"
+msgstr "están activadas"
+
+#: JCOM-theme/templates/hijack/notification.html:16
+#: wjs-bootstrap/templates/hijack/notification.html:15
+msgid "are disabled"
+msgstr "están desactivadas"
+
+#: JCOM-theme/templates/hijack/notification.html:19
+#: wjs-bootstrap/templates/hijack/notification.html:18
+msgid "Enable"
+msgstr "Activar"
+
+#: JCOM-theme/templates/hijack/notification.html:22
+#: wjs-bootstrap/templates/hijack/notification.html:21
+msgid "Disable"
+msgstr "Desactivar"
+
+#: JCOM-theme/templates/journal/article.html:9
+msgid "Preprint"
+msgstr "Preprint"
+
+#: JCOM-theme/templates/journal/article.html:11
+msgid "Article"
+msgstr "Artículo"
+
+#: JCOM-theme/templates/journal/article_issue_list.html:17
+#: wjs-bootstrap/templates/journal/components/article_issue_list.html:17
+msgid "Primary: "
+msgstr "Principal: "
+
+#: JCOM-theme/templates/journal/article_issue_list.html:34
+#: wjs-bootstrap/templates/journal/components/article_issue_list.html:34
+msgid "This article is not a part of any issues"
+msgstr "Este artículo no forma parte de ningún número"
+
+#: JCOM-theme/templates/journal/collections.html:36
+#: wjs-bootstrap/templates/journal/collections.html:36
+msgid "There are no collections to display"
+msgstr "No hay colecciones para mostrar"
+
+#: JCOM-theme/templates/journal/components/article_documents.html:13
+#: wjs-bootstrap/templates/journal/components/article_documents.html:17
+msgid "This article is corrected by"
+msgstr "Este artículo está corregido por"
+
+#: JCOM-theme/templates/journal/components/article_documents.html:15
+#: wjs-bootstrap/templates/journal/components/article_documents.html:19
+#, python-format
+msgid "Invited %(plural)s"
+msgstr "Invitado %(plural)s"
+
+#: JCOM-theme/templates/journal/components/article_downloads.html:14
+#: wjs-bootstrap/templates/journal/components/article_downloads.html:19
+msgid "View"
+msgstr "Ver"
+
+#: JCOM-theme/templates/journal/components/article_header.html:13
+#: wjs-bootstrap/templates/journal/components/article_header.html:15
+msgid "This is a correction for"
+msgstr "Esta es una corrección de"
+
+#: JCOM-theme/templates/journal/components/article_header.html:15
+#: wjs-bootstrap/templates/journal/components/article_header.html:17
+msgid "part of"
+msgstr "parte de"
+
+#: JCOM-theme/templates/journal/components/article_sidebar.html:7
+#: wjs-bootstrap/templates/journal/components/article_socials.html:4
+msgid "Share"
+msgstr "Compartir"
+
+#: JCOM-theme/templates/journal/components/article_sidebar.html:28
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:9
+msgid "Additional resources"
+msgstr "Recursos adicionales"
+
+#: JCOM-theme/templates/journal/components/article_sidebar.html:35
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:15
+msgid "How to Cite"
+msgstr "Cómo citar"
+
+#: JCOM-theme/templates/journal/components/article_sidebar.html:58
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:39
+msgid "Rights"
+msgstr "Derechos"
+
+#: JCOM-theme/templates/journal/components/article_sidebar.html:68
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:48
+msgid "Publisher Notes"
+msgstr "Notas del editor"
+
+#: JCOM-theme/templates/journal/components/article_sidebar.html:79
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:57
+msgid "Funding"
+msgstr "Financiación"
+
+#: JCOM-theme/templates/journal/components/article_sidebar.html:101
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:75
+msgid "Publication date"
+msgstr "Fecha de publicación"
+
+#: JCOM-theme/templates/journal/components/article_sidebar.html:119
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:94
+msgid "Identifiers"
+msgstr "Identificadores"
+
+#: JCOM-theme/templates/journal/components/article_sidebar.html:131
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:105
+msgid "Peer Review"
+msgstr "Revisión por pares"
+
+#: JCOM-theme/templates/journal/components/article_sidebar.html:134
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:108
+msgid "This article has been peer reviewed."
+msgstr "Este artículo ha sido revisado por pares."
+
+#: JCOM-theme/templates/journal/components/search_sidebar.html:9
+msgid "Filter by section"
+msgstr "Filtrar por sección"
+
+#: JCOM-theme/templates/journal/components/search_sidebar.html:20
+msgid "Filter by keyword"
+msgstr "Filtrar por palabra clave"
+
+#: JCOM-theme/templates/journal/issues.html:24
+#: wjs-bootstrap/templates/journal/issues.html:21
+msgid "items"
+msgstr "elementos"
+
+#: JCOM-theme/templates/journal/manage/issues.html:87
+msgid "Issue date is in the future."
+msgstr "La fecha del número está en el futuro."
+
+#: JCOM-theme/templates/journal/manage/issues.html:89
+msgid "Issue is already set as the current issue."
+msgstr "El número ya está establecido como número actual."
+
+#: JCOM-theme/templates/journal/manage/issues.html:94
+msgid "Create multiple authors/article by uploading a spreadsheet"
+msgstr "Cree varios autores/artículos subiendo una hoja de cálculo"
+
+#: JCOM-theme/templates/journal/manage/issues.html:94
+msgid "Bulk-insert users"
+msgstr "Inserción masiva de usuarios"
+
+#: JCOM-theme/templates/journal/search.html:10
+#: JCOM-theme/templates/journal/search.html:30
+#: wjs-bootstrap/templates/journal/search.html:10
+#: wjs-bootstrap/templates/journal/search.html:20
+msgid "Publications"
+msgstr "Publicaciones"
+
+#: JCOM-theme/templates/journal/search.html:22
+#: wjs-bootstrap/templates/journal/search.html:37
+msgid "Browse all Publications"
+msgstr "Explorar todas las publicaciones"
+
+#: JCOM-theme/templates/journal/search.html:38
+#, python-format
+msgid ""
+"\n"
+"            %(counter)s publication found\n"
+"          "
+msgid_plural ""
+"\n"
+"            %(counter)s publications found\n"
+"          "
+msgstr[0] ""
+"\n"
+"            %(counter)s publicación encontrada\n"
+"          "
+msgstr[1] ""
+"\n"
+"            %(counter)s publicaciones encontradas\n"
+"          "
+
+#: JCOM-theme/templates/journal/search.html:44
+msgid "No articles to display."
+msgstr "No hay artículos para mostrar."
+
+#: JCOM-theme/templates/journal/submissions.html:3
+#: JCOM-theme/templates/journal/submissions.html:9
+msgid "Submissions"
+msgstr "Envíos"
+
+#: JCOM-theme/templates/journal/submissions.html:21
+#: wjs-bootstrap/templates/includes/submission_sidebar.html:21
+msgid "Start Submission"
+msgstr "Iniciar envío"
+
+#: JCOM-theme/templates/journal/submissions.html:32
+#: wjs-bootstrap/templates/journal/submissions.html:23
+msgid "allows the following licences for submission"
+msgstr "permite las siguientes licencias para los manuscritos"
+
+#: JCOM-theme/templates/newsletters/newsletter_issue.html:7
+msgid "New publications"
+msgstr "Nuevas publicaciones"
+
+#: JCOM-theme/templates/newsletters/newsletter_template.html:38
+#, python-format
+msgid ""
+"\n"
+"              You have received this email because you have subscribed to JCOM publication alert<br>\n"
+"              <span><a href=\"%(unsubscribe_url)s\">Click here to modify your topics of interest</a></span>\n"
+"              <span>|</span>\n"
+"              <span><a href=\"%(unsubscribe_url)s\">Click here to unsubscribe</a></span><br>\n"
+"              See our <a href=\"%(privacy_url)s\">privacy policy</a> for information on\n"
+"              how we use your personal data or contact us for general information\n"
+"            "
+msgstr ""
+"\n"
+"              Ha recibido este correo electrónico porque se ha suscrito a las alertas de publicaciones de JCOM<br>\n"
+" <span><a href=\"%(unsubscribe_url)s\">Haga clic aquí para modificar sus temas de interés</a></span>\n"
+" <span>|</span>\n"
+" <span><a href=\"%(unsubscribe_url)s\">Haga clic aquí para darse de baja</a></span><br>\n"
+"              Consulte nuestra <a href=\"%(privacy_url)s\">política de privacidad</a> para obtener información sobre\n"
+" cómo utilizamos sus datos personales o póngase en contacto con nosotros para obtener información general\n"
+" "
+
+#: JCOM-theme/templates/press/journal/contact.html:17
+msgid "Journal Representatives"
+msgstr "Representantes de la revista"
+
+#: JCOM-theme/templates/press/journal/contact.html:19
+msgid "Press Representatives"
+msgstr "Representantes de la prensa"
+
+#: JCOM-theme/templates/press/journal/contact.html:28
+msgid "Contact Information"
+msgstr "Información de contacto"
+
+#: JCOM-theme/templates/press/journal/contact.html:48
+msgid "Send Message"
+msgstr "Enviar mensaje"
+
+#: JCOM-theme/templates/submission/update_editor_parameters.html:7
+msgid "Paper assignments parameters"
+msgstr "Parámetros de asignación de artículos"
+
+#: wjs-bootstrap/templates/elements/accounts/edit_newsletters_subscription.html:5
+#: wjs-bootstrap/templates/elements/accounts/edit_newsletters_subscription.html:6
+#: wjs-bootstrap/templates/elements/accounts/edit_newsletters_subscription.html:7
+#: wjs-bootstrap/templates/wjs/base/elements/hijack.html:4
+msgid "<i class=\\"
+msgstr "<i class=\\"
+
+#: wjs-bootstrap/templates/elements/accounts/edit_newsletters_subscription.html:31
+msgid "Select All"
+msgstr "Seleccionar todo"
+
+#: wjs-bootstrap/templates/elements/journal/editorial_social_content.html:10
+msgid "Website"
+msgstr "Sitio web"
+
+#: wjs-bootstrap/templates/elements/journal/editorial_social_content.html:20
+msgid "Twitter"
+msgstr "Twitter"
+
+#: wjs-bootstrap/templates/elements/journal/editorial_social_content.html:30
+msgid "Facebook"
+msgstr "Facebook"
+
+#: wjs-bootstrap/templates/elements/journal/editorial_social_content.html:40
+msgid "Github"
+msgstr "Github"
+
+#: wjs-bootstrap/templates/elements/journal/editorial_social_content.html:50
+msgid "Linkedin"
+msgstr "Linkedin"
+
+#: wjs-bootstrap/templates/includes/select_checkbox.html:50
+msgid "selected"
+msgstr "seleccionado"
+
+#: wjs-bootstrap/templates/includes/submission_sidebar.html:18
+msgid "I have read and agree to the submission guidelines."
+msgstr "He leído y acepto las directrices de envío."
+
+#: wjs-bootstrap/templates/journal/article.html:48
+msgid "View Larger Table"
+msgstr "Ver tabla más grande"
+
+#: wjs-bootstrap/templates/journal/authors.html:4
+#: wjs-bootstrap/templates/journal/authors.html:5
+msgid "Authors"
+msgstr "Autores"
+
+#: wjs-bootstrap/templates/journal/authors.html:21
+msgid "View Profile"
+msgstr "Ver perfil"
+
+#: wjs-bootstrap/templates/journal/components/article_content.html:4
+msgid "Back to top <i class=\\"
+msgstr "Volver arriba <i class=\\"
+
+#: wjs-bootstrap/templates/journal/components/article_downloads.html:25
+msgid "Electronic Supplementary Materials"
+msgstr "Materiales complementarios electrónicos"
+
+#: wjs-bootstrap/templates/journal/components/article_sidebar.html:66
+#, python-format
+msgid "(grant %(funding_id)s)"
+msgstr "(grant %(funding_id)s)"
+
+#: wjs-bootstrap/templates/journal/components/search_sidebar.html:2
+#: wjs-bootstrap/templates/wjs/base/elements/navigation.html:88
+msgid "Advanced search"
+msgstr "Búsqueda avanzada"
+
+#: wjs-bootstrap/templates/journal/components/search_sidebar.html:4
+msgid "Reset"
+msgstr "Restablecer"
+
+#: wjs-bootstrap/templates/journal/homepage_elements/featured.html:4
+msgid "Featured Articles"
+msgstr "Artículos destacados"
+
+#: wjs-bootstrap/templates/journal/homepage_elements/news.html:5
+msgid "Latest"
+msgstr "Más recientes"
+
+#: wjs-bootstrap/templates/journal/homepage_elements/news.html:5
+msgid "Posts"
+msgstr "Publicaciones"
+
+#: wjs-bootstrap/templates/journal/homepage_elements/news.html:10
+msgid "on"
+msgstr "el"
+
+#: wjs-bootstrap/templates/journal/homepage_elements/popular.html:4
+msgid "Most Popular Articles"
+msgstr "Artículos más populares"
+
+#: wjs-bootstrap/templates/journal/index.html:9
+msgid "SUBMIT A PAPER"
+msgstr "ENVIAR UN ARTÍCULO"
+
+#: wjs-bootstrap/templates/journal/issue_sidebar.html:26
+msgid "(PDF)"
+msgstr "(PDF)"
+
+#: wjs-bootstrap/templates/journal/issue_top.html:22
+msgid "DOI:"
+msgstr "DOI:"
+
+#: wjs-bootstrap/templates/journal/issues.html:27
+msgid "No volumes/issues have been published yet."
+msgstr "Todavía no se han publicado volúmenes/números."
+
+#: wjs-bootstrap/templates/journal/search.html:29
+msgid "Advanced Search"
+msgstr "Búsqueda avanzada"
+
+#: wjs-bootstrap/templates/journal/search.html:31
+msgid "Selected filters <i class=\\"
+msgstr "Filtros seleccionados <i class=\\"
+
+#: wjs-bootstrap/templates/journal/search.html:70
+#, python-format
+msgid ""
+"\n"
+"                %(counter)s publication found\n"
+"              "
+msgid_plural ""
+"\n"
+"                %(counter)s publications found\n"
+"              "
+msgstr[0] ""
+"\n"
+"                %(counter)s publicación encontrada\n"
+"              "
+msgstr[1] ""
+"\n"
+"                %(counter)s publicaciones encontradas\n"
+"              "
+
+#: wjs-bootstrap/templates/journal/search.html:77
+msgid "No manuscripts match your search criteria."
+msgstr "Ningún manuscrito coincide con sus criterios de búsqueda."
+
+#: wjs-bootstrap/templates/journal/search.html:129
+msgid "Back to top"
+msgstr "Volver arriba"
+
+#: wjs-bootstrap/templates/journal/submissions.html:4
+#: wjs-bootstrap/templates/journal/submissions.html:5
+msgid "Submission guidelines"
+msgstr "Directrices de envío"
+
+#: wjs-bootstrap/templates/journal/submissions.html:39
+msgid "There are no submission page items to display for this journal."
+msgstr ""
+"No hay elementos de la página de envío para mostrar para esta revista."
+
+#: wjs-bootstrap/templates/wjs/base/elements/back.html:4
+msgid "Back"
+msgstr "Atrás"
+
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:10
+msgid ""
+"\n"
+"                Except where otherwise noted, content on this site is licensed under a Creative Commons 4.0 license\n"
+"              "
+msgstr ""
+"\n"
+"                Salvo que se indique lo contrario, el contenido de este sitio está bajo una licencia Creative Commons 4.0\n"
+"              "
+
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:16
+#, python-format
+msgid "ISSN: %(issn)s"
+msgstr "ISSN: %(issn)s"
+
+#: wjs-bootstrap/templates/wjs/base/elements/footer.html:33
+msgid "under license from"
+msgstr "bajo licencia de"
+
+#: wjs-bootstrap/templates/wjs/base/elements/funders.html:6
+msgid "Funders"
+msgstr "Financiadores"
+
+#: wjs-bootstrap/templates/wjs/base/elements/header.html:40
+msgid "Search an article"
+msgstr "Buscar un artículo"
+
+#: wjs-bootstrap/templates/wjs/base/elements/header.html:45
+msgid "Submit search"
+msgstr "Enviar búsqueda"
+
+#: wjs-bootstrap/templates/wjs/base/elements/hijack.html:6
+msgid "Write a message"
+msgstr "Escribir un mensaje"
+
+#: wjs-bootstrap/templates/wjs/base/elements/pagination.html:4
+msgid "Total"
+msgstr "Total"
+
+#: wjs-bootstrap/templates/wjs/base/elements/pagination.html:4
+msgid "records"
+msgstr "registros"
+
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu.html:8
+msgid "Viewing as"
+msgstr "Viendo como"
+
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:155
+msgid "Advanced admin"
+msgstr "Administración avanzada"
+
+#: wjs-bootstrap/templates/wjs/base/elements/user_menu_dropdown_list.html:160
+msgid "My profile"
+msgstr "Mi perfil"
