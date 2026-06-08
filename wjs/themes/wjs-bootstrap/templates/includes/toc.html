@@ -16,7 +16,7 @@
       return;
     }
     const toc = document.getElementById("js-toc-list");
-    const headings = content.querySelectorAll("h1, h2");
+    const headings = content.querySelectorAll("h2");
     const items = [];
     const usedIds = new Set();
 
@@ -59,30 +59,39 @@
       return;
     }
 
-    function updateActive() {
-      const viewportHeight = window.innerHeight;
-      let firstVisible = null;
-      let lastPassed = null;
+    const visibilityByHeading = new Map(items.map(({ heading }) => [heading, false]));
+    const lastTopByHeading = new Map();
 
-      for (const { heading, link } of items) {
-        const top = heading.getBoundingClientRect().top;
-        if (top < 0) {
-          lastPassed = link;
-        } else if (top < viewportHeight) {
-          firstVisible = link;
-          break; // headings are in document order, no need to continue
-        }
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: [0.0, 1.0],
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        visibilityByHeading.set(entry.target, entry.isIntersecting);
+        lastTopByHeading.set(entry.target, entry.boundingClientRect.top);
+      });
+
+      const anyVisible = [...visibilityByHeading.values()].some(Boolean);
+
+      let lastAbove = null;
+      if (!anyVisible) {
+        lastAbove = items.findLast(({ heading }) =>
+          (lastTopByHeading.get(heading) ?? 0) < 0
+        )?.heading;
       }
 
-      const active = firstVisible || lastPassed || items[0].link;
+      items.forEach(({ heading, link }) => {
+        const active = anyVisible
+          ? visibilityByHeading.get(heading)
+          : heading === lastAbove;
+        link.classList.toggle("active", active);
+      });
+    }, options);
 
-      for (const { link } of items) {
-        link.classList.toggle("active", link === active);
-      }
-    }
-
-    window.addEventListener("scroll", updateActive, { passive: true });
-    updateActive();
+    items.forEach(({ heading }) => observer.observe(heading));
   });
 </script>
 {% endblock js %}
