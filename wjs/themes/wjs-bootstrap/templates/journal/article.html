@@ -41,6 +41,7 @@
 {% endblock content %}
 
 {% block js %}
+  {{ block.super }}
   {% include "wjs/base/fragments/mathjax.html" %}
   <script>
     $(".table-expansion").each(function() {

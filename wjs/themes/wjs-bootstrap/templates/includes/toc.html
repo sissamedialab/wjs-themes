@@ -8,9 +8,8 @@
   </div>
 </div>
 
-{% block js %}
-  <script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function() {
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
     const content = document.getElementById("js-main-article");
     if (!content) {
       return;
@@ -49,17 +48,17 @@
       link.href = `#${id}`;
       link.textContent = heading.textContent;
 
-      link.addEventListener('click', () => heading.focus({ preventScroll: true }));
+      link.addEventListener('click', () => heading.focus({preventScroll: true}));
 
       toc.appendChild(link);
-      items.push({ heading, link });
+      items.push({heading, link});
     });
 
     if (items.length === 0) {
       return;
     }
 
-    const visibilityByHeading = new Map(items.map(({ heading }) => [heading, false]));
+    const visibilityByHeading = new Map(items.map(({heading}) => [heading, false]));
     const lastTopByHeading = new Map();
 
     const options = {
@@ -78,12 +77,12 @@
 
       let lastAbove = null;
       if (!anyVisible) {
-        lastAbove = items.findLast(({ heading }) =>
+        lastAbove = items.findLast(({heading}) =>
           (lastTopByHeading.get(heading) ?? 0) < 0
         )?.heading;
       }
 
-      items.forEach(({ heading, link }) => {
+      items.forEach(({heading, link}) => {
         const active = anyVisible
           ? visibilityByHeading.get(heading)
           : heading === lastAbove;
@@ -91,7 +90,6 @@
       });
     }, options);
 
-    items.forEach(({ heading }) => observer.observe(heading));
+    items.forEach(({heading}) => observer.observe(heading));
   });
 </script>
-{% endblock js %}
