@@ -1,14 +1,20 @@
-{% load svg from press_url truncate i18n %}
+{% load truncate i18n %}
 
 <div class="wjs-showcase__hp-card">
   <h2>
-    {% translate "Latest" %}{{ journal_settings.news.news_title }} {% translate "Posts" %}
+    {% translate "Latest" %} {{ journal_settings.news.news_title }} {% translate "Posts" %}
   </h2>
   {% for item in news_items %}
-    <div class="wjs-showcase__hp-card-content">
-      <h3 class="wjs-showcase__hp-card-content-title"><a href="{% url 'core_news_item' item.pk %}" class="card-link">{{ item.title|safe }}</a></h3>
-      <h4 class="wjs-showcase__hp-card-content-subtitle">{{ item.byline }} {% translate "on" %} {{ item.posted|date:"Y-m-d" }}</h4>
-      <p>{{ item.body|striptags|truncatesmart:400 }}</p>
-    </div>
+    <ul class="wjs-showcase__hp-card-content">
+      <li class="wjs-showcase__hp-card-list-item">
+        <article>
+          <h3 class="wjs-showcase__hp-card-content-title"><a href="{% url 'core_news_item' item.pk %}" class="card-link">{{ item.title|safe }}</a></h3>
+          <p class="fw-medium">
+            <small>{{ item.byline }} {% translate "on" %} <i class="bi bi-calendar3" aria-hidden="true"></i> <time datetime="{{ item.posted|date:"Y-m-d" }}">{{ item.posted|date:"Y-m-d" }}</time></small>
+          </p>
+          <p>{{ item.body|striptags|truncatesmart:400 }}</p>
+        </article>
+      </li>
+    </ul>
   {% endfor %}
 </div>

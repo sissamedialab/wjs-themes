@@ -45,12 +45,15 @@
       <main class="container flex-grow-1">
         <div class="row">
           {% block page_title_wrapper %}
-            <div class="col-sm-12">
+          <div class="col-sm-12">
+            <div class="wjs-showcase__main-title-container">
               <h1 class="wjs-showcase__main-title">
                 {% block title %}{% endblock title %}
-                {% block title_sidekick %}{% endblock title_sidekick %}
               </h1>
+
+              {% block title_sidekick %}{% endblock title_sidekick %}
             </div>
+          </div>
           {% endblock page_title_wrapper %}
 
           {% block content %}
