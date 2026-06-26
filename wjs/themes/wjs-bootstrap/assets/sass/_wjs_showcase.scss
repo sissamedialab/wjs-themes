@@ -6,9 +6,13 @@
   }
 
   &__main-title {
-    @extend .border-bottom, .fs-2, .fw-bold, .mb-4, .pb-2, .d-flex, .justify-content-between, .align-items-center;
+    @extend .fs-2, .fw-bold;
     border-color: $gray-700;
     color: $primary;
+
+    &-container {
+      @extend .border-bottom, .mb-4, .pb-2, .d-flex, .justify-content-between, .align-items-center;
+    }
   }
 
   &__secondary-title {
@@ -561,85 +565,48 @@
   }
 
   &__homepage-grid {
-    display: grid;
-    grid-template-areas:
-      "main main main main sidebar-element-2"
-      "main main main main sidebar-element-3"
-      "main main main main sidebar-element-4"
-      "main main main main sidebar-element-5"
-      "main main main main sidebar-element-6"
-      "main main main main sidebar-element-7";
-    column-gap: 2rem;
+    @extend .d-grid, .gap-4, .mx-0, .w-100, .align-items-start;
     grid-template-columns: 1fr 340px;
 
     @include media-breakpoint-down(lg) {
-      grid-template-areas:
-        "main"
-        "sidebar-element-2"
-        "sidebar-element-3"
-        "sidebar-element-4"
-        "sidebar-element-5"
-        "sidebar-element-6"
-        "sidebar-element-7";
-      margin: 0;
-      grid-template-columns: 100% 100%;
+      grid-template-columns: 1fr;
     }
   }
 
-  &__homepage-element-1 {
-    grid-area: main;
-  }
+  &__homepage-main-column {
+    @extend .d-flex, .flex-column, .gap-4;
+    min-width: 0;
 
-  &__homepage-element-2 {
-    grid-area: sidebar-element-2;
-    max-width: 340px;
-    @include media-breakpoint-down(lg) {
-      max-width: 100%;
+    .wjs-showcase__homepage-element {
+      @extend .w-100;
+      max-width: none;
     }
   }
 
-  &__homepage-element-3 {
-    grid-area: sidebar-element-3;
-    max-width: 340px;
-    @include media-breakpoint-down(lg) {
-      max-width: 100%;
-    }
-  }
+  &__homepage-sidebar-column {
+    @extend .d-flex, .flex-column, .gap-4;
+    width: 340px;
 
-  &__homepage-element-4 {
-    grid-area: sidebar-element-4;
-    max-width: 340px;
     @include media-breakpoint-down(lg) {
-      max-width: 100%;
+      width: 100%;
     }
-  }
 
-  &__homepage-element-5 {
-    grid-area: sidebar-element-5;
-    max-width: 340px;
-    @include media-breakpoint-down(lg) {
-      max-width: 100%;
-    }
-  }
+    .wjs-showcase__homepage-element {
+      @extend .w-100;
+      max-width: 340px;
 
-  &__homepage-element-6 {
-    grid-area: sidebar-element-6;
-    max-width: 340px;
-    @include media-breakpoint-down(lg) {
-      max-width: 100%;
-    }
-  }
-
-  &__homepage-element-7 {
-    grid-area: sidebar-element-7;
-    max-width: 340px;
-    @include media-breakpoint-down(lg) {
-      max-width: 100%;
+      @include media-breakpoint-down(lg) {
+        max-width: 100%;
+      }
     }
   }
 
   &__hp-card {
-    @extend .card, .mb-4, .p-4;
+    @extend .card, .mb-0, .p-4;
+
+    + .wjs-showcase__hp-card {
+      @extend .mt-4;
+    }
 
     form {
       overflow: clip;
@@ -671,6 +638,10 @@
         color: $gray-700;
       }
     }
+
+    &-list-item {
+      list-style: none;
+    }
   }
 
   &__hp-current-issue {
@@ -696,7 +667,9 @@
   }
 
   &__homepage-funders {
-    @extend .card, .p-4, .my-4, .shadow-sm;
+    &-container {
+      @extend .card, .p-4, .my-4, .shadow-sm;
+    }
 
     &-title {
       @extend .fs-4, .fw-bold, .mb-3;

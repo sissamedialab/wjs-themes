@@ -1,5 +1,5 @@
 {% extends "wjs/base/base.html" %}
-{% load django_bootstrap5 i18n static truncate %}
+{% load django_bootstrap5 i18n settings static truncate %}
 
 {% block title_sidekick %}
   {% url "wjs_submission_1" as submission_start %}
@@ -13,18 +13,8 @@
 {% block title %}{{ wjs_latest_articles_title }}{% endblock title %}
 
 {% block content %}
-  <div class="wjs-showcase__homepage-grid">
-    {% for element in homepage_elements %}
-      {% if forloop.counter >= 2 %}
-        <aside class="wjs-showcase__homepage-element wjs-showcase__homepage-element-{{ forloop.counter }}">
-          {% include element.template_path %}
-        </aside>
-      {% else %}
-        <div class="wjs-showcase__homepage-element wjs-showcase__homepage-element-{{ forloop.counter }}">
-          {% include element.template_path %}
-        </div>
-      {% endif %}
-    {% endfor %}
+  <div class="wjs-showcase__homepage-grid wjs-showcase__homepage-grid--{{ journal.code|lower }}">
+    {% include "journal/components/home_grid_main.html" %}
   </div>
   {% include "wjs/base/elements/funders.html" %}
 {% endblock content %}

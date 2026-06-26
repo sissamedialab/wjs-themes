@@ -1,0 +1,19 @@
+<div class="wjs-showcase__homepage-main-column">
+  {% for element in homepage_elements %}
+    {% if forloop.counter <= main_column_items|default:1 %}
+      <div class="wjs-showcase__homepage-element wjs-showcase__homepage-element-{{ forloop.counter }}">
+        {% include element.template_path %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<aside class="wjs-showcase__homepage-sidebar-column">
+  {% for element in homepage_elements %}
+    {% if forloop.counter > main_column_items|default:1 %}
+      <div class="wjs-showcase__homepage-element wjs-showcase__homepage-element-{{ forloop.counter }}">
+        {% include element.template_path %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</aside>

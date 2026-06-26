@@ -42,12 +42,12 @@ Bonus:
 {% url 'wjs_review_typesetter_workingon' as wjs_review_typesetter_workingon %}
 {% url 'wjs_article_details' article.articleworkflow.pk as wjs_article_details %}
 
-<ul class="dropdown-menu mb-2" aria-labelledby="user-menu">
-  {% if not journal_settings.general.disable_journal_submission and wjs_submission %}
+<ul class="{{ base_class }} mb-2" aria-labelledby="user-menu">
+  {% if not journal_settings.general.disable_journal_submission and wjs_submission and not hide_submit_logout %}
      <li class="nav-item wjs-nav-item">
       <a class="dropdown-item" href="{{ wjs_submission }}">{% translate "Submit" %}</a>
     </li>
-  {% elif not journal_settings.general.disable_journal_submission and submission_start %}
+  {% elif not journal_settings.general.disable_journal_submission and submission_start and not hide_submit_logout %}
      <li class="nav-item wjs-nav-item">
       <a class="dropdown-item" href="{{ submission_start }}">{% translate "Submit" %}</a>
     </li>
@@ -160,7 +160,7 @@ Bonus:
       <a class="dropdown-item" href="{{ core_edit_profile }}">{% translate "My profile" %}</a>
     </li>
   {% endif %}
-  {% if core_logout %}
+  {% if core_logout and not hide_submit_logout %}
     <li class="nav-item wjs-nav-item">
       <a class="dropdown-item" href="{{ core_logout }}">{% translate "Logout" %}</a>
     </li>

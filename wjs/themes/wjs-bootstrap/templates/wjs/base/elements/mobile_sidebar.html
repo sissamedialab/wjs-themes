@@ -78,7 +78,7 @@
             {% translate "Account" %}
           </a>
           {% if PermissionType %}
-            {% include "wjs/base/elements/user_menu_dropdown_list.html" %}
+            {% include "wjs/base/elements/user_menu_dropdown_list.html" with base_class="dropdown-menu" %}
           {% endif %}
         </li>
       {% else %}
