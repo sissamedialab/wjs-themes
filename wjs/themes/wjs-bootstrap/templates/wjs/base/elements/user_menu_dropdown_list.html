@@ -64,7 +64,7 @@ Bonus:
   {% endif %}
   {% if user_is_reviewer and wjs_review_reviewer_pending %}
     <li class="nav-item wjs-nav-item">
-      <a class="dropdown-item" href="{{ wjs_review_reviewer_pending }}">{% translate "My reviewer Pages" %}</a>
+      <a class="dropdown-item" href="{{ wjs_review_reviewer_pending }}">{% translate "My Reviewer Pages" %}</a>
     </li>
   {% endif %}
   {% if user_is_editor and wjs_review_list %}
@@ -96,7 +96,7 @@ Bonus:
   {% endif %}
   {% if user_is_eo_or_director and wjs_journal_editors %}
     <li class="nav-item wjs-nav-item">
-      <a class="dropdown-item" href="{{ wjs_journal_editors }}">{% translate "Journal Editors' parameters management" %}</a>
+      <a class="dropdown-item" href="{{ wjs_journal_editors }}">{% translate "Journal Editors' Parameters Management" %}</a>
     </li>
   {% endif %}
   {% if request.user.is_staff or request.user|is_user_eo %}
@@ -157,7 +157,7 @@ Bonus:
   {% endif %}
   {% if core_edit_profile %}
     <li class="nav-item wjs-nav-item">
-      <a class="dropdown-item" href="{{ core_edit_profile }}">{% translate "My profile" %}</a>
+      <a class="dropdown-item" href="{{ core_edit_profile }}">{% translate "My Profile" %}</a>
     </li>
   {% endif %}
   {% if core_logout and not hide_submit_logout %}
