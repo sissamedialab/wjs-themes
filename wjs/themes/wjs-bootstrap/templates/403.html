@@ -1,0 +1,21 @@
+{% extends "wjs/base/base.html" %}
+{% load i18n django_bootstrap5 %}
+
+{% block page_title %}{% trans "Permission Denied" %}{% endblock page_title %}
+{% block page_title_wrapper %}{% endblock page_title_wrapper %}
+
+{% block content %}
+  <div class="d-flex flex-column align-items-center">
+    <h1 class="fs-1">403</h1>
+    {% if request.META.maintenance_mode %}
+      <h2 class="fs-3 mb-4">{% translate "Maintenance Mode" %}</h2>
+      <p class="mb-4">{{ request.META.maintenance_mode.value|safe }}</p>
+    {% else %}
+      <h2 class="fs-3 mb-4">{% translate "Permission Denied" %}</h2>
+      {% if exception %}
+        <p class="mb-4">{{ exception }}</p>
+      {% endif %}
+    {% endif %}
+    {% bootstrap_button button_type="link" role="link" name="back" content="Back to homepage" href="/" %}
+  </div>
+{% endblock content %}
