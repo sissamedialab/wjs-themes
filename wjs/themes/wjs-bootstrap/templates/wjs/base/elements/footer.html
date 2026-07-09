@@ -1,10 +1,10 @@
-{% load i18n static %}
+{% load i18n %}
 <footer class="wjs-footer">
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-10">
         <div class="d-flex">
-          <img class="me-4" src="{% static 'wjs-bootstrap/img/sissa.svg' %}" alt="" width="100">
+          <img class="me-4" src="{{ journal_settings.general.publisher_image_url }}" alt="" width="100">
           <div class="wjs-footer__content text-left">
             <p class="wjs-footer__text">
               {% blocktranslate %}
@@ -13,25 +13,15 @@
             </p>
 
             {% if request.journal.issn %}
-              <p class="wjs-footer__text">{% blocktranslate with issn=request.journal.issn %}ISSN: {{ issn }}{% endblocktranslate %}</p>
+              <p class="wjs-footer__text mb-3">{% blocktranslate with issn=request.journal.issn %}ISSN: {{ issn }}{% endblocktranslate %}</p>
             {% endif %}
 
             {% if request.journal.print_issn %}
               <p class="wjs-footer__text">{% translate "Print ISSN:" %} {{ request.journal.print_issn }}</p>
             {% endif %}
 
-            {% if journal_settings.general.publisher_name %}
-              <p class="wjs-footer__text mb-3">
-                {% translate "Published by" %}
-                {% if journal_settings.general.publisher_url %}
-                  <a class="wjs-footer__text-link" href="{{ journal_settings.general.publisher_url }}">
-                {% endif %}
-                {{ journal_settings.general.publisher_name }}
-                {% if journal_settings.general.publisher_url %}
-                  </a>
-                {% endif %}
-                {% translate "under license from" %} <a class="wjs-footer__text-link" href="https://www.sissa.it/">SISSA</a>
-              </p>
+            {% if journal_settings.general.publisher_line %}
+              <p class="wjs-footer__text">{{ journal_settings.general.publisher_line|safe }}</p>
             {% endif %}
 
             <p class="wjs-footer__text">{% translate "VAT number: IT01097780322" %}</p>

@@ -17,5 +17,43 @@
             "director",
             "journal-manager"
         ]
+    },
+    {
+        "group": {
+            "name": "general"
+        },
+        "setting": {
+            "description": "URL of the publisher's logo image.",
+            "is_translatable": false,
+            "name": "publisher_image_url",
+            "pretty_name": "Publisher image URL",
+            "type": "text"
+        },
+        "value": {
+            "default": "/static/wjs-bootstrap/img/sissa.svg"
+        },
+        "editable_by": [
+            "director",
+            "journal-manager"
+        ]
+    },
+    {
+        "group": {
+            "name": "general"
+        },
+        "setting": {
+            "description": "Publisher line, shown alongside the publisher image.",
+            "is_translatable": true,
+            "name": "publisher_line",
+            "pretty_name": "Publisher line",
+            "type": "rich-text"
+        },
+        "value": {
+            "default": "Published by <a class=\"wjs-footer__text-link\" href=\"https://www.sissamedialab.it/en\">SISSA Medialab srl</a> under license from <a class=\"wjs-footer__text-link\" href=\"https://www.sissa.it/\">SISSA</a>"
+        },
+        "editable_by": [
+            "director",
+            "journal-manager"
+        ]
     }
 ]

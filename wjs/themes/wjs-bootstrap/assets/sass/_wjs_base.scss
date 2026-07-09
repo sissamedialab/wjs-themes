@@ -345,9 +345,10 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
   @extend .d-flex, .mt-5, .pb-5, .pt-4;
   background-color: $footer-copyright-bg-color;
 
-  &__text {
-    @extend .m-0;
+  &__text,
+  p {
     color: $blue-grey-d-2;
+    margin: 0;
 
     &-link {
       @extend .text-decoration-none;
