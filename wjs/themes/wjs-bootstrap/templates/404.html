@@ -1,0 +1,14 @@
+{% extends "wjs/base/base.html" %}
+{% load i18n django_bootstrap5 %}
+
+{% block page_title %}Page Not Found{% endblock page_title %}
+{% block page_title_wrapper %}{% endblock page_title_wrapper %}
+
+{% block content %}
+  <div class="d-flex flex-column align-items-center">
+    <h1 class="fs-1">404</h1>
+    <h2 class="fs-3 mb-4">{% translate "Oops...page not found!" %}</h2>
+    <p class="mb-4">{% trans "Sorry, the page you were looking for was not found, click on the button below to go back to homepage." %}</p>
+    {% bootstrap_button button_type="link" role="link" name="back" content="Back to homepage" href="/" %}
+  </div>
+{% endblock content %}
