@@ -65,7 +65,7 @@
             </section>
           {% endif %}
 
-          <p class="text-end mt-2 fw-bolder" id="search-results-count">
+          <p class="text-end mt-2 fw-bolder" role="alert" id="search-results-count">
             {% if paginator.count %}
               {% blocktranslate count counter=paginator.count %}
                 {{ counter }} publication found
