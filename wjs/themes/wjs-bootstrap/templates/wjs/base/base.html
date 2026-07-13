@@ -8,7 +8,7 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link rel="stylesheet" href="{% static "admin/css/admin.css" %}">
   {% block journal_css %}
-    <link rel="stylesheet" href="{% static "wjs-bootstrap/css/wjs_" %}{{ journal.code|lower }}.css?v=11">
+    <link rel="stylesheet" href="{% static "wjs-bootstrap/css/wjs_" %}{{ journal.code|lower }}.css?v={{ WJS_THEMES_VERSION }}">
   {% endblock journal_css %}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   {% if request.journal.favicon %}
