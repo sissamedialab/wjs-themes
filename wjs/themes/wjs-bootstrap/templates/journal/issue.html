@@ -1,7 +1,7 @@
 {% extends "wjs/base/base.html" %}
 {% load i18n wjs_tags %}
 
-{% block page_title %}{{ issue|display_title }}{% endblock page_title %}
+{% block page_title %}{{ issue|display_title|striptags }}{% endblock page_title %}
 {% block title %}{{ issue|display_title }}{% endblock title %}
 
 {% block content %}
