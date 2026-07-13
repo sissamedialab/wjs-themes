@@ -1,41 +1,41 @@
 <h2>{% translate "Sections" %}</h2>
 
 <table class="table">
-    <caption>{% translate "Sections submission information" %}</caption>
-    <thead>
+  <caption>{% translate "Sections submission information" %}</caption>
+  <thead>
+  <tr>
+    <th scope="col">{% translate "Section or article type" %}</th>
+    <th scope="col">{% translate "Public Submissions" %}</th>
+    <th scope="col">{% translate "Peer Reviewed" %}</th>
+    <th scope="col">{% translate "Indexed" %}</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for section in sections %}
     <tr>
-        <th scope="col">{% translate "Section or article type" %}</th>
-        <th scope="col">{% translate "Public Submissions" %}</th>
-        <th scope="col">{% translate "Peer Reviewed" %}</th>
-        <th scope="col">{% translate "Indexed" %}</th>
+      <th scope="row">{{ section.name }}</th>
+
+      <td>{% if section.public_submissions %}
+        <i aria-hidden="true" class="fa fa-check"></i> {% translate "Yes" %}
+      {% else %}
+        <i aria-hidden="true" class="fa fa-times"></i> {% translate "No" %}
+      {% endif %}
+      </td>
+      <td>{% if section.number_of_reviewers > 0 %}
+        <i aria-hidden="true" class="fa fa-check"></i> {% translate "Yes" %}
+      {% else %}
+        <i aria-hidden="true" class="fa fa-times"></i> {% translate "No" %}
+      {% endif %}
+      </td>
+
+      <td>{% if section.indexing %}
+        <i aria-hidden="true" class="fa fa-check"></i> {% translate "Yes" %}
+      {% else %}
+        <i aria-hidden="true" class="fa fa-times"></i> {% translate "No" %}
+      {% endif %}
+      </td>
     </tr>
-    </thead>
-    <tbody>
-    {% for section in sections %}
-        <tr>
-            <th scope="row">{{ section.name }}</th>
-
-            <td>{% if section.public_submissions %}
-                    <i aria-hidden="true" class="fa fa-check"></i> {% translate "Yes" %}
-                {% else %}
-                    <i aria-hidden="true"  class="fa fa-times"></i> {% translate "No" %}
-                {% endif %}
-            </td>
-            <td>{% if section.number_of_reviewers > 0 %}
-                    <i aria-hidden="true"  class="fa fa-check"></i> {% translate "Yes" %}
-                {% else %}
-                    <i aria-hidden="true"  class="fa fa-times"></i> {% translate "No" %}
-                {% endif %}
-            </td>
-
-            <td>{% if section.indexing %}
-                    <i aria-hidden="true"  class="fa fa-check"></i> {% translate "Yes" %}
-                {% else %}
-                    <i aria-hidden="true"  class="fa fa-times"></i> {% translate "No" %}
-                {% endif %}
-            </td>
-        </tr>
-        {% empty %}
-    {% endfor %}
-    </tbody>
+  {% empty %}
+  {% endfor %}
+  </tbody>
 </table>

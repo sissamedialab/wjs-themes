@@ -7,46 +7,46 @@
   {% translate "<i class=\"bi bi-x\"></i> Unsubscribe" as unsubscribe_label %}
   <!-- djlint:on -->
   <h1 class="wjs-profile-form__title">Personal details</h1>
-    {% if form.errors %}
-      {% for error in form.non_field_errors %}
-        <p>
-          <strong class="text-danger label-error">{{ error }}</strong>
-        </p>
-      {% endfor %}
-    {% endif %}
-    {% if request.GET.update %}
-      <p class="text-center jcom-blue-text">{% translate "Thank you for setting your preferences" %}</p>
-    {% endif %}
-    <form method="post" class="newsletter-form">
-      {% csrf_token %}
+  {% if form.errors %}
+    {% for error in form.non_field_errors %}
       <p>
-        {% translate "Your subscription is active. Please use the checkboxes if you wish to change your topics of interest and limit incoming alerts to new publications matching those topics only." %}
-        <br />
-        {% translate "If new topics are added to the list in the future, you will be automatically subscribed to them and will be able to uncheck them from this page." %}
+        <strong class="text-danger label-error">{{ error }}</strong>
       </p>
-      <div class="row">
+    {% endfor %}
+  {% endif %}
+  {% if request.GET.update %}
+    <p class="text-center jcom-blue-text">{% translate "Thank you for setting your preferences" %}</p>
+  {% endif %}
+  <form method="post" class="newsletter-form">
+    {% csrf_token %}
+    <p>
+      {% translate "Your subscription is active. Please use the checkboxes if you wish to change your topics of interest and limit incoming alerts to new publications matching those topics only." %}
+      <br/>
+      {% translate "If new topics are added to the list in the future, you will be automatically subscribed to them and will be able to uncheck them from this page." %}
+    </p>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="select-all">
+          <label class="form-check-label" for="select-all">{% translate "Select All" %}</label>
+        </div>
+      </div>
+      {% for field in form %}
         <div class="col-12">
-          <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="select-all">
-              <label class="form-check-label" for="select-all">{% translate "Select All" %}</label>
-          </div>
+          {% bootstrap_field field %}
         </div>
-        {% for field in form %}
-            <div class="col-12">
-                {% bootstrap_field field %}
-            </div>
-        {% endfor %}
+      {% endfor %}
+    </div>
+    <div class="row">
+      <div class="col-sm-12 d-flex justify-content-end mt-4 gap-2">
+        {% if active %}
+          {% bootstrap_button button_type="submit" content=save_preferences_label %}
+          {% bootstrap_button button_class="btn btn-outline-primary d-flex flex-row gap-2" content=unsubscribe_label data_bs_toggle="modal" data_bs_target="#modal1" href="#modal1" %}
+        {% else %}
+          {% bootstrap_button button_type="submit" content=activate_label %}
+        {% endif %}
       </div>
-      <div class="row">
-        <div class="col-sm-12 d-flex justify-content-end mt-4 gap-2">
-          {% if active %}
-            {% bootstrap_button button_type="submit" content=save_preferences_label %}
-            {% bootstrap_button button_class="btn btn-outline-primary d-flex flex-row gap-2" content=unsubscribe_label data_bs_toggle="modal" data_bs_target="#modal1" href="#modal1" %}
-          {% else %}
-            {% bootstrap_button button_type="submit" content=activate_label %}
-          {% endif %}
-        </div>
-      </div>
-    </form>
-    {% include "elements/accounts/unsubscribe_confirmation_modal.html" %}
+    </div>
+  </form>
+  {% include "elements/accounts/unsubscribe_confirmation_modal.html" %}
 {% endblock profile_form %}

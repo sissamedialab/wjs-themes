@@ -34,25 +34,25 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.js-filter-dropdown').forEach(dropdown => {
-        const labelSpan = dropdown.querySelector('.js-dropdown-label');
-        const checkboxes = dropdown.querySelectorAll('.js-checkbox');
-        const toggleButton = dropdown.querySelector('button');
-        const defaultText = toggleButton.dataset.defaultLabel;
+      const labelSpan = dropdown.querySelector('.js-dropdown-label');
+      const checkboxes = dropdown.querySelectorAll('.js-checkbox');
+      const toggleButton = dropdown.querySelector('button');
+      const defaultText = toggleButton.dataset.defaultLabel;
 
-        const updateText = () => {
-            const count = Array.from(checkboxes).filter(cb => cb.checked).length;
+      const updateText = () => {
+        const count = Array.from(checkboxes).filter(cb => cb.checked).length;
 
-            if (count === 0) {
-                labelSpan.textContent = defaultText;
-            } else {
-                labelSpan.textContent = `${count} {% trans "selected" %}`;
-            }
-        };
+        if (count === 0) {
+          labelSpan.textContent = defaultText;
+        } else {
+          labelSpan.textContent = `${count} {% trans "selected" %}`;
+        }
+      };
 
-        dropdown.addEventListener('change', updateText);
-        updateText(); // Esecuzione al caricamento della pagina
+      dropdown.addEventListener('change', updateText);
+      updateText(); // Esecuzione al caricamento della pagina
     });
-});
+  });
 </script>

@@ -28,13 +28,8 @@
     <p class="wjs-showcase__article-authors">
       {% translate "by" %}
       {% for author in article.frozen_authors.all %}
-        {% url 'articles_by_author' author.author.pk as by_author %}
-        {% if forloop.last %}
-          {% if article.frozen_authors.all|length > 1 %}
-            {% translate "and" %}
-          {% endif %}
-        {% endif %}
-        <a href="{{ by_author }}">{{ author.full_name }}</a>{# djlint:off #}{% if not forloop.last %}{% if not forloop.counter == article.frozen_authors.all|length|add:-1 %}, {% endif %}{% endif %}{# djlint:on #}
+        {% include "journal/elements/author_link.html" %}
+        {% if not forloop.last %},{% endif %}
       {% endfor %}
     </p>
     <div class="wjs-showcase__article-text">
@@ -77,6 +72,6 @@
           {% endfor %}
         {% endif %}
       </p>
-      {% endif %}
-    </article>
+    {% endif %}
+  </article>
 </li>
