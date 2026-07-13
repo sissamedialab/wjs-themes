@@ -24,21 +24,8 @@
     {% if article.frozen_authors.exists %}
       <div class="wjs-showcase__article-detail-authors">
         {% for author in article.frozen_authors.all %}
-        {% url 'articles_by_author' author.author.pk as author_url %}
-        {% with "Go to all articles by "|add:author.full_name as aria_label_text %}
-            {% bootstrap_button author.full_name href=author_url button_type="link" button_class="btn-link p-0" aria_label=aria_label_text role="link" %}
-        {% endwith %}
-            {% if author.orcid %}
-              <a class="text-decoration-none" href="https://orcid.org/{{ author.orcid }}" aria-label="Go to {{ author.full_name }} orcid page">
-                <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="orcid logo" />
-              </a>
-            {% endif %}
-            {% if author.display_email and not journal_settings.article.hide_author_email_links %}
-              {% with "Send an email to "|add:author.full_name as aria_label_mail_text %}
-                {% bootstrap_button content='<i class="bi bi-envelope-fill"></i>' button_type="link" href="mailto:"|add:author.email button_class="btn-link p-0 text-decoration-none" aria_label=aria_label_mail_text %}
-              {% endwith %}
-            {% endif %}
-            {% if not forloop.last %},{% endif %}
+          {% include "journal/elements/author_link.html" %}
+          {% if not forloop.last %},{% endif %}
         {% endfor %}
       </div>
     {% endif %}

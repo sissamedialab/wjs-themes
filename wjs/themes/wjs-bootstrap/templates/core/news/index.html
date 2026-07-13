@@ -29,7 +29,7 @@
         {% if item.large_image_file or request.journal and request.journal.default_large_image or request.press.default_carousel_image %}
           <div class="wjs-showcase__news-card-content">
           <div class="wjs-showcase__news-card-image-container">
-            <img class="wjs-showcase__news-card-image" src="{{ item.best_image_url }}" alt="{{ item.title }}" />
+            <img class="wjs-showcase__news-card-image" src="{{ item.best_image_url }}" alt="{{ item.title }}"/>
           </div>
         {% endif %}
         <div class="wjs-showcase__news-card-text-container">

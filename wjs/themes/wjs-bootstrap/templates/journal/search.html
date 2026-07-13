@@ -106,12 +106,12 @@
       if (matchingField) matchingField.checked = field.checked;
     }
 
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const urlParams = new URLSearchParams(window.location.search);
 
       if ([urlParams.keys()].some(k => k !== "modal") && !window.location.hash) {
         window.location.hash = "search-results-count";
-        requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "instant" }));
+        requestAnimationFrame(() => window.scrollTo({top: 0, behavior: "instant"}));
       }
 
       if (urlParams.get("modal") === "1") {
@@ -125,7 +125,7 @@
       const modalSearch = document.getElementById("modal_search");
       const keywords = document.querySelectorAll("[name=keywords]");
       keywords.forEach(field => {
-        field.addEventListener("input", function() {
+        field.addEventListener("input", function () {
           if (modalSearch) syncKeywords(this, modalSearch);
         });
       });
@@ -150,9 +150,9 @@
         });
 
         backToTopBtn.addEventListener("click", () => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo({top: 0, behavior: "smooth"});
           if (topOfPageAnchor) {
-            topOfPageAnchor.focus({ preventScroll: true });
+            topOfPageAnchor.focus({preventScroll: true});
           }
         });
       }

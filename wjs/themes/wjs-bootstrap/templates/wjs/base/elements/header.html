@@ -24,9 +24,9 @@
                     <input name="next" type="hidden" value="{{ request.PATH }}"/>
                     {% for language in LANGUAGES %}
                       {% if language.0 in request.available_languages %}
-                          <button class="btn btn-link text-uppercase pb-0 pt-0 ps-0 text-decoration-none{% if language.0 != LANGUAGE_CODE %} text-black{% endif %}"
-                                  name="language"
-                                  value="{{ language.0 }}">{{ language.0 }}</button>
+                        <button class="btn btn-link text-uppercase pb-0 pt-0 ps-0 text-decoration-none{% if language.0 != LANGUAGE_CODE %} text-black{% endif %}"
+                                name="language"
+                                value="{{ language.0 }}">{{ language.0 }}</button>
                       {% endif %}
                     {% endfor %}
                   </form>
