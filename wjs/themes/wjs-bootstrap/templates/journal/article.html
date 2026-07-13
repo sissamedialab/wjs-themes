@@ -2,10 +2,10 @@
 {% load files hooks i18n static wjs_tags %}
 
 {% block bootstrap5_extra_head %}
-    {{ block.super }}
-    {% if article.is_published %}
-      {% include "elements/article_meta_tags.html" %}
-    {% endif %}
+  {{ block.super }}
+  {% if article.is_published %}
+    {% include "elements/article_meta_tags.html" %}
+  {% endif %}
 {% endblock bootstrap5_extra_head %}
 
 {% block page_title %}{{ article.title }}{% endblock page_title %}
@@ -26,8 +26,8 @@
       <div class="col-sm-12{% if article_content or article|article_has_children %} col-lg-4{% else %} l12{% endif %}">
         {% include "journal/components/article_sidebar.html" %}
         {% if article_content %}
-         <aside class="wjs-showcase__toc-aside">
-          {% include "includes/toc.html" %}
+          <aside class="wjs-showcase__toc-aside">
+            {% include "includes/toc.html" %}
           </aside>
         {% endif %}
       </div>
@@ -44,7 +44,7 @@
   {{ block.super }}
   {% include "wjs/base/fragments/mathjax.html" %}
   <script>
-    $(".table-expansion").each(function() {
+    $(".table-expansion").each(function () {
       var child = $(this).children(":first");
       child.append("<br /><small><a href=\"#table-" + $(this).attr("id") + "\" class=\"modal-trigger\">{% translate "View Larger Table" %}</a></small>");
     });

@@ -19,7 +19,7 @@
         {{ article.primary_issue|display_title }}
       </a>
       {% if journal_settings.article.display_guest_editors %}
-        <br />
+        <br/>
         {% include "common/elements/guest_editors.html" with issue=article.primary_issue small="small" %}
       {% endif %}
     </li>

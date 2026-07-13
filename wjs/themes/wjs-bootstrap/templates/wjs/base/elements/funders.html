@@ -8,11 +8,11 @@
       </div>
       <ul class="wjs-showcase__homepage-funders-list">
         {% for funder in journal_funders %}
-        <li class="wjs-showcase__homepage-funders-list-item">
-          <a class="wjs-showcase__homepage-funder-link" {% if funder.url %} href="{{ funder.url }}" target="_blank" {% endif %}>
-            <img src="{{ funder.image }}" alt="{{ funder.name }}" class="wjs-showcase__homepage-funder-logo" width="200">
-          </a>
-        </li>
+          <li class="wjs-showcase__homepage-funders-list-item">
+            <a class="wjs-showcase__homepage-funder-link" {% if funder.url %} href="{{ funder.url }}" target="_blank" {% endif %}>
+              <img src="{{ funder.image }}" alt="{{ funder.name }}" class="wjs-showcase__homepage-funder-logo" width="200">
+            </a>
+          </li>
         {% endfor %}
       </ul>
     </div>
