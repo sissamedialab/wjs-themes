@@ -24,7 +24,7 @@
     {% if article.frozen_authors.exists %}
       <div class="wjs-showcase__article-detail-authors">
         {% for author in article.frozen_authors.all %}
-          {% include "journal/elements/author_link.html" %}
+          {% include "journal/components/author_link.html" %}
           {% if not forloop.last %},{% endif %}
         {% endfor %}
       </div>
