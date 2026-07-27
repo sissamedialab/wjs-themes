@@ -4,7 +4,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modal-title-{{ modal_id }}">{{ modal_title }}</h5>
+        <h{{ modal_title_tag|default:5 }} class="modal-title" id="modal-title-{{ modal_id }}">{{ modal_title }}</h{{ modal_title_tag|default:5 }}>
         {% bootstrap_button button_type="button" button_class="btn-close" data_bs_dismiss="modal" aria_label=close_label content="" %}
       </div>
       <div class="modal-body">
