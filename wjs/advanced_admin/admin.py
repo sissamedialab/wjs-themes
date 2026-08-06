@@ -41,7 +41,7 @@ class FileForm(forms.ModelForm):
                 folder_structure = os.path.dirname(instance.self_article_path())  # noqa: PTH120
             else:
                 folder_structure = os.path.dirname(instance.journal_path())  # noqa: PTH120
-            path_parts = folder_structure.split("/")[-3:]
+            path_parts = folder_structure.split("/")[-2:]
             overwrite_file(self.cleaned_data["file_upload"], instance, path_parts)
         return instance
 
