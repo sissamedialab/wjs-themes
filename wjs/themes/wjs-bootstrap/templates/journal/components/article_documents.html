@@ -34,7 +34,8 @@
                     <a class="wjs-showcase__article-title-link" href="{{ kid.url }}">{{ kid.title }}</a>
                   </h3>
                   <div class="wjs-showcase__article-date">
-                    <i class="bi bi-calendar3"></i>
+                    <span class="visually-hidden">{% translate "Date of publication" %}</span>
+                    <i class="bi bi-calendar3" aria-hidden="true"></i>
                     {{ kid.date_published|date:DATE_FORMAT }}
                   </div>
                 </div>

@@ -32,12 +32,12 @@
 
     {% block messages_wrapper %}
       {% if messages %}
-      <aside class="container">
-        <div class="row">
-          <div id="js-messages-display" aria-live="polite" role="status" class="col-12"></div>
-          <div id="js-message-storage" class="d-none">{% bootstrap_messages %}</div>
-        </div>
-      </aside>
+        <aside class="container">
+          <div class="row">
+            <div id="js-messages-display" aria-live="polite" role="status" class="col-12"></div>
+            <div id="js-message-storage" class="d-none">{% bootstrap_messages %}</div>
+          </div>
+        </aside>
       {% endif %}
     {% endblock messages_wrapper %}
 
@@ -45,15 +45,15 @@
       <main class="container flex-grow-1">
         <div class="row">
           {% block page_title_wrapper %}
-          <div class="col-sm-12">
-            <div class="wjs-showcase__main-title-container">
-              <h1 class="wjs-showcase__main-title">
-                {% block title %}{% endblock title %}
-              </h1>
+            <div class="col-sm-12">
+              <div class="wjs-showcase__main-title-container">
+                <h1 class="wjs-showcase__main-title">
+                  <span>{% block title %}{% endblock title %}</span>
+                </h1>
 
-              {% block title_sidekick %}{% endblock title_sidekick %}
+                {% block title_sidekick %}{% endblock title_sidekick %}
+              </div>
             </div>
-          </div>
           {% endblock page_title_wrapper %}
 
           {% block content %}
@@ -100,7 +100,7 @@
           }
         });
       </script>
-     {% include "wjs/base/elements/analytics.html" %}
+      {% include "wjs/base/elements/analytics.html" %}
     {% endblock js %}
   </div>
 {% endblock bootstrap5_content %}

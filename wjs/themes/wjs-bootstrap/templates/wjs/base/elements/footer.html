@@ -45,6 +45,12 @@
             <a class="wjs-footer__nav-link" href="{% url 'cms_page' 'cookie_policy' %}">{% translate "Cookie Policy" %}</a>
           </li>
 
+          {% if journal_settings.general.accessibility_statement_url %}
+            <li>
+              <a class="wjs-footer__nav-link" href="{{ journal_settings.general.accessibility_statement_url }}">{% translate "Accessibility Statement" %}</a>
+            </li>
+          {% endif %}
+
           <li>
             <a class="wjs-footer__nav-link" href="{% url 'cms_page' 'contact' %}">{% translate "Contact" %}</a>
           </li>

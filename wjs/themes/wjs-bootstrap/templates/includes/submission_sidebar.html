@@ -30,12 +30,12 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function () {
     const startSubmissionBtn = document.getElementById("start-submission-btn");
     const termsCheck = document.getElementById("submission-terms-check");
 
     if (startSubmissionBtn && termsCheck) {
-      termsCheck.addEventListener("change", function() {
+      termsCheck.addEventListener("change", function () {
         if (this.checked) {
           startSubmissionBtn.classList.remove("disabled");
         } else {

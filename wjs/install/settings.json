@@ -55,5 +55,24 @@
             "director",
             "journal-manager"
         ]
+    },
+    {
+        "group": {
+            "name": "general"
+        },
+        "setting": {
+            "description": "URL of the accessibility statement loaded in the manager media section.",
+            "is_translatable": true,
+            "name": "accessibility_statement_url",
+            "pretty_name": "Accessibility statement URL",
+            "type": "text"
+        },
+        "value": {
+            "default": ""
+        },
+        "editable_by": [
+            "director",
+            "journal-manager"
+        ]
     }
 ]
