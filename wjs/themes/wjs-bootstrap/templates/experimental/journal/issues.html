@@ -32,7 +32,7 @@
       import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
       const nodes = [
-          {% for volume in volumes %}{% with volume_meta=volume.list|first %}{ "id": "v{{ volume_meta.date.year }}", "name": "🕮{{ volume_meta.volume }}, {{ volume_meta.date.year }}", "href": "#", "group": {{ volume_meta.volume }} },
+          {% for volume in volumes %}{% with volume_meta=volume.list|first %}{"id": "v{{ volume_meta.date.year }}", "name": "🕮{{ volume_meta.volume }}, {{ volume_meta.date.year }}", "href": "#", "group": {{ volume_meta.volume }}},
         {% endwith %}{% endfor %}
           {% for issue in issues %}{"id": "i{{ issue.id }}", "name": "Issue {{ issue.issue }}", "href": "{% url 'journal_issue' issue.id %}", "group": {{ issue.volume }} }{% if forloop.last %}{% else %},{% endif %}
           {% endfor %}
@@ -59,8 +59,8 @@
                             nodeStrokeOpacity = 1, // node stroke opacity
                             nodeRadius = 5, // node radius, in pixels
                             nodeStrength,
-                            linkSource = ({ source }) => source, // given d in links, returns a node identifier string
-                            linkTarget = ({ target }) => target, // given d in links, returns a node identifier string
+                            linkSource = ({source}) => source, // given d in links, returns a node identifier string
+                            linkTarget = ({target}) => target, // given d in links, returns a node identifier string
                             linkStroke = "#999", // link stroke color
                             linkStrokeOpacity = 0.6, // link stroke opacity
                             linkStrokeWidth = 1.5, // given d in links, returns a stroke width in pixels
@@ -82,8 +82,8 @@
         const W = typeof linkStrokeWidth !== "function" ? null : d3.map(links, linkStrokeWidth);
 
         // Replace the input nodes and links with mutable objects for the simulation.
-        nodes = d3.map(nodes, (_, i) => ({ id: N[i] }));
-        links = d3.map(links, (_, i) => ({ source: LS[i], target: LT[i] }));
+        nodes = d3.map(nodes, (_, i) => ({id: N[i]}));
+        links = d3.map(links, (_, i) => ({source: LS[i], target: LT[i]}));
 
         // Compute default domains.
         if (G && nodeGroups === undefined) nodeGroups = d3.sort(G);
@@ -93,7 +93,7 @@
 
         // Construct the forces.
         const forceNode = d3.forceManyBody();
-        const forceLink = d3.forceLink(links).id(({ index: i }) => N[i]);
+        const forceLink = d3.forceLink(links).id(({index: i}) => N[i]);
         if (nodeStrength !== undefined) forceNode.strength(nodeStrength);
         if (linkStrength !== undefined) forceLink.strength(linkStrength);
 
@@ -121,7 +121,7 @@
           .data(links)
           .join("line");
 
-        if (W) link.attr("stroke-width", ({ index: i }) => W[i]);
+        if (W) link.attr("stroke-width", ({index: i}) => W[i]);
 
         const node = svg.append("g")
           .attr("fill", nodeFill)
@@ -134,20 +134,20 @@
           .attr("r", nodeRadius)
           .call(drag(simulation));
 
-        if (G) node.attr("fill", ({ index: i }) => color(G[i]));
-        if (T) node.append("title").text(({ index: i }) => T[i]);
+        if (G) node.attr("fill", ({index: i}) => color(G[i]));
+        if (T) node.append("title").text(({index: i}) => T[i]);
 
         // Text / labels on the nodes
         const a_links = svg.append("g")
           .selectAll("a")
           .data(nodes)
           .join("a")
-          .attr("href", ({ index: i }) => NH[i])
+          .attr("href", ({index: i}) => NH[i])
           .append("text")
           /* TODO: why does "font-size" not stick??? */
           .attr("font-size", "6px")
           .attr("fill", "#000")
-          .text(({ index: i }) => T[i])
+          .text(({index: i}) => T[i])
           .call(drag(simulation));
 
         // Handle invalidation.
@@ -200,11 +200,11 @@
             .on("end", dragended);
         }
 
-        return Object.assign(svg.node(), { scales: { color } });
+        return Object.assign(svg.node(), {scales: {color}});
       }
 
 
-      const chart = ForceGraph({ "nodes": nodes, "links": links }, {
+      const chart = ForceGraph({"nodes": nodes, "links": links}, {
         nodeId: d => d.id,
         nodeGroup: d => d.group,
         nodeTitle: d => d.name,

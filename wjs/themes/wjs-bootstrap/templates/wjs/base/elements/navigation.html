@@ -48,10 +48,10 @@
       {% if item.has_sub_nav %}
         <li class="nav-item wjs-nav-item dropdown">
           <button class="nav-link dropdown-toggle"
-            id="dropdown-{{ item.link_name|slugify }}"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            type="button"
+                  id="dropdown-{{ item.link_name|slugify }}"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  type="button"
           >
             {{ item.link_name }}
           </button>
@@ -84,7 +84,7 @@
     {% endif %}
     {% hook 'nav_block' %}
   </ul>
-  <a href="{% url 'search' %}?modal=1">
-    {% translate "Advanced search" %}
+  <a class="btn btn-link" href="{% url 'search' %}">
+    {% translate "Search" %}
   </a>
 </nav>

@@ -3,6 +3,7 @@
 <div class="wjs-showcase__article-detail-card">
   <div class="wjs-showcase__article-detail-card-header">
     <a href="{% url 'articles_by_section' article.section.pk %}">
+      <span class="visually-hidden">{% translate "Category" %}:</span>
       <span class="wjs-showcase__article-badge {{ article_classes.section_css }}">{{ article.section.name }}</span>
     </a>
   </div>
@@ -23,17 +24,8 @@
     {% if article.frozen_authors.exists %}
       <div class="wjs-showcase__article-detail-authors">
         {% for author in article.frozen_authors.all %}
-        {% url 'articles_by_author' author.author.pk as author_url %}
-        {% bootstrap_button author.full_name href=author_url button_type="link" button_class="btn-link p-0" %}
-            {% if author.orcid %}
-              <a class="text-decoration-none" href="https://orcid.org/{{ author.orcid }}">
-                <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="orcid logo" />
-              </a>
-            {% endif %}
-            {% if author.display_email and not journal_settings.article.hide_author_email_links %}
-              {% bootstrap_button content='<i class="bi bi-envelope-fill"></i>' button_type="link" href="mailto:"|add:author.email button_class="btn-link p-0 text-decoration-none" %}
-            {% endif %}
-            {% if not forloop.last %},{% endif %}
+          {% include "journal/components/author_link.html" %}
+          {% if not forloop.last %},{% endif %}
         {% endfor %}
       </div>
     {% endif %}

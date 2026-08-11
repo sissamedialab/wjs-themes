@@ -15,7 +15,7 @@
       <span class="js-dropdown-label">{{ field.label }}</span>
     </button>
 
-    <div class="wjs-showcase__search-dropdown-menu dropdown-menu" aria-labelledby="{{ field.auto_id }}-dropdown">
+    <div class="wjs-showcase__search-dropdown-menu dropdown-menu" role="group" aria-labelledby="{{ field.auto_id }}-dropdown">
       {% for field_value in field %}
         <div class="wjs-showcase__search-form-check">
           <input type="checkbox"
@@ -23,8 +23,9 @@
                  value="{{ field_value.data.value }}"
                  class="wjs-showcase__search-form-check-input js-checkbox"
                  id="{{ field_value.id_for_label }}"
-                 {% if field_value.data.selected %}checked{% endif %}>
-          <label class="wjs-showcase__search-form-check-label" for="{{ field_value.id_for_label }}">
+                 {% if field_value.data.selected %}checked{% endif %}
+                aria-labelledby="label-{{ field_value.id_for_label }}">
+          <label class="wjs-showcase__search-form-check-label" for="{{ field_value.id_for_label }}" id="label-{{ field_value.id_for_label }}">
             {{ field_value.data.label }}
           </label>
         </div>
@@ -34,25 +35,57 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.js-filter-dropdown').forEach(dropdown => {
-        const labelSpan = dropdown.querySelector('.js-dropdown-label');
-        const checkboxes = dropdown.querySelectorAll('.js-checkbox');
-        const toggleButton = dropdown.querySelector('button');
-        const defaultText = toggleButton.dataset.defaultLabel;
+      const labelSpan = dropdown.querySelector('.js-dropdown-label');
+      const checkboxes = dropdown.querySelectorAll('.js-checkbox');
+      const toggleButton = dropdown.querySelector('button');
+      const defaultText = toggleButton.dataset.defaultLabel;
 
-        const updateText = () => {
-            const count = Array.from(checkboxes).filter(cb => cb.checked).length;
+      const updateText = () => {
+        const count = Array.from(checkboxes).filter(cb => cb.checked).length;
 
-            if (count === 0) {
-                labelSpan.textContent = defaultText;
-            } else {
-                labelSpan.textContent = `${count} {% trans "selected" %}`;
-            }
-        };
+        if (count === 0) {
+          labelSpan.textContent = defaultText;
+        } else {
+          labelSpan.textContent = `${count} {% trans "selected" %}`;
+        }
+      };
 
-        dropdown.addEventListener('change', updateText);
-        updateText(); // Esecuzione al caricamento della pagina
+      dropdown.addEventListener('change', updateText);
+      updateText(); // Esecuzione al caricamento della pagina
+
+      toggleButton.addEventListener('shown.bs.dropdown', () => {
+        checkboxes[0]?.focus();
+      });
+
+      toggleButton.addEventListener('keydown', (event) => {
+        const isOpen = toggleButton.getAttribute('aria-expanded') === 'true';
+        if (event.key === 'Tab' && !event.shiftKey && isOpen) {
+          event.preventDefault();
+          checkboxes[0]?.focus();
+        }
+      });
+
+      const checkboxList = Array.from(checkboxes);
+      checkboxList.forEach((checkbox, index) => {
+        checkbox.addEventListener('keydown', (event) => {
+          if (event.key !== 'Tab') {
+            return;
+          }
+
+          if (!event.shiftKey && index < checkboxList.length - 1) {
+            event.preventDefault();
+            checkboxList[index + 1].focus();
+          } else if (event.shiftKey && index > 0) {
+            event.preventDefault();
+            checkboxList[index - 1].focus();
+          } else if (event.shiftKey && index === 0) {
+            event.preventDefault();
+            toggleButton.focus();
+          }
+        });
+      });
     });
-});
+  });
 </script>

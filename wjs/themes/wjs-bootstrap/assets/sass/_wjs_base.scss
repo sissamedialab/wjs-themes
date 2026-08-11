@@ -194,7 +194,12 @@ table.table-bordered.dataTable .table-borderless td {
   color: $success;
 }
 
-.page-title {
+h1.page-title {
+  @extend .h1;
+  @extend .fw-bold;
+}
+
+h3.page-title {
   @extend .h3;
   @extend .fw-bold;
 }
@@ -502,7 +507,7 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
   }
 
   &__form-label-title {
-    @extend .border-bottom, .fw-bold, .mb-4, .pb-3, .w-100;
+    @extend .border-bottom, .fw-bold, .mb-4, .pb-3, .w-100, .fs-4;
     border-bottom-color: $gray-400;
     color: $primary;
   }
@@ -719,6 +724,12 @@ $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
 .modal-body {
   .file-link {
     @extend .w-75, .text-break;
+  }
+}
+
+.wjs-review__accordion-list-item {
+  &:hover {
+    background-color: transparent !important; //sass-lint:disable-line no-important
   }
 }
 

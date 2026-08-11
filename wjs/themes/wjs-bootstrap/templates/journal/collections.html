@@ -11,17 +11,17 @@
         <article class="wjs-showcase__collections-card-content">
           <div class="wjs-showcase__collections-card-image-container">
             <img class="wjs-showcase__collections-card-image" src="{{ collection.hero_image_url }}"
-                alt=""
-                onerror="if (this.src !='{% static 'common/img/sample/article-small.jpg' %}') this.src='{% static 'common/img/sample/article-small.jpg' %}'">
+                 alt=""
+                 onerror="if (this.src !='{% static 'common/img/sample/article-small.jpg' %}') this.src='{% static 'common/img/sample/article-small.jpg' %}'">
           </div>
           <div class="wjs-showcase__collections-card-text-container">
                 <span class="wjs-showcase__collections-card-date">
                     <i class="bi bi-calendar3"></i>
-                    {{ collection.date|date:"d/m/y" }}
+                    {{ collection.date|date:DATE_FORMAT }}
                 </span>
             <h2 class="wjs-showcase__collections-card-article-title">
               <a class="wjs-showcase__collections-card-article-link"
-                href="{% url 'journal_collection' collection.id %}">{{ collection.display_title }}</a>
+                 href="{% url 'journal_collection' collection.id %}">{{ collection.display_title }}</a>
             </h2>
             {% if collection.short_description %}
               <p>{{ collection.short_description|safe }}</p>
