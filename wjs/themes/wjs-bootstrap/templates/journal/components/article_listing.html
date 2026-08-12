@@ -5,7 +5,8 @@
   <article>
     <div class="wjs-showcase__article-card-header justify-content-between">
         <span class="wjs-showcase__article-date">
-          <i class="bi bi-calendar3"></i>
+          <span class="visually-hidden">{% translate "Date of publication" %}</span>
+          <i class="bi bi-calendar3" aria-hidden="true"></i>
           {{ article.date_published|date:DATE_FORMAT }}
           {% if not request.available_languages|length_is:"1" %}
             <span class="badge language">{{ article.language|language_alpha2 }}</span>
@@ -14,6 +15,7 @@
 
       {% if request.journal.code != "JQuant" %}
         <a href="{{ by_url }}">
+          <span class="visually-hidden">{% translate "Category" %}:</span>
           <span class="wjs-showcase__article-badge {{ article_classes.section_css }}">{{ article.section.name }}</span>
         </a>
       {% endif %}
@@ -26,13 +28,8 @@
     <p class="wjs-showcase__article-authors">
       {% translate "by" %}
       {% for author in article.frozen_authors.all %}
-        {% url 'articles_by_author' author.author.pk as by_author %}
-        {% if forloop.last %}
-          {% if article.frozen_authors.all|length > 1 %}
-            {% translate "and" %}
-          {% endif %}
-        {% endif %}
-        <a href="{{ by_author }}">{{ author.full_name }}</a>{# djlint:off #}{% if not forloop.last %}{% if not forloop.counter == article.frozen_authors.all|length|add:-1 %}, {% endif %}{% endif %}{# djlint:on #}
+        {% include "journal/components/author_link.html" %}
+        {% if not forloop.last %},{% endif %}
       {% endfor %}
     </p>
     <div class="wjs-showcase__article-text">
@@ -75,6 +72,6 @@
           {% endfor %}
         {% endif %}
       </p>
-      {% endif %}
-    </article>
+    {% endif %}
+  </article>
 </li>

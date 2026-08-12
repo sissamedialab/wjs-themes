@@ -10,7 +10,9 @@
         <article>
           <h3 class="wjs-showcase__hp-card-content-title"><a href="{% url 'core_news_item' item.pk %}" class="card-link">{{ item.title|safe }}</a></h3>
           <p class="fw-medium">
-            <small>{{ item.byline }} {% translate "on" %} <i class="bi bi-calendar3" aria-hidden="true"></i> <time datetime="{{ item.posted|date:"Y-m-d" }}">{{ item.posted|date:"Y-m-d" }}</time></small>
+            <small>{{ item.byline }} {% translate "on" %} <i class="bi bi-calendar3" aria-hidden="true"></i>
+              <time datetime="{{ item.posted|date:"Y-m-d" }}">{{ item.posted|date:"Y-m-d" }}</time>
+            </small>
           </p>
           <p>{{ item.body|striptags|truncatesmart:400 }}</p>
         </article>

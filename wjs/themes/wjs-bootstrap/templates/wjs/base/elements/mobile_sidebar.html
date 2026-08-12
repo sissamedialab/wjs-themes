@@ -91,7 +91,7 @@
         <li class="nav-item wjs-nav-item">
           <form class="language-select nav-link p-0" action="{% url 'set_language' %}" method="post">
             {% csrf_token %}
-            <input name="next" type="hidden" value="{{ request.PATH }}" />
+            <input name="next" type="hidden" value="{{ request.PATH }}"/>
             <div class="btn-group" role="group">
               {% for language in LANGUAGE_CODE %}
                 {% if language.code in request.available_languages %}
