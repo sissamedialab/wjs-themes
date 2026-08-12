@@ -35,9 +35,22 @@ repos:
     - id: ruff-format
 
 - repo: https://github.com/Riverside-Healthcare/djLint
-  rev: v1.36.4
+  rev: v1.44.1
   hooks:
     - id: djlint-django
+      exclude: '.*/tests/.*\.html$'
+
+- repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+  rev: 3.8.0
+  hooks:
+    - id: editorconfig-checker
+      name: editorconfig-checker (templates)
+      # Scoped to templates only, and only to what's safe to check
+      # mechanically (see .editorconfig-checker.json): indentation and
+      # max-line-length are disabled because this repo's real template
+      # style (wrapped-attribute alignment, inline SVG defs) triggers
+      # false positives on both — see .claude/rules/templates-django.md.
+      types: [html]
       exclude: '.*/tests/.*\.html$'
 
 - repo: https://github.com/pre-commit/mirrors-prettier
