@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.17] - 2026-08-12
+
+- No linked issue — feat(a11y): add a11y review fixes (!92)
+
 ## [2.0.16] - 2026-08-06
 
 - No linked issue — Fix: FileForm folder path (!109)
