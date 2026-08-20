@@ -37,9 +37,9 @@
         {{ article.abstract }}
       {% endautoescape %}
     </div>
-    {% if article|has_attr:"genealogy" and article.genealogy.children.exists %}
+    {% if article|article_has_children %}
       <div class="wjs-showcase__article-genealogy">
-        {% for kid in article.genealogy.children.all %}
+        {% for kid in article|article_children %}
           <div class="wjs-showcase__article-genealogy-item">
             <h4>
               <a href="{{ kid.url }}">{{ kid.title }}</a>
