@@ -9,8 +9,8 @@
   </div>
   <div>
     <h1 class="wjs-showcase__article-title" id="article-top">{{ article.title|safe }}</h1>
-    {% if article|has_attr:"ancestors" and article.ancestors.exists %}
-      {% with parent=article.ancestors.first.parent %}
+    {% with parent=article|article_parent %}
+      {% if parent %}
         <p>
           {% if article.section.name == "Erratum" or article.section.name == "Addendum" %}
             <span>{% translate "This is a correction for" %}</span>
@@ -19,8 +19,8 @@
           {% endif %}
           <a href="{{ parent.url }}">{{ parent.title }}</a>
         </p>
-      {% endwith %}
-    {% endif %}
+      {% endif %}
+    {% endwith %}
     {% if article.frozen_authors.exists %}
       <div class="wjs-showcase__article-detail-authors">
         {% for author in article.frozen_authors.all %}
