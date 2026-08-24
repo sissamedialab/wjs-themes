@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.18+hydra] - 2026-08-24
+
+- [specs#2879: Integrate hydra in wjs](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2879) — To hydra (!111)
+- [specs#3058: Use relationship type instead of article section to select article header](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3058) — To hydra (!111)
+- [specs#3047: Show link to erratum in status page of original paper](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3047) — To hydra (!111)
+- No linked issue — Add Claude Code project rules docs; enforce template style, bump djlint (!110)
+
 ## [2.0.17] - 2026-08-12
 
 - No linked issue — feat(a11y): add a11y review fixes (!92)
