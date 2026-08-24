@@ -24,7 +24,7 @@
           <span class="article-author">
                         <a href="{% url 'articles_by_author' author.author.pk %}">{{ author.full_name }}</a>
             {% if author.orcid %}
-              <a href="https://orcid.org/{{ author.orcid }}" class="">
+              <a href="https://orcid.org/{{ author.orcid }}">
                                 <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
                                      alt="orcid logo" />
                             </a>

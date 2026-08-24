@@ -1,6 +1,6 @@
 {% load django_bootstrap5 i18n wjs_tags %}
 {% if article|article_has_children %}
-  {% regroup article.genealogy.children.all by section as children_by_section %}
+  {% regroup article|article_children by section as children_by_section %}
   {% for group in children_by_section %}
     <div class="wjs-showcase__article-accordion accordion shadow-sm" id="articleDocumentsAccordion{{ forloop.counter }}">
       <div class="accordion-item">
