@@ -13,7 +13,7 @@
           {% include include_path %}
         {% endif %}
         {% if modal_body %}
-          {{ modal_body|linebreaksbr|safe }}
+          {{ modal_body|force_escape|linebreaksbr|safe }}
         {% endif %}
         {% if include_footer_path %}
           {% include include_footer_path %}
