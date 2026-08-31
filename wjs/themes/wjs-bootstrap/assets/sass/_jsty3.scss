@@ -1,0 +1,310 @@
+/* ============================================================
+   jsty3 — PREVIEW stylesheet for make4ht/tex4ht HTML output.
+
+   NOT the production style. The HTML is injected into a Bootstrap
+   site downstream, which supplies the real design. This file only
+   makes the raw tex4ht output legible enough to eyeball that every
+   piece of content rendered, and hides a couple of tex4ht glitches.
+   Keep it minimal.
+   ============================================================ */
+
+/* --- Base --- */
+.wjs-showcase__main-content {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* --- Headings --- */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.25;
+    font-weight: bold;
+  }
+
+  h1 {
+    &.title {
+      font-size: 1.9em;
+      margin: 0.4em 0;
+    }
+  }
+
+  .sectionHead {
+    font-size: 1.4em;
+    margin: 1.6em 0 0.4em;
+  }
+
+  .subsectionHead {
+    font-size: 1.2em;
+    margin: 1.3em 0 0.3em;
+  }
+
+  .subsubsectionHead {
+    font-size: 1.05em;
+    margin: 1.1em 0 0.3em;
+  }
+
+  .subsubsubsectionHead {
+    font-size: 1em;
+    font-style: italic;
+    margin: 1em 0 0.3em;
+  }
+
+  /* Run-in statement headings (Funding, Data/Code Availability, Open Access, …):
+     unnumbered, bold label followed inline by its text. */
+  .paragraphHead {
+    font-weight: bold;
+  }
+
+  .subparagraphHead {
+    font-style: italic;
+  }
+
+  /* Back-matter statement blocks (funders/das/cas/oa) — real tuning is done
+     downstream in Bootstrap via .statement and the per-type class. */
+  .statement {
+    margin: 0.8em 0;
+
+    p {
+      margin: 0.2em 0;
+    }
+
+    /* funders/supplementary emit an empty div when unused — hide in preview. */
+    &:empty {
+      display: none;
+    }
+  }
+
+  /* tex4ht leaves empty <p></p> artefacts (e.g. at the top of each statement
+     div); harmless in the Bootstrap target, hidden here for a clean preview. */
+  p {
+    &:empty {
+      display: none;
+    }
+
+    /* --- Paragraphs --- */
+    &.indent {
+      text-indent: 1.4em;
+      margin: 0;
+    }
+
+    &.noindent {
+      text-indent: 0;
+      margin: 0.7em 0 0;
+    }
+
+    /* --- Endnotes (Notes section) --- */
+    &.note {
+      margin: 0.4em 0;
+      font-size: 0.95em;
+    }
+  }
+
+  :is(.sectionHead, .subsectionHead, .subsubsectionHead, .subsubsubsectionHead) + p {
+    text-indent: 0;
+  }
+
+  /* --- Front matter (reprocessed downstream; just make it readable) --- */
+  header.front {
+    margin-bottom: 2.5em;
+
+    .subheader,
+    .authors,
+    .affiliations,
+    .emails,
+    .keywords,
+    .arxiv {
+      margin: 0.4em 0;
+    }
+
+    .authors {
+      font-size: 1.15em;
+
+      math {
+        vertical-align: super;
+        font-size: 0.72em;
+      }
+    }
+
+    .affiliations,
+    .emails {
+      font-size: 0.9em;
+      color: #444;
+    }
+
+    ol.enumerate {
+      margin: 0.3em 0;
+      padding-left: 1.4em;
+    }
+
+    /* Hide empty optional-region divs left in place by the scaffold
+       (disclaimer, proceedings, …) — see README item 1. */
+    div:empty {
+      display: none;
+    }
+  }
+
+  .masthead-logo {
+    img {
+      display: block;
+      width: 25%;
+      height: auto;
+      margin-bottom: 0.6em;
+    }
+  }
+
+  .masthead-journal {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.9em;
+    margin-bottom: 0.8em;
+  }
+
+  .masthead-dates {
+    font-size: 0.85em;
+    color: #444;
+  }
+
+  .frontlabel {
+    text-transform: uppercase;
+  }
+
+  .masthead-date {
+    line-height: 1.4;
+  }
+
+  /* Abstract block */
+  section.abstract {
+    margin: 1.5em 0;
+    padding: 0.8em 1em;
+    background: #f6f6f6;
+    border-left: 3px solid #ccc;
+
+    p {
+      margin: 0.3em 0;
+    }
+  }
+
+  /* --- Quote --- */
+  blockquote.quote {
+    margin: 1em 1.5em;
+    padding-left: 1em;
+    border-left: 3px solid #ccc;
+    font-style: italic;
+    color: #444;
+  }
+
+  /* --- Lists --- */
+  ol.enumerate,
+  ul {
+    padding-left: 1.6em;
+  }
+
+  li {
+    margin: 0.25em 0;
+  }
+
+  /* --- Figures & captions --- */
+  figure.figure {
+    margin: 1.5em auto;
+    text-align: center;
+
+    img {
+      display: inline-block;
+    }
+  }
+
+  .caption {
+    display: block;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    text-align: left;
+
+    .id {
+      font-weight: bold;
+    }
+  }
+
+  /* --- Tables (basic legibility) --- */
+  table {
+    border-collapse: collapse;
+    margin: 1em auto;
+    font-size: 0.95em;
+
+    td,
+    th {
+      padding: 0.3em 0.6em;
+      text-align: left;
+      vertical-align: top;
+    }
+  }
+
+  /* --- Bibliography ---
+     Only <dl> carries the class; <dt>/<dd> are plain. Keep the [n]
+     markers visible (hanging-indent) so the content check is easy. */
+  .thebibliography {
+    margin: 1.5em 0;
+    font-size: 0.95em;
+
+    dt {
+      float: left;
+      clear: left;
+      font-weight: bold;
+    }
+
+    dd {
+      margin: 0 0 0.5em 2.6em;
+    }
+  }
+
+  sup a,
+  a sup {
+    font-size: 0.75em;
+  }
+
+  /* --- Math / equations --- */
+  math {
+    font-size: 1em;
+  }
+
+  /* --- Table of contents: boxed block, one entry per line --- */
+  .toc {
+    margin: 1.5em 0;
+    padding: 0.6em 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .toc-title {
+    font-weight: bold;
+  }
+
+  .sectionToc,
+  .subsectionToc,
+  .subsubsectionToc,
+  .subsubsubsectionToc {
+    display: block;
+  }
+
+  .subsectionToc {
+    margin-left: 1.5em;
+  }
+
+  .subsubsectionToc {
+    margin-left: 3em;
+  }
+
+  .subsubsubsectionToc {
+    margin-left: 4.5em;
+  }
+
+  /* --- Hide tex4ht navigation glitches --- */
+  .crosslinks {
+    display: none;
+  }
+}
