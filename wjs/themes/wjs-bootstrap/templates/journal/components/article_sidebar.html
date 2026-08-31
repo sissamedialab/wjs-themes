@@ -19,7 +19,7 @@
   {% if article.primary_issue.is_published %}
     {% include "journal/components/article_issue_list.html" %}
   {% endif %}
-  {% if article.keywords.count > 0 %}
+  {% if article.keywords.exists %}
     <div class="wjs-showcase__article-sidebar-content">
       <h2 class="wjs-showcase__sidebar-title">{% translate "Keywords" %}</h2>
       <ul class="wjs-showcase__article-sidebar-list">
@@ -38,12 +38,12 @@
   <div class="wjs-showcase__article-sidebar-content">
     <h2 class="wjs-showcase__sidebar-title">{% translate "Rights" %}</h2>
     {% if article.rights %}
-      {{ article.rights | safe }}
+      {{ article.rights|safe }}
     {% else %}
       © Authors
     {% endif %}
   </div>
-  {% if article.publisher_notes.all %}
+  {% if article.publisher_notes.exists %}
     <div class="wjs-showcase__article-sidebar-content">
       <h2 class="wjs-showcase__sidebar-title">{% translate "Publisher Notes" %}</h2>
       <ul class="wjs-showcase__article-sidebar-list">
@@ -52,17 +52,13 @@
       </ul>
     </div>
   {% endif %}
-  {% if article.funders.all %}
+  {% if article.funders.exists %}
     <div class="wjs-showcase__article-sidebar-content">
       <h2 class="wjs-showcase__sidebar-title">{% translate "Funding" %}</h2>
       <ul class="wjs-showcase__article-sidebar-list">
         {% for funder in article.funders.all %}
           <li>
-            {% if funder.fundref_id %}
-              <a href="{% url "funder_articles" funder.fundref_id %}">
-            {% endif %}
             {{ funder.name }}
-            {% if funder.fundref_id %}</a>{% endif %}
             {% if funder.funding_id %}{% blocktranslate with funding_id=funder.funding_id %}(grant {{ funding_id }}){% endblocktranslate %}{% endif %}
           </li>
         {% endfor %}
