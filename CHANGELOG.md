@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.19] - 2026-08-31
+
+- [specs#2958: Latex source report truncated](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2958) — fix: latex in modal (!114)
+- [specs#2956: Test import jcap 2025](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2956) — fix: latex in modal (!114)
+- [wjs-help#202: Biggio - JQuant_4148 - Editor report lateX errors](https://gitlab.sissamedialab.it/wjs/wjs-help/-/work_items/202) — fix: latex in modal (!114)
+- [specs#2963: Correct css for JQuant HTML](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2963) — feat: Add sty3 css to jquant css (!118)
+- [specs#3036: Investigate missing URL "funder_articles"](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3036) — fix: remove dandling link (!117)
+- chore: ignore .worktrees/ directory
+
 ## [2.0.18+hydra] - 2026-08-24
 
 - [specs#2879: Integrate hydra in wjs](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2879) — To hydra (!111)
