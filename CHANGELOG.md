@@ -1,5 +1,7 @@
 # Changelog
 
+## [2.0.20] - 2026-09-01
+
 ## [2.0.19] - 2026-08-31
 
 - [specs#2958: Latex source report truncated](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2958) — fix: latex in modal (!114)
