@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.21] - 2026-09-09
+
+- [specs#2805: Verify activity page performance with jhep / jcap database](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2805) — feat: support countless paginator in shared pagination template (!115)
+
 ## [2.0.20] - 2026-09-01
 
 ## [2.0.19] - 2026-08-31
