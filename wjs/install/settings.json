@@ -74,5 +74,23 @@
             "director",
             "journal-manager"
         ]
+    },
+    {
+        "group": {
+            "name": "general"
+        },
+        "setting": {
+            "description": "Enable loading Mathjax js and initialise its rendering.",
+            "is_translatable": false,
+            "name": "enable_mathjax_article_page",
+            "pretty_name": "Enable Mathjax loading",
+            "type": "boolean"
+        },
+        "value": {
+            "default": true
+        },
+        "editable_by": [
+            "journal-manager"
+        ]
     }
 ]

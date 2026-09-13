@@ -42,7 +42,9 @@
 
 {% block js %}
   {{ block.super }}
-  {% include "wjs/base/fragments/mathjax.html" %}
+  {% if journal_settings.general.enable_mathjax_article_page %}
+    {% include "wjs/base/fragments/mathjax.html" %}
+  {% endif %}
   <script>
     $(".table-expansion").each(function () {
       var child = $(this).children(":first");
