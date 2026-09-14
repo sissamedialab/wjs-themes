@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.22] - 2026-09-14
+
+- [specs#3141: Verify that editor pasting reviewer report in editor report loosing HTML is ok](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3141) — fix: latex in modal (!123)
+- [specs#2958: Latex source report truncated](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2958) — fix: latex in modal (!123)
+- [specs#3110: Update SISSA logo in journals' footer](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3110) — feat(footer): replace footer logo with updated one (!124)
+- [specs#3092: Enrich EO user menù](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3092) — Enrich EO user menu (!120)
+
 ## [2.0.21] - 2026-09-09
 
 - [specs#2805: Verify activity page performance with jhep / jcap database](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2805) — feat: support countless paginator in shared pagination template (!115)
