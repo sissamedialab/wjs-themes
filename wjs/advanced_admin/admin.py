@@ -98,7 +98,7 @@ class ArticleAdmin(admin.ModelAdmin):
         "comments_editor",
     )
     autocomplete_fields = ("source_files", "manuscript_files", "data_figure_files", "supplementary_files")
-    list_display = ["title", "pubid", "journal", "state", "identifier"]
+    list_display = ["title", "pubid", "journal", "state", "identifier_display"]
     ordering = ("-pk",)
     search_fields = ("identifier__identifier", "pk")
     inlines = (GalleyInline,)
@@ -113,6 +113,18 @@ class ArticleAdmin(admin.ModelAdmin):
         :rtype: list
         """
         return ["journal", "articleworkflow__state"]
+
+    @admin.display(description="identifier")
+    def identifier_display(self, obj: Article) -> str:  # noqa: PLR6301
+        """
+        Return the article's identifier for the admin list display.
+
+        Not named "identifier" directly: identifiers.Identifier.article has no related_name,
+        so its reverse query name is also "identifier", which Django 5.x's admin.E109 check
+        now flags when a list_display item resolves to a reverse FK relation instead of a
+        plain attribute. Renaming this display method sidesteps the field lookup entirely.
+        """
+        return obj.identifier
 
     def has_add_permission(self, request: HttpRequest) -> bool:  # noqa: PLR6301
         """
