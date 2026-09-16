@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0] - 2026-09-16
+
+- [specs#3037: Provide apple touch icon and favicon.ico files](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3037) — feat(favicon): add template based favicon handling (!122)
+- [specs#2595: Migrate to Django 5.2](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2595) — Django 5.2 migration (!113)
+- [specs#2961: Adapt HTML post-processing to JQuant](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2961) — feat: add setting to enable mathjax in article page for specific journals (!125)
+- No linked issue — Reset ol default styling for submission navigation (!126)
+
 ## [2.0.22] - 2026-09-14
 
 - [specs#3141: Verify that editor pasting reviewer report in editor report loosing HTML is ok](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3141) — fix: latex in modal (!123)
