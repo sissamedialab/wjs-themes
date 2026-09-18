@@ -1,12 +1,12 @@
 {% extends "wjs/base/elements/bootstrap.html" %}
 {% load django_bootstrap5 static %}
 {% block bootstrap5_extra_head %}
-  <script src="{% static "js/htmx.min.js" %}"></script>
-  <script src="{% static "tinymce/tinymce.min.js" %}"></script>
-  <script src="{% static "django_tinymce/init_tinymce.js" %}"></script>
-  <script src="{% static "js/htmx_tinymce.js" %}"></script>
+  <script src="{% static "js/htmx.min.js" %}?v={{ WJS_THEMES_VERSION }}"></script>
+  <script src="{% static "tinymce/tinymce.min.js" %}?v={{ WJS_THEMES_VERSION }}"></script>
+  <script src="{% static "django_tinymce/init_tinymce.js" %}?v={{ WJS_THEMES_VERSION }}"></script>
+  <script src="{% static "js/htmx_tinymce.js" %}?v={{ WJS_THEMES_VERSION }}"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <link rel="stylesheet" href="{% static "admin/css/admin.css" %}">
+  <link rel="stylesheet" href="{% static "admin/css/admin.css" %}?v={{ WJS_THEMES_VERSION }}">
   {% block journal_css %}
     <link rel="stylesheet" href="{% static "wjs-bootstrap/css/wjs_" %}{{ journal.code|lower }}.css?v={{ WJS_THEMES_VERSION }}">
   {% endblock journal_css %}
