@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.1] - 2026-09-21
+
+- [specs#3170: Add js dynamic version cache buster](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3170) — fix: add cache busting parameters for assets (!130)
+
 ## [2.1.0] - 2026-09-16
 
 - [specs#3037: Provide apple touch icon and favicon.ico files](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3037) — feat(favicon): add template based favicon handling (!122)
