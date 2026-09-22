@@ -1,8 +1,12 @@
 {% load django_bootstrap5 i18n %}
-{% url 'articles_by_author' author.author.pk as author_url %}
-{% with "Go to all articles by "|add:author.full_name as aria_label_text %}
-  {% bootstrap_button author.full_name href=author_url button_type="link" role="link" button_class="btn-link p-0" aria_label=aria_label_text %}
-{% endwith %}
+{% if author.author_id %}
+  {% url 'articles_by_author' author.author_id as author_url %}
+  {% with "Go to all articles by "|add:author.full_name as aria_label_text %}
+    {% bootstrap_button author.full_name href=author_url button_type="link" role="link" button_class="btn-link p-0" aria_label=aria_label_text %}
+  {% endwith %}
+{% else %}
+  {{ author.full_name }}
+{% endif %}
 {% if author.orcid %}
   <a class="text-decoration-none" href="https://orcid.org/{{ author.orcid }}" aria-label="Go to {{ author.full_name }} orcid page">
     <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="orcid logo"/>
