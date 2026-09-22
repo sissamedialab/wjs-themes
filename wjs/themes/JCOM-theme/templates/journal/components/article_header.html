@@ -22,7 +22,7 @@
       <div class="article-authors">
         {% for author in article.frozen_authors.all %}
           <span class="article-author">
-                        <a href="{% url 'articles_by_author' author.author.pk %}">{{ author.full_name }}</a>
+            {% if author.author_id %}<a href="{% url 'articles_by_author' author.author_id %}">{{ author.full_name }}</a>{% else %}{{ author.full_name }}{% endif %}
             {% if author.orcid %}
               <a href="https://orcid.org/{{ author.orcid }}">
                                 <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
