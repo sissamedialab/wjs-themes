@@ -1,6 +1,6 @@
 @charset "UTF-8";
 $primary: #2191d0;
-$primary-lighter: #7594a6;
+$primary-lighter: #5fc3fd;
 $dark-gray: #606a71;
 
 @import "wjs_base";
@@ -9,4 +9,24 @@ $dark-gray: #606a71;
   background-color: $primary-lighter;
   border-color: $primary-lighter;
   color: $black;
+}
+
+.wjs-showcase__hp-card {
+  .dropdown-item {
+    padding: 2px !important;
+    text-decoration: underline;
+    white-space: wrap;
+  }
+
+  .nav-item {
+    list-style: disc;
+  }
+}
+
+.list-unstyled,
+.wjs-showcase__volumes-list,
+.wjs-showcase__homepage-funders-list,
+.wjs-profile-nav__list {
+  padding: 0;
+  padding-left: 20px;
 }
