@@ -132,3 +132,27 @@ violation automatically:
 - 2-space indentation for HTML, with template tags indented as if they were HTML
   elements (see the "Known inconsistency" note above for why djlint won't enforce
   this for you).
+- **Author links always use `author_id`, guarded.** When linking a `FrozenAuthor` to
+  its author page, the one correct spelling is:
+
+  ```django
+  {% if au.author_id %}<a href="{% url 'articles_by_author' au.author_id %}">{{ au.full_name }}</a>{% else %}{{ au.full_name }}{% endif %}
+  ```
+
+  Three rules are packed into that line, and each has bitten this repo before
+  (specs#3048):
+
+  1. `articles_by_author` takes an **`Account`** pk, but these loops yield
+     **`FrozenAuthor`** objects. Passing `au.pk` silently links to an unrelated
+     account or 404s.
+  2. `FrozenAuthor.author` is nullable (`on_delete=SET_NULL`, and imported legacy
+     articles routinely have no account). Unguarded, `{% url %}` receives `''` and
+     raises `NoReverseMatch` — an HTTP 500 on a public page. Guarding with
+     `{% url ... as var %}` avoids the crash but emits a dead `<a href="">`; render
+     the name as plain text instead.
+  3. Use the column `author_id`, not the relation `author`/`author.pk`. Traversing
+     the FK costs one SELECT per author and nothing prefetches it on these pages.
+
+  Keep the conditional on a single line: most of these links are followed by a
+  `{# djlint:off #}` region holding comma/"and" separator logic, and a newline before
+  it renders as a space in front of the comma.
