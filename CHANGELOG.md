@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.2] - 2026-09-23
+
+- [specs#3061: Improvements to JCAP home page](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3061) — feat: various jcap homepage improvements (!121)
+- [specs#3048: Problems filtering by author in Vetrinetta](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3048) — fix(themes): link author names to the right account and tolerate orphans (!128)
+- [specs#2997: As EO I want a UI to handle multiple attention conditions](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2997) — feature: add custom style for attention condition dropdown (!129)
+- [specs#3110: Update SISSA logo in journals' footer](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3110) — feat: resize footer logo to match lower part of footer text in sissa medialab logo usage (!127)
+
 ## [2.1.1] - 2026-09-21
 
 - [specs#3170: Add js dynamic version cache buster](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3170) — fix: add cache busting parameters for assets (!130)
