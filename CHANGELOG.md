@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.3] - 2026-09-23
+
+- [wjs-help#211: JCOM_4155 - adding "supplementary file" aka ESM through advanced admin gives error](https://gitlab.sissamedialab.it/wjs/wjs-help/-/work_items/211) — fix date_published (!133)
+- [specs#2983: Quality of life admin improvementrs](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2983) — Feat: Advanced admin rewrite (!112)
+- [specs#2984: As EO I want to create new files](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2984) — Feat: Advanced admin rewrite (!112)
+- [specs#3175: Improve state labels](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3175) — fix: fix erratum color contrast (!131)
+
 ## [2.1.2] - 2026-09-23
 
 - [specs#3061: Improvements to JCAP home page](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3061) — feat: various jcap homepage improvements (!121)
