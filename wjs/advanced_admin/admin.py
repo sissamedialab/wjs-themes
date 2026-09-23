@@ -3,6 +3,7 @@ import uuid
 from urllib.parse import urlencode
 
 from core.files import overwrite_file
+from core.model_utils import DateTimePickerInput, DateTimePickerModelField
 from core.models import File, Galley, SupplementaryFile, XSLFile
 from django import forms
 from django.contrib import admin
@@ -158,6 +159,10 @@ class ArticleAdmin(admin.ModelAdmin):
     ordering = ("-pk",)
     search_fields = ("identifier__identifier", "pk")
     inlines = (GalleyInline,)
+
+    formfield_overrides = {
+        DateTimePickerModelField: {"widget": DateTimePickerInput},
+    }
 
     def formfield_for_dbfield(self, db_field, request, **kwargs):
         """
