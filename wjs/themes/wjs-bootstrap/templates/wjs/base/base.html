@@ -2,7 +2,10 @@
 {% load django_bootstrap5 static %}
 {% block bootstrap5_extra_head %}
   <script src="{% static "js/htmx.min.js" %}?v={{ WJS_THEMES_VERSION }}"></script>
-  <script src="{% static "tinymce/tinymce.min.js" %}?v={{ WJS_THEMES_VERSION }}"></script>
+  {# TINYMCE_JS_URL comes from django-tinymce (see context_processors.py): the same URL it #}
+  {# emits via form.media, so the two never disagree about tinymce.baseURL. It also carries #}
+  {# the interim versioned path prefix that Apache rewrites back onto /static/. #}
+  <script src="{{ TINYMCE_JS_URL }}"></script>
   <script src="{% static "django_tinymce/init_tinymce.js" %}?v={{ WJS_THEMES_VERSION }}"></script>
   <script src="{% static "js/htmx_tinymce.js" %}?v={{ WJS_THEMES_VERSION }}"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
