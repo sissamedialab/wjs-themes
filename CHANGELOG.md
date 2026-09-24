@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.4] - 2026-09-24
+
+- [specs#3170: Add js dynamic version cache buster](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3170) — Build tinymce URL using TINYMCE_JS_URL (!134)
+
 ## [2.1.3] - 2026-09-23
 
 - [wjs-help#211: JCOM_4155 - adding "supplementary file" aka ESM through advanced admin gives error](https://gitlab.sissamedialab.it/wjs/wjs-help/-/work_items/211) — fix date_published (!133)
