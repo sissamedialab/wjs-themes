@@ -15,6 +15,8 @@
           >
             {% if group.grouper.name == "Erratum" %}
               {% translate "This article is corrected by" %}
+            {% elif group.grouper.name == "Addendum" %}
+              {% translate "This article has addendum" %}
             {% else %}
               {% blocktrans with plural=group.grouper.plural|lower %}Invited {{ plural }}{% endblocktrans %}
             {% endif %}
