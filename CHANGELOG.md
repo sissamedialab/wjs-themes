@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.5] - 2026-09-29
+
+- release 2.1.5.dev2
+- [specs#3199: 24.9 Feedback errata/ addenda](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3199) — fix: fix labels for errata / addenda in article page (!137)
+- [specs#3138: Check attribute "arial-label" used in hijack buttons in the status page](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3138) — feature: replace hijack user buttons aria label text (!135)
+
 ## [2.1.4] - 2026-09-24
 
 - [specs#3170: Add js dynamic version cache buster](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3170) — Build tinymce URL using TINYMCE_JS_URL (!134)
