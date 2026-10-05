@@ -13,10 +13,7 @@ class WJSThemesConfig(AppConfig):
     name = "wjs.themes"
     verbose_name = "WJS Themes"
     path = str(Path(__file__).parent.absolute())
-    themes = (
-        "wjs-bootstrap",
-        "JCOM-theme",
-    )
+    themes = ("wjs-bootstrap",)
 
     def ready(self):
         """
@@ -24,4 +21,6 @@ class WJSThemesConfig(AppConfig):
 
         wjs-review use wjs-bootstrap as a base and we must make it available globally
         """
-        settings.TEMPLATES[0]["DIRS"].append(os.path.join(self.path, "wjs-bootstrap", "templates"))  # noqa: PTH118
+        settings.TEMPLATES[0]["DIRS"].append(
+            os.path.join(self.path, "wjs-bootstrap", "templates"),  # noqa: PTH118
+        )

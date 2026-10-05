@@ -11,15 +11,13 @@ it only makes sense mounted inside a Janeway installation (`../janeway/src` rela
 local dev setups), which provides Django, the `core`/`submission`/`typesetting` apps, `manage.py`, etc.
 There is no test suite in this repo; behavior is verified inside a running Janeway instance.
 
-It provides two themes plus an "advanced admin" Django app:
+It provides one theme plus an "advanced admin" Django app:
 
 - **wjs-bootstrap** (`wjs/themes/wjs-bootstrap/`): the actively developed Bootstrap 5-based theme, used
   both as a Janeway "Journal Theme" and as a plain Django template base for wjs-specific apps (e.g.
   wjs-review). Its templates are injected into Django's global `TEMPLATES[0]["DIRS"]` (see
   `wjs/themes/apps.py::WJSThemesConfig.ready()`), so wjs-bootstrap templates are always available
   regardless of which theme a journal has selected.
-- **JCOM-theme** (`wjs/themes/JCOM-theme/`): legacy "Vetrinetta" theme derived from Janeway's `material`
-  theme. Only used by journals that explicitly select it; not being actively developed.
 - **advanced_admin** (`wjs/advanced_admin/`): a separate Django admin site (`AdvancedAdminSite`) exposing
   a curated subset of Janeway models (`File`, `SupplementaryFile`, `XSLFile`, `Article`, `GalleyProofing`)
   with custom list displays/permissions, mounted at its own URL via `wjs/advanced_admin/urls.py`.
@@ -38,8 +36,6 @@ wjs/
       build_assets.py           # compiles SCSS -> CSS into Janeway's static/wjs-bootstrap/, copies images, collectstatic
       templates/wjs/base/       # base.html + reusable elements/fragments (header, footer, nav, modals, ...)
       templates/                # overrides of Janeway core/journal/cms/forms/hijack templates
-    JCOM-theme/
-      assets/, fonts/, build_assets.py, templates/   # legacy theme, same pattern as wjs-bootstrap
     locale/{en,es,pt}/LC_MESSAGES/django.po   # translations
   advanced_admin/                # standalone AdminSite + admin.py + urls.py
   install/settings.json          # custom Janeway settings (journal fields) installed via update_settings
@@ -49,7 +45,8 @@ wjs/
 
 Each journal in wjs-bootstrap has its own SCSS entry point (`wjs_jcom.scss`, `wjs_jcap.scss`,
 `wjs_jhep.scss`, `wjs_jinst.scss`, `wjs_jquant.scss`, `wjs_jstat.scss`, `wjs_jcomal.scss`, `wjs_pos.scss`)
-plus `base.scss` and `wjs_review.scss`, all listed explicitly in `THEME_CSS_FILES` in
+plus `base.scss`, `wjs_review.scss`, and the newsletter email entry points (`newsletter_jcom.scss`,
+`newsletter_jcomal.scss`, `newsletter_mobile.scss`), all listed explicitly in `THEME_CSS_FILES` in
 `wjs/themes/wjs-bootstrap/build_assets.py`. **When adding a new journal-specific stylesheet, add it to
 `THEME_CSS_FILES` or it will never be compiled.** Shared styles go in the `_`-prefixed partials
 (`_wjs_base.scss`, `_badges_colors.scss`, `_submission-authors.scss`, `_submission-keywords.scss`,
@@ -61,15 +58,15 @@ calls `build()`, which creates `static/wjs-bootstrap/{css,js,fonts,img}`, compil
 via `libsass`, copies `assets/images` into the static img folder, and runs Django's `collectstatic`.
 
 From this repo, `build_assets.sh` drives that loop during development: it assumes a sibling `../janeway`
-checkout, runs `python manage.py build_assets` once, then watches (`inotifywait`) the `assets/` dirs of
-both themes and re-runs the build on change. Run it from within a Janeway checkout that has this package
-installed (editable) alongside it.
+checkout, runs `python manage.py build_assets` once, then watches (`inotifywait`) `wjs-bootstrap`'s
+`assets/` dir and re-runs the build on change. Run it from within a Janeway checkout that has this
+package installed (editable) alongside it.
 
 ## Installing / linking themes into Janeway
 
 `python manage.py install_themes` (Janeway management command provided by this package,
 `wjs/themes/management/commands/install_themes.py`) symlinks each theme in `WJSThemesConfig.themes`
-(`wjs-bootstrap`, `JCOM-theme`) from this package into Janeway's `themes/` directory, and applies the
+(`wjs-bootstrap`) from this package into Janeway's `themes/` directory, and applies the
 journal-setting definitions in `wjs/install/settings.json` via Janeway's `utils.install.update_settings`.
 Re-running it is safe/idempotent (it detects an existing correct symlink); a pre-existing non-symlink
 path at the destination is reported as an error rather than overwritten.
