@@ -4,7 +4,6 @@ Package for wjs-specific templates
 
 It currently provides:
 
-- JCOM-Theme: legacy "Vetrinetta theme" derived from "material" Janeway theme
 - wjs-bootstrap: bootstrap-based theme for both vetrinetta and backoffice dashboard
 
 It's available as a standard python package (not as a Janeway plugin) for easier installation and distribution.
@@ -39,9 +38,3 @@ Extend templates from `wjs/base/base.html`
 Stylesheets are located in `wjs/themes/wjs-bootstrap/assets/sass`.
 
 When developing, run `build_assets.sh` to watch for changes and rebuild assets.
-
-### JCOM-Theme
-
-Janeway sub-theme, it's only available for journal it's been selected.
-
-To enable it for a journal select as "Journal Theme" in `http://<journal-domain>/manager/settings/journal/`

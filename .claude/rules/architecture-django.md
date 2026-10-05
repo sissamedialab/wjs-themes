@@ -24,8 +24,8 @@ description: Architecture rules for Django — SOLID principles, design patterns
 This package has no models and (almost) no forms/views of its own — it plugs presentation and a
 curated admin surface into an existing Janeway installation:
 
-- **`wjs/themes/apps.py::WJSThemesConfig`** — declares the theme names (`themes = ("wjs-bootstrap",
-  "JCOM-theme")`) and, in `ready()`, appends `wjs-bootstrap/templates` to Django's global
+- **`wjs/themes/apps.py::WJSThemesConfig`** — declares the theme names (`themes = ("wjs-bootstrap",)`)
+  and, in `ready()`, appends `wjs-bootstrap/templates` to Django's global
   `TEMPLATES[0]["DIRS"]`. This is a deliberate exception to the usual "app templates live under
   `templates/<app_name>/`, never globally" convention (see `.claude/rules/templates-django.md`):
   wjs-bootstrap must be reachable even for journals that have a *different* theme selected,
@@ -34,8 +34,8 @@ curated admin surface into an existing Janeway installation:
   it iterates `WJSThemesConfig.themes` and symlinks each into Janeway's `themes/` folder, and
   applies `wjs/install/settings.json` via Janeway's `update_settings`. Adding a new theme means
   adding its name to `WJSThemesConfig.themes`, not writing new install logic.
-- **`wjs/themes/wjs-bootstrap/build_assets.py` / `wjs/themes/JCOM-theme/build_assets.py`** — each
-  theme's asset pipeline, matching Janeway's `manage.py build_assets` contract (a module-level
+- **`wjs/themes/wjs-bootstrap/build_assets.py`** — the theme's asset pipeline, matching Janeway's
+  `manage.py build_assets` contract (a module-level
   `build()` function). wjs-bootstrap's explicitly lists every compiled CSS entry point in
   `THEME_CSS_FILES` — one per journal — so adding a journal-specific stylesheet means adding it to
   that list, not just dropping a `.scss` file in `assets/sass/`.

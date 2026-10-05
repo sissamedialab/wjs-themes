@@ -19,7 +19,7 @@ this package installed (editable) alongside it:
 
 1. Install this package editable into Janeway's virtualenv (`pip install -e .` from this repo).
 2. From `janeway/src`, run `python manage.py install_themes` (provided by
-   `wjs/themes/management/commands/install_themes.py`) to symlink `wjs-bootstrap`/`JCOM-theme`
+   `wjs/themes/management/commands/install_themes.py`) to symlink `wjs-bootstrap`
    into Janeway's `themes/` directory and apply `wjs/install/settings.json`.
 3. For SCSS/template changes, run `build_assets.sh` from this repo (assumes a sibling
    `../janeway` checkout) to compile assets and watch for further changes — see
