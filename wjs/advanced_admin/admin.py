@@ -8,6 +8,7 @@ from core.models import File, Galley, SupplementaryFile, XSLFile
 from django import forms
 from django.contrib import admin
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
+from django.core.files import File as DjangoFile
 from django.http import HttpRequest
 from django.utils.translation import gettext_lazy as _
 from submission.models import Article
@@ -64,12 +65,27 @@ class GalleyProofingProxy(GalleyProofing):
         verbose_name_plural = _("Author's proofreadings")
 
 
-class FileProxyForm(forms.ModelForm):
+class FileSaveMixin:
+    @staticmethod
+    def file_save(instance, file_upload, journal) -> None:
+        """
+        Save file for the current instance, handling correct file path.
+        """
+        if instance.self_article_path():
+            folder_structure = os.path.dirname(instance.self_article_path())  # noqa: PTH120
+        else:
+            folder_structure = os.path.dirname(instance.journal_path(journal=journal))  # noqa: PTH120
+        path_parts = folder_structure.split("/")[-2:]
+        overwrite_file(file_upload, instance, path_parts)
+
+
+class FileProxyForm(FileSaveMixin, forms.ModelForm):
+    label = forms.CharField(label="Label", required=True)
     file_upload = forms.FileField(label="Upload File", required=True)
 
     class Meta:
         model = FileProxy
-        fields = ("original_filename", "label", "description", "owner", "mime_type", "uuid_filename", "privacy")
+        fields = ("original_filename", "description", "owner", "mime_type", "uuid_filename", "privacy")
 
     def save(self, commit=True):
         """
@@ -88,12 +104,8 @@ class FileProxyForm(forms.ModelForm):
         """
         instance = super().save(commit=False)
         if self.cleaned_data["file_upload"]:
-            if instance.self_article_path():
-                folder_structure = os.path.dirname(instance.self_article_path())  # noqa: PTH120
-            else:
-                folder_structure = os.path.dirname(instance.journal_path())  # noqa: PTH120
-            path_parts = folder_structure.split("/")[-2:]
-            overwrite_file(self.cleaned_data["file_upload"], instance, path_parts)
+            journal = instance.article.journal if instance.article else None
+            self.file_save(instance=instance, file_upload=self.cleaned_data["file_upload"], journal=journal)
         return instance
 
 
@@ -102,6 +114,13 @@ class FileAdmin(admin.ModelAdmin):
     list_display = ("original_filename", "label", "description")
     search_fields = ("original_filename", "label", "description")
     form = FileProxyForm
+
+    def get_queryset(self, request):
+        """
+        Filter queryset excluding files without article_id.
+        """
+        qs = super().get_queryset(request)
+        return qs.exclude(article_id=None)
 
     def has_add_permission(self, request: HttpRequest) -> bool:  # noqa: PLR6301
         """
@@ -138,11 +157,12 @@ class GalleyInline(admin.StackedInline):
 
 
 @admin.register(Article, site=advanced_admin_site)
-class ArticleAdmin(admin.ModelAdmin):
+class ArticleAdmin(FileSaveMixin, admin.ModelAdmin):
     LABELS = {
         "data_figure_files": "Administrative files",
         "comments_editor": "Author's cover letter (v1)",
     }
+    FILE_FIELDS = ("source_files", "manuscript_files", "data_figure_files", "supplementary_files")
 
     readonly_fields = ("title",)
     fields = (
@@ -154,7 +174,8 @@ class ArticleAdmin(admin.ModelAdmin):
         "date_published",
         "comments_editor",
     )
-    autocomplete_fields = ("source_files", "manuscript_files", "data_figure_files", "supplementary_files")
+
+    autocomplete_fields = FILE_FIELDS
     list_display = ["title", "pubid", "journal", "state", "identifier_display"]
     ordering = ("-pk",)
     search_fields = ("identifier__identifier", "pk")
@@ -171,7 +192,7 @@ class ArticleAdmin(admin.ModelAdmin):
         if db_field.name in self.LABELS:
             kwargs["label"] = self.LABELS[db_field.name]
         ff = super().formfield_for_dbfield(db_field, request, **kwargs)
-        if db_field.name in ("source_files", "manuscript_files", "data_figure_files", "supplementary_files"):  # noqa: PLR6201
+        if db_field.name in self.FILE_FIELDS:
             object_id = request.resolver_match.kwargs.get("object_id")
             if object_id:
                 ff.widget = ParamsWrapper(ff.widget, {"article": object_id})
@@ -235,6 +256,37 @@ class ArticleAdmin(admin.ModelAdmin):
         """
         return obj.get_pubid()
 
+    def save_related(self, request, form, formsets, change):
+        """
+        Recalculate the file path of the article file.
+        """
+        super().save_related(request, form, formsets, change)
+        changed = [f for f in self.FILE_FIELDS if f in form.changed_data]
+        for field in changed:
+            self.recalc_file_path(article=form.instance, field_name=field)
+
+    def recalc_file_path(self, article, field_name) -> None:
+        """
+        Recalculate the file path of the article file with the given field name.
+        """
+        files = getattr(article, field_name).all()
+        for article_file in files:
+            if field_name == "supplementary_files":
+                article_file = article_file.file  # noqa: PLW2901
+
+            if article_file.article_id and article_file.article_id != article.pk:
+                old_article = Article.objects.get(pk=article_file.article_id)
+                file_upload_path = article_file.get_file_path(old_article)
+                if os.path.isfile(file_upload_path):  # noqa: PTH113
+                    with open(file_upload_path, "rb") as f:  # noqa: PTH123
+                        file_upload = DjangoFile(f, name=os.path.basename(file_upload_path))  # noqa: PTH119
+
+                        article_file.article_id = article.pk
+                        article_file.uuid_filename = str(uuid.uuid4())
+                        article_file.save()
+                        self.file_save(instance=article_file, file_upload=file_upload, journal=article.journal)
+                    os.unlink(file_upload_path)  # noqa: PTH108
+
 
 @admin.register(GalleyProofingProxy, site=advanced_admin_site)
 class GalleyProofingAdmin(admin.ModelAdmin):
@@ -288,7 +340,7 @@ class GalleyProofingAdmin(admin.ModelAdmin):
 
 @admin.register(SupplementaryFile, site=advanced_admin_site)
 class SupplementaryFileAutocompleteAdmin(admin.ModelAdmin):
-    search_fields = ("doi",)
+    search_fields = ("doi", "file__original_filename", "file__description", "file__label")
 
     def has_module_permission(self, request):  # noqa: PLR6301
         """
@@ -298,18 +350,26 @@ class SupplementaryFileAutocompleteAdmin(admin.ModelAdmin):
 
 
 class FileForm(forms.ModelForm):
+    label = forms.CharField(label="Label", required=True)
     file_upload = forms.FileField(label="Upload File", required=True)
 
     class Meta:
         model = File
-        fields = ("original_filename", "label", "description", "owner", "privacy")
+        fields = ("original_filename", "description", "owner", "privacy")
 
 
 @admin.register(File, site=advanced_admin_site)
-class FileAutocompleteAdmin(admin.ModelAdmin):
-    search_fields = ("name",)
+class FileAutocompleteAdmin(FileSaveMixin, admin.ModelAdmin):
+    search_fields = ("original_filename", "label", "description")
 
     form = FileForm
+
+    def get_queryset(self, request):
+        """
+        Filter queryset excluding files without article_id.
+        """
+        qs = super().get_queryset(request)
+        return qs.exclude(article_id=None)
 
     def has_module_permission(self, request):  # noqa: PLR6301
         """
@@ -330,12 +390,7 @@ class FileAutocompleteAdmin(admin.ModelAdmin):
             if file_upload:
                 obj.uuid_filename = str(uuid.uuid4())
                 obj.save()
-                if obj.self_article_path():
-                    folder_structure = os.path.dirname(obj.self_article_path())  # noqa: PTH120
-                else:
-                    folder_structure = os.path.dirname(obj.journal_path(journal=request.journal))  # noqa: PTH120
-                path_parts = folder_structure.split("/")[-3:]
-                overwrite_file(file_upload, obj, path_parts)
+                self.file_save(instance=obj, file_upload=file_upload, journal=request.journal)
 
     class Meta:
         model = File
