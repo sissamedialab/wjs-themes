@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.1.6] - 2026-10-08
+
+- [specs#3175: Improve state labels](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3175) — feat: update color palette for status labels (!139)
+- [specs#3205: 25.9 feedback general tests JCAP](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3205) — feat(wjs-bootstrap): rename editors menu entry to "Editor Management" (!141)
+- [specs#3219: Refactor file handling functions in advanced admin](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3219) — Fix file autocomplete and file path overwrite (!136)
+- [wjs-help#211: JCOM_4155 - adding "supplementary file" aka ESM through advanced admin gives error](https://gitlab.sissamedialab.it/wjs/wjs-help/-/work_items/211) — Fix file autocomplete and file path overwrite (!136)
+- [specs#2808: Drop JCOM-theme](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2808) — fix(themes): restore press/journal/contact.html in wjs-bootstrap (!140)
+- [specs#2808: Drop JCOM-theme](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/2808) — feat(themes): remove the legacy JCOM-theme (!132)
+
 ## [2.1.5] - 2026-09-29
 
 - release 2.1.5.dev2
