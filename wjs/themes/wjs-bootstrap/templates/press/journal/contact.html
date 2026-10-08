@@ -1,0 +1,50 @@
+{% extends "wjs/base/base.html" %}
+{% load django_bootstrap5 i18n static %}
+{% comment %}
+  Press-level contact page (journal-level requests use journal/contact.html).
+  File removed in janeway but still referenced in journal.views.contact,
+  see https://github.com/BirkbeckCTP/janeway/pull/3710#issuecomment-1908344859
+{% endcomment %}
+
+{% block journal_css %}
+  <link rel="stylesheet" href="{% static "wjs-bootstrap/css/base.css" %}?v={{ WJS_THEMES_VERSION }}">
+{% endblock journal_css %}
+{% block page_title %}{% translate "Contact" %}{% endblock page_title %}
+{% block title %}{% translate "Contact" %}{% endblock title %}
+
+{% block content %}
+  <div class="row g-4">
+    <div class="col-12 col-md-5">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title fs-4">
+            {% translate "Press Representatives" %}
+          </h2>
+          {% for contact in contacts %}
+            <h3 class="fs-5 mb-0">
+              {{ contact.name }}
+            </h3>
+            <p>{{ contact.role }}</p>
+          {% empty %}
+            <p>{% translate "There are no contacts to display." %}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-7">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title fs-4">
+            {% translate "Send us a message" %}
+          </h2>
+          <form method="post" novalidate>
+            {% csrf_token %}
+            {% bootstrap_form contact_form %}
+            {% translate "Send Message" as send_label %}
+            {% bootstrap_button button_type="submit" content=send_label %}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -28,6 +28,9 @@ THEME_CSS_FILES = [
     BASE_THEME_DIR / "css" / "wjs_jquant.css",
     BASE_THEME_DIR / "css" / "wjs_jstat.css",
     BASE_THEME_DIR / "css" / "wjs_pos.css",
+    BASE_THEME_DIR / "css" / "newsletter_jcom.css",
+    BASE_THEME_DIR / "css" / "newsletter_jcomal.css",
+    BASE_THEME_DIR / "css" / "newsletter_mobile.css",
 ]
 
 

@@ -102,7 +102,7 @@ Bonus:
   {% endif %}
   {% if user_is_eo_or_director and wjs_journal_editors %}
     <li class="nav-item wjs-nav-item">
-      <a class="dropdown-item" href="{{ wjs_journal_editors }}">{% translate "Journal Editors' Parameters Management" %}</a>
+      <a class="dropdown-item" href="{{ wjs_journal_editors }}">{% translate "Editor Management" %}</a>
     </li>
   {% endif %}
   {% if request.user.is_staff or request.user|is_user_eo %}
