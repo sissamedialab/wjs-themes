@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.7] - 2026-10-15
+
+- [specs#3278: Remove group for JCOMAL keywords](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3278) — Don't show keywords accordion for JCOMAL either (!145)
+
 ## [2.1.6] - 2026-10-08
 
 - [specs#3175: Improve state labels](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3175) — feat: update color palette for status labels (!139)
