@@ -1,0 +1,75 @@
+/* ============================================================
+   wjs_jquant_pure — complete WJS JQuant styles WITHOUT the article styles
+
+   This is a copy of wjs_jquant.scss that does NOT import "jsty3" (the article
+   styles). It is compiled to wjs_jquant_pure.css (see build_assets.py).
+
+   Purpose: inject the full WJS JQuant look & feel (Bootstrap + theme) into the
+   HTML produced by JCOM Assistant, taken as-is and NOT processed by WJS. That
+   HTML already brings its own jsty3 article styles, so loading both here shows
+   how the paper will finally look once published inside WJS, without having to
+   publish it.
+
+   It is a testing aid for checking the final appearance of a paper.
+   ============================================================ */
+
+@charset "UTF-8";
+$primary: #0031ce;
+$primary-lighter: #8098e7;
+$dark-gray: #606a71;
+
+@import "wjs_base";
+
+.btn-primary {
+  background-color: $primary-lighter;
+  border-color: $primary-lighter;
+  color: $black;
+}
+
+/* --- Test-only overrides ---------------------------------------------------
+   The raw JCOM Assistant HTML is a full standalone page, while in WJS the
+   paper is rendered inside a column of the article page. The rules below
+   adapt that standalone page, so that it can be compared with the published
+   one (see .wjs-showcase__main-content-body in _jsty3.scss). */
+
+/* Fixed paper width, to compare the layout with the published article. */
+body {
+  width: 806px !important;
+}
+
+/* Front matter, abstract and table of contents are rebuilt by WJS around the
+   paper, so they are hidden here. */
+header,
+.abstract,
+.toc {
+  display: none !important;
+}
+
+/* Use Bootstrap's body defaults, as the WJS pages do. The red outline makes the paper
+   boundaries (width, margins) visible when checking the layout. */
+body {
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  -webkit-text-size-adjust: 100%;
+  box-shadow: inset 0 0 0 2px #f00;
+  margin: 0 auto;
+}
+
+/* Behave as in the WJS article body (see _jsty3.scss): figures are blocks and
+   panel rows wrap and never overflow the column. */
+figure.figure {
+  display: block;
+}
+
+.panel-row {
+  flex-wrap: wrap;
+}
+
+.panel-row > .minipage,
+.panel-row > .subfigure {
+  max-width: 100%;
+}
