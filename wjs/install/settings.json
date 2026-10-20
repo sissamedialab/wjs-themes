@@ -80,14 +80,32 @@
             "name": "general"
         },
         "setting": {
-            "description": "Enable loading Mathjax js and initialise its rendering.",
+            "description": "Enable loading Mathjax js and initialise its rendering (on either abstract or the whole article page).",
             "is_translatable": false,
             "name": "enable_mathjax_article_page",
-            "pretty_name": "Enable Mathjax loading",
+            "pretty_name": "Enable Mathjax rendering",
             "type": "boolean"
         },
         "value": {
             "default": true
+        },
+        "editable_by": [
+            "journal-manager"
+        ]
+    },
+    {
+        "group": {
+            "name": "general"
+        },
+        "setting": {
+            "description": "Initialise mathjax for the article abstract only (if disabled and enable_mathjax_article_page is enabled, rendering will be done on the whole article page).",
+            "is_translatable": false,
+            "name": "enable_mathjax_abstract",
+            "pretty_name": "Enable Mathjax on abstract",
+            "type": "boolean"
+        },
+        "value": {
+            "default": false
         },
         "editable_by": [
             "journal-manager"
