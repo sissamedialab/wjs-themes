@@ -29,6 +29,8 @@
         {% endfor %}
       </div>
     {% endif %}
-    {% if article.abstract and article.abstract != '' %}<p>{{ article.abstract | safe }}</p>{% endif %}
+    <div class="tex2jax_process">
+      {% if article.abstract and article.abstract != '' %}<p>{{ article.abstract | safe }}</p>{% endif %}
+    </div>
   </div>
 </div>
