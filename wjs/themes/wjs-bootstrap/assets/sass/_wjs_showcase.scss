@@ -232,6 +232,11 @@
       list-style: none;
     }
 
+    &-doi {
+      @extend .fs-7;
+      word-break: break-all;
+    }
+
     &-download {
       @extend .text-decoration-none, .d-flex, .align-items-center, .gap-2;
 
