@@ -9,31 +9,58 @@
    ============================================================ */
 
 /* --- Base --- */
-.wjs-showcase__main-content {
+.wjs-showcase__main-content-body {
+  a {
+    color: #0057a8;
+    text-decoration: none;
+  }
+
+  sup a,
+  a sup {
+    font-size: 0.75em;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
   img {
     max-width: 100%;
     height: auto;
   }
 
+  .masthead-logo img {
+    display: block;
+    width: 25%;
+    height: auto;
+    margin-bottom: 0.6em;
+  }
+
   /* --- Headings --- */
+  /* The classes outrank the Bootstrap h1-h6 rules of a page that embeds the article. */
   h1,
   h2,
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  h1.title,
+  .sectionHead,
+  .likesectionHead,
+  .subsectionHead,
+  .subsubsectionHead,
+  .subsubsubsectionHead {
     line-height: 1.25;
     font-weight: bold;
   }
 
-  h1 {
-    &.title {
-      font-size: 1.9em;
-      margin: 0.4em 0;
-    }
+  h1.title {
+    font-size: 1.9em;
+    margin: 0.4em 0;
   }
 
-  .sectionHead {
+  .sectionHead,
+  .likesectionHead {
     font-size: 1.4em;
     margin: 1.6em 0 0.4em;
   }
@@ -64,97 +91,297 @@
     font-style: italic;
   }
 
-  /* Back-matter statement blocks (funders/das/cas/oa) — real tuning is done
-     downstream in Bootstrap via .statement and the per-type class. */
-  .statement {
-    margin: 0.8em 0;
+  /* --- Paragraphs --- */
+  p.indent {
+    text-indent: 1.4em;
+    margin: 0;
+  }
 
-    p {
-      margin: 0.2em 0;
-    }
+  /* The center environment (a diagram or a picture on its own line): centred, without the paragraph indent. */
+  div.center {
+    text-align: center;
+  }
 
-    /* funders/supplementary emit an empty div when unused — hide in preview. */
-    &:empty {
-      display: none;
-    }
+  div.center p.indent {
+    text-indent: 0;
+  }
+
+  p.noindent {
+    text-indent: 0;
+    margin: 0.7em 0 0;
+  }
+
+  p:not([class]) {
+    text-indent: 0;
+    margin: 0;
+  }
+
+  :is(.sectionHead, .likesectionHead, .subsectionHead, .subsubsectionHead, .subsubsubsectionHead) + p {
+    text-indent: 0;
   }
 
   /* tex4ht leaves empty <p></p> artefacts (e.g. at the top of each statement
      div); harmless in the Bootstrap target, hidden here for a clean preview. */
-  p {
-    &:empty {
-      display: none;
+  p:empty {
+    display: none;
+  }
+
+  /* Back-matter statement blocks (funders/das/cas/oa) — real tuning is done
+     downstream in Bootstrap via .statement and the per-type class. */
+  .statement {
+    margin: 0.8em 0;
+  }
+
+  .statement p {
+    margin: 0.2em 0;
+  }
+
+  .statement p.indent {
+    text-indent: 0;
+  }
+
+  /* funders/supplementary emit an empty div when unused — hide in preview. */
+  .statement:empty {
+    display: none;
+  }
+
+  /* --- Lists --- */
+  ol.enumerate,
+  ul[class] {
+    margin: 1em 0;
+    padding-left: 1.6em;
+  }
+
+  li ol.enumerate,
+  li ul[class] {
+    margin: 0;
+  }
+
+  li {
+    margin: 0.25em 0;
+  }
+
+  /* --- Quote --- */
+  blockquote.quote {
+    margin: 1em 1.5em;
+    padding-left: 1em;
+    border-left: 3px solid #ccc;
+    font-style: italic;
+    color: #444;
+  }
+
+  /* --- Figures & captions --- */
+  figure.figure {
+    display: block;
+    margin: 1.5em auto;
+    padding: 0.8em 1em;
+    border: 1px solid #999;
+    text-align: center;
+    max-width: unquote("max(60%, 24em)");
+    container-type: inline-size;
+  }
+
+  .caption {
+    display: block;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    text-align: left;
+  }
+
+  .caption .id {
+    font-weight: bold;
+  }
+
+  .subfigure .caption {
+    text-align: center;
+  }
+
+  /* Panel rows come from jsty3.lua; the container query stacks them in a narrow figure. */
+  .panel-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 0 0 1em;
+  }
+
+  .panel-row > .minipage,
+  .panel-row > .subfigure {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .panel-row > img {
+    flex: 0 0 auto;
+  }
+
+  .minipage p,
+  .subfigure p {
+    text-indent: 0;
+    margin: 0;
+  }
+
+  figure.figure > p {
+    text-indent: 0;
+  }
+
+  figure.figure img {
+    display: inline-block;
+  }
+
+  @container (max-width: 30em) {
+    .panel-row {
+      flex-wrap: wrap;
     }
 
-    /* --- Paragraphs --- */
-    &.indent {
-      text-indent: 1.4em;
-      margin: 0;
-    }
-
-    &.noindent {
-      text-indent: 0;
-      margin: 0.7em 0 0;
-    }
-
-    /* --- Endnotes (Notes section) --- */
-    &.note {
-      margin: 0.4em 0;
-      font-size: 0.95em;
+    /* Override the inline panel widths; a rotated image keeps its own, as its margins depend on it. */
+    .panel-row > .minipage,
+    .panel-row > .subfigure,
+    .panel-row > img:not([style*="rotate"]) {
+      width: 100% !important;
     }
   }
 
-  :is(.sectionHead, .subsectionHead, .subsubsectionHead, .subsubsubsectionHead) + p {
-    text-indent: 0;
+  /* --- Math / equations --- */
+  math {
+    font-size: 1em;
+  }
+
+  mtext {
+    white-space: pre;
+  }
+
+  mtd.align-odd,
+  mtd.align-even,
+  mtd.split-mtd {
+    padding-inline: 0;
+  }
+
+  math[display="block"] {
+    margin: 0.8em 0;
+    container-type: inline-size;
+  }
+
+  math[display="block"] + p.noindent {
+    margin-top: 0;
+  }
+
+  /* Firefox ignores a percentage width on a table: 100cqw on the math container, % as fallback. */
+  math[display="block"] mtable:not(mtd mtable) {
+    width: 100%;
+    width: 100cqw;
+  }
+
+  math[display="block"] mtable:not([displaystyle], [class]),
+  math[display="block"] mtable.equation,
+  math[display="block"] mtable.split {
+    math-style: normal;
+  }
+
+  /* Display equations from tex4ht: a one-row table, the equation centred and the number at the right edge. */
+  table.equation,
+  table.equation-star {
+    display: block;
+    width: 100%;
+  }
+
+  table.equation > tbody,
+  table.equation-star > tbody {
+    display: block;
+  }
+
+  table.equation > tbody > tr,
+  table.equation-star > tbody > tr {
+    display: flex;
+  }
+
+  table.equation td,
+  table.equation-star td {
+    display: block;
+    padding: 0;
+    text-align: center;
+  }
+
+  /* Firefox does not clip MathML, the scrolling has to be on an HTML box around it. */
+  table.equation td:first-child,
+  table.equation-star td:first-child {
+    flex: 1 1 0;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 0.2em;
+    margin-block: -0.2em;
+  }
+
+  table.equation td:first-child {
+    padding-inline-start: 4.5em;
+  }
+
+  table.equation td.eq-no {
+    flex: none;
+    width: 4.5em;
+    padding-inline-start: 0;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .math-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 0.2em;
+    margin-block: -0.2em;
+  }
+
+  /* The table already sizes the equation, so the math is neither a size container nor stretched to one. */
+  table.equation math[display="block"],
+  table.equation-star math[display="block"] {
+    container-type: normal;
+    margin: 0;
+  }
+
+  table.equation math mtable:not(mtd mtable),
+  table.equation-star math mtable:not(mtd mtable) {
+    width: auto;
+  }
+
+  /* The number is the last cell, at the right edge; the first cell is padded to keep the equation centred. */
+  mtr.eq-numbered > mtd:last-child {
+    width: 4.5em;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  mtr.eq-numbered > mtd:first-child {
+    padding-inline-start: 4.5em;
+  }
+
+  /* Single column pair: content at natural width, equal empty cells at the sides, a mirror cell for the number. */
+  mtable.eq-pair > mtr > mtd.align-odd,
+  mtable.eq-pair > mtr > mtd.align-even {
+    width: 1px;
+  }
+
+  mtd.eqmirror {
+    width: 4.5em;
+  }
+
+  mstyle.maketag mtext {
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  mtr.eq-numbered > mtd.eqmirror {
+    padding-inline-start: 0;
   }
 
   /* --- Front matter (reprocessed downstream; just make it readable) --- */
   header.front {
     margin-bottom: 2.5em;
-
-    .subheader,
-    .authors,
-    .affiliations,
-    .emails,
-    .keywords,
-    .arxiv {
-      margin: 0.4em 0;
-    }
-
-    .authors {
-      font-size: 1.15em;
-
-      math {
-        vertical-align: super;
-        font-size: 0.72em;
-      }
-    }
-
-    .affiliations,
-    .emails {
-      font-size: 0.9em;
-      color: #444;
-    }
-
-    ol.enumerate {
-      margin: 0.3em 0;
-      padding-left: 1.4em;
-    }
-
-    /* Hide empty optional-region divs left in place by the scaffold
-       (disclaimer, proceedings, …) — see README item 1. */
-    div:empty {
-      display: none;
-    }
   }
 
-  .masthead-logo {
-    img {
-      display: block;
-      width: 25%;
-      height: auto;
-      margin-bottom: 0.6em;
-    }
+  header.front p {
+    text-indent: 0;
   }
 
   .masthead-journal {
@@ -178,56 +405,72 @@
     line-height: 1.4;
   }
 
+  header.front .subheader,
+  header.front .authors,
+  header.front .affiliations,
+  header.front .emails,
+  header.front .keywords,
+  header.front .arxiv {
+    margin: 0.4em 0;
+  }
+
+  header.front .authors {
+    font-size: 1.15em;
+  }
+
+  header.front .authors math {
+    vertical-align: super;
+    font-size: 0.72em;
+  }
+
+  header.front .affiliations,
+  header.front .emails {
+    font-size: 0.9em;
+    color: #444;
+  }
+
+  header.front ol.enumerate {
+    margin: 0.3em 0;
+    padding-left: 1.4em;
+  }
+
+  /* Hide empty optional-region divs left in place by the scaffold
+     (disclaimer, proceedings, …) — see README item 1. */
+  header.front div:empty {
+    display: none;
+  }
+
   /* Abstract block */
   section.abstract {
     margin: 1.5em 0;
     padding: 0.8em 1em;
     background: #f6f6f6;
     border-left: 3px solid #ccc;
-
-    p {
-      margin: 0.3em 0;
-    }
   }
 
-  /* --- Quote --- */
-  blockquote.quote {
-    margin: 1em 1.5em;
-    padding-left: 1em;
-    border-left: 3px solid #ccc;
-    font-style: italic;
-    color: #444;
+  section.abstract p {
+    margin: 0.3em 0;
   }
 
-  /* --- Lists --- */
-  ol.enumerate,
-  ul {
-    padding-left: 1.6em;
+  /* --- Floats and tables --- */
+  figure.float {
+    margin: 1em 40px;
   }
 
-  li {
-    margin: 0.25em 0;
+  /* tex4ht names its table wrapper div.table, the same class as the Bootstrap table, whose rules
+     (width, margin, cell padding, borders) would otherwise reach the figure and the table inside. */
+  div.table {
+    width: auto;
+    margin-bottom: 0;
+    vertical-align: baseline;
   }
 
-  /* --- Figures & captions --- */
-  figure.figure {
-    margin: 1.5em auto;
-    text-align: center;
-
-    img {
-      display: inline-block;
-    }
-  }
-
-  .caption {
-    display: block;
-    font-size: 0.9em;
-    margin-top: 0.5em;
-    text-align: left;
-
-    .id {
-      font-weight: bold;
-    }
+  div.table > :not(caption) > * > * {
+    padding: 0;
+    color: inherit;
+    background-color: transparent;
+    border-bottom-width: 0;
+    box-shadow: none;
   }
 
   /* --- Tables (basic legibility) --- */
@@ -235,13 +478,31 @@
     border-collapse: collapse;
     margin: 1em auto;
     font-size: 0.95em;
+  }
 
-    td,
-    th {
-      padding: 0.3em 0.6em;
-      text-align: left;
-      vertical-align: top;
-    }
+  table td,
+  table th {
+    padding: 0.3em 0.6em;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  tr.array-vspace td {
+    padding: 0;
+    line-height: 0;
+  }
+
+  tr.array-hline td {
+    padding: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-top: 1px solid currentcolor;
+  }
+
+  tr.array-hline:first-child td {
+    border-top: 0;
+    border-bottom: 1px solid currentcolor;
   }
 
   /* --- Bibliography ---
@@ -250,26 +511,26 @@
   .thebibliography {
     margin: 1.5em 0;
     font-size: 0.95em;
-
-    dt {
-      float: left;
-      clear: left;
-      font-weight: bold;
-    }
-
-    dd {
-      margin: 0 0 0.5em 2.6em;
-    }
   }
 
-  sup a,
-  a sup {
-    font-size: 0.75em;
+  .thebibliography dl {
+    margin: 0;
   }
 
-  /* --- Math / equations --- */
-  math {
-    font-size: 1em;
+  .thebibliography dt {
+    float: left;
+    clear: left;
+    font-weight: bold;
+  }
+
+  .thebibliography dd {
+    margin: 0 0 0.5em 2.6em;
+  }
+
+  /* --- Endnotes (Notes section) --- */
+  p.note {
+    margin: 0.4em 0;
+    font-size: 0.95em;
   }
 
   /* --- Table of contents: boxed block, one entry per line --- */
@@ -282,6 +543,14 @@
 
   .toc-title {
     font-weight: bold;
+  }
+
+  .toc br {
+    display: none;
+  }
+
+  .toc .tableofcontents {
+    line-height: 1.35;
   }
 
   .sectionToc,
