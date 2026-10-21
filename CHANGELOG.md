@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.8] - 2026-10-21
+
+- [specs#3238: DOI splits in right column in HTML (also publication?) page](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3238) — feature(doi): fix DOI ui to let the text fit in a single line (!151)
+- [specs#3223: HTML for published papers should fit within column margins](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3223) — feat: update jQuant css to include article styles (!142)
+- [specs#3224: Figures should be resized accroding to the column in published HTML](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3224) — feat: update jQuant css to include article styles (!142)
+- [specs#3225: Css for tables in published HTML should display top and bottom lines](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3225) — feat: update jQuant css to include article styles (!142)
+- [specs#3230: In HTML of published papers sometimes space are trimmed](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3230) — feat: update jQuant css to include article styles (!142)
+- [specs#3232: Published HTML should render big operator correctly via CSS](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3232) — feat: update jQuant css to include article styles (!142)
+- [specs#3282: Try to not removing the width and height from galley images](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3282) — feat: update jQuant css to include article styles (!142)
+- [specs#3270: Math is not rendered in abstract](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3270) — fix(wjs-bootstrap): render mathjax on abstract only when enabled (!149)
+
 ## [2.1.7] - 2026-10-15
 
 - [specs#3278: Remove group for JCOMAL keywords](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3278) — Don't show keywords accordion for JCOMAL either (!145)
