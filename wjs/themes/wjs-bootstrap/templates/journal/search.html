@@ -100,6 +100,7 @@
 
 {% block js %}
   {{ block.super }}
+  {% include "wjs/base/fragments/mathjax.html" %}
   <script>
     function syncKeywords(field, matchingForm) {
       const matchingField = matchingForm.querySelector(`#${field.id}`);
