@@ -1,4 +1,5 @@
 import os
+import re
 import uuid
 from urllib.parse import urlencode
 
@@ -9,6 +10,7 @@ from django import forms
 from django.contrib import admin
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.core.files import File as DjangoFile
+from django.db.models import Q
 from django.http import HttpRequest
 from django.utils.translation import gettext_lazy as _
 from submission.models import Article
@@ -57,6 +59,10 @@ class SupplementaryFileProxy(SupplementaryFile):
         verbose_name = _("ESM")
         verbose_name_plural = _("ESM")
 
+    def __str__(self):
+        """Return the file label, falling back to the original filename as label is nullable."""
+        return self.file.label or self.file.original_filename
+
 
 class GalleyProofingProxy(GalleyProofing):
     class Meta:
@@ -77,6 +83,37 @@ class FileSaveMixin:
             folder_structure = os.path.dirname(instance.journal_path(journal=journal))  # noqa: PTH120
         path_parts = folder_structure.split("/")[-2:]
         overwrite_file(file_upload, instance, path_parts)
+
+
+class ArticleSearchMixin:
+    """
+    Extend admin search to match files by their article's pk, identifiers and title.
+
+    ``File.article_id`` is a plain integer (not a foreign key), so ``search_fields`` cannot traverse to
+    ``Article``: matching article ids are looked up separately and used as a subquery. Most ESM are linked
+    to their article only through ``file.article_id`` (not ``Article.supplementary_files``), so the
+    ``SupplementaryFile`` admins use the same mechanism with ``article_id_lookup = "file__article_id"``.
+    """
+
+    article_id_lookup = "article_id"
+    # Bare article pk ("4050") or the "<journal code>_<pk>" label shown in wjs-review ("JQuant_4050").
+    article_pk_re = re.compile(r"(?:\w+?_)?(\d+)")
+
+    def get_search_results(self, request, queryset, search_term):
+        """
+        Add files whose article pk, identifier (e.g. ``JCOM_4515``) or title matches the search term.
+
+        The term is matched as a whole string, so multi-word title fragments work; the pk match is exact.
+        """
+        queryset_result, may_have_duplicates = super().get_search_results(request, queryset, search_term)
+        term = search_term.strip()
+        if term:
+            article_filter = Q(identifier__identifier__icontains=term) | Q(title__icontains=term)
+            if match := self.article_pk_re.fullmatch(term):
+                article_filter |= Q(pk=int(match.group(1)))
+            article_ids = Article.objects.filter(article_filter).values("pk")
+            queryset_result |= queryset.filter(**{f"{self.article_id_lookup}__in": article_ids})
+        return queryset_result, may_have_duplicates
 
 
 class FileProxyForm(FileSaveMixin, forms.ModelForm):
@@ -110,7 +147,7 @@ class FileProxyForm(FileSaveMixin, forms.ModelForm):
 
 
 @admin.register(FileProxy, site=advanced_admin_site)
-class FileAdmin(admin.ModelAdmin):
+class FileAdmin(ArticleSearchMixin, admin.ModelAdmin):
     list_display = ("original_filename", "label", "description")
     search_fields = ("original_filename", "label", "description")
     form = FileProxyForm
@@ -137,7 +174,8 @@ class FileAdmin(admin.ModelAdmin):
 
 
 @admin.register(SupplementaryFileProxy, site=advanced_admin_site)
-class SupplementaryFileI(admin.ModelAdmin):
+class SupplementaryFileI(ArticleSearchMixin, admin.ModelAdmin):
+    article_id_lookup = "file__article_id"
     list_display = ("file", "doi")
     search_fields = ("file__original_filename", "doi")
     autocomplete_fields = ("file",)
@@ -339,7 +377,8 @@ class GalleyProofingAdmin(admin.ModelAdmin):
 
 
 @admin.register(SupplementaryFile, site=advanced_admin_site)
-class SupplementaryFileAutocompleteAdmin(admin.ModelAdmin):
+class SupplementaryFileAutocompleteAdmin(ArticleSearchMixin, admin.ModelAdmin):
+    article_id_lookup = "file__article_id"
     search_fields = ("doi", "file__original_filename", "file__description", "file__label")
 
     def has_module_permission(self, request):  # noqa: PLR6301
@@ -359,7 +398,7 @@ class FileForm(forms.ModelForm):
 
 
 @admin.register(File, site=advanced_admin_site)
-class FileAutocompleteAdmin(FileSaveMixin, admin.ModelAdmin):
+class FileAutocompleteAdmin(ArticleSearchMixin, FileSaveMixin, admin.ModelAdmin):
     search_fields = ("original_filename", "label", "description")
 
     form = FileForm
