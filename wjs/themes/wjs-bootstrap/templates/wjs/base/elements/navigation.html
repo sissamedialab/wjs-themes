@@ -84,7 +84,9 @@
     {% endif %}
     {% hook 'nav_block' %}
   </ul>
-  <a class="btn btn-link" href="{% url 'search' %}">
-    {% translate "Search" %}
-  </a>
+  {% if not request.journal.disable_front_end %}
+    <a class="btn btn-link" href="{% url 'search' %}">
+      {% translate "Search" %}
+    </a>
+  {% endif %}
 </nav>

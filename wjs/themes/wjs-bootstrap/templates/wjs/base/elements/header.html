@@ -36,6 +36,7 @@
               {% block top_menu %}
               {% endblock top_menu %}
               {% include "wjs/base/elements/user_menu.html" with show_name=True %}
+              {% if not request.journal.disable_front_end %}
               <form role="search" class="wjs-header__search" method="get" action="{% if request.journal %}{% journal_url 'search' %}{% else %}/search{% endif %}">
                 <label class="visually-hidden" for="article_search">{% trans "Search an article" %}</label>
                 <input id="article_search" type="search" name="article_search" placeholder="{% translate "Search" %}">
@@ -44,6 +45,7 @@
                 <input id="abstract" name="abstract" type="hidden" value="on">
                 <button type="submit" class="btn btn-primary" aria-label="{% trans "Submit search" %}"><i class="bi bi-search" aria-hidden="true"></i></button>
               </form>
+              {% endif %}
             </div>
 
             {% include "wjs/base/elements/mobile_sidebar.html" %}
