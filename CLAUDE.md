@@ -21,6 +21,10 @@ It provides one theme plus an "advanced admin" Django app:
 - **advanced_admin** (`wjs/advanced_admin/`): a separate Django admin site (`AdvancedAdminSite`) exposing
   a curated subset of Janeway models (`File`, `SupplementaryFile`, `XSLFile`, `Article`, `GalleyProofing`)
   with custom list displays/permissions, mounted at its own URL via `wjs/advanced_admin/urls.py`.
+  File/ESM admins can also be searched by the article's pk (`4050` or the wjs-review label
+  `JQuant_4050`), identifier (e.g. `JCOM_4515`) or title via `ArticleSearchMixin`: `File.article_id`
+  is a plain integer, not a foreign key, and most ESM are linked to their article only through
+  `file.article_id`, not `Article.supplementary_files`.
 
 ## Repository layout
 
