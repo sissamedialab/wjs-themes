@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.9] - 2026-10-29
+
+- [specs#3247: Remove search field and link from JCAP header](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3247) — feat(header): remove search form and link from jcap header (!147)
+- [specs#3262: Improve article type labels](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3262) — feat(badge): update article type badges palette (!148)
+- [specs#3198: Problems in advanced admin](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3198) — fix(advanced_admin): handle label-less ESM and search files by article (!152)
+
 ## [2.1.8] - 2026-10-21
 
 - [specs#3238: DOI splits in right column in HTML (also publication?) page](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3238) — feature(doi): fix DOI ui to let the text fit in a single line (!151)
