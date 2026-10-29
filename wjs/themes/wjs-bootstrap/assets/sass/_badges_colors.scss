@@ -139,110 +139,125 @@ $hover-state-PublicationInProgress: darken($color-state-PublicationInProgress, 1
 $color-state-Published: #4ade80;
 $hover-state-Published: darken($color-state-Published, 10%);
 
-$color-section-article: #88ccee;
+$color-section-article: #aad8ff;
 $hover-section-article: darken($color-section-article, 10%);
-$color-section-editorial: #882255;
+$color-section-editorial: #fbcfe8;
 $hover-section-editorial: darken($color-section-editorial, 10%);
-$color-section-review-article: #e48100;
+$color-section-review-article: #cb997e;
 $hover-section-review-article: darken($color-section-review-article, 10%);
-$color-section-practice-insight: #cab2d6;
+$color-section-practice-insight: #e9d5ff;
 $hover-section-practice-insight: darken($color-section-practice-insight, 10%);
-$color-section-essay: #ffff99;
+$color-section-essay: #e6ccb2;
 $hover-section-essay: darken($color-section-essay, 10%);
-$color-section-focus: #44aa99;
+$color-section-focus: #c8f5ec;
 $hover-section-focus: darken($color-section-focus, 10%);
-$color-section-commentary: #117733;
+$color-section-commentary: #bbf7d0;
 $hover-section-commentary: darken($color-section-commentary, 10%);
-$color-section-letter: #332288;
+$color-section-letter: #dbeafe;
 $hover-section-letter: darken($color-section-letter, 10%);
-$color-section-review: #ffffb3;
+$color-section-review: #ddb892;
 $hover-section-review: darken($color-section-review, 10%);
-$color-section-book-review: #aa4499;
+$color-section-book-review: #f5d0fe;
 $hover-section-book-review: darken($color-section-book-review, 10%);
-$color-section-conference-review: #fb8072;
+$color-section-conference-review: #bfefeb;
 $hover-section-conference-review: darken($color-section-conference-review, 10%);
-$color-section-erratum: #8407b2;
+$color-section-erratum: #ddd6fe;
 $hover-section-erratum: darken($color-section-erratum, 10%);
-$color-section-addendum: #cba308;
+$color-section-addendum: #b7b7a4;
 $hover-section-addendum: darken($color-section-addendum, 10%);
+$color-section-technical-report: #cbd5e1;
+$hover-section-technical-report: darken($color-section-technical-report, 10%);
+$color-section-thesis: #e7e5e4;
+$hover-section-thesis: darken($color-section-thesis, 10%);
 
 $badge-radius: 1em;
 
 @mixin color-section() {
-  &-article {
-    background-color: $color-section-article; // article
-    border-radius: $badge-radius;
-    color: #000;
-  }
-
+  &-article,
   &-paper {
-    background-color: $color-section-article; // article
+    background-color: $color-section-article; // article, paper
     border-radius: $badge-radius;
-    color: #000;
   }
 
   &-erratum {
-    background-color: $color-section-erratum; // article
+    background-color: $color-section-erratum; // erratum
     border-radius: $badge-radius;
-    color: #fff;
   }
 
   &-addendum {
     background-color: $color-section-addendum; // addendum
     border-radius: $badge-radius;
-    color: #000;
   }
 
   &-editorial {
     background-color: $color-section-editorial; // editorial
     border-radius: $badge-radius;
-    color: #fff;
   }
 
-  &-commentary,
-  &-practice-insight {
-    background-color: $color-section-commentary; // practice insight
-    border-radius: $badge-radius;
-    color: #fff;
-  }
-
-  &-book-review,
-  &-review {
-    background-color: $color-section-book-review; // book review
-    border-radius: $badge-radius;
-    color: #fff;
-  }
-
-  &-focus,
-  &-essay {
-    background-color: $color-section-focus; // essay
-    border-radius: $badge-radius;
-    color: #000;
-  }
-
-  &-conference-review,
   &-commentary {
     background-color: $color-section-commentary; // commentary
     border-radius: $badge-radius;
-    color: #fff;
   }
 
-  &-essay,
+  &-practice-insight {
+    background-color: $color-section-practice-insight; // practice-insight
+    border-radius: $badge-radius;
+  }
+
+  &-book-review {
+    background-color: $color-section-book-review; // book review
+    border-radius: $badge-radius;
+  }
+
+  &-review {
+    background-color: $color-section-review; // review
+    border-radius: $badge-radius;
+  }
+
+  &-focus {
+    background-color: $color-section-focus; // focus
+    border-radius: $badge-radius;
+  }
+
+  &-essay {
+    background-color: $color-section-essay; // essay
+    border-radius: $badge-radius;
+  }
+
+  &-conference-review {
+    background-color: $color-section-conference-review; // conference review
+    border-radius: $badge-radius;
+  }
+
   &-letter {
     background-color: $color-section-letter; // letter
     border-radius: $badge-radius;
-    color: #fff;
   }
 
   &-review-article {
     background-color: $color-section-review-article; // review article
     border-radius: $badge-radius;
-    color: #000;
+  }
+
+  &-technical-report {
+    background-color: $color-section-technical-report; // technical report
+    border-radius: $badge-radius;
+  }
+
+  &-thesis {
+    background-color: $color-section-thesis; // thesis
+    border-radius: $badge-radius;
   }
 }
 
 span.badge {
   // The first section id (&-1) is for JCOM, the second (&-11) for JCOMAL, the third (&-24) for JCAP
+  color: #1e2124;
+
+  &:hover {
+    color: #1e2124;
+  }
+
   .color-section {
     @include color-section();
   }
@@ -265,14 +280,6 @@ span.badge {
     &-metadata {
       background: orange;
       color: black;
-    }
-  }
-
-  &[class*="color-state-"] {
-    color: #1e2124;
-
-    &:hover {
-      color: #1e2124;
     }
   }
 
