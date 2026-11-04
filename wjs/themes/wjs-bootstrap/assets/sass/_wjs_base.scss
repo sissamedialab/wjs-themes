@@ -279,6 +279,57 @@ h3.page-title {
 
 @import "bootstrap/scss/bootstrap";
 
+// Size of the htmx modal (#htmxModal, see wjs/base/elements/modal_htmx.html).
+// The modal shell is static and htmx swaps only its content: the default size is xl, the swapped template can ask for a
+// smaller one by adding data-modal-size="sm|lg" to any element (usually .modal-header).
+#htmxModal .modal-dialog {
+  @include media-breakpoint-up(lg) {
+    --#{$prefix}modal-width: #{$modal-lg};
+  }
+
+  @include media-breakpoint-up(xl) {
+    --#{$prefix}modal-width: #{$modal-xl};
+  }
+
+  &:has([data-modal-size="sm"]) {
+    @include media-breakpoint-up(sm) {
+      --#{$prefix}modal-width: #{$modal-sm};
+    }
+  }
+
+  &:has([data-modal-size="lg"]) {
+    @include media-breakpoint-up(lg) {
+      --#{$prefix}modal-width: #{$modal-lg};
+    }
+  }
+}
+
+// Select / invite reviewer modals: the form, the cover letter and the message preview columns are at least 70vh and at
+// most 80vh high and scroll when their content is taller (bootstrap has no height utility for these values).
+.select-reviewer-form,
+.select-reviewer-notes,
+.select-reviewer-preview {
+  min-height: 70vh;
+  max-height: 80vh;
+  overflow-y: auto;
+
+  .card-body {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+// The form column is a flex column with a minimum height (see above): the message editor grows to fill the space left by
+// the other fields. TinyMCE sets an inline height on .tox-tinymce, hence the !important; min-height keeps the editor
+// usable when the column is short (the column scrolls instead).
+.select-reviewer-wrapper {
+  .select-reviewer-form .tox-tinymce {
+    flex-grow: 1;
+    height: auto !important; //sass-lint:disable-line no-important
+    min-height: 10rem;
+  }
+}
+
 $blue-grey: #263238;
 $blue-grey-d-2: #455a64;
 $footer-copyright-bg-color: rgba(51, 51, 51, 0.08);
