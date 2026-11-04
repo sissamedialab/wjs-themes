@@ -1,7 +1,7 @@
 {% load django_bootstrap5 i18n %}
 {% translate "Close" as close_label %}
-<div class="modal fade {{ modal_size }}" id="{{ modal_id }}" tabindex="-1" aria-labelledby="modal-title-{{ modal_id }}" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="{{ modal_id }}" tabindex="-1" aria-labelledby="modal-title-{{ modal_id }}" aria-hidden="true">
+  <div class="modal-dialog {{ modal_size }}">
     <div class="modal-content">
       <div class="modal-header">
         <h{{ modal_title_tag|default:5 }} class="modal-title" id="modal-title-{{ modal_id }}">{{ modal_title }}</h{{ modal_title_tag|default:5 }}>
