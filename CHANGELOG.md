@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.1.10] - 2026-11-05
+
+- [specs#3257: Fix size of invite reviewer modal](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3257) — feat(wjs-bootstrap): htmx modal sizing and select / invite reviewer modal UI (!143)
+- [specs#3228: Attention condition banner overlaps badly with rounded box below](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3228) — fix: AC accordion button border radius fix (!146)
+
 ## [2.1.9] - 2026-10-29
 
 - [specs#3247: Remove search field and link from JCAP header](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3247) — feat(header): remove search form and link from jcap header (!147)
