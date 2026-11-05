@@ -135,12 +135,14 @@
 
     &:last-child {
       border-bottom: 0;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
     }
 
     // stylelint-disable selector-max-class
     > .accordion-header .accordion-button {
       &,
-      &.collapsed {
+      &.collapsed:not(:last-child) {
         @include border-radius(0);
       }
     }
