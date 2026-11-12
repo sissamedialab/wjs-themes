@@ -212,6 +212,24 @@
     @extend .mb-4;
   }
 
+  &__article-abstract-toggle {
+    @extend .bg-transparent, .border-0, .p-0, .mb-3;
+
+    &.collapsed &-close,
+    &:not(.collapsed) &-show {
+      @extend .d-none;
+    }
+
+    &-icon {
+      @extend .d-inline-block, .ms-1;
+      transition: transform 0.2s ease-out;
+    }
+
+    &:not(.collapsed) &-icon {
+      transform: rotate(180deg);
+    }
+  }
+
   &__article-card-volume {
     @extend .text-end;
   }
