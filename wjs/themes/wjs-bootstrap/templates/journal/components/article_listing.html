@@ -32,10 +32,22 @@
         {% if not forloop.last %},{% endif %}
       {% endfor %}
     </p>
-    <div class="wjs-showcase__article-text tex2jax_process">
-      {% autoescape off %}
-        {{ article.abstract }}
-      {% endautoescape %}
+    <button class="wjs-showcase__article-abstract-toggle collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#article-abstract-{{ article.pk }}"
+            aria-expanded="false"
+            aria-controls="article-abstract-{{ article.pk }}">
+      <span class="wjs-showcase__article-abstract-toggle-show">{% translate "Show abstract" %}</span>
+      <span class="wjs-showcase__article-abstract-toggle-close">{% translate "Hide abstract" %}</span>
+      <i class="wjs-showcase__article-abstract-toggle-icon bi bi-chevron-down" aria-hidden="true"></i>
+    </button>
+    <div class="collapse" id="article-abstract-{{ article.pk }}">
+      <div class="wjs-showcase__article-text tex2jax_process">
+        {% autoescape off %}
+          {{ article.abstract }}
+        {% endautoescape %}
+      </div>
     </div>
     {% if article|article_has_children %}
       <div class="wjs-showcase__article-genealogy">
