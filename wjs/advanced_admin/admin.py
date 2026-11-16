@@ -20,6 +20,9 @@ from .admin_site import AdvancedAdminSite
 
 advanced_admin_site = AdvancedAdminSite(name="advanced_admin")
 
+# Bare article pk ("4050") or the "<journal code>_<pk>" label shown in wjs-review ("JQuant_4050").
+ARTICLE_PK_RE = re.compile(r"(?:\w+?_)?(\d+)")
+
 
 class ParamsWrapper(RelatedFieldWidgetWrapper):
     def __init__(self, wrapper, extra):
@@ -96,8 +99,7 @@ class ArticleSearchMixin:
     """
 
     article_id_lookup = "article_id"
-    # Bare article pk ("4050") or the "<journal code>_<pk>" label shown in wjs-review ("JQuant_4050").
-    article_pk_re = re.compile(r"(?:\w+?_)?(\d+)")
+    article_pk_re = ARTICLE_PK_RE
 
     def get_search_results(self, request, queryset, search_term):
         """
@@ -194,8 +196,77 @@ class GalleyInline(admin.StackedInline):
     fields = ("label", "type", "sequence", "file", "css_file", "images", "xsl_file", "public")
 
 
+class ArticleSearchFilterMixin:
+    """
+    Share search fields and filters across the advanced admin pages built on an article.
+
+    Lookups are relative to the article: ``article_lookup_prefix`` is ``""`` on ``Article`` and ``"article__"`` on
+    models linked to it (``ArticleSubmission``, ``ArticleWorkflow``). Title and names are matched ignoring
+    diacritics (PostgreSQL ``unaccent`` on both the column and the term); the article pk, bare or as
+    "<journal code>_<pk>", is matched exactly on top of the regular search.
+    """
+
+    article_lookup_prefix = ""
+    # Defaults to the article's workflow state; set it on the ArticleWorkflow admin, where the state is local.
+    workflow_state_lookup = None
+    article_search_fields = (
+        "identifier__identifier",
+        "title__unaccent",
+        "correspondence_author__email",
+        "correspondence_author__first_name__unaccent",
+        "correspondence_author__last_name__unaccent",
+        "owner__email",
+        "owner__first_name__unaccent",
+        "owner__last_name__unaccent",
+    )
+
+    def __init__(self, *args, **kwargs):
+        """
+        Set ``search_fields`` from the article search fields, prefixed for the admin's model.
+
+        An attribute rather than a ``get_search_fields()`` override: the admin checks read ``search_fields`` directly
+        to validate the article autocompletes of other admins (admin.E040).
+        """
+        super().__init__(*args, **kwargs)
+        self.search_fields = tuple(f"{self.article_lookup_prefix}{field}" for field in self.article_search_fields)
+
+    def get_list_filter(self, request: HttpRequest) -> list[str]:
+        """
+        Return the article filters, prefixed for the admin's model.
+
+        Built at runtime rather than in ``list_filter``: the workflow state lookup needs wjs_review, which wjs-themes
+        and wjs-submission CI do not install.
+        """
+        prefix = self.article_lookup_prefix
+        workflow_state_lookup = self.workflow_state_lookup or f"{prefix}articleworkflow__state"
+        return [
+            f"{prefix}journal",
+            f"{prefix}stage",
+            workflow_state_lookup,
+            *(
+                f"{prefix}{field}"
+                for field in (
+                    "is_import",
+                    "peer_reviewed",
+                    "date_submitted",
+                    "date_accepted",
+                    "date_declined",
+                    "date_published",
+                )
+            ),
+        ]
+
+    def get_search_results(self, request, queryset, search_term):
+        """Search the term in the search fields, and add the article matching it as a pk or label."""
+        queryset_result, may_have_duplicates = super().get_search_results(request, queryset, search_term)
+        term = search_term.strip()
+        if match := ARTICLE_PK_RE.fullmatch(term):
+            queryset_result |= queryset.filter(**{f"{self.article_lookup_prefix}pk": int(match.group(1))})
+        return queryset_result, may_have_duplicates
+
+
 @admin.register(Article, site=advanced_admin_site)
-class ArticleAdmin(FileSaveMixin, admin.ModelAdmin):
+class ArticleAdmin(ArticleSearchFilterMixin, FileSaveMixin, admin.ModelAdmin):
     LABELS = {
         "data_figure_files": "Administrative files",
         "comments_editor": "Author's cover letter (v1)",
@@ -216,7 +287,6 @@ class ArticleAdmin(FileSaveMixin, admin.ModelAdmin):
     autocomplete_fields = FILE_FIELDS
     list_display = ["title", "pubid", "journal", "state", "identifier_display"]
     ordering = ("-pk",)
-    search_fields = ("identifier__identifier", "pk")
     inlines = (GalleyInline,)
 
     formfield_overrides = {
@@ -235,17 +305,6 @@ class ArticleAdmin(FileSaveMixin, admin.ModelAdmin):
             if object_id:
                 ff.widget = ParamsWrapper(ff.widget, {"article": object_id})
         return ff
-
-    def get_list_filter(self, request: HttpRequest) -> list[str]:  # noqa: PLR6301
-        """
-        Retrieve the list of filters to be applied in the list view.
-
-        :param request: The current HTTP request object
-        :type request: HttpRequest
-        :return: A list of filter fields
-        :rtype: list
-        """
-        return ["journal", "articleworkflow__state"]
 
     @admin.display(description="identifier")
     def identifier_display(self, obj: Article) -> str:  # noqa: PLR6301
