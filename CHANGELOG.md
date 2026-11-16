@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.11] - 2026-11-16
+
+- [specs#3325: Show abstract only upon request on Vetrinetta pages?](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3325) — feat(ui): add a toggle button to show/hide abstract in showcase cards (!156)
+
 ## [2.1.10] - 2026-11-05
 
 - [specs#3257: Fix size of invite reviewer modal](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3257) — feat(wjs-bootstrap): htmx modal sizing and select / invite reviewer modal UI (!143)
