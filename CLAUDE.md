@@ -25,6 +25,13 @@ It provides one theme plus an "advanced admin" Django app:
   `JQuant_4050`), identifier (e.g. `JCOM_4515`) or title via `ArticleSearchMixin`: `File.article_id`
   is a plain integer, not a foreign key, and most ESM are linked to their article only through
   `file.article_id`, not `Article.supplementary_files`.
+  The Articles page, the Article submissions page (wjs-submission) and the Article workflows page
+  (wjs-profile) share search and filters through `ArticleSearchFilterMixin`, configured per page with
+  `article_lookup_prefix` (path to the article, e.g. `article__`) and `workflow_state_lookup`. Title and
+  author/owner names are searched without diacritics (`Rudziński` = `Rudzinski`) via PostgreSQL `unaccent`,
+  whose extension is created by wjs-submission migration `wjs_submission.0025`. `search_fields` is set in
+  `__init__` rather than overridden in `get_search_fields`, because the admin.E040 check for article
+  `autocomplete_fields` reads the attribute.
 
 ## Repository layout
 
