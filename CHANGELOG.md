@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.12] - 2026-11-17
+
+- [specs#3329: Share filters between articlesubmission, article and articleworkflow](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3329) — feat(advanced_admin): share article search and filters across admin pages (!157)
+- [specs#3414: Same list columns on Articles, Article submissions and Article workflows advanced admin pages](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3414) — feat(advanced_admin): share article search and filters across admin pages (!157)
+- [specs#3120: As a typesetter i need to distinguish between "taken in charge" and "proofs received" status](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3120) — feat(wjs-bootstrap): add taken in charge and back to typesetter badge colours (!154)
+
 ## [2.1.11] - 2026-11-16
 
 - [specs#3325: Show abstract only upon request on Vetrinetta pages?](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3325) — feat(ui): add a toggle button to show/hide abstract in showcase cards (!156)
