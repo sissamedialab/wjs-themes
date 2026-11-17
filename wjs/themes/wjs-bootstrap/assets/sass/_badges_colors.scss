@@ -29,6 +29,8 @@ color-state-NotSuitable
 color-state-PaperHasEditorReport
 color-state-Accepted
 color-state-TypesetterSelected
+color-state-taken_in_charge
+color-state-back_to_typesetter
 color-state-PaperMightHaveIssues
 color-state-Proofreading
 color-state-ReadyForTypesetter
@@ -123,6 +125,13 @@ $hover-state-ReadyForTypesetter: darken($color-state-ReadyForTypesetter, 10%);
 
 $color-state-TypesetterSelected: #6ee7b7;
 $hover-state-TypesetterSelected: darken($color-state-TypesetterSelected, 10%);
+
+// TypesetterSelected sub-states (computed from the typesetting round, specs#3120)
+$color-state-taken_in_charge: #fb91b5;
+$hover-state-taken_in_charge: darken($color-state-taken_in_charge, 10%);
+$color-state-back_to_typesetter: #d97706;
+// Lighten on hover: black text keeps AA contrast on a lighter background
+$hover-state-back_to_typesetter: lighten($color-state-back_to_typesetter, 10%);
 
 $color-state-Proofreading: #38bdf8;
 $hover-state-Proofreading: darken($color-state-Proofreading, 10%);
@@ -449,6 +458,24 @@ span.badge {
 
       &:hover {
         background-color: $hover-state-TypesetterSelected;
+      }
+    }
+
+    &-taken_in_charge {
+      background-color: $color-state-taken_in_charge;
+
+      &:hover {
+        background-color: $hover-state-taken_in_charge;
+      }
+    }
+
+    &-back_to_typesetter {
+      background-color: $color-state-back_to_typesetter;
+      color: #000;
+
+      &:hover {
+        background-color: $hover-state-back_to_typesetter;
+        color: #000;
       }
     }
 
