@@ -52,20 +52,6 @@
       </ul>
     </div>
   {% endif %}
-  {% if article.funders.exists %}
-    <div class="wjs-showcase__article-sidebar-content">
-      <h2 class="wjs-showcase__sidebar-title">{% translate "Funding" %}</h2>
-      <ul class="wjs-showcase__article-sidebar-list">
-        {% for funder in article.funders.all %}
-          <li>
-            {{ funder.name }}
-            {% if funder.funding_id %}{% blocktranslate with funding_id=funder.funding_id %}(grant {{ funding_id }}){% endblocktranslate %}{% endif %}
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
-
   {% if article.date_accepted or article.date_published %}
     <div class="wjs-showcase__article-sidebar-content">
       <h2 class="wjs-showcase__sidebar-title">{% translate "Publication date" %}</h2>
