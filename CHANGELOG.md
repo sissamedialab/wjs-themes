@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.1.13] - 2026-11-25
+
+- [specs#3363: Remove "Funding" section from landing  page](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3363) — feat(sidebar): remove funding from sidebar (!158)
+- No linked issue — docs(rules): always use State: QA label and propose a main: issue (!159)
+
 ## [2.1.12] - 2026-11-17
 
 - [specs#3329: Share filters between articlesubmission, article and articleworkflow](https://gitlab.sissamedialab.it/wjs/specs/-/work_items/3329) — feat(advanced_admin): share article search and filters across admin pages (!157)
