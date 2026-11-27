@@ -58,38 +58,37 @@
       return;
     }
 
-    const visibilityByHeading = new Map(items.map(({heading}) => [heading, false]));
-    const lastTopByHeading = new Map();
+    function updateVisibility() {
+      const contentBottom = content.getBoundingClientRect().bottom;
 
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: [0.0, 1.0],
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        visibilityByHeading.set(entry.target, entry.isIntersecting);
-        lastTopByHeading.set(entry.target, entry.boundingClientRect.top);
-      });
-
-      const anyVisible = [...visibilityByHeading.values()].some(Boolean);
-
-      let lastAbove = null;
-      if (!anyVisible) {
-        lastAbove = items.findLast(({heading}) =>
-          (lastTopByHeading.get(heading) ?? 0) < 0
-        )?.heading;
-      }
-
-      items.forEach(({heading, link}) => {
-        const active = anyVisible
-          ? visibilityByHeading.get(heading)
-          : heading === lastAbove;
+      items.forEach(({heading, link}, index) => {
+        const top = heading.getBoundingClientRect().top;
+        const nextHeading = items[index + 1]?.heading;
+        const bottom = nextHeading ? nextHeading.getBoundingClientRect().top : contentBottom;
+        const active = top < window.innerHeight && bottom > 0;
         link.classList.toggle("active", active);
+        if (active) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
       });
-    }, options);
+    }
 
-    items.forEach(({heading}) => observer.observe(heading));
+    let frameId = null;
+    function onScroll() {
+      if (frameId !== null) {
+        return;
+      }
+      frameId = requestAnimationFrame(() => {
+        frameId = null;
+        updateVisibility();
+      });
+    }
+
+    window.addEventListener("scroll", onScroll, {passive: true});
+    window.addEventListener("resize", onScroll);
+    window.addEventListener("load", onScroll);
+    updateVisibility();
   });
 </script>
